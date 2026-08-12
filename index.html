@@ -1,0 +1,851 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>카원 신차 견적 계산기</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: #f5f7f8;
+      color: #222;
+    }
+
+    .estimate-wrap {
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+
+    .estimate-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #777;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+      font-size: 15px;
+      background: white;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option-item {
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .option-item:hover {
+      border-color: #52d7c3;
+    }
+
+    .option-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .option-item input {
+      width: 18px;
+      height: 18px;
+      accent-color: #45cdb8;
+    }
+
+    .price {
+      font-weight: 700;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 24px;
+      border-radius: 18px;
+      background: #eefbf8;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .result-row.total {
+      border-top: 1px solid #cdebe5;
+      padding-top: 18px;
+      margin-top: 18px;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .benefit {
+      color: #6956d9;
+      font-weight: 700;
+    }
+
+    .final-price {
+      color: #16a68d;
+    }
+
+    .consult-btn {
+      width: 100%;
+      margin-top: 24px;
+      padding: 18px;
+      border: none;
+      border-radius: 14px;
+      background: #222222;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .consult-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .estimate-wrap {
+        margin: 15px auto;
+        padding: 12px;
+      }
+
+      .estimate-card {
+        padding: 22px;
+      }
+
+      .title {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="estimate-wrap">
+
+  <div class="estimate-card">
+
+    <div class="title">
+      내 차 견적 알아보기
+    </div>
+
+    <div class="subtitle">
+      원하는 차량과 옵션을 선택하면 예상 차량 가격을 바로 확인할 수 있습니다.
+    </div>
+
+
+    <!-- 제조사 -->
+
+    <div class="section">
+
+      <div class="section-title">
+        제조사
+      </div>
+
+      <select id="brand">
+
+        <option value="">
+          제조사를 선택하세요
+        </option>
+
+        <option value="kia">
+          기아
+        </option>
+
+        <option value="hyundai">
+          현대
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- 차량 -->
+
+    <div class="section">
+
+      <div class="section-title">
+        차량
+      </div>
+
+      <select id="car">
+
+        <option value="">
+          차량을 선택하세요
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- 트림 -->
+
+    <div class="section">
+
+      <div class="section-title">
+        트림
+      </div>
+
+      <select id="trim">
+
+        <option value="">
+          트림을 선택하세요
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- 외장색 -->
+
+    <div class="section">
+
+      <div class="section-title">
+        외장 색상
+      </div>
+
+      <select id="color">
+
+        <option value="0">
+          스노우 화이트 펄
+        </option>
+
+        <option value="100000">
+          그래비티 그레이 (+100,000원)
+        </option>
+
+        <option value="150000">
+          오로라 블랙 펄 (+150,000원)
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- 옵션 -->
+
+    <div class="section">
+
+      <div class="section-title">
+        선택 옵션
+      </div>
+
+      <div class="option-list">
+
+        <label class="option-item">
+
+          <div class="option-left">
+
+            <input
+              type="checkbox"
+              class="option"
+              value="1090000"
+            />
+
+            파노라마 선루프
+
+          </div>
+
+          <div class="price">
+            +1,090,000원
+          </div>
+
+        </label>
+
+
+        <label class="option-item">
+
+          <div class="option-left">
+
+            <input
+              type="checkbox"
+              class="option"
+              value="590000"
+            />
+
+            헤드업 디스플레이
+
+          </div>
+
+          <div class="price">
+            +590,000원
+          </div>
+
+        </label>
+
+
+        <label class="option-item">
+
+          <div class="option-left">
+
+            <input
+              type="checkbox"
+              class="option"
+              value="650000"
+            />
+
+            프리미엄 사운드
+
+          </div>
+
+          <div class="price">
+            +650,000원
+          </div>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <!-- 결과 -->
+
+    <div class="result-box">
+
+      <div class="result-row">
+
+        <span>
+          기본 차량가
+        </span>
+
+        <strong id="basePrice">
+          0원
+        </strong>
+
+      </div>
+
+
+      <div class="result-row">
+
+        <span>
+          선택 옵션
+        </span>
+
+        <strong id="optionPrice">
+          0원
+        </strong>
+
+      </div>
+
+
+      <div class="result-row">
+
+        <span>
+          차량 총 가격
+        </span>
+
+        <strong id="vehiclePrice">
+          0원
+        </strong>
+
+      </div>
+
+
+      <div class="result-row">
+
+        <span>
+          카원 예상 혜택
+        </span>
+
+        <strong
+          class="benefit"
+          id="benefitPrice"
+        >
+          -0원
+        </strong>
+
+      </div>
+
+
+      <div class="result-row total">
+
+        <span>
+          예상 구매가
+        </span>
+
+        <span
+          class="final-price"
+          id="finalPrice"
+        >
+          0원
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="consult-btn"
+      onclick="requestConsult()"
+    >
+
+      무료 견적 상담받기
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const carData = {
+
+  kia: {
+
+    sorento: {
+
+      name: "쏘렌토",
+
+      trims: {
+
+        prestige: {
+          name: "프레스티지",
+          price: 35800000
+        },
+
+        nobless: {
+          name: "노블레스",
+          price: 38900000
+        },
+
+        signature: {
+          name: "시그니처",
+          price: 42100000
+        }
+
+      }
+
+    },
+
+    sportage: {
+
+      name: "스포티지",
+
+      trims: {
+
+        prestige: {
+          name: "프레스티지",
+          price: 29000000
+        },
+
+        nobless: {
+          name: "노블레스",
+          price: 32000000
+        }
+
+      }
+
+    }
+
+  },
+
+
+  hyundai: {
+
+    sonata: {
+
+      name: "쏘나타",
+
+      trims: {
+
+        premium: {
+          name: "프리미엄",
+          price: 28750000
+        },
+
+        exclusive: {
+          name: "익스클루시브",
+          price: 32590000
+        },
+
+        inspiration: {
+          name: "인스퍼레이션",
+          price: 36230000
+        }
+
+      }
+
+    },
+
+    grandeur: {
+
+      name: "그랜저",
+
+      trims: {
+
+        premium: {
+          name: "프리미엄",
+          price: 38000000
+        },
+
+        exclusive: {
+          name: "익스클루시브",
+          price: 42500000
+        }
+
+      }
+
+    }
+
+  }
+
+};
+
+
+const brandSelect =
+document.getElementById("brand");
+
+const carSelect =
+document.getElementById("car");
+
+const trimSelect =
+document.getElementById("trim");
+
+
+
+brandSelect.addEventListener(
+  "change",
+  function () {
+
+    const brand =
+    this.value;
+
+    carSelect.innerHTML =
+    '<option value="">차량을 선택하세요</option>';
+
+    trimSelect.innerHTML =
+    '<option value="">트림을 선택하세요</option>';
+
+
+    if (!brand) {
+      calculate();
+      return;
+    }
+
+
+    Object.keys(
+      carData[brand]
+    ).forEach(
+      function (carKey) {
+
+        const car =
+        carData[brand][carKey];
+
+        const option =
+        document.createElement("option");
+
+        option.value =
+        carKey;
+
+        option.textContent =
+        car.name;
+
+        carSelect.appendChild(option);
+
+      }
+    );
+
+    calculate();
+
+  }
+);
+
+
+
+carSelect.addEventListener(
+  "change",
+  function () {
+
+    const brand =
+    brandSelect.value;
+
+    const carKey =
+    this.value;
+
+
+    trimSelect.innerHTML =
+    '<option value="">트림을 선택하세요</option>';
+
+
+    if (!brand || !carKey) {
+      calculate();
+      return;
+    }
+
+
+    const trims =
+    carData[brand][carKey].trims;
+
+
+    Object.keys(
+      trims
+    ).forEach(
+      function (trimKey) {
+
+        const trim =
+        trims[trimKey];
+
+        const option =
+        document.createElement("option");
+
+        option.value =
+        trimKey;
+
+        option.textContent =
+        trim.name +
+        " - " +
+        formatPrice(trim.price);
+
+        trimSelect.appendChild(option);
+
+      }
+    );
+
+    calculate();
+
+  }
+);
+
+
+
+trimSelect.addEventListener(
+  "change",
+  calculate
+);
+
+
+document
+.querySelectorAll(".option")
+.forEach(
+  function (checkbox) {
+
+    checkbox.addEventListener(
+      "change",
+      calculate
+    );
+
+  }
+);
+
+
+document
+.getElementById("color")
+.addEventListener(
+  "change",
+  calculate
+);
+
+
+
+function calculate() {
+
+  const brand =
+  brandSelect.value;
+
+  const carKey =
+  carSelect.value;
+
+  const trimKey =
+  trimSelect.value;
+
+
+  let basePrice = 0;
+
+
+  if (
+    brand &&
+    carKey &&
+    trimKey
+  ) {
+
+    basePrice =
+    carData
+    [brand]
+    [carKey]
+    .trims
+    [trimKey]
+    .price;
+
+  }
+
+
+  let optionPrice =
+  Number(
+    document
+    .getElementById("color")
+    .value
+  );
+
+
+  document
+  .querySelectorAll(".option:checked")
+  .forEach(
+    function (checkbox) {
+
+      optionPrice +=
+      Number(
+        checkbox.value
+      );
+
+    }
+  );
+
+
+  const vehiclePrice =
+  basePrice +
+  optionPrice;
+
+
+  /*
+  카원 예상 혜택
+
+  현재 테스트용으로
+  차량 가격의 3%로 설정
+  */
+
+  const benefit =
+  Math.round(
+    vehiclePrice * 0.03
+  );
+
+
+  const finalPrice =
+  vehiclePrice -
+  benefit;
+
+
+  document
+  .getElementById("basePrice")
+  .textContent =
+  formatPrice(basePrice);
+
+
+  document
+  .getElementById("optionPrice")
+  .textContent =
+  formatPrice(optionPrice);
+
+
+  document
+  .getElementById("vehiclePrice")
+  .textContent =
+  formatPrice(vehiclePrice);
+
+
+  document
+  .getElementById("benefitPrice")
+  .textContent =
+  "-" + formatPrice(benefit);
+
+
+  document
+  .getElementById("finalPrice")
+  .textContent =
+  formatPrice(finalPrice);
+
+}
+
+
+
+function formatPrice(price) {
+
+  return (
+    Number(price)
+    .toLocaleString("ko-KR")
+    + "원"
+  );
+
+}
+
+
+
+function requestConsult() {
+
+  const brand =
+  brandSelect.value;
+
+  const car =
+  carSelect.value;
+
+  const trim =
+  trimSelect.value;
+
+
+  if (
+    !brand ||
+    !car ||
+    !trim
+  ) {
+
+    alert(
+      "차량과 트림을 먼저 선택해주세요."
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "견적 상담 신청 기능은 카원 상담 페이지와 연결할 수 있습니다."
+  );
+
+}
+
+</script>
+
+</body>
+</html>
+```
