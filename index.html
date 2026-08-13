@@ -357,7 +357,8 @@
 
 
 <script>
-  const SUPABASE_URL = "https://ywtlrqmlzzstlpkianxk.supabase.co";
+  const SUPABASE_URL =
+    "https://ywtlrqmlzzstlpkianxk.supabase.co";
 
   const SUPABASE_KEY =
     "sb_publishable_SJLMDHI1M8xHu64hThJOsw_RAmsmJY_";
@@ -365,34 +366,50 @@
 
   async function loadStats() {
     try {
-      const response = await fetch(
-        `${SUPABASE_URL}/rest/v1/carone_stats?id=eq.1&select=live_count,total_count`,
-        {
-          method: "GET",
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Content-Type": "application/json"
-          }
+
+      const apiUrl =
+        `${SUPABASE_URL}/rest/v1/carone_stats?select=live_count,total_count&id=eq.1`;
+
+
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "apikey": SUPABASE_KEY
         }
-      );
+      });
+
+
+      console.log("Supabase 응답 상태:", response.status);
 
 
       if (!response.ok) {
-        const errorText = await response.text();
+
+        const errorText =
+          await response.text();
 
         throw new Error(
-          `Supabase 요청 실패 ${response.status}: ${errorText}`
+          `API 오류 ${response.status}: ${errorText}`
         );
+
       }
 
 
-      const data = await response.json();
+      const data =
+        await response.json();
+
+
+      console.log(
+        "Supabase에서 받은 데이터:",
+        data
+      );
 
 
       if (!Array.isArray(data) || data.length === 0) {
+
         throw new Error(
-          "carone_stats 테이블의 id=1 데이터를 찾지 못했습니다."
+          "id=1 데이터가 없습니다."
         );
+
       }
 
 
@@ -414,30 +431,29 @@
         totalCount
       );
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.error(
-        "카원 통계 불러오기 실패:",
+        "카원 통계 연결 오류:",
         error
       );
 
 
-      const liveElement =
+      const live =
         document.querySelector(".purple-number");
 
-      const totalElement =
+      const total =
         document.querySelector(".mint-number");
 
 
-      if (liveElement) {
-        liveElement.textContent = "-";
-      }
+      if (live) live.textContent = "-";
+      if (total) total.textContent = "-";
 
-      if (totalElement) {
-        totalElement.textContent = "-";
-      }
     }
   }
+
 
 
   function animateCounter(element, target) {
@@ -446,9 +462,7 @@
 
 
     const duration = 1600;
-
-    const startTime =
-      performance.now();
+    const startTime = performance.now();
 
 
     function update(currentTime) {
@@ -482,6 +496,7 @@
           target.toLocaleString("ko-KR");
 
       }
+
     }
 
 
