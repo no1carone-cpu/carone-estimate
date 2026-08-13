@@ -312,7 +312,10 @@
 
         <div class="counter-row">
 
-<strong class="counter purple-number">0</strong>
+          <strong
+            class="counter purple-number"
+            data-target="52"
+          >0</strong>
 
           <span class="unit">건</span>
 
@@ -333,7 +336,10 @@
 
         <div class="counter-row">
 
-<strong class="counter mint-number">0</strong>
+          <strong
+            class="counter mint-number"
+            data-target="289"
+          >0</strong>
 
           <span class="unit">건</span>
 
@@ -356,156 +362,65 @@
   </section>
 
 
-<script>
-  const SUPABASE_URL =
-    "https://ywtlrqmlzzstlpkianxk.supabase.co";
+  <script>
 
-  const SUPABASE_KEY =
-    "sb_publishable_SJLMDHI1M8xHu64hThJOsw_RAmsmJY_";
+    const counters =
+      document.querySelectorAll(".counter");
 
 
-  async function loadStats() {
-    try {
+    counters.forEach(counter => {
 
-      const apiUrl =
-        `${SUPABASE_URL}/rest/v1/carone_stats?select=live_count,total_count&id=eq.1`;
+      const target =
+        Number(counter.dataset.target);
+
+      const duration = 1600;
+
+      const startTime =
+        performance.now();
 
 
-      const response = await fetch(apiUrl, {
-        method: "GET",
-        headers: {
-          "apikey": SUPABASE_KEY
+      function update(currentTime) {
+
+        const progress =
+          Math.min(
+            (currentTime - startTime) / duration,
+            1
+          );
+
+
+        /* 자연스러운 감속 효과 */
+        const ease =
+          1 - Math.pow(1 - progress, 4);
+
+
+        const value =
+          Math.floor(target * ease);
+
+
+        counter.textContent =
+          value.toLocaleString("ko-KR");
+
+
+        if (progress < 1) {
+
+          requestAnimationFrame(update);
+
+        } else {
+
+          /* 마지막 숫자 정확하게 고정 */
+          counter.textContent =
+            target.toLocaleString("ko-KR");
+
         }
-      });
-
-
-      console.log("Supabase 응답 상태:", response.status);
-
-
-      if (!response.ok) {
-
-        const errorText =
-          await response.text();
-
-        throw new Error(
-          `API 오류 ${response.status}: ${errorText}`
-        );
 
       }
 
 
-      const data =
-        await response.json();
+      requestAnimationFrame(update);
 
+    });
 
-      console.log(
-        "Supabase에서 받은 데이터:",
-        data
-      );
+  </script>
 
-
-      if (!Array.isArray(data) || data.length === 0) {
-
-        throw new Error(
-          "id=1 데이터가 없습니다."
-        );
-
-      }
-
-
-      const liveCount =
-        Number(data[0].live_count);
-
-      const totalCount =
-        Number(data[0].total_count);
-
-
-      animateCounter(
-        document.querySelector(".purple-number"),
-        liveCount
-      );
-
-
-      animateCounter(
-        document.querySelector(".mint-number"),
-        totalCount
-      );
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "카원 통계 연결 오류:",
-        error
-      );
-
-
-      const live =
-        document.querySelector(".purple-number");
-
-      const total =
-        document.querySelector(".mint-number");
-
-
-      if (live) live.textContent = "-";
-      if (total) total.textContent = "-";
-
-    }
-  }
-
-
-
-  function animateCounter(element, target) {
-
-    if (!element) return;
-
-
-    const duration = 1600;
-    const startTime = performance.now();
-
-
-    function update(currentTime) {
-
-      const progress =
-        Math.min(
-          (currentTime - startTime) / duration,
-          1
-        );
-
-
-      const ease =
-        1 - Math.pow(1 - progress, 4);
-
-
-      const value =
-        Math.floor(target * ease);
-
-
-      element.textContent =
-        value.toLocaleString("ko-KR");
-
-
-      if (progress < 1) {
-
-        requestAnimationFrame(update);
-
-      } else {
-
-        element.textContent =
-          target.toLocaleString("ko-KR");
-
-      }
-
-    }
-
-
-    requestAnimationFrame(update);
-  }
-
-
-  loadStats();
-</script>
-  
 </body>
 </html>
