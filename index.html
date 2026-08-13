@@ -356,91 +356,58 @@
   </section>
 
 
-  <script>
-
-    const counters =
-      document.querySelectorAll(".counter");
-
-
-    counters.forEach(counter => {
-
-      const target =
-        Number(counter.dataset.target);
-
-      const duration = 1600;
-
-      const startTime =
-        performance.now();
-
-
-      function update(currentTime) {
-
-        const progress =
-          Math.min(
-            (currentTime - startTime) / duration,
-            1
-          );
-
-
-        /* 자연스러운 감속 효과 */
-        const ease =
-          1 - Math.pow(1 - progress, 4);
-
-
-        const value =
-          Math.floor(target * ease);
-
-
-        counter.textContent =
-          value.toLocaleString("ko-KR");
-
-
-        if (progress < 1) {
-
-          requestAnimationFrame(update);
-
-        } else {
-
-          /* 마지막 숫자 정확하게 고정 */
-          counter.textContent =
-            target.toLocaleString("ko-KR");
-
-        }
-
-      }
-
-
-      requestAnimationFrame(update);
-
-    });
-
 <script>
-  const SUPABASE_URL = "https://ywtlrqmlzzstlpkiankx.supabase.co/rest/v1/;
-  const SUPABASE_KEY = "sb_publishable_SJLMDHI1M8xHu64hThJOsw_RAmsmJY_";
+  const SUPABASE_URL = "https://ywtlrqmlzzstlpkianxk.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_SJLMDHI1M8xHu64hThJOsw_RAmsmJY_";
+
 
   async function loadStats() {
     try {
       const response = await fetch(
         `${SUPABASE_URL}/rest/v1/carone_stats?id=eq.1&select=live_count,total_count`,
         {
+          method: "GET",
           headers: {
-            apikey: SUPABASE_KEY,
-            Authorization: `Bearer ${SUPABASE_KEY}`
+            "apikey": SUPABASE_KEY,
+            "Content-Type": "application/json"
           }
         }
       );
 
+
+      if (!response.ok) {
+        const errorText = await response.text();
+
+        throw new Error(
+          `Supabase 요청 실패 ${response.status}: ${errorText}`
+        );
+      }
+
+
       const data = await response.json();
 
-      if (!data || !data[0]) return;
 
-      const liveCount = data[0].live_count;
-      const totalCount = data[0].total_count;
+      if (!Array.isArray(data) || data.length === 0) {
+        throw new Error(
+          "carone_stats 테이블의 id=1 데이터를 찾지 못했습니다."
+        );
+      }
+
+
+      const liveCount =
+        Number(data[0].live_count);
+
+      const totalCount =
+        Number(data[0].total_count);
+
 
       animateCounter(
         document.querySelector(".purple-number"),
         liveCount
       );
+
 
       animateCounter(
         document.querySelector(".mint-number"),
@@ -448,39 +415,79 @@
       );
 
     } catch (error) {
-      console.error("카원 통계 불러오기 실패:", error);
+
+      console.error(
+        "카원 통계 불러오기 실패:",
+        error
+      );
+
+
+      const liveElement =
+        document.querySelector(".purple-number");
+
+      const totalElement =
+        document.querySelector(".mint-number");
+
+
+      if (liveElement) {
+        liveElement.textContent = "-";
+      }
+
+      if (totalElement) {
+        totalElement.textContent = "-";
+      }
     }
   }
 
+
   function animateCounter(element, target) {
+
+    if (!element) return;
+
+
     const duration = 1600;
-    const startTime = performance.now();
+
+    const startTime =
+      performance.now();
+
 
     function update(currentTime) {
-      const progress = Math.min(
-        (currentTime - startTime) / duration,
-        1
-      );
+
+      const progress =
+        Math.min(
+          (currentTime - startTime) / duration,
+          1
+        );
+
 
       const ease =
         1 - Math.pow(1 - progress, 4);
 
+
       const value =
         Math.floor(target * ease);
+
 
       element.textContent =
         value.toLocaleString("ko-KR");
 
+
       if (progress < 1) {
+
         requestAnimationFrame(update);
+
       } else {
+
         element.textContent =
           target.toLocaleString("ko-KR");
+
       }
     }
 
+
     requestAnimationFrame(update);
   }
+
 
   loadStats();
 </script>
