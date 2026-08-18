@@ -684,8 +684,8 @@
 
     <section class="card vehicle-card">
       <div class="vehicle-visual">
-        <img id="vehicleImage" class="vehicle-image" src="sorento.png" alt="2026 쏘렌토">
-        <div id="vehiclePlaceholder" class="vehicle-placeholder">
+      <img id="vehicleImage" class="vehicle-image" src="sorento.png" alt="2026 쏘렌토">
+      <div id="vehiclePlaceholder" class="vehicle-placeholder">
           <span class="car-icon">🚙</span>
           <b>쏘렌토 차량 이미지 영역</b>
           sorento.png 파일을 같은 폴더에 넣으면 자동 표시됩니다.
@@ -1185,21 +1185,7 @@ $("consultBtn").addEventListener("click", () => {
   );
 });
 
-/* 차량 이미지가 존재하면 표시, 없으면 안내문 유지 */
 window.addEventListener("load", () => {
-  const img = $("vehicleImage");
-  const placeholder = $("vehiclePlaceholder");
-
-  img.onload = () => {
-    img.style.display = "block";
-    placeholder.style.display = "none";
-  };
-
-  img.onerror = () => {
-    img.style.display = "none";
-    placeholder.style.display = "block";
-  };
-
   renderAll();
 });
 </script>
