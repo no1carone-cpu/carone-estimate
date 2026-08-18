@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카원 | 2026 쏘렌토 신차견적</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --purple: #4b2586;
+      --purple-2: #6842aa;
+      --purple-soft: #f5f1fb;
+      --mint: #16e5df;
+      --mint-soft: #e9fffd;
+      --ink: #17151d;
+      --text: #3e3b46;
+      --muted: #898490;
+      --line: #e9e6ec;
+      --bg: #f7f7f9;
+      --white: #fff;
+      --danger: #df5361;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Arial, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    button { font: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: 1320px;
+      height: 78px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-logo {
+      width: 210px;
+      max-height: 58px;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+
+    .top-copy {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 18% 20%, rgba(22,229,223,.14), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(75,37,134,.13), transparent 36%),
+        #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 52px 24px 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: #077f7c;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-note {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 30px 24px 90px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 27px;
+      margin-bottom: 18px;
+      box-shadow: 0 7px 28px rgba(31,23,39,.035);
+    }
+
+    .vehicle-card {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .vehicle-visual {
+      position: relative;
+      min-height: 280px;
+      overflow: hidden;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 50% 68%, rgba(75,37,134,.13), transparent 28%),
+        linear-gradient(145deg, #fcfcfd, #f0f1f5);
+      display: grid;
+      place-items: center;
+      border: 1px solid #f0edf2;
+    }
+
+    .vehicle-visual::after {
+      content: "";
+      position: absolute;
+      left: 16%;
+      right: 16%;
+      bottom: 42px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.08);
+      filter: blur(8px);
+    }
+
+    .vehicle-image {
+      width: 92%;
+      max-height: 250px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      display: none;
+    }
+
+    .vehicle-placeholder {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--muted);
+      padding: 30px;
+    }
+
+    .vehicle-placeholder .car-icon {
+      font-size: 92px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .vehicle-placeholder b {
+      display: block;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .brand-kia {
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .vehicle-title {
+      margin: 6px 0 8px;
+      font-size: 35px;
+      letter-spacing: -0.055em;
+    }
+
+    .vehicle-desc {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 16px;
+    }
+
+    .mini-tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f5f5f7;
+      color: #5f5a65;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .step {
+      width: 31px;
+      height: 31px;
+      flex: 0 0 31px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .section-head h2 {
+      margin: 2px 0 0;
+      font-size: 20px;
+      letter-spacing: -0.035em;
+    }
+
+    .section-sub {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .grid-select {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .grid-select.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .choice {
+      appearance: none;
+      border: 1px solid #ded9e3;
+      border-radius: 15px;
+      background: #fff;
+      padding: 17px 18px;
+      cursor: pointer;
+      text-align: left;
+      transition: .18s ease;
+      color: var(--ink);
+    }
+
+    .choice:hover {
+      transform: translateY(-1px);
+      border-color: #a995c4;
+      box-shadow: 0 7px 18px rgba(75,37,134,.06);
+    }
+
+    .choice.active {
+      border: 2px solid var(--purple);
+      background: var(--purple-soft);
+      padding: 16px 17px;
+      box-shadow: inset 0 0 0 1px rgba(75,37,134,.03);
+    }
+
+    .choice-name {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .choice-sub {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .choice-price {
+      display: block;
+      margin-top: 9px;
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .trim-list, .option-list, .benefit-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .trim-item, .option-item, .benefit-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .trim-price, .option-price {
+      white-space: nowrap;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .option-item.active .option-price,
+    .trim-item.active .trim-price {
+      color: var(--purple);
+    }
+
+    .dependency {
+      display: inline-block;
+      margin-top: 7px;
+      padding: 4px 7px;
+      border-radius: 7px;
+      background: #fff4df;
+      color: #9a6d18;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .color-choice {
+      min-height: 118px;
+    }
+
+    .swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #cbc7ce;
+      margin-bottom: 11px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.6);
+    }
+
+    .swatch.white { background: #f8f8f3; }
+    .swatch.gray { background: #767b7f; }
+    .swatch.black { background: #151515; }
+    .swatch.green { background: #475c55; }
+
+    .benefit-card {
+      background:
+        radial-gradient(circle at 90% 5%, rgba(22,229,223,.14), transparent 32%),
+        linear-gradient(145deg, #fff, #faf8fd);
+      border: 1px solid #dcd2eb;
+    }
+
+    .benefit-headline {
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+    }
+
+    .benefit-item {
+      min-height: 88px;
+    }
+
+    .benefit-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .premium-chip {
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: var(--purple);
+      color: white;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+    .benefit-list .choice-price {
+      color: #087f7c;
+      margin-top: 0;
+      white-space: nowrap;
+    }
+
+    .benefit-package {
+      margin-top: 16px;
+      padding: 17px;
+      border-radius: 15px;
+      background: rgba(22,229,223,.065);
+      border: 1px dashed rgba(8,127,124,.25);
+    }
+
+    .benefit-package strong {
+      display: block;
+      font-size: 13px;
+      color: #087f7c;
+      margin-bottom: 7px;
+    }
+
+    .benefit-package p {
+      margin: 0;
+      color: #5c6268;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .summary {
+      position: sticky;
+      top: 98px;
+      background: #fff;
+      border: 1px solid #ddd8e3;
+      border-radius: 23px;
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(34,25,44,.09);
+    }
+
+    .summary-header {
+      padding: 24px 24px 20px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(22,229,223,.16), transparent 38%),
+        linear-gradient(135deg, #fff, #faf8fd);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary-kicker {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .09em;
+      margin-bottom: 5px;
+    }
+
+    .summary-header h3 {
+      margin: 0;
+      font-size: 23px;
+      letter-spacing: -0.04em;
+    }
+
+    .summary-header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .summary-body {
+      padding: 23px 24px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 13px;
+      color: #69646f;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .summary-row strong {
+      max-width: 60%;
+      text-align: right;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 19px 0;
+    }
+
+    .price-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #69646f;
+    }
+
+    .official-price {
+      margin-top: 5px;
+      text-align: right;
+      font-size: 31px;
+      font-weight: 950;
+      color: var(--ink);
+      letter-spacing: -0.055em;
+    }
+
+    .official-caption {
+      margin-top: 5px;
+      color: var(--muted);
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .carone-summary {
+      margin-top: 21px;
+      padding: 17px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--purple-soft), var(--mint-soft));
+      border: 1px solid rgba(75,37,134,.1);
+    }
+
+    .carone-summary-title {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .05em;
+      margin-bottom: 7px;
+    }
+
+    .carone-benefit-name {
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .carone-benefit-desc {
+      margin-top: 5px;
+      color: #66606b;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .consult-btn {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 14px;
+      padding: 17px 18px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-2));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 950;
+      cursor: pointer;
+      transition: .18s ease;
+      box-shadow: 0 8px 22px rgba(75,37,134,.22);
+    }
+
+    .consult-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 11px 28px rgba(75,37,134,.28);
+    }
+
+    .summary-notice {
+      padding: 0 24px 24px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .empty-options {
+      border: 1px dashed #d8d3dc;
+      border-radius: 15px;
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 30px);
+      background: #1e1925;
+      color: #fff;
+      padding: 12px 17px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: .22s ease;
+      z-index: 60;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      max-width: calc(100vw - 36px);
+      text-align: center;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 1000px) {
+      .page { grid-template-columns: 1fr; }
+      .summary { position: static; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner { height: 68px; padding: 9px 16px; }
+      .brand-logo { width: 170px; }
+      .top-copy { display: none; }
+      .hero-inner { padding: 38px 17px 34px; }
+      .hero p { font-size: 14px; }
+      .page { padding: 18px 12px 65px; }
+      .card { padding: 20px 16px; border-radius: 18px; }
+      .vehicle-card { grid-template-columns: 1fr; }
+      .vehicle-visual { min-height: 220px; }
+      .vehicle-title { font-size: 29px; }
+      .grid-select,
+      .grid-select.cols-3,
+      .color-grid { grid-template-columns: 1fr 1fr; }
+      .trim-item, .option-item, .benefit-item { align-items: flex-start; }
+      .option-price, .trim-price { font-size: 12px; }
+      .official-price { font-size: 28px; }
+    }
+
+    @media (max-width: 430px) {
+      .grid-select,
+      .grid-select.cols-3,
+      .color-grid { grid-template-columns: 1fr; }
+      .choice { padding: 15px; }
+      .choice.active { padding: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <img src="carone-logo.png" alt="카원 CARONE" class="brand-logo">
+    <div class="top-copy">신차견적의 새로운 기준 · CARONE</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">CARONE SMART ESTIMATE</div>
+    <h1>2026 쏘렌토<br>내 조건대로 견적을 만들어보세요.</h1>
+    <p>
+      제조사 공식 차량가격을 기준으로 트림과 옵션을 계산하고,<br>
+      마지막에는 카원 계약 고객만의 프리미엄 신차패키지를 선택할 수 있습니다.
+    </p>
+    <div class="hero-note">※ 차량 기본가격 및 선택품목은 2026년 8월 1일 기아 공식 가격 기준으로 구성한 시안입니다.</div>
+  </div>
+</section>
+
+<main class="page">
+
+  <div class="left">
+
+    <section class="card vehicle-card">
+      <div class="vehicle-visual">
+        <img id="vehicleImage" class="vehicle-image" src="sorento.png" alt="2026 쏘렌토">
+        <div id="vehiclePlaceholder" class="vehicle-placeholder">
+          <span class="car-icon">🚙</span>
+          <b>쏘렌토 차량 이미지 영역</b>
+          sorento.png 파일을 같은 폴더에 넣으면 자동 표시됩니다.
+        </div>
+      </div>
+
+      <div>
+        <div class="brand-kia">KIA</div>
+        <h2 class="vehicle-title">The 2026 Sorento</h2>
+        <p class="vehicle-desc" id="vehicleDescription">
+          2.5 가솔린 터보 · 5인승 · 2WD<br>
+          스마트스트림 습식 8DCT
+        </p>
+        <div class="mini-tags">
+          <span class="mini-tag">2026년형</span>
+          <span class="mini-tag">중형 SUV</span>
+          <span class="mini-tag">공식가격 기반</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">1</div>
+        <div>
+          <h2>엔진을 선택해주세요</h2>
+          <p class="section-sub">2.5 가솔린 터보를 기준으로 디젤 선택 시 공식 추가금이 반영됩니다.</p>
+        </div>
+      </div>
+      <div class="grid-select" id="engineList"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">2</div>
+        <div>
+          <h2>구동방식을 선택해주세요</h2>
+        </div>
+      </div>
+      <div class="grid-select" id="driveList"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">3</div>
+        <div>
+          <h2>인승을 선택해주세요</h2>
+        </div>
+      </div>
+      <div class="grid-select cols-3" id="seatList"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">4</div>
+        <div>
+          <h2>트림을 선택해주세요</h2>
+          <p class="section-sub">표시 금액은 2.5 가솔린 터보 기준 트림 기본가격입니다.</p>
+        </div>
+      </div>
+      <div class="trim-list" id="trimList"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">5</div>
+        <div>
+          <h2>외장 색상을 선택해주세요</h2>
+        </div>
+      </div>
+      <div class="color-grid" id="colorList"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div class="step">6</div>
+        <div>
+          <h2>선택품목을 추가해주세요</h2>
+          <p class="section-sub">트림을 바꾸면 해당 트림에서 선택할 수 있는 품목과 가격으로 자동 변경됩니다.</p>
+        </div>
+      </div>
+      <div class="option-list" id="optionList"></div>
+    </section>
+
+    <section class="card benefit-card">
+      <div class="benefit-headline">CARONE EXCLUSIVE BENEFIT</div>
+      <div class="section-head">
+        <div class="step">7</div>
+        <div>
+          <h2>카원 계약 혜택을 선택해주세요</h2>
+          <p class="section-sub">차량 판매가격과 별도로 제공되는 카원 계약 고객 전용 신차패키지 영역입니다.</p>
+        </div>
+      </div>
+
+      <div class="benefit-list" id="benefitList"></div>
+
+      <div class="benefit-package">
+        <strong>프리미엄 신차패키지</strong>
+        <p>
+          틴팅 브랜드 선택을 중심으로 PPF, 유리막 코팅, 유리 발수 코팅 등
+          카원 계약 시 제공 가능한 시공 혜택을 상담 단계에서 최종 안내하도록 설계했습니다.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <aside class="summary">
+    <div class="summary-header">
+      <div class="summary-kicker">CARONE ESTIMATE</div>
+      <h3>내 쏘렌토 견적</h3>
+      <p>선택할 때마다 자동으로 계산됩니다.</p>
+    </div>
+
+    <div class="summary-body">
+      <div class="summary-row"><span>엔진</span><strong id="sumEngine"></strong></div>
+      <div class="summary-row"><span>구동방식</span><strong id="sumDrive"></strong></div>
+      <div class="summary-row"><span>인승</span><strong id="sumSeat"></strong></div>
+      <div class="summary-row"><span>트림</span><strong id="sumTrim"></strong></div>
+      <div class="summary-row"><span>외장색상</span><strong id="sumColor"></strong></div>
+      <div class="summary-row"><span>선택품목</span><strong id="sumOptions">없음</strong></div>
+
+      <div class="divider"></div>
+
+      <div class="summary-row"><span>트림 기본가격</span><strong id="basePrice"></strong></div>
+      <div class="summary-row"><span>파워트레인/구동/인승</span><strong id="configPrice"></strong></div>
+      <div class="summary-row"><span>색상 추가금</span><strong id="colorPrice"></strong></div>
+      <div class="summary-row"><span>선택품목</span><strong id="optionPrice"></strong></div>
+
+      <div class="divider"></div>
+
+      <div class="price-label">예상 차량가격</div>
+      <div class="official-price" id="totalPrice"></div>
+      <div class="official-caption">제조사 공식가격 기준 · 취등록비/탁송료 별도</div>
+
+      <div class="carone-summary">
+        <div class="carone-summary-title">✦ 카원 계약 고객 혜택</div>
+        <div class="carone-benefit-name" id="benefitName"></div>
+        <div class="carone-benefit-desc">
+          선택한 틴팅 브랜드를 포함한 프리미엄 신차패키지 상담
+        </div>
+      </div>
+
+      <button class="consult-btn" id="consultBtn">이 견적으로 상담 신청하기</button>
+    </div>
+
+    <div class="summary-notice">
+      실제 판매가격, 적용 가능 품목 및 카원 혜택은 계약 시점의 제조사 정책과 상담 결과에 따라 달라질 수 있습니다.
+    </div>
+  </aside>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {
+  engines: [
+    { id: "gas", name: "2.5 가솔린 터보", price: 0, sub: "스마트스트림 G2.5 T-GDI" },
+    { id: "diesel", name: "2.2 디젤", price: 1730000, sub: "가솔린 기준 +1,730,000원" }
+  ],
+
+  drives: [
+    { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
+    { id: "4wd", name: "전자식 4WD", price: 2320000, sub: "+2,320,000원" }
+  ],
+
+  seats: [
+    { id: "5", name: "5인승", price: 0, sub: "기본" },
+    { id: "6", name: "6인승", price: 840000, sub: "+840,000원" },
+    { id: "7", name: "7인승", price: 690000, sub: "+690,000원" }
+  ],
+
+  trims: [
+    { id: "prestige", name: "프레스티지", price: 36310000, sub: "2026 쏘렌토 시작 트림" },
+    { id: "noblesse", name: "노블레스", price: 39460000, sub: "12.3인치 클러스터 · 서라운드 뷰 등" },
+    { id: "signature", name: "시그니처", price: 42270000, sub: "20인치 휠 · 프로젝션 LED · 앰비언트 라이트" },
+    { id: "xline", name: "X-Line", price: 43210000, sub: "X-Line 전용 외장 · 전용 가죽시트" }
+  ],
+
+  colors: [
+    { id: "white", name: "스노우 화이트 펄", price: 80000, className: "white" },
+    { id: "gray", name: "인터스텔라 그레이", price: 0, className: "gray" },
+    { id: "black", name: "오로라 블랙 펄", price: 0, className: "black" },
+    { id: "green", name: "시티스케이프 그린", price: 0, className: "green" }
+  ],
+
+  options: {
+    prestige: [
+      { id: "style", name: "스타일", price: 1240000 },
+      { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
+      { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+      { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+      { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+    ],
+
+    noblesse: [
+      { id: "style", name: "스타일", price: 1140000 },
+      { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+      { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+      { id: "smart", name: "스마트 커넥트", price: 800000 },
+      { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+      { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+    ],
+
+    signature: [
+      { id: "comfort", name: "컴포트", price: 1090000 },
+      { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+      { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+      { id: "smart", name: "스마트 커넥트", price: 700000 },
+      { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+      { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+    ],
+
+    xline: [
+      { id: "comfort", name: "컴포트", price: 600000 },
+      { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+      { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+      { id: "smart", name: "스마트 커넥트", price: 700000 },
+      { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+      { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+    ]
+  },
+
+  benefits: [
+    { id: "vertex", name: "루마 버텍스", sub: "프리미엄 틴팅 + 카원 신차패키지", premium: true },
+    { id: "huper", name: "후퍼옵틱", sub: "프리미엄 틴팅 + 카원 신차패키지" },
+    { id: "rainbow", name: "레인보우", sub: "프리미엄 틴팅 + 카원 신차패키지" }
+  ]
+};
+
+const state = {
+  engine: "gas",
+  drive: "2wd",
+  seat: "5",
+  trim: "prestige",
+  color: "white",
+  options: new Set(),
+  benefit: "vertex"
+};
+
+const $ = id => document.getElementById(id);
+
+function won(n) {
+  return Number(n).toLocaleString("ko-KR") + "원";
+}
+
+function plusWon(n) {
+  return n ? "+" + won(n) : "0원";
+}
+
+function getItem(list, id) {
+  return list.find(x => x.id === id);
+}
+
+function toast(message) {
+  const el = $("toast");
+  el.textContent = message;
+  el.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => el.classList.remove("show"), 2400);
+}
+
+function renderSimpleChoices(containerId, items, stateKey) {
+  const container = $(containerId);
+  container.innerHTML = "";
+
+  items.forEach(item => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice" + (state[stateKey] === item.id ? " active" : "");
+    btn.innerHTML = `
+      <span class="choice-name">${item.name}</span>
+      <span class="choice-sub">${item.sub || ""}</span>
+      ${item.price ? `<span class="choice-price">+${won(item.price)}</span>` : ""}
+    `;
+
+    btn.addEventListener("click", () => {
+      state[stateKey] = item.id;
+      renderAll();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function renderTrims() {
+  const container = $("trimList");
+  container.innerHTML = "";
+
+  DATA.trims.forEach(item => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice trim-item" + (state.trim === item.id ? " active" : "");
+    btn.innerHTML = `
+      <div>
+        <span class="choice-name">${item.name}</span>
+        <span class="choice-sub">${item.sub}</span>
+      </div>
+      <span class="trim-price">${won(item.price)}</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      if (state.trim !== item.id) {
+        state.trim = item.id;
+        state.options.clear();
+        toast("트림이 변경되어 선택품목을 초기화했습니다.");
+      }
+      renderAll();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function renderColors() {
+  const container = $("colorList");
+  container.innerHTML = "";
+
+  DATA.colors.forEach(item => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice color-choice" + (state.color === item.id ? " active" : "");
+    btn.innerHTML = `
+      <div class="swatch ${item.className}"></div>
+      <span class="choice-name">${item.name}</span>
+      <span class="choice-sub">${item.price ? "+" + won(item.price) : "추가금 없음"}</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      state.color = item.id;
+      renderAll();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function renderOptions() {
+  const container = $("optionList");
+  const list = DATA.options[state.trim] || [];
+  container.innerHTML = "";
+
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-options">선택 가능한 옵션이 없습니다.</div>`;
+    return;
+  }
+
+  list.forEach(item => {
+    const selected = state.options.has(item.id);
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice option-item" + (selected ? " active" : "");
+
+    btn.innerHTML = `
+      <div>
+        <span class="choice-name">${item.name}</span>
+        ${item.note ? `<span class="dependency">${item.note}</span>` : ""}
+      </div>
+      <span class="option-price">+${won(item.price)}</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      if (state.options.has(item.id)) {
+        state.options.delete(item.id);
+
+        if (state.trim === "prestige" && item.id === "cluster") {
+          const dependent = ["drivewise", "hud"].filter(id => state.options.has(id));
+          dependent.forEach(id => state.options.delete(id));
+          if (dependent.length) {
+            toast("클러스터 해제로 연동 옵션도 함께 해제했습니다.");
+          }
+        }
+      } else {
+        if (item.requires && !state.options.has(item.requires)) {
+          state.options.add(item.requires);
+          toast("필수 조건인 12.3인치 클러스터를 함께 선택했습니다.");
+        }
+        state.options.add(item.id);
+      }
+
+      renderAll();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function renderBenefits() {
+  const container = $("benefitList");
+  container.innerHTML = "";
+
+  DATA.benefits.forEach(item => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice benefit-item" + (state.benefit === item.id ? " active" : "");
+    btn.innerHTML = `
+      <div>
+        <div class="benefit-brand">
+          <span class="choice-name">${item.name}</span>
+          ${item.premium ? `<span class="premium-chip">PREMIUM</span>` : ""}
+        </div>
+        <span class="choice-sub">${item.sub}</span>
+      </div>
+      <span class="choice-price">카원 혜택</span>
+    `;
+
+    btn.addEventListener("click", () => {
+      state.benefit = item.id;
+      renderAll();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+function updateSummary() {
+  const engine = getItem(DATA.engines, state.engine);
+  const drive = getItem(DATA.drives, state.drive);
+  const seat = getItem(DATA.seats, state.seat);
+  const trim = getItem(DATA.trims, state.trim);
+  const color = getItem(DATA.colors, state.color);
+  const benefit = getItem(DATA.benefits, state.benefit);
+  const currentOptions = DATA.options[state.trim] || [];
+  const selectedOptions = currentOptions.filter(o => state.options.has(o.id));
+
+  const configPrice = engine.price + drive.price + seat.price;
+  const optionPrice = selectedOptions.reduce((sum, item) => sum + item.price, 0);
+  const total = trim.price + configPrice + color.price + optionPrice;
+
+  $("sumEngine").textContent = engine.name;
+  $("sumDrive").textContent = drive.name;
+  $("sumSeat").textContent = seat.name;
+  $("sumTrim").textContent = trim.name;
+  $("sumColor").textContent = color.name;
+  $("sumOptions").textContent = selectedOptions.length
+    ? selectedOptions.map(o => o.name).join(", ")
+    : "없음";
+
+  $("basePrice").textContent = won(trim.price);
+  $("configPrice").textContent = plusWon(configPrice);
+  $("colorPrice").textContent = plusWon(color.price);
+  $("optionPrice").textContent = plusWon(optionPrice);
+  $("totalPrice").textContent = won(total);
+  $("benefitName").textContent = benefit.name;
+
+  $("vehicleDescription").innerHTML =
+    `${engine.name} · ${seat.name} · ${drive.name}<br>` +
+    `${state.engine === "gas" ? "스마트스트림 습식 8DCT" : "디젤 파워트레인"}`;
+}
+
+function renderAll() {
+  renderSimpleChoices("engineList", DATA.engines, "engine");
+  renderSimpleChoices("driveList", DATA.drives, "drive");
+  renderSimpleChoices("seatList", DATA.seats, "seat");
+  renderTrims();
+  renderColors();
+  renderOptions();
+  renderBenefits();
+  updateSummary();
+}
+
+$("consultBtn").addEventListener("click", () => {
+  const engine = getItem(DATA.engines, state.engine);
+  const drive = getItem(DATA.drives, state.drive);
+  const seat = getItem(DATA.seats, state.seat);
+  const trim = getItem(DATA.trims, state.trim);
+  const color = getItem(DATA.colors, state.color);
+  const benefit = getItem(DATA.benefits, state.benefit);
+  const currentOptions = DATA.options[state.trim] || [];
+  const selectedOptions = currentOptions.filter(o => state.options.has(o.id));
+  const total =
+    trim.price +
+    engine.price +
+    drive.price +
+    seat.price +
+    color.price +
+    selectedOptions.reduce((sum, item) => sum + item.price, 0);
+
+  alert(
+`카원 견적 상담
+
+차량 : The 2026 Sorento
+엔진 : ${engine.name}
+구동 : ${drive.name}
+인승 : ${seat.name}
+트림 : ${trim.name}
+색상 : ${color.name}
+옵션 : ${selectedOptions.length ? selectedOptions.map(o => o.name).join(", ") : "없음"}
+
+예상 차량가격 : ${won(total)}
+
+카원 혜택 : ${benefit.name}
+
+다음 단계에서 이 버튼을
+카원 실제 상담 신청폼 URL로 연결하면 됩니다.`
+  );
+});
+
+/* 차량 이미지가 존재하면 표시, 없으면 안내문 유지 */
+window.addEventListener("load", () => {
+  const img = $("vehicleImage");
+  const placeholder = $("vehiclePlaceholder");
+
+  img.onload = () => {
+    img.style.display = "block";
+    placeholder.style.display = "none";
+  };
+
+  img.onerror = () => {
+    img.style.display = "none";
+    placeholder.style.display = "block";
+  };
+
+  renderAll();
+});
+</script>
+
+</body>
+</html>
