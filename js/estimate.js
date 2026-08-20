@@ -424,13 +424,20 @@ async function submitEstimateInquiry(event) {
     .from("estimate_inquiries")
     .insert([payload]);
 
-  if (error) {
-    console.error(error);
-    errorBox.textContent = "문의 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
-    submitButton.disabled = false;
-    submitButton.textContent = "견적 문의 접수";
-    return;
-  }
+ if (error) {
+
+  console.error("SUPABASE ERROR:", error);
+
+  errorBox.textContent =
+    "저장 오류: " + error.message;
+
+  submitButton.disabled = false;
+
+  submitButton.textContent =
+    "견적 문의 접수";
+
+  return;
+}
 
   $("estimateInquiryForm").reset();
   $("formSuccess").style.display = "block";
