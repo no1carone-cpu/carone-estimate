@@ -17,7 +17,7 @@ window.CAR_DATA = {
     displayName: "2026 쏘렌토",
     year: "2026년형",
     type: "중형 SUV",
-    image: "image: "https://no1carone-cpu.github.io/carone-estimate/sorento.png",
+    image: "image: "https://no1carone-cpu.github.io/carone-estimate/sorento.png","
 
     engineHelp: "2.5 가솔린 터보를 기준으로 디젤 선택 시 공식 추가금이 반영됩니다.",
     trimHelp: "표시 금액은 2.5 가솔린 터보 기준 트림 기본가격입니다.",
