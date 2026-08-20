@@ -5,6 +5,18 @@
   새 차종 추가는 cars.js에서 하세요.
 */
 
+
+/* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
+
+const supabaseClient =
+  window.supabase &&
+  !SUPABASE_URL.startsWith("여기에_") &&
+  !SUPABASE_PUBLISHABLE_KEY.startsWith("여기에_")
+    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+    : null;
+
 const $ = id => document.getElementById(id);
 
 const params = new URLSearchParams(window.location.search);
@@ -238,6 +250,8 @@ function calculateTax(total) {
   };
 }
 
+let currentEstimate = null;
+
 function updateSummary() {
   const engine = getItem(CAR.engines, state.engine);
   const drive = getItem(CAR.drives, state.drive);
@@ -271,6 +285,20 @@ function updateSummary() {
     optionPrice;
 
   const tax = calculateTax(total);
+
+  currentEstimate = {
+    carId,
+    carName: CAR.displayName,
+    engine: engine?.name || "",
+    drive: drive?.name || "",
+    seat: seat?.name || "",
+    trim: trim?.name || "",
+    color: color?.name || "",
+    options: selectedOptions.map(item => item.name),
+    vehiclePrice: total,
+    acquisitionTax: tax.acquisitionTax,
+    totalPrice: tax.grandTotal
+  };
 
   $("sumEngine").textContent = engine?.name || "-";
   $("sumDrive").textContent = drive?.name || "-";
@@ -314,6 +342,108 @@ function updateSummary() {
     (engine?.sub ? `<br>${engine.sub}` : "");
 }
 
+
+function openInquiryModal() {
+  if (!currentEstimate) return;
+  $("inquiryEstimatePreview").innerHTML = `
+    <strong>${currentEstimate.carName} · ${currentEstimate.trim}</strong>
+    ${currentEstimate.engine} · ${currentEstimate.drive} · ${currentEstimate.seat}<br>
+    ${currentEstimate.color}<br>
+    옵션: ${currentEstimate.options.length ? currentEstimate.options.join(", ") : "없음"}<br>
+    차량가격: ${won(currentEstimate.vehiclePrice)}<br>
+    예상 취득세: ${won(currentEstimate.acquisitionTax)}
+  `;
+  $("formError").textContent = "";
+  $("formSuccess").style.display = "none";
+  $("submitInquiryBtn").style.display = "";
+  $("submitInquiryBtn").disabled = false;
+  $("submitInquiryBtn").textContent = "견적 문의 접수";
+  $("inquiryModal").classList.add("open");
+  $("inquiryModal").setAttribute("aria-hidden", "false");
+}
+
+function closeInquiryModal() {
+  $("inquiryModal").classList.remove("open");
+  $("inquiryModal").setAttribute("aria-hidden", "true");
+}
+
+function normalizePhone(value) {
+  return value.replace(/[^0-9]/g, "");
+}
+
+async function submitEstimateInquiry(event) {
+  event.preventDefault();
+
+  const phone = $("inquiryPhone").value.trim();
+  const region = $("inquiryRegion").value.trim();
+  const privacyAgreed = $("privacyAgreed").checked;
+  const errorBox = $("formError");
+  const submitButton = $("submitInquiryBtn");
+
+  errorBox.textContent = "";
+
+  if (normalizePhone(phone).length < 10) {
+    errorBox.textContent = "전화번호를 정확히 입력해주세요.";
+    return;
+  }
+  if (!region) {
+    errorBox.textContent = "지역을 입력해주세요.";
+    return;
+  }
+  if (!privacyAgreed) {
+    errorBox.textContent = "개인정보 수집 및 이용에 동의해주세요.";
+    return;
+  }
+  if (!supabaseClient) {
+    errorBox.textContent = "Supabase 연결 정보가 아직 설정되지 않았습니다.";
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "접수 중...";
+
+  const payload = {
+    phone,
+    region,
+    car_id: currentEstimate.carId,
+    car_name: currentEstimate.carName,
+    engine: currentEstimate.engine,
+    drive: currentEstimate.drive,
+    seat: currentEstimate.seat,
+    trim: currentEstimate.trim,
+    color: currentEstimate.color,
+    options: currentEstimate.options.join(", "),
+    vehicle_price: currentEstimate.vehiclePrice,
+    acquisition_tax: currentEstimate.acquisitionTax,
+    total_price: currentEstimate.totalPrice,
+    status: "신규",
+    privacy_agreed: true
+  };
+
+  const { error } = await supabaseClient
+    .from("estimate_inquiries")
+    .insert([payload]);
+
+  if (error) {
+    console.error(error);
+    errorBox.textContent = "문의 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+    submitButton.disabled = false;
+    submitButton.textContent = "견적 문의 접수";
+    return;
+  }
+
+  $("estimateInquiryForm").reset();
+  $("formSuccess").style.display = "block";
+  submitButton.style.display = "none";
+}
+
+function setupInquiryUI() {
+  $("openInquiryBtn")?.addEventListener("click", openInquiryModal);
+  $("inquiryClose")?.addEventListener("click", closeInquiryModal);
+  $("inquiryBackdrop")?.addEventListener("click", closeInquiryModal);
+  $("estimateInquiryForm")?.addEventListener("submit", submitEstimateInquiry);
+}
+
 function renderAll() {
   renderSimpleChoices(
     "engineList",
@@ -342,4 +472,5 @@ function renderAll() {
 window.addEventListener("load", () => {
   loadVehicleInfo();
   renderAll();
+  setupInquiryUI();
 });
