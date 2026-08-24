@@ -630,14 +630,19 @@
 
     <section class="card vehicle-card">
       <div class="vehicle-visual">
-        <img
-          id="vehicleImage"
-          class="vehicle-image"
-          src=""
-          alt=""
-          onload="document.getElementById('vehiclePlaceholder').style.display='none';"
-          onerror="this.style.display='none'; document.getElementById('vehiclePlaceholder').style.display='block';"
-        >
+      <img
+  id="vehicleImage"
+  class="vehicle-image"
+  alt=""
+  onload="
+    this.style.display='block';
+    document.getElementById('vehiclePlaceholder').style.display='none';
+  "
+  onerror="
+    this.style.display='none';
+    document.getElementById('vehiclePlaceholder').style.display='block';
+  "
+>
         <div id="vehiclePlaceholder" class="vehicle-placeholder">
           <span class="car-icon">🚙</span>
           <b id="vehiclePlaceholderTitle">차량 이미지 영역</b>
