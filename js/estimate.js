@@ -7,7 +7,7 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
 
 const supabaseClient =
