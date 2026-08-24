@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카원 | 견적문의 직원관리</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --purple: #4b2586;
+      --purple2: #6842aa;
+      --purple-soft: #f6f2fb;
+      --mint: #16e5df;
+      --mint-soft: #eafffd;
+      --ink: #17151d;
+      --text: #514a58;
+      --muted: #8f8795;
+      --line: #e6e1e9;
+      --bg: #f7f7f9;
+      --white: #fff;
+      --danger: #cc4558;
+      --warning-bg: #fff8e9;
+      --warning: #9b6a00;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Arial, sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    button, input, textarea, select { font: inherit; }
+
+    .page {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      padding: 26px 15px 55px;
+    }
+
+    .head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 3px 20px;
+    }
+
+    .kicker {
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .1em;
+    }
+
+    .head h1 {
+      margin: 6px 0 0;
+      font-size: clamp(28px, 4vw, 39px);
+      letter-spacing: -0.055em;
+    }
+
+    .head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .account-box {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .account-email {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .outline-btn {
+      min-height: 39px;
+      padding: 0 13px;
+      border: 1px solid #dcd5e2;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .login-wrap {
+      width: min(460px, 100%);
+      margin: 38px auto 0;
+    }
+
+    .login-card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 34px rgba(34, 25, 44, .06);
+    }
+
+    .login-card h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.045em;
+    }
+
+    .login-card p {
+      margin: 8px 0 20px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .field + .field { margin-top: 14px; }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #504758;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #ddd6e1;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      font-size: 16px;
+    }
+
+    .field input {
+      height: 49px;
+      padding: 0 13px;
+    }
+
+    .field textarea {
+      min-height: 130px;
+      padding: 12px 13px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(75,37,134,.08);
+    }
+
+    .primary-btn {
+      width: 100%;
+      min-height: 51px;
+      margin-top: 17px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(75,37,134,.16);
+    }
+
+    .primary-btn:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .message {
+      min-height: 18px;
+      margin-top: 10px;
+      color: var(--danger);
+      font-size: 10px;
+      font-weight: 750;
+      line-height: 1.5;
+    }
+
+    .admin {
+      display: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 23px;
+      letter-spacing: -0.04em;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      min-height: 39px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: #6c6472;
+      font-size: 11px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      border-color: var(--purple);
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .search-input {
+      width: min(320px, 100%);
+      height: 41px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      outline: none;
+      background: #fff;
+      font-size: 13px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(300px, .85fr) minmax(0, 1.45fr);
+      gap: 13px;
+      align-items: start;
+    }
+
+    .list-panel,
+    .detail-panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .panel-title {
+      padding: 15px 17px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .inquiry-list {
+      max-height: 770px;
+      overflow-y: auto;
+    }
+
+    .inquiry-item {
+      width: 100%;
+      padding: 15px 16px;
+      border: 0;
+      border-bottom: 1px solid #f0edf2;
+      background: #fff;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .inquiry-item:hover,
+    .inquiry-item.active {
+      background: #faf8fd;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .item-code {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .03em;
+    }
+
+    .item-car {
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .item-meta {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .status-badge {
+      flex: 0 0 auto;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .status-badge.상담중 {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .status-badge.답변완료,
+    .status-badge.계약완료 {
+      background: var(--mint-soft);
+      color: #087c79;
+    }
+
+    .empty {
+      padding: 45px 20px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .detail-placeholder {
+      padding: 80px 25px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .detail-content {
+      display: none;
+    }
+
+    .detail-head {
+      padding: 19px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #faf8fd, #fff);
+    }
+
+    .detail-code {
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .detail-head h2 {
+      margin: 5px 0 0;
+      font-size: 23px;
+      letter-spacing: -0.045em;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .contact-box {
+      padding: 10px 12px;
+      border: 1px solid #e9e4ec;
+      border-radius: 11px;
+      background: #fff;
+    }
+
+    .contact-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      word-break: break-all;
+    }
+
+    .detail-body {
+      padding: 17px 19px;
+    }
+
+    .status-control {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eeeaf0;
+    }
+
+    .status-control label {
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .status-control select {
+      height: 39px;
+      padding: 0 30px 0 10px;
+      border: 1px solid #dbd5df;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 11px;
+    }
+
+    .small-btn {
+      min-height: 39px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--purple);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 18px;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 13px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f1eef3;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .spec-row span { color: var(--muted); }
+
+    .spec-row strong {
+      text-align: right;
+      word-break: keep-all;
+    }
+
+    .price-summary {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+    }
+
+    .price-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 7px;
+      font-size: 10px;
+      opacity: .83;
+    }
+
+    .price-line strong { color: #fff; }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 11px;
+      padding-top: 11px;
+      border-top: 1px solid rgba(255,255,255,.23);
+      align-items: flex-end;
+    }
+
+    .price-total span { font-size: 10px; }
+    .price-total strong { font-size: 20px; }
+
+    .comments {
+      margin-top: 20px;
+    }
+
+    .comments h3,
+    .reply-box h3 {
+      margin: 0 0 9px;
+      font-size: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .comment-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .comment {
+      padding: 13px;
+      border: 1px solid #e9e5ec;
+      border-radius: 12px;
+      background: #f9f8fa;
+    }
+
+    .comment-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .comment-author {
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .comment-date {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .comment-body {
+      color: #4f4855;
+      font-size: 11px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .reply-box {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #eeeaf0;
+    }
+
+    .reply-row {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 9px;
+      margin-bottom: 9px;
+    }
+
+    .reply-row input,
+    .reply-box textarea {
+      width: 100%;
+      border: 1px solid #ddd6e1;
+      border-radius: 11px;
+      outline: none;
+      background: #fff;
+    }
+
+    .reply-row input {
+      height: 43px;
+      padding: 0 11px;
+      font-size: 12px;
+    }
+
+    .reply-box textarea {
+      min-height: 115px;
+      padding: 11px;
+      resize: vertical;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .reply-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 9px;
+    }
+
+    .reply-actions .small-btn {
+      min-width: 120px;
+    }
+
+    .loading-bar {
+      display: none;
+      padding: 11px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 10px;
+    }
+
+    @media (max-width: 850px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .inquiry-list {
+        max-height: 420px;
+      }
+
+      .detail-panel {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page { padding: 16px 8px 34px; }
+
+      .head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .account-box {
+        justify-content: flex-start;
+      }
+
+      .login-card {
+        padding: 20px 15px;
+        border-radius: 16px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat { padding: 13px; }
+
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .reply-row {
+        grid-template-columns: 1fr;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page">
+
+  <header class="head">
+    <div>
+      <div class="kicker">CARONE STAFF CONSOLE</div>
+      <h1>견적문의 관리</h1>
+      <p>고객 견적을 확인하고 상담상태와 답변을 관리합니다.</p>
+    </div>
+
+    <div class="account-box" id="accountBox">
+      <span class="account-email" id="accountEmail"></span>
+      <button type="button" class="outline-btn" id="refreshBtn">새로고침</button>
+      <button type="button" class="outline-btn" id="logoutBtn">로그아웃</button>
+    </div>
+  </header>
+
+  <section class="login-wrap" id="loginWrap">
+    <div class="login-card">
+      <h2>직원 로그인</h2>
+      <p>
+        Supabase Authentication에 등록된 직원 계정으로 로그인해주세요.
+      </p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">이메일</label>
+          <input id="loginEmail" type="email" autocomplete="username" required>
+        </div>
+
+        <div class="field">
+          <label for="loginPassword">비밀번호</label>
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </div>
+
+        <button type="submit" class="primary-btn" id="loginBtn">
+          로그인
+        </button>
+
+        <div class="message" id="loginMessage"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="admin" id="admin">
+
+    <div class="stats">
+      <div class="stat"><span>전체 문의</span><strong id="statAll">0</strong></div>
+      <div class="stat"><span>신규</span><strong id="statNew">0</strong></div>
+      <div class="stat"><span>상담중</span><strong id="statProgress">0</strong></div>
+      <div class="stat"><span>답변/계약완료</span><strong id="statDone">0</strong></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="filters">
+        <button type="button" class="filter-btn active" data-status="all">전체</button>
+        <button type="button" class="filter-btn" data-status="신규">신규</button>
+        <button type="button" class="filter-btn" data-status="상담중">상담중</button>
+        <button type="button" class="filter-btn" data-status="답변완료">답변완료</button>
+        <button type="button" class="filter-btn" data-status="계약완료">계약완료</button>
+      </div>
+
+      <input
+        id="searchInput"
+        class="search-input"
+        type="search"
+        placeholder="문의번호 / 차량 / 전화번호 / 지역 검색"
+      >
+    </div>
+
+    <div class="workspace">
+
+      <section class="list-panel">
+        <div class="panel-title">문의 목록</div>
+        <div class="loading-bar" id="loadingBar">불러오는 중...</div>
+        <div class="inquiry-list" id="inquiryList"></div>
+      </section>
+
+      <section class="detail-panel">
+        <div class="detail-placeholder" id="detailPlaceholder">
+          왼쪽 문의를 선택하면 상세 견적과 답변 작성 화면이 표시됩니다.
+        </div>
+
+        <div class="detail-content" id="detailContent">
+
+          <div class="detail-head">
+            <div class="detail-code" id="detailCode"></div>
+            <h2 id="detailCar"></h2>
+
+            <div class="contact">
+              <div class="contact-box">
+                <span>전화번호</span>
+                <strong id="detailPhone"></strong>
+              </div>
+
+              <div class="contact-box">
+                <span>지역</span>
+                <strong id="detailRegion"></strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-body">
+
+            <div class="status-control">
+              <label for="statusSelect">상담상태</label>
+
+              <select id="statusSelect">
+                <option value="신규">신규</option>
+                <option value="상담중">상담중</option>
+                <option value="답변완료">답변완료</option>
+                <option value="계약완료">계약완료</option>
+              </select>
+
+              <button type="button" class="small-btn" id="saveStatusBtn">
+                상태 저장
+              </button>
+
+              <span class="message" id="statusMessage"></span>
+            </div>
+
+            <div class="spec-grid">
+              <div class="spec-row"><span>접수일</span><strong id="detailDate"></strong></div>
+              <div class="spec-row"><span>엔진</span><strong id="detailEngine"></strong></div>
+              <div class="spec-row"><span>구동</span><strong id="detailDrive"></strong></div>
+              <div class="spec-row"><span>인승</span><strong id="detailSeat"></strong></div>
+              <div class="spec-row"><span>트림</span><strong id="detailTrim"></strong></div>
+              <div class="spec-row"><span>외장색</span><strong id="detailColor"></strong></div>
+              <div class="spec-row"><span>선택품목</span><strong id="detailOptions"></strong></div>
+            </div>
+
+            <div class="price-summary">
+              <div class="price-line">
+                <span>공식 차량가격</span>
+                <strong id="detailVehiclePrice"></strong>
+              </div>
+
+              <div class="price-line">
+                <span>예상 취득세</span>
+                <strong id="detailTax"></strong>
+              </div>
+
+              <div class="price-total">
+                <span>차량가격 + 예상 취득세</span>
+                <strong id="detailTotal"></strong>
+              </div>
+            </div>
+
+            <div class="comments">
+              <h3>등록된 답변</h3>
+              <div class="comment-list" id="commentList"></div>
+            </div>
+
+            <div class="reply-box">
+              <h3>고객에게 답변 작성</h3>
+
+              <div class="reply-row">
+                <input
+                  id="replyAuthor"
+                  type="text"
+                  value="카원 상담팀"
+                  maxlength="30"
+                  placeholder="작성자 표시명"
+                >
+
+                <div></div>
+              </div>
+
+              <textarea
+                id="replyText"
+                maxlength="2000"
+                placeholder="고객에게 보여줄 답변을 작성해주세요."
+              ></textarea>
+
+              <div class="message" id="replyMessage"></div>
+
+              <div class="reply-actions">
+                <button type="button" class="small-btn" id="submitReplyBtn">
+                  답변 등록
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/staff.js"></script>
+
+</body>
+</html>
