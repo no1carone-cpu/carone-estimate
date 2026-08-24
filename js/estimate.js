@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co/rest/v1/";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -457,6 +457,8 @@ function updateSummary() {
 
 function openInquiryModal() {
   if (!currentEstimate) return;
+
+  restoreInquiryFormUI();
   $("inquiryEstimatePreview").innerHTML = `
     <strong>${currentEstimate.carName} · ${currentEstimate.trim}</strong>
     ${currentEstimate.engine} · ${currentEstimate.drive} · ${currentEstimate.seat}<br>
@@ -467,6 +469,7 @@ function openInquiryModal() {
   `;
   $("formError").textContent = "";
   $("formSuccess").style.display = "none";
+  $("issuedInquiryCode").textContent = "-";
   $("submitInquiryBtn").style.display = "";
   $("submitInquiryBtn").disabled = false;
   $("submitInquiryBtn").textContent = "견적 문의 접수";
@@ -488,7 +491,10 @@ async function submitEstimateInquiry(event) {
 
   const phone = $("inquiryPhone").value.trim();
   const region = $("inquiryRegion").value.trim();
+  const pin = $("inquiryPin").value.trim();
+  const pinConfirm = $("inquiryPinConfirm").value.trim();
   const privacyAgreed = $("privacyAgreed").checked;
+
   const errorBox = $("formError");
   const submitButton = $("submitInquiryBtn");
 
@@ -496,57 +502,121 @@ async function submitEstimateInquiry(event) {
 
   if (normalizePhone(phone).length < 10) {
     errorBox.textContent = "전화번호를 정확히 입력해주세요.";
+    $("inquiryPhone").focus();
     return;
   }
+
   if (!region) {
     errorBox.textContent = "지역을 입력해주세요.";
+    $("inquiryRegion").focus();
     return;
   }
+
+  if (!/^\d{4,6}$/.test(pin)) {
+    errorBox.textContent = "조회 비밀번호는 숫자 4~6자리로 입력해주세요.";
+    $("inquiryPin").focus();
+    return;
+  }
+
+  if (pin !== pinConfirm) {
+    errorBox.textContent = "조회 비밀번호가 서로 일치하지 않습니다.";
+    $("inquiryPinConfirm").focus();
+    return;
+  }
+
   if (!privacyAgreed) {
     errorBox.textContent = "개인정보 수집 및 이용에 동의해주세요.";
     return;
   }
+
   if (!supabaseClient) {
     errorBox.textContent = "Supabase 연결 정보가 아직 설정되지 않았습니다.";
+    return;
+  }
+
+  if (!currentEstimate) {
+    errorBox.textContent = "견적 정보를 불러오지 못했습니다.";
     return;
   }
 
   submitButton.disabled = true;
   submitButton.textContent = "접수 중...";
 
-  const payload = {
-    phone,
-    region,
-    car_id: currentEstimate.carId,
-    car_name: currentEstimate.carName,
-    engine: currentEstimate.engine,
-    drive: currentEstimate.drive,
-    seat: currentEstimate.seat,
-    trim: currentEstimate.trim,
-    color: currentEstimate.color,
-    options: currentEstimate.options.join(", "),
-    vehicle_price: currentEstimate.vehiclePrice,
-    acquisition_tax: currentEstimate.acquisitionTax,
-    total_price: currentEstimate.totalPrice,
-    status: "신규",
-    privacy_agreed: true
+  const rpcPayload = {
+    p_phone: phone,
+    p_region: region,
+    p_car_id: currentEstimate.carId,
+    p_car_name: currentEstimate.carName,
+    p_engine: currentEstimate.engine,
+    p_drive: currentEstimate.drive,
+    p_seat: currentEstimate.seat,
+    p_trim: currentEstimate.trim,
+    p_color: currentEstimate.color,
+    p_options: currentEstimate.options.join(", "),
+    p_vehicle_price: currentEstimate.vehiclePrice,
+    p_acquisition_tax: currentEstimate.acquisitionTax,
+    p_total_price: currentEstimate.totalPrice,
+    p_access_pin: pin
   };
 
-  const { error } = await supabaseClient
-    .from("estimate_inquiries")
-    .insert([payload]);
+  try {
+    const { data, error } = await supabaseClient
+      .rpc("create_estimate_inquiry", rpcPayload);
 
-  if (error) {
-    console.error(error);
-    errorBox.textContent = "문의 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+    if (error) {
+      console.error("create_estimate_inquiry RPC error:", error);
+      errorBox.textContent = "저장 오류: " + error.message;
+      submitButton.disabled = false;
+      submitButton.textContent = "견적 문의 접수";
+      return;
+    }
+
+    const result = Array.isArray(data) ? data[0] : data;
+    const inquiryCode =
+      result?.inquiry_code ||
+      result?.inquiryCode ||
+      "발급 완료";
+
+    $("issuedInquiryCode").textContent = inquiryCode;
+
+    $("estimateInquiryForm")
+      .querySelectorAll(
+        ".form-label, .form-input, .pin-helper, .privacy-box, .privacy-check, .form-error"
+      )
+      .forEach(element => {
+        element.style.display = "none";
+      });
+
+    submitButton.style.display = "none";
+    $("formSuccess").style.display = "block";
+
+  } catch (err) {
+    console.error("Inquiry submit network error:", err);
+    errorBox.textContent =
+      "네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
     submitButton.disabled = false;
     submitButton.textContent = "견적 문의 접수";
-    return;
   }
+}
 
-  $("estimateInquiryForm").reset();
-  $("formSuccess").style.display = "block";
-  submitButton.style.display = "none";
+function restoreInquiryFormUI() {
+  const form = $("estimateInquiryForm");
+
+  form
+    .querySelectorAll(
+      ".form-label, .form-input, .pin-helper, .privacy-box, .privacy-check, .form-error"
+    )
+    .forEach(element => {
+      element.style.display = "";
+    });
+
+  form.reset();
+  $("formSuccess").style.display = "none";
+  $("submitInquiryBtn").style.display = "";
+  $("submitInquiryBtn").disabled = false;
+  $("submitInquiryBtn").textContent = "견적 문의 접수";
+  $("formError").textContent = "";
+  $("issuedInquiryCode").textContent = "-";
 }
 
 function setupInquiryUI() {
