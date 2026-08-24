@@ -128,7 +128,7 @@ window.CAR_DATA = {
     displayName: "2026 스포티지",
     year: "2026년형",
     type: "준중형 SUV",
-    image: "sportage.png",
+    image: "https://no1carone-cpu.github.io/carone-estimate/sportage.png",
 
     engineHelp: "가솔린 · LPG · 터보 하이브리드를 선택할 수 있습니다. 엔진을 바꾸면 해당 파워트레인의 공식 트림가격으로 자동 변경됩니다.",
     trimHelp: "하이브리드는 기아 공식 페이지의 세제혜택 후 판매가격을 기준으로 표시합니다.",
