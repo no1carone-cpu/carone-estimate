@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카원 | 내 견적문의 조회</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --purple: #4b2586;
+      --purple2: #6842aa;
+      --purple-soft: #f6f2fb;
+      --mint: #16e5df;
+      --mint-soft: #eafffd;
+      --ink: #17151d;
+      --text: #514a58;
+      --muted: #8f8795;
+      --line: #e6e1e9;
+      --bg: #f7f7f9;
+      --white: #fff;
+      --danger: #cc4558;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Arial, sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    button, input { font: inherit; }
+
+    .page {
+      width: min(880px, 100%);
+      margin: 0 auto;
+      padding: 32px 16px 55px;
+    }
+
+    .head {
+      padding: 16px 4px 22px;
+    }
+
+    .kicker {
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .1em;
+    }
+
+    .head h1 {
+      margin: 7px 0 0;
+      font-size: clamp(28px, 5vw, 40px);
+      letter-spacing: -0.055em;
+      line-height: 1.12;
+    }
+
+    .head p {
+      margin: 10px 0 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .lookup-card, .result-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(36, 27, 45, .045);
+    }
+
+    .lookup-card {
+      padding: 24px;
+    }
+
+    .field + .field {
+      margin-top: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #514858;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .field input {
+      width: 100%;
+      height: 50px;
+      padding: 0 14px;
+      border: 1px solid #dcd6e0;
+      border-radius: 12px;
+      outline: 0;
+      color: var(--ink);
+      background: #fff;
+      font-size: 16px;
+    }
+
+    .field input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(75, 37, 134, .08);
+    }
+
+    .lookup-btn {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 18px;
+      border: 0;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(75,37,134,.17);
+    }
+
+    .lookup-btn:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .error {
+      min-height: 18px;
+      margin-top: 10px;
+      color: var(--danger);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .result-wrap {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .result-wrap.show {
+      display: block;
+    }
+
+    .result-card {
+      overflow: hidden;
+    }
+
+    .result-top {
+      padding: 23px 24px;
+      background: linear-gradient(135deg, #faf8fd, #fff);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .result-code {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+    .result-title {
+      margin: 5px 0 0;
+      font-size: 24px;
+      letter-spacing: -0.045em;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .badge.status {
+      background: var(--mint-soft);
+      color: #087c79;
+    }
+
+    .specs {
+      padding: 20px 24px 5px;
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 115px minmax(0, 1fr);
+      gap: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0edf2;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .spec-row span {
+      color: var(--muted);
+    }
+
+    .spec-row strong {
+      min-width: 0;
+      text-align: right;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+
+    .price-box {
+      margin: 18px 24px 24px;
+      padding: 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 8px;
+      font-size: 11px;
+      opacity: .85;
+    }
+
+    .price-row strong {
+      opacity: 1;
+      color: #fff;
+    }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 13px;
+      padding-top: 13px;
+      border-top: 1px solid rgba(255,255,255,.25);
+      align-items: flex-end;
+    }
+
+    .price-total span {
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .price-total strong {
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .comments-section {
+      margin-top: 18px;
+      padding: 22px 24px 24px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    .comments-section h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .comments-section .sub {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .comments-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .comment {
+      padding: 15px;
+      border-radius: 14px;
+      background: #f8f7fa;
+      border: 1px solid #ebe7ee;
+    }
+
+    .comment-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+    }
+
+    .comment-author {
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .comment-date {
+      color: var(--muted);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .comment-body {
+      color: #4f4855;
+      font-size: 12px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .empty-comments {
+      padding: 22px 12px;
+      border-radius: 14px;
+      background: #faf9fb;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .retry-btn {
+      width: 100%;
+      min-height: 47px;
+      margin-top: 13px;
+      border: 1px solid #ddd6e4;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 18px 9px 35px;
+      }
+
+      .head {
+        padding: 12px 4px 16px;
+      }
+
+      .lookup-card {
+        padding: 17px 14px;
+        border-radius: 16px;
+      }
+
+      .result-card,
+      .comments-section {
+        border-radius: 16px;
+      }
+
+      .result-top,
+      .specs,
+      .comments-section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .price-box {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      .spec-row {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 9px;
+      }
+
+      .price-total strong {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page">
+  <header class="head">
+    <div class="kicker">CARONE CUSTOMER CENTER</div>
+    <h1>내 견적문의 조회</h1>
+    <p>
+      견적 문의 접수 시 발급받은 문의번호와 조회 비밀번호를 입력하면
+      선택한 견적과 카원 담당자의 답변을 확인할 수 있습니다.
+    </p>
+  </header>
+
+  <section class="lookup-card" id="lookupCard">
+    <form id="lookupForm" novalidate>
+      <div class="field">
+        <label for="inquiryCode">문의번호</label>
+        <input
+          id="inquiryCode"
+          type="text"
+          autocomplete="off"
+          placeholder="예: CAR-20260824-8B54B"
+          maxlength="40"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label for="accessPin">조회 비밀번호</label>
+        <input
+          id="accessPin"
+          type="password"
+          inputmode="numeric"
+          autocomplete="current-password"
+          placeholder="문의 접수 시 설정한 숫자 4~6자리"
+          minlength="4"
+          maxlength="6"
+          required
+        >
+      </div>
+
+      <button class="lookup-btn" id="lookupBtn" type="submit">
+        내 문의 확인하기
+      </button>
+
+      <div class="error" id="lookupError" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="result-wrap" id="resultWrap">
+
+    <article class="result-card">
+      <div class="result-top">
+        <div class="result-code" id="resultCode"></div>
+        <h2 class="result-title" id="resultCar"></h2>
+
+        <div class="meta">
+          <span class="badge status" id="resultStatus"></span>
+          <span class="badge" id="resultRegion"></span>
+          <span class="badge" id="resultDate"></span>
+        </div>
+      </div>
+
+      <div class="specs">
+        <div class="spec-row"><span>엔진</span><strong id="resultEngine"></strong></div>
+        <div class="spec-row"><span>구동방식</span><strong id="resultDrive"></strong></div>
+        <div class="spec-row"><span>인승</span><strong id="resultSeat"></strong></div>
+        <div class="spec-row"><span>트림</span><strong id="resultTrim"></strong></div>
+        <div class="spec-row"><span>외장색상</span><strong id="resultColor"></strong></div>
+        <div class="spec-row"><span>선택품목</span><strong id="resultOptions"></strong></div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-row">
+          <span>공식 차량가격</span>
+          <strong id="resultVehiclePrice"></strong>
+        </div>
+
+        <div class="price-row">
+          <span>예상 취득세</span>
+          <strong id="resultTax"></strong>
+        </div>
+
+        <div class="price-total">
+          <span>차량가격 + 예상 취득세</span>
+          <strong id="resultTotal"></strong>
+        </div>
+      </div>
+    </article>
+
+    <section class="comments-section">
+      <h2>카원 답변</h2>
+      <div class="sub">카원 담당자가 남긴 답변이 이곳에 표시됩니다.</div>
+
+      <div class="comments-list" id="commentsList"></div>
+    </section>
+
+    <button type="button" class="retry-btn" id="retryBtn">
+      다른 문의번호 조회하기
+    </button>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/inquiry.js"></script>
+
+</body>
+</html>
