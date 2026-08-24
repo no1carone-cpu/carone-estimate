@@ -609,6 +609,46 @@
     .submit-inquiry-btn{width:100%;min-height:52px;margin-top:4px;border:0;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff;font-size:14px;font-weight:900;cursor:pointer}.submit-inquiry-btn:disabled{opacity:.55;cursor:wait}
     .form-success{padding:22px 10px 6px;text-align:center}.success-icon{width:45px;height:45px;margin:0 auto 10px;display:grid;place-items:center;border-radius:50%;background:var(--mint-soft);color:#087f7c;font-size:22px;font-weight:950}.form-success strong{display:block;font-size:16px}.form-success p{margin:6px 0 0;color:var(--muted);font-size:11px}
 
+
+    .pin-helper {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .pin-helper strong {
+      color: var(--purple);
+    }
+
+    .inquiry-code-box {
+      margin-top: 17px;
+      padding: 14px;
+      border-radius: 13px;
+      background: var(--purple-soft);
+      border: 1px solid #dfd4ec;
+    }
+
+    .inquiry-code-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 4px;
+    }
+
+    .inquiry-code-box strong {
+      display: block;
+      color: var(--purple);
+      font-size: 18px;
+      letter-spacing: .02em;
+      word-break: break-all;
+    }
+
+    .success-notice {
+      margin-top: 11px !important;
+      line-height: 1.65;
+    }
+
   </style>
 </head>
 <body>
@@ -630,19 +670,19 @@
 
     <section class="card vehicle-card">
       <div class="vehicle-visual">
-      <img
-  id="vehicleImage"
-  class="vehicle-image"
-  alt=""
-  onload="
-    this.style.display='block';
-    document.getElementById('vehiclePlaceholder').style.display='none';
-  "
-  onerror="
-    this.style.display='none';
-    document.getElementById('vehiclePlaceholder').style.display='block';
-  "
->
+        <img
+          id="vehicleImage"
+          class="vehicle-image"
+          alt=""
+          onload="
+            this.style.display='block';
+            document.getElementById('vehiclePlaceholder').style.display='none';
+          "
+          onerror="
+            this.style.display='none';
+            document.getElementById('vehiclePlaceholder').style.display='block';
+          "
+        >
         <div id="vehiclePlaceholder" class="vehicle-placeholder">
           <span class="car-icon">🚙</span>
           <b id="vehiclePlaceholderTitle">차량 이미지 영역</b>
@@ -812,9 +852,44 @@
       <label class="form-label" for="inquiryRegion">지역 <span>*</span></label>
       <input id="inquiryRegion" class="form-input" type="text" placeholder="예: 서울 강남구" maxlength="50" required>
 
+      <label class="form-label" for="inquiryPin">문의 조회 비밀번호 <span>*</span></label>
+      <input
+        id="inquiryPin"
+        class="form-input"
+        type="password"
+        inputmode="numeric"
+        autocomplete="new-password"
+        placeholder="숫자 4~6자리"
+        minlength="4"
+        maxlength="6"
+        required
+      >
+
+      <label class="form-label" for="inquiryPinConfirm">조회 비밀번호 확인 <span>*</span></label>
+      <input
+        id="inquiryPinConfirm"
+        class="form-input"
+        type="password"
+        inputmode="numeric"
+        autocomplete="new-password"
+        placeholder="한 번 더 입력해주세요"
+        minlength="4"
+        maxlength="6"
+        required
+      >
+
+      <div class="pin-helper">
+        문의 답변을 확인할 때 <strong>문의번호 + 조회 비밀번호</strong>가 필요합니다.
+        비밀번호는 원문으로 저장되지 않습니다.
+      </div>
+
       <div class="privacy-box">
         <strong>개인정보 수집 및 이용 안내</strong>
-        <p>목적: 신차 견적 문의 접수 및 상담<br>항목: 전화번호, 지역, 선택 차량 및 견적 정보</p>
+        <p>
+          목적: 신차 견적 문의 접수, 상담 및 고객 전용 답변 조회<br>
+          항목: 전화번호, 지역, 선택 차량 및 견적 정보<br>
+          조회 비밀번호는 원문이 아닌 검증용 해시 형태로 저장됩니다.
+        </p>
       </div>
 
       <label class="privacy-check">
@@ -829,7 +904,17 @@
       <div class="form-success" id="formSuccess" style="display:none;">
         <div class="success-icon">✓</div>
         <strong>견적 문의가 접수되었습니다.</strong>
-        <p>카원 담당자가 확인 후 연락드리겠습니다.</p>
+        <p>카원 담당자가 확인 후 답변을 남겨드립니다.</p>
+
+        <div class="inquiry-code-box">
+          <span>문의번호</span>
+          <strong id="issuedInquiryCode">-</strong>
+        </div>
+
+        <p class="success-notice">
+          문의번호와 방금 설정한 조회 비밀번호는<br>
+          고객 전용 답변 확인에 필요합니다. 꼭 보관해주세요.
+        </p>
       </div>
     </form>
   </div>
