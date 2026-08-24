@@ -128,7 +128,7 @@ window.CAR_DATA = {
     displayName: "2026 스포티지",
     year: "2026년형",
     type: "준중형 SUV",
-    image: "https://no1carone-cpu.github.io/carone-estimate/sportage.png",
+    image: "sportage.png",
 
     engineHelp: "가솔린 · LPG · 터보 하이브리드를 선택할 수 있습니다. 엔진을 바꾸면 해당 파워트레인의 공식 트림가격으로 자동 변경됩니다.",
     trimHelp: "하이브리드는 기아 공식 페이지의 세제혜택 후 판매가격을 기준으로 표시합니다.",
@@ -342,4 +342,239 @@ window.CAR_DATA = {
       }
     }
   }
+  ,
+
+  /* =========================================================
+     2026 카니발
+     기아 공식 가격: 2026-08-01 기준
+     ========================================================= */
+  carnival: {
+    brand: "KIA",
+    name: "The 2026 Carnival",
+    displayName: "2026 카니발",
+    year: "2026년형",
+    type: "대형 RV",
+    image: "carnival.png",
+
+    engineHelp:
+      "3.5 가솔린과 터보 하이브리드를 선택할 수 있습니다. 인승에 따라 하이브리드 가격 차이가 자동 반영됩니다.",
+
+    trimHelp:
+      "7인승과 9인승은 선택 가능한 트림과 공식 판매가격이 다릅니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas35",
+        name: "3.5 가솔린",
+        price: 0,
+        sub: "스마트스트림 G3.5 GDI"
+      },
+      {
+        id: "hybrid",
+        name: "터보 하이브리드",
+        price: 0,
+        sub: "1.6 터보 하이브리드"
+      }
+    ],
+
+    drives: [
+      {
+        id: "2wd",
+        name: "2WD",
+        price: 0,
+        sub: "전륜구동"
+      }
+    ],
+
+    seats: [
+      {
+        id: "9",
+        name: "9인승",
+        price: 0,
+        sub: "9인승 모델"
+      },
+      {
+        id: "7",
+        name: "7인승",
+        price: 0,
+        sub: "7인승 모델"
+      }
+    ],
+
+    /*
+      가솔린 공식 기본가격에
+      9인승 하이브리드 +4,550,000원,
+      7인승 하이브리드 +4,500,000원을 반영한 최종 트림가격.
+    */
+    trimsByEngineAndSeat: {
+      gas35: {
+        "9": [
+          { id: "prestige", name: "프레스티지", price: 36360000, sub: "3.5 가솔린 · 9인승" },
+          { id: "noblesse", name: "노블레스", price: 40710000, sub: "3.5 가솔린 · 9인승" },
+          { id: "signature", name: "시그니처", price: 44260000, sub: "3.5 가솔린 · 9인승" },
+          { id: "xline", name: "X-Line", price: 45020000, sub: "3.5 가솔린 · 9인승" }
+        ],
+
+        "7": [
+          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 42270000, sub: "3.5 가솔린 · 7인승" },
+          { id: "noblesse", name: "노블레스", price: 43260000, sub: "3.5 가솔린 · 7인승" },
+          { id: "signature", name: "시그니처", price: 47020000, sub: "3.5 가솔린 · 7인승" },
+          { id: "xline", name: "X-Line", price: 47550000, sub: "3.5 가솔린 · 7인승" }
+        ]
+      },
+
+      hybrid: {
+        "9": [
+          { id: "prestige", name: "프레스티지", price: 40910000, sub: "터보 하이브리드 · 9인승" },
+          { id: "noblesse", name: "노블레스", price: 45260000, sub: "터보 하이브리드 · 9인승" },
+          { id: "signature", name: "시그니처", price: 48810000, sub: "터보 하이브리드 · 9인승" },
+          { id: "xline", name: "X-Line", price: 49570000, sub: "터보 하이브리드 · 9인승" }
+        ],
+
+        "7": [
+          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 46770000, sub: "터보 하이브리드 · 7인승" },
+          { id: "noblesse", name: "노블레스", price: 47760000, sub: "터보 하이브리드 · 7인승" },
+          { id: "signature", name: "시그니처", price: 51520000, sub: "터보 하이브리드 · 7인승" },
+          { id: "xline", name: "X-Line", price: 52050000, sub: "터보 하이브리드 · 7인승" }
+        ]
+      }
+    },
+
+    colors: [
+      {
+        id: "basic",
+        name: "기본 외장색",
+        price: 0,
+        color: "#555960"
+      },
+      {
+        id: "white",
+        name: "스노우 화이트 펄",
+        price: 80000,
+        color: "#f8f8f3"
+      },
+      {
+        id: "black",
+        name: "오로라 블랙 펄",
+        price: 0,
+        color: "#151515"
+      },
+      {
+        id: "silver",
+        name: "세라믹 실버",
+        price: 0,
+        color: "#a5a7a8"
+      }
+    ],
+
+    /*
+      카니발 선택품목은 인승 + 트림별로 관리.
+      파워트레인 가격은 위 트림가격에 이미 포함되어 있으므로 옵션 목록에는 넣지 않음.
+    */
+    optionsBySeat: {
+
+      "9": {
+        prestige: [
+          { id: "convenience", name: "컨비니언스", price: 1100000 },
+          { id: "style", name: "스타일", price: 1000000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 600000 },
+          {
+            id: "drivewise",
+            name: "드라이브 와이즈",
+            price: 1200000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 적용 시"
+          },
+          {
+            id: "monitoring",
+            name: "모니터링 팩",
+            price: 900000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 적용 시"
+          }
+        ],
+
+        noblesse: [
+          { id: "style", name: "스타일", price: 1000000 },
+          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "smart", name: "스마트 커넥트", price: 750000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1200000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1200000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 800000 }
+        ],
+
+        signature: [
+          { id: "style", name: "스타일", price: 700000 },
+          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "smart", name: "스마트 커넥트", price: 750000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1200000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1200000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 900000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 800000 }
+        ],
+
+        xline: [
+          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "smart", name: "스마트 커넥트", price: 750000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1200000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1200000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 900000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 800000 },
+          { id: "xline_step", name: "X-Line 전용 사이드 스텝 / LED 테일게이트 램프", price: 570000 }
+        ]
+      },
+
+      "7": {
+        noblesse: [
+          { id: "style", name: "스타일", price: 790000 },
+          { id: "comfort", name: "컴포트", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 790000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1270000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 840000 }
+        ],
+
+        noblesse_outdoor: [
+          { id: "style", name: "스타일", price: 790000 },
+          { id: "comfort", name: "컴포트", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 790000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1270000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 840000 }
+        ],
+
+        signature: [
+          { id: "style", name: "스타일", price: 790000 },
+          { id: "smart", name: "스마트 커넥트", price: 790000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1270000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 840000 }
+        ],
+
+        xline: [
+          { id: "style", name: "스타일", price: 470000 },
+          { id: "comfort", name: "컴포트", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 790000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1270000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 950000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 840000 },
+          { id: "xline_step", name: "X-Line 전용 사이드 스텝 / LED 테일게이트 램프", price: 560000 }
+        ]
+      }
+    }
+  }
+
 };

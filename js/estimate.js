@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co/rest/v1/";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -21,6 +21,7 @@ const $ = id => document.getElementById(id);
 
 const params = new URLSearchParams(window.location.search);
 const carId = params.get("car") || "sorento";
+const requestedSeat = params.get("seat");
 const CAR = window.CAR_DATA ? window.CAR_DATA[carId] : null;
 
 if (!CAR) {
@@ -40,7 +41,7 @@ const state = {
   options: new Set()
 };
 
-resetDependentSelections();
+resetDependentSelections(requestedSeat);
 
 function won(number) {
   return Number(number || 0).toLocaleString("ko-KR") + "원";
@@ -55,19 +56,37 @@ function getItem(list, id) {
 }
 
 function getCurrentDrives() {
-  return CAR.drivesByEngine?.[state.engine] || CAR.drives || [];
+  return (
+    CAR.drivesByEngineAndSeat?.[state.engine]?.[state.seat] ||
+    CAR.drivesBySeat?.[state.seat] ||
+    CAR.drivesByEngine?.[state.engine] ||
+    CAR.drives ||
+    []
+  );
 }
 
 function getCurrentSeats() {
-  return CAR.seatsByEngine?.[state.engine] || CAR.seats || [];
+  return (
+    CAR.seatsByEngine?.[state.engine] ||
+    CAR.seats ||
+    []
+  );
 }
 
 function getCurrentTrims() {
-  return CAR.trimsByEngine?.[state.engine] || CAR.trims || [];
+  return (
+    CAR.trimsByEngineAndSeat?.[state.engine]?.[state.seat] ||
+    CAR.trimsBySeat?.[state.seat] ||
+    CAR.trimsByEngine?.[state.engine] ||
+    CAR.trims ||
+    []
+  );
 }
 
 function getCurrentOptions() {
   return (
+    CAR.optionsByEngineAndSeat?.[state.engine]?.[state.seat]?.[state.trim] ||
+    CAR.optionsBySeat?.[state.seat]?.[state.trim] ||
     CAR.optionsByEngine?.[state.engine]?.[state.trim] ||
     CAR.options?.[state.trim] ||
     []
@@ -76,19 +95,37 @@ function getCurrentOptions() {
 
 function getAvailableColors() {
   return (CAR.colors || []).filter(color => {
-    if (!color.allowedTrims) return true;
-    return color.allowedTrims.includes(state.trim);
+    if (color.allowedSeats && !color.allowedSeats.includes(state.seat)) {
+      return false;
+    }
+    if (color.allowedTrims && !color.allowedTrims.includes(state.trim)) {
+      return false;
+    }
+    return true;
   });
 }
 
-function resetDependentSelections() {
-  const drives = getCurrentDrives();
+function resetDependentSelections(preferredSeat = null) {
   const seats = getCurrentSeats();
-  const trims = getCurrentTrims();
 
+  if (
+    preferredSeat &&
+    seats.some(item => item.id === preferredSeat)
+  ) {
+    state.seat = preferredSeat;
+  } else if (
+    !state.seat ||
+    !seats.some(item => item.id === state.seat)
+  ) {
+    state.seat = seats[0]?.id || null;
+  }
+
+  const drives = getCurrentDrives();
   state.drive = drives[0]?.id || null;
-  state.seat = seats[0]?.id || null;
+
+  const trims = getCurrentTrims();
   state.trim = trims[0]?.id || null;
+
   state.options.clear();
 
   const colors = getAvailableColors();
@@ -148,8 +185,26 @@ function renderSimpleChoices(containerId, items, stateKey) {
       state[stateKey] = item.id;
 
       if (changed && stateKey === "engine") {
-        resetDependentSelections();
+        resetDependentSelections(state.seat);
         toast("파워트레인이 변경되어 트림과 옵션을 새 기준으로 변경했습니다.");
+      }
+
+      if (changed && stateKey === "seat") {
+        const drives = getCurrentDrives();
+        if (!drives.some(drive => drive.id === state.drive)) {
+          state.drive = drives[0]?.id || null;
+        }
+
+        const trims = getCurrentTrims();
+        state.trim = trims[0]?.id || null;
+        state.options.clear();
+
+        const colors = getAvailableColors();
+        if (!colors.some(color => color.id === state.color)) {
+          state.color = colors[0]?.id || null;
+        }
+
+        toast("인승이 변경되어 트림과 옵션을 새 기준으로 변경했습니다.");
       }
 
       renderAll();
@@ -521,6 +576,8 @@ function renderAll() {
   );
 
   $("trimHelp").textContent =
+    CAR.trimHelpByEngineAndSeat?.[state.engine]?.[state.seat] ||
+    CAR.trimHelpBySeat?.[state.seat] ||
     CAR.trimHelpByEngine?.[state.engine] ||
     CAR.trimHelp ||
     "";
