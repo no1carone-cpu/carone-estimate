@@ -6,8 +6,8 @@
   현재 estimate.js에서 사용 중인 Supabase 연결값을 그대로 입력하세요.
 */
 
-const SUPABASE_URL = "여기에_PROJECT_URL_입력";
-const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
+const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
 
 const supabaseClient =
   window.supabase &&
