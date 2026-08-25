@@ -1606,4 +1606,249 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI SONATA The Edge / Hybrid
+     현대자동차 공식 가격표 및 내 차 만들기 기준: 2026-08
+     ========================================================= */
+  sonata: {
+    brand: "HYUNDAI",
+    name: "SONATA The Edge",
+    displayName: "쏘나타 디 엣지",
+    year: "2026년 8월 현대자동차 공식 가격표 기준",
+    type: "중형 세단",
+    image: "sonata.png",
+
+    engineHelp:
+      "가솔린 2.0, 가솔린 1.6 터보, LPi 2.0, N Line 1.6 터보/2.5 터보, 하이브리드 2.0을 선택할 수 있습니다.",
+
+    trimHelp:
+      "엔진에 따라 판매 트림과 가격이 자동으로 변경됩니다. Hybrid는 세제혜택 후 판매가격을 기준으로 표시합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id: "gas20", name: "가솔린 2.0", price: 0, sub: "스마트스트림 가솔린 2.0" },
+      { id: "gas16t", name: "가솔린 1.6 터보", price: 0, sub: "스마트스트림 가솔린 1.6 T-GDi" },
+      { id: "lpi20", name: "LPi 2.0", price: 0, sub: "자가용 LPi 2.0" },
+      { id: "nline16t", name: "N Line 1.6 터보", price: 0, sub: "N Line 전용 디자인 · 8단 자동변속기" },
+      { id: "nline25t", name: "N Line 2.5 터보", price: 0, sub: "N Line · 2.5 터보 퍼포먼스" },
+      { id: "hybrid20", name: "Hybrid 2.0", price: 0, sub: "스마트스트림 가솔린 2.0 하이브리드 · 세제혜택 후" }
+    ],
+
+    drives: [
+      { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+    ],
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      gas20: [
+        { id: "premium", name: "Premium", price: 28660000, sub: "2026년 8월 공식 시작가격" },
+        { id: "s", name: "S", price: 29960000, sub: "공식 2026 가격체계" },
+        { id: "exclusive", name: "Exclusive", price: 33000000, sub: "공식 2026 가격체계" },
+        { id: "inspiration", name: "Inspiration", price: 35890000, sub: "공식 2026 가격체계" }
+      ],
+
+      gas16t: [
+        { id: "premium", name: "Premium", price: 29330000 },
+        { id: "s", name: "S", price: 30650000 },
+        { id: "exclusive", name: "Exclusive", price: 33730000 },
+        { id: "inspiration", name: "Inspiration", price: 36660000 }
+      ],
+
+      lpi20: [
+        { id: "premium", name: "Premium", price: 29750000 },
+        { id: "s", name: "S", price: 31070000 },
+        { id: "exclusive", name: "Exclusive", price: 34150000 },
+        { id: "inspiration", name: "Inspiration", price: 37080000 }
+      ],
+
+      nline16t: [
+        { id: "nline", name: "N Line", price: 37770000, sub: "가솔린 1.6 터보 N Line" }
+      ],
+
+      nline25t: [
+        { id: "nline", name: "N Line", price: 39770000, sub: "2.5 터보 퍼포먼스 반영" }
+      ],
+
+      hybrid20: [
+        { id: "premium", name: "Premium", price: 33180000, sub: "세제혜택 후" },
+        { id: "s", name: "S", price: 34200000, sub: "세제혜택 후" },
+        { id: "exclusive", name: "Exclusive", price: 37270000, sub: "세제혜택 후" },
+        { id: "inspiration", name: "Inspiration", price: 40370000, sub: "세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id: "serenity_white", name: "세레니티 화이트 펄", price: 0, color: "#f1f0ec" },
+      { id: "nocturne_gray", name: "녹턴 그레이 메탈릭", price: 0, color: "#55575a" },
+      { id: "abyss_black", name: "어비스 블랙 펄", price: 0, color: "#111214" },
+      { id: "aero_silver", name: "에어로 실버 메탈릭", price: 0, color: "#a8aaab" },
+      { id: "transmission_blue", name: "트랜스미션 블루 펄", price: 0, color: "#596978" },
+      { id: "ultimate_red", name: "얼티메이트 레드 메탈릭", price: 0, color: "#7f2527" }
+    ],
+
+    optionsByEngine: {
+      gas20: {
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2", note:"내비게이션 선택 시" },
+          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2", note:"인포테인먼트 내비 Ⅱ 선택 시" },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
+          { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        s: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:1300000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드 (12스피커, 외장앰프)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      },
+
+      gas16t: {
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2" },
+          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2" },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
+          { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        s: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:1300000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드 (12스피커, 외장앰프)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      },
+
+      lpi20: {
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2" },
+          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2" },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
+          { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        s: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:1300000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드 (12스피커, 외장앰프)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      },
+
+      nline16t: {
+        nline: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000 },
+          { id:"comfort4", name:"컴포트Ⅳ (2열 편의)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      },
+
+      nline25t: {
+        nline: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"parking2", name:"파킹 어시스트 II", price:1380000, note:"2.5 터보 선택 시 원격 스마트 주차 보조 미적용" },
+          { id:"comfort4", name:"컴포트Ⅳ (2열 편의)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      },
+
+      hybrid20: {
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2", note:"내비게이션 선택 시" },
+          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2" },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
+          { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        s: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000 },
+          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:1300000 },
+          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
+          { id:"exterior1", name:"익스테리어 디자인Ⅰ", price:640000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드 (12스피커, 외장앰프)", price:640000 },
+          { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
+        ]
+      }
+    }
+  }
+
 };
