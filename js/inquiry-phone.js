@@ -1,5 +1,5 @@
-const SUPABASE_URL="여기에_PROJECT_URL_입력";
-const SUPABASE_PUBLISHABLE_KEY="여기에_PUBLISHABLE_KEY_입력";
+const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
 const db=window.supabase&&!SUPABASE_URL.startsWith("여기에_")?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY):null;
 const $=x=>document.getElementById(x), safe=(v,f="-")=>v==null||v===""?f:String(v), won=v=>Number(v||0).toLocaleString("ko-KR")+"원";
 const dt=v=>{let d=new Date(v);return isNaN(d)?"-":d.toLocaleString("ko-KR")};
