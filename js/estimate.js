@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -38,7 +38,8 @@ const state = {
   seat: null,
   trim: null,
   color: null,
-  options: new Set()
+  options: new Set(),
+  extra: {}
 };
 
 resetDependentSelections(requestedSeat);
@@ -83,14 +84,136 @@ function getCurrentTrims() {
   );
 }
 
-function getCurrentOptions() {
+function getExtraGroups() {
+  return CAR.extraChoiceGroups || [];
+}
+
+function matchesExtraCondition(item) {
+  if (
+    item.allowedEngines &&
+    !item.allowedEngines.includes(state.engine)
+  ) {
+    return false;
+  }
+
+  if (item.allowedExtra) {
+    for (const [groupId, allowed] of Object.entries(item.allowedExtra)) {
+      const values = Array.isArray(allowed) ? allowed : [allowed];
+      if (!values.includes(state.extra[groupId])) {
+        return false;
+      }
+    }
+  }
+
+  if (item.excludedWhen) {
+    const excluded = item.excludedWhen.some(rule => {
+      if (rule.engine && rule.engine !== state.engine) {
+        return false;
+      }
+
+      if (rule.extra) {
+        return Object.entries(rule.extra).every(
+          ([groupId, value]) => state.extra[groupId] === value
+        );
+      }
+
+      return true;
+    });
+
+    if (excluded) return false;
+  }
+
+  return true;
+}
+
+function getExtraGroupItems(group) {
+  return (group.items || []).filter(matchesExtraCondition);
+}
+
+function normalizeExtraSelections() {
+  // 앞 그룹 변경이 뒷 그룹 조건에 영향을 줄 수 있어 두 번 정규화합니다.
+  for (let pass = 0; pass < 2; pass++) {
+    getExtraGroups().forEach(group => {
+      const available = getExtraGroupItems(group);
+
+      if (
+        !available.some(
+          item => item.id === state.extra[group.id]
+        )
+      ) {
+        state.extra[group.id] =
+          available[0]?.id || null;
+      }
+    });
+  }
+}
+
+function getSelectedExtraItems() {
+  return getExtraGroups()
+    .map(group => {
+      const item = getItem(
+        getExtraGroupItems(group),
+        state.extra[group.id]
+      );
+
+      return item
+        ? { group, item }
+        : null;
+    })
+    .filter(Boolean);
+}
+
+function getRawCurrentOptions() {
   return (
     CAR.optionsByEngineAndSeat?.[state.engine]?.[state.seat]?.[state.trim] ||
     CAR.optionsBySeat?.[state.seat]?.[state.trim] ||
     CAR.optionsByEngine?.[state.engine]?.[state.trim] ||
     CAR.options?.[state.trim] ||
     []
+  ).filter(matchesExtraCondition);
+}
+
+function getCurrentOptions() {
+  const raw = getRawCurrentOptions();
+
+  const includedIds = new Set();
+
+  raw.forEach(item => {
+    if (
+      state.options.has(item.id) &&
+      Array.isArray(item.includes)
+    ) {
+      item.includes.forEach(id =>
+        includedIds.add(id)
+      );
+    }
+  });
+
+  return raw.filter(
+    item => !includedIds.has(item.id)
   );
+}
+
+function normalizeSelectedOptions() {
+  const raw = getRawCurrentOptions();
+  const rawIds = new Set(raw.map(item => item.id));
+
+  [...state.options].forEach(id => {
+    if (!rawIds.has(id)) {
+      state.options.delete(id);
+    }
+  });
+
+  raw.forEach(item => {
+    if (
+      state.options.has(item.id) &&
+      Array.isArray(item.includes)
+    ) {
+      item.includes.forEach(id =>
+        state.options.delete(id)
+      );
+    }
+  });
 }
 
 function getAvailableColors() {
@@ -130,6 +253,9 @@ function resetDependentSelections(preferredSeat = null) {
 
   const colors = getAvailableColors();
   state.color = colors[0]?.id || null;
+
+  normalizeExtraSelections();
+  normalizeSelectedOptions();
 }
 
 function toast(message) {
@@ -162,6 +288,21 @@ function loadVehicleInfo() {
   const image = $("vehicleImage");
   image.alt = CAR.displayName;
   image.src = CAR.image || "";
+
+  const hiddenSections = new Set(CAR.hiddenSections || []);
+
+  [
+    ["seat", "seatList"],
+    ["trim", "trimList"]
+  ].forEach(([key, id]) => {
+    const card = $(id)?.closest(".card");
+    if (card) {
+      card.style.display =
+        hiddenSections.has(key)
+          ? "none"
+          : "";
+    }
+  });
 }
 
 function renderSimpleChoices(containerId, items, stateKey) {
@@ -204,6 +345,9 @@ function renderSimpleChoices(containerId, items, stateKey) {
           state.color = colors[0]?.id || null;
         }
 
+        normalizeExtraSelections();
+        normalizeSelectedOptions();
+
         toast("인승이 변경되어 트림과 옵션을 새 기준으로 변경했습니다.");
       }
 
@@ -211,6 +355,95 @@ function renderSimpleChoices(containerId, items, stateKey) {
     });
 
     container.appendChild(button);
+  });
+}
+
+
+function createExtraSection(group) {
+  const section = document.createElement("section");
+  section.className = "card";
+  section.dataset.caroneExtraSection = group.id;
+
+  const head = document.createElement("div");
+  head.className = "section-head";
+  head.innerHTML = `
+    <div class="step">${group.step || "•"}</div>
+    <div>
+      <h2>${group.title}</h2>
+      <p class="section-sub">${group.help || ""}</p>
+    </div>
+  `;
+
+  const grid = document.createElement("div");
+  grid.className = "grid-select";
+
+  getExtraGroupItems(group).forEach(item => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className =
+      "choice" +
+      (state.extra[group.id] === item.id
+        ? " active"
+        : "");
+
+    button.innerHTML = `
+      <span class="choice-name">${item.name}</span>
+      <span class="choice-sub">${item.sub || ""}</span>
+      ${item.price
+        ? `<span class="choice-price">+${won(item.price)}</span>`
+        : ""}
+    `;
+
+    button.addEventListener("click", () => {
+      const changed =
+        state.extra[group.id] !== item.id;
+
+      state.extra[group.id] = item.id;
+
+      if (changed) {
+        normalizeExtraSelections();
+        normalizeSelectedOptions();
+      }
+
+      renderAll();
+    });
+
+    grid.appendChild(button);
+  });
+
+  section.append(head, grid);
+
+  return section;
+}
+
+function renderExtraGroups() {
+  document
+    .querySelectorAll("[data-carone-extra-section]")
+    .forEach(node => node.remove());
+
+  const colorCard =
+    $("colorList")?.closest(".card");
+
+  const optionCard =
+    $("optionList")?.closest(".card");
+
+  if (!colorCard || !optionCard) return;
+
+  getExtraGroups().forEach(group => {
+    const section =
+      createExtraSection(group);
+
+    if (group.position === "beforeColor") {
+      colorCard.parentNode.insertBefore(
+        section,
+        colorCard
+      );
+    } else {
+      optionCard.parentNode.insertBefore(
+        section,
+        optionCard
+      );
+    }
   });
 }
 
@@ -326,16 +559,26 @@ function renderOptions() {
           state.options.add(item.requires);
 
           const required =
-            list.find(option => option.id === item.requires);
+            getRawCurrentOptions().find(
+              option => option.id === item.requires
+            );
 
           toast(
             `${required?.name || "필수 옵션"}을 함께 선택했습니다.`
           );
         }
 
+        // 패키지에 포함된 개별 옵션은 중복 계산하지 않습니다.
+        if (Array.isArray(item.includes)) {
+          item.includes.forEach(id =>
+            state.options.delete(id)
+          );
+        }
+
         state.options.add(item.id);
       }
 
+      normalizeSelectedOptions();
       renderAll();
     });
 
@@ -379,16 +622,29 @@ function updateSummary() {
       state.options.has(option.id)
     );
 
+  const selectedExtras =
+    getSelectedExtraItems();
+
+  const extraPrice =
+    selectedExtras.reduce(
+      (sum, entry) =>
+        sum + (entry.item.price || 0),
+      0
+    );
+
   const configPrice =
     (engine?.price || 0) +
     (drive?.price || 0) +
     (seat?.price || 0);
 
-  const optionPrice =
+  const optionOnlyPrice =
     selectedOptions.reduce(
       (sum, item) => sum + (item.price || 0),
       0
     );
+
+  const optionPrice =
+    optionOnlyPrice + extraPrice;
 
   const total =
     (trim?.price || 0) +
@@ -406,7 +662,13 @@ function updateSummary() {
     seat: seat?.name || "",
     trim: trim?.name || "",
     color: color?.name || "",
-    options: selectedOptions.map(item => item.name),
+    options: [
+      ...selectedExtras.map(
+        entry =>
+          `${entry.group.summaryLabel || entry.group.title}: ${entry.item.name}`
+      ),
+      ...selectedOptions.map(item => item.name)
+    ],
     vehiclePrice: total,
     acquisitionTax: tax.acquisitionTax,
     totalPrice: tax.grandTotal
@@ -417,9 +679,17 @@ function updateSummary() {
   $("sumSeat").textContent = seat?.name || "-";
   $("sumTrim").textContent = trim?.name || "-";
   $("sumColor").textContent = color?.name || "-";
+  const summaryOptions = [
+    ...selectedExtras.map(
+      entry =>
+        `${entry.group.summaryLabel || entry.group.title}: ${entry.item.name}`
+    ),
+    ...selectedOptions.map(item => item.name)
+  ];
+
   $("sumOptions").textContent =
-    selectedOptions.length
-      ? selectedOptions.map(item => item.name).join(", ")
+    summaryOptions.length
+      ? summaryOptions.join(", ")
       : "없음";
 
   $("basePrice").textContent =
@@ -652,8 +922,12 @@ function renderAll() {
     CAR.trimHelp ||
     "";
 
+  normalizeExtraSelections();
+  normalizeSelectedOptions();
+
   renderTrims();
   renderColors();
+  renderExtraGroups();
   renderOptions();
   updateSummary();
 }
