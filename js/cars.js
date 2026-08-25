@@ -2104,4 +2104,273 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI SANTA FE / SANTA FE Hybrid
+     공식 현대자동차 2026 가격표 구조
+     ========================================================= */
+  santafe: {
+    brand: "HYUNDAI",
+    name: "SANTA FE",
+    displayName: "싼타페",
+    year: "2026 현대자동차 공식 가격표 기준",
+    type: "중형 SUV",
+    image: "santafe.png",
+
+    engineHelp: "가솔린 2.5 터보와 1.6 터보 하이브리드를 선택할 수 있습니다.",
+    trimHelp: "5인승을 기본으로 6인승/7인승을 선택할 수 있으며, 구동방식과 트림에 따라 가격이 자동 반영됩니다.",
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"gas25", name:"가솔린 2.5 터보", price:0, sub:"스마트스트림 가솔린 2.5 터보 · 습식 8단 DCT" },
+      { id:"hev16", name:"하이브리드 1.6 터보", price:0, sub:"1.6 터보 하이브리드 · 6단 자동변속기 · 세제혜택 후 가격 기준" }
+    ],
+
+    seats: [
+      { id:"5", name:"5인승", price:0, sub:"기본" },
+      { id:"6", name:"6인승", price:1040000, sub:"+1,040,000원" },
+      { id:"7", name:"7인승", price:690000, sub:"+690,000원" }
+    ],
+
+    drivesByEngine: {
+      gas25: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" },
+        { id:"htrac", name:"HTRAC", price:2230000, sub:"+2,230,000원 · 험로주행모드" }
+      ],
+      hev16: [
+        { id:"2wd", name:"2WD", price:0, sub:"하이브리드 2WD" },
+        { id:"awd", name:"AWD", price:3200000, sub:"공식 AWD 가격표의 트림별 차액을 기본값으로 반영" }
+      ]
+    },
+
+    trimsByEngine: {
+      gas25: [
+        { id:"exclusive", name:"익스클루시브", price:36570000 },
+        { id:"prestige", name:"프레스티지", price:38890000 },
+        { id:"hpick", name:"H-Pick", price:42090000 },
+        { id:"blackexterior", name:"Black Exterior", price:42440000 },
+        { id:"calligraphy", name:"캘리그래피", price:45470000 },
+        { id:"blackink", name:"Black Ink", price:45470000 }
+      ],
+      hev16: [
+        { id:"exclusive", name:"익스클루시브", price:39640000, sub:"2WD · 세제혜택 후" },
+        { id:"prestige", name:"프레스티지", price:42470000, sub:"2WD · 세제혜택 후" },
+        { id:"hpick", name:"H-Pick", price:45080000, sub:"2WD · 세제혜택 후" },
+        { id:"blackexterior", name:"Black Exterior", price:45420000, sub:"2WD · 세제혜택 후" },
+        { id:"calligraphy", name:"캘리그래피", price:48070000, sub:"2WD · 세제혜택 후" },
+        { id:"blackink", name:"Black Ink", price:48070000, sub:"2WD · 세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
+      { id:"cyber_sage", name:"사이버 세이지 펄", price:0, color:"#7d8278", excludedTrims:["blackexterior","blackink"] },
+      { id:"terracotta_orange", name:"테라코타 오렌지", price:0, color:"#9a563d", excludedTrims:["blackexterior","blackink"] },
+      { id:"magnetic_gray", name:"마그네틱 그레이 메탈릭", price:0, color:"#55595b", excludedTrims:["blackexterior","blackink"] },
+      { id:"creamy_white", name:"크리미 화이트 펄", price:0, color:"#f0efe9" },
+      { id:"earthy_brass_matte", name:"얼씨 브레스 메탈릭 (매트)", price:200000, color:"#807766", excludedTrims:["blackexterior","blackink"] },
+      { id:"ocada_green", name:"오카도 그린 펄", price:0, color:"#39483f", excludedTrims:["blackexterior","blackink"] },
+      { id:"pebble_blue", name:"페블 블루 펄", price:0, color:"#64737d", excludedTrims:["blackexterior","blackink"] },
+      { id:"creamy_white_matte", name:"크리미 화이트 매트", price:200000, color:"#e7e4dc", allowedTrims:["blackink"] }
+    ],
+
+    optionsByEngine: {
+      gas25: {
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof_rack", name:"듀얼와이드선루프 + 루프랙", price:990000 },
+          { id:"passenger8", name:"동승석 8way 전동시트", price:200000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 },
+          { id:"parking1", name:"파킹 어시스트 플러스Ⅰ", price:1190000, excludes:["best1"] },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:450000, excludes:["best1"] },
+          { id:"best1", name:"베스트 셀렉션Ⅰ", price:1500000, excludes:["parking1","platinum1"] },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        prestige: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 },
+          { id:"seatplus", name:"시트플러스", price:740000 },
+          { id:"parking1", name:"파킹 어시스트 플러스Ⅰ", price:1190000 },
+          { id:"design1", name:"디자인 플러스Ⅰ", price:1350000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        hpick: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 타이어", price:490000 },
+          { id:"alcon20", name:"N Performance · 알콘 모노블록 브레이크 & 20인치 휠 패키지", price:2700000, excludes:["blackwheel20"] },
+          { id:"blackwheel20", name:"N Performance · 20인치 블랙 휠", price:800000, excludes:["alcon20"] },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        blackexterior: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 타이어", price:490000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        calligraphy: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름Ⅰ", price:410000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름Ⅱ", price:400000 },
+          { id:"alcon21", name:"N Performance · 알콘 모노블록 브레이크 & 21인치 휠 패키지", price:2750000, excludes:["blackwheel21"] },
+          { id:"blackwheel21", name:"N Performance · 21인치 블랙 휠", price:850000, excludes:["alcon21"] },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        blackink: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"blackinkplus", name:"블랙잉크 플러스", price:940000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름Ⅰ", price:410000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름Ⅱ", price:400000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ]
+      },
+
+      hev16: {
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof_rack", name:"듀얼와이드선루프 + 루프랙", price:990000 },
+          { id:"passenger8", name:"동승석 8way 전동시트", price:200000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 },
+          { id:"parking1", name:"파킹 어시스트 플러스Ⅰ", price:1190000, excludes:["best1"] },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:450000, excludes:["best1"] },
+          { id:"best1", name:"베스트 셀렉션Ⅰ", price:1500000, excludes:["parking1","platinum1"] },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        prestige: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 },
+          { id:"seatplus", name:"시트플러스", price:740000 },
+          { id:"parking1", name:"파킹 어시스트 플러스Ⅰ", price:1190000 },
+          { id:"design1", name:"디자인 플러스Ⅰ", price:1350000 },
+          { id:"wheel20", name:"20인치 휠 & 타이어", price:490000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        hpick: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 타이어", price:490000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        blackexterior: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 타이어", price:490000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        calligraphy: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름Ⅰ", price:410000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름Ⅱ", price:400000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        blackink: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"듀얼와이드선루프", price:890000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:640000 },
+          { id:"blackinkplus", name:"블랙잉크 플러스", price:940000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름Ⅰ", price:410000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름Ⅱ", price:400000 },
+
+            { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기 2.0", price:530000 },
+            { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", price:490000 },
+            { id:"sidestep", name:"H Genuine Accessories · 사이드스텝", price:400000, excludes:["black_sidestep"] },
+            { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드스텝", price:450000, excludes:["sidestep"] },
+            { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅰ", price:230000, excludes:["mat2"] },
+            { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 Ⅱ", price:150000, excludes:["mat1"] },
+            { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ]
+      }
+    }
+  }
+
 };
