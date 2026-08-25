@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -655,10 +655,15 @@ function updateSummary() {
   const optionPrice =
     optionOnlyPrice + extraPrice;
 
+  const selectedColorPrice =
+    color?.priceBySeat?.[state.seat] ??
+    color?.price ??
+    0;
+
   const total =
     (trim?.price || 0) +
     configPrice +
-    (color?.price || 0) +
+    selectedColorPrice +
     optionPrice;
 
   const tax = calculateTax(total);
@@ -708,7 +713,7 @@ function updateSummary() {
     plusWon(configPrice);
 
   $("colorPrice").textContent =
-    plusWon(color?.price || 0);
+    plusWon(selectedColorPrice);
 
   $("optionPrice").textContent =
     plusWon(optionPrice);
