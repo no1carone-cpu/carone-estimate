@@ -2676,4 +2676,291 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI KONA / KONA Hybrid / KONA Electric
+     현대자동차 공식 홈페이지/가격표 기준
+     - KONA gasoline: 2026-08-01
+     - KONA Hybrid: 2026-07-01
+     - KONA Electric: official price list / 2026-08-01 subsidy table
+     ========================================================= */
+  kona: {
+    brand: "HYUNDAI",
+    name: "KONA",
+    displayName: "코나",
+    year: "현대자동차 공식 홈페이지 최신 가격표 기준",
+    type: "소형 SUV",
+    image: "kona.png",
+
+    engineHelp:
+      "가솔린 1.6 터보, 가솔린 2.0, 1.6 하이브리드, Electric Standard, Electric Long Range를 한 화면에서 선택할 수 있습니다.",
+    trimHelp:
+      "파워트레인에 따라 현대자동차 공식 판매 트림과 가격이 자동으로 변경됩니다. Electric은 세제혜택 후 판매가격을 사용하며 국비·지자체 보조금은 차량가격에서 자동 차감하지 않습니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"gas16t", name:"가솔린 1.6 터보", price:0, sub:"스마트스트림 가솔린 1.6 터보 · 8단 자동변속기" },
+      { id:"gas20", name:"가솔린 2.0", price:0, sub:"스마트스트림 가솔린 2.0 · IVT" },
+      { id:"hev16", name:"Hybrid 1.6", price:0, sub:"1.6 하이브리드 · 32kW 모터 · 6단 DCT" },
+      { id:"ev_std", name:"Electric Standard", price:0, sub:"48.6kWh · 99kW/135PS · 공식 세제혜택 후 가격" },
+      { id:"ev_long", name:"Electric Long Range", price:0, sub:"Long Range · 150kW/204PS · 공식 세제혜택 후 가격" }
+    ],
+
+    drivesByEngine: {
+      gas16t: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" },
+        { id:"htrac", name:"HTRAC", price:2030000, sub:"+2,030,000원 · Premium/Inspiration 계열 선택 가능" }
+      ],
+      gas20: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" }
+      ],
+      hev16: [
+        { id:"2wd", name:"2WD", price:0, sub:"하이브리드 전륜구동" }
+      ],
+      ev_std: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" }
+      ],
+      ev_long: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" }
+      ]
+    },
+
+    seats: [
+      { id:"5", name:"5인승", price:0, sub:"기본" }
+    ],
+
+    trimsByEngine: {
+      gas16t: [
+        { id:"modern", name:"Modern", price:24630000 },
+        { id:"hpick", name:"H-Pick", price:26850000 },
+        { id:"premium", name:"Premium", price:29150000 },
+        { id:"inspiration", name:"Inspiration", price:31460000 },
+        { id:"blackexterior", name:"Black Exterior", price:31810000 },
+        { id:"nline", name:"N Line", price:32450000 }
+      ],
+
+      gas20: [
+        { id:"modern", name:"Modern", price:23930000 },
+        { id:"hpick", name:"H-Pick", price:26250000 }
+      ],
+
+      hev16: [
+        { id:"modern", name:"Modern", price:29380000, sub:"세제혜택 후" },
+        { id:"hpick", name:"H-Pick", price:31200000, sub:"세제혜택 후" },
+        { id:"premium", name:"Premium", price:33670000, sub:"세제혜택 후" },
+        { id:"inspiration", name:"Inspiration", price:35630000, sub:"세제혜택 후" },
+        { id:"blackexterior", name:"Black Exterior", price:36030000, sub:"세제혜택 후" },
+        { id:"nline", name:"N Line", price:36670000, sub:"세제혜택 후" }
+      ],
+
+      ev_std: [
+        { id:"evalue", name:"E-Value +", price:41520000, sub:"Standard · 세제혜택 후" },
+        { id:"premium", name:"Premium", price:43570000, sub:"Standard · 세제혜택 후" }
+      ],
+
+      ev_long: [
+        { id:"modernplus", name:"Modern Plus", price:45660000, sub:"Long Range · 세제혜택 후" },
+        { id:"premium", name:"Premium", price:46570000, sub:"Long Range · 세제혜택 후" },
+        { id:"inspiration", name:"Inspiration", price:49920000, sub:"Long Range · 세제혜택 후" },
+        { id:"blackexterior", name:"Black Exterior", price:50250000, sub:"Long Range · 세제혜택 후" },
+        { id:"nline", name:"N Line", price:50860000, sub:"Long Range · 세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
+      { id:"atlas_white", name:"아틀라스 화이트", price:0, color:"#f1f0eb" },
+      { id:"cyber_gray", name:"사이버 그레이 메탈릭", price:0, color:"#73777a" },
+      { id:"ecotronic_gray", name:"에코트로닉 그레이 펄", price:0, color:"#5c6062" },
+      { id:"ultimate_red", name:"얼티메이트 레드 메탈릭", price:0, color:"#812c2e" },
+      { id:"mirage_green", name:"미라지 그린", price:0, color:"#85928b" },
+      { id:"meta_blue", name:"메타블루 펄", price:0, color:"#40536b" }
+    ],
+
+    optionsByEngine: {
+      gas16t: {
+        modern: [
+          { id:"navi1", name:"내비게이션 패키지Ⅰ", price:550000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:1100000 },
+          { id:"comfort_choice", name:"컴포트 초이스", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 }
+        ],
+        hpick: [
+          { id:"best", name:"베스트 셀렉션", price:790000, includes:["smartsense3","cluster"] },
+          { id:"style_lite", name:"스타일 Lite", price:490000 },
+          { id:"smartsense3", name:"현대 스마트센스Ⅲ", price:550000, excludes:["best"] },
+          { id:"cluster", name:"클러스터(12.3인치 컬러 LCD)", price:400000, excludes:["best"] },
+          { id:"parking", name:"파킹어시스트", price:990000, requires:"cluster" },
+          { id:"convenience", name:"컨비니언스", price:400000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"hipass", name:"하이패스", price:200000 }
+        ],
+        premium: [
+          { id:"best", name:"베스트 셀렉션", price:790000, includes:["smartsense3","cluster"] },
+          { id:"smartsense3", name:"현대 스마트센스Ⅲ", price:550000, excludes:["best"] },
+          { id:"cluster", name:"클러스터(12.3인치 컬러 LCD)", price:400000, excludes:["best"] },
+          { id:"parking", name:"파킹어시스트", price:990000, requires:"cluster" },
+          { id:"seatplus", name:"시트플러스", price:490000 },
+          { id:"wheel19", name:"19인치 알로이 휠 & 타이어", price:250000 },
+          { id:"interior_color", name:"실내 컬러 패키지", price:200000 },
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 }
+        ],
+        inspiration: [
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"interior_color", name:"실내 컬러 패키지", price:200000, excludes:["eco"] },
+          { id:"eco", name:"에코패키지", price:200000, excludes:["interior_color"] },
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 }
+        ],
+        blackexterior: [
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 }
+        ],
+        nline: [
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"alcantara", name:"N Performance · 알칸타라 인테리어 패키지", price:370000 }
+        ]
+      },
+
+      gas20: {
+        modern: [
+          { id:"navi1", name:"내비게이션 패키지Ⅰ", price:550000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:1100000 },
+          { id:"comfort_choice", name:"컴포트 초이스", price:400000 },
+          { id:"hipass", name:"하이패스", price:200000 }
+        ],
+        hpick: [
+          { id:"best", name:"베스트 셀렉션", price:790000, includes:["smartsense3","cluster"] },
+          { id:"style_lite", name:"스타일 Lite", price:490000 },
+          { id:"smartsense3", name:"현대 스마트센스Ⅲ", price:550000, excludes:["best"] },
+          { id:"cluster", name:"클러스터(12.3인치 컬러 LCD)", price:400000, excludes:["best"] },
+          { id:"parking", name:"파킹어시스트", price:990000, requires:"cluster" },
+          { id:"convenience", name:"컨비니언스", price:400000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"hipass", name:"하이패스", price:200000 }
+        ]
+      },
+
+      hev16: {
+        modern: [
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"navi2", name:"내비게이션 패키지Ⅱ", price:300000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:1100000 },
+          { id:"comfort_choice", name:"컴포트 초이스", price:400000 }
+        ],
+        hpick: [
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"best", name:"베스트 셀렉션", price:790000, includes:["smartsense3","cluster"] },
+          { id:"smartsense3", name:"현대 스마트센스Ⅲ", price:550000, excludes:["best"] },
+          { id:"cluster", name:"클러스터(12.3인치 컬러 LCD)", price:400000, excludes:["best"] },
+          { id:"style1", name:"스타일Ⅰ", price:640000 },
+          { id:"parking", name:"파킹어시스트", price:990000, requires:"cluster" },
+          { id:"convenience", name:"컨비니언스", price:400000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 }
+        ],
+        premium: [
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"interior_color", name:"실내 컬러 패키지", price:200000, excludes:["eco"] },
+          { id:"eco", name:"에코패키지", price:200000, excludes:["interior_color"] }
+        ],
+        inspiration: [
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"interior_color", name:"실내 컬러 패키지", price:200000, excludes:["eco"] },
+          { id:"eco", name:"에코패키지", price:200000, excludes:["interior_color"] }
+        ],
+        blackexterior: [
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 }
+        ],
+        nline: [
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"alcantara", name:"N Performance · 알칸타라 인테리어 패키지", price:370000 }
+        ]
+      },
+
+      ev_std: {
+        evalue: [
+          { id:"hipass", name:"하이패스", price:200000 },
+          { id:"comfort2", name:"컴포트2", price:980000 }
+        ],
+        premium: [
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:490000 },
+          { id:"seatplus", name:"시트플러스", price:490000 },
+          { id:"convenience", name:"컨비니언스", price:750000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 }
+        ]
+      },
+
+      ev_long: {
+        modernplus: [
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:490000 },
+          { id:"style2", name:"스타일Ⅱ", price:890000 },
+          { id:"hipass", name:"하이패스", price:200000 }
+        ],
+        premium: [
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:490000 },
+          { id:"seatplus", name:"시트플러스", price:490000 },
+          { id:"style2", name:"스타일Ⅱ", price:890000 },
+          { id:"convenience", name:"컨비니언스", price:750000 },
+          { id:"hud", name:"헤드업 디스플레이", price:590000 },
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 }
+        ],
+        inspiration: [
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"interior_color", name:"실내 컬러 패키지", price:200000, excludes:["eco"] },
+          { id:"eco", name:"에코패키지", price:200000, excludes:["interior_color"] }
+        ],
+        blackexterior: [
+          { id:"sunroof", name:"와이드 선루프", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 }
+        ],
+        nline: [
+          { id:"sunroof", name:"와이드 선루프", price:590000, excludes:["two_tone"] },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹어시스트", price:990000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"two_tone", name:"투톤 컬러 루프", price:300000, excludes:["sunroof"] },
+          { id:"alcantara", name:"N Performance · 알칸타라 인테리어 패키지", price:370000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["ev_std", "ev_long"],
+    evAcquisitionTaxReduction: 1400000
+  }
+
 };
