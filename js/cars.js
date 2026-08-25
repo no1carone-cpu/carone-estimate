@@ -2373,4 +2373,151 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI The all-new AVANTE / Hybrid
+     현대자동차 공식 홈페이지 2026-08-05 가격표 기준
+     주의: 8세대 신형은 가솔린 2.0 / 1.6 Hybrid로 운영
+     ========================================================= */
+  avante: {
+    brand: "HYUNDAI",
+    name: "The all-new AVANTE",
+    displayName: "디 올 뉴 아반떼",
+    year: "2026년 8월 5일 현대자동차 공식 가격표 기준",
+    type: "준중형 세단",
+    image: "avante.png",
+
+    engineHelp:
+      "현행 8세대 디 올 뉴 아반떼는 가솔린 2.0과 1.6 하이브리드 두 파워트레인으로 운영됩니다.",
+    trimHelp:
+      "현대자동차 공식 홈페이지의 Modern / Premium / Inspiration 가격과 선택품목을 반영합니다. 하이브리드는 환경친화적 자동차 고시 완료 전이므로 현재 공식 '세제혜택 적용 전' 가격을 사용합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      {
+        id: "gas20",
+        name: "가솔린 2.0",
+        price: 0,
+        sub: "스마트스트림 가솔린 2.0 · 스마트스트림 IVT"
+      },
+      {
+        id: "hev16",
+        name: "하이브리드 1.6",
+        price: 0,
+        sub: "스마트스트림 가솔린 1.6 하이브리드 · 45kW 모터 · 6단 DCT"
+      }
+    ],
+
+    drives: [
+      { id:"2wd", name:"2WD", price:0, sub:"전륜구동" }
+    ],
+
+    seats: [
+      { id:"5", name:"5인승", price:0, sub:"기본" }
+    ],
+
+    trimsByEngine: {
+      gas20: [
+        { id:"modern", name:"Modern", price:23980000, sub:"현대 공식 판매가격" },
+        { id:"premium", name:"Premium", price:27710000, sub:"현대 공식 판매가격" },
+        { id:"inspiration", name:"Inspiration", price:31520000, sub:"현대 공식 판매가격" }
+      ],
+      hev16: [
+        { id:"modern", name:"Modern", price:30420000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" },
+        { id:"premium", name:"Premium", price:33610000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" },
+        { id:"inspiration", name:"Inspiration", price:36990000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" }
+      ]
+    },
+
+    colors: [
+      { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
+      { id:"raptor_gray_matte", name:"랩터 그레이 매트", price:200000, color:"#6d6d69" },
+      { id:"kodiak_blue_matte", name:"코디악 블루 매트", price:200000, color:"#3f4d55" },
+      { id:"graphene_green", name:"그라펜 그린 펄", price:0, color:"#435149" },
+      { id:"quantum_silver", name:"퀀텀 실버 펄", price:0, color:"#a6a8a8" },
+      { id:"volcanic_red", name:"볼케닉 레드 펄", price:0, color:"#812c2d" },
+      { id:"goyo_copper", name:"고요 카퍼 펄", price:0, color:"#8a6654" },
+      { id:"serenity_white", name:"세레니티 화이트 펄", price:0, color:"#f1f0eb" },
+      { id:"amazon_gray", name:"아마존 그레이 메탈릭", price:0, color:"#5b615f" }
+    ],
+
+    optionsByEngine: {
+      gas20: {
+        modern: [
+          { id:"slim_display", name:"9.9인치 슬림 디스플레이", price:350000 },
+          { id:"convenience1", name:"컨비니언스Ⅰ", price:650000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:960000 },
+          { id:"wheel17_1", name:"17인치 알로이 휠 & 타이어Ⅰ", price:320000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ],
+
+        premium: [
+          { id:"sunroof", name:"와이드 선루프", price:900000 },
+          { id:"pleos146", name:"플레오스 커넥트 14.6인치 + 9.9인치 슬림 디스플레이", price:830000 },
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:400000 },
+          { id:"exterior", name:"익스테리어 디자인", price:1400000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:930000 },
+          { id:"comfort", name:"컴포트", price:760000 },
+          { id:"wheel17_2", name:"17인치 알로이 휠 & 타이어Ⅱ", price:300000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ],
+
+        inspiration: [
+          { id:"sunroof", name:"와이드 선루프", price:900000 },
+          { id:"platinum2", name:"플래티넘Ⅱ", price:900000 },
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:650000 },
+          { id:"parking1", name:"파킹 어시스트Ⅰ", price:800000, excludes:["parking2"] },
+          { id:"parking2", name:"파킹 어시스트Ⅱ", price:1300000, excludes:["parking1"] },
+          { id:"wheel18", name:"18인치 알로이 휠 & 타이어", price:500000 },
+          { id:"bno", name:"Audio by BANG & OLUFSEN 사운드", price:1100000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ]
+      },
+
+      hev16: {
+        modern: [
+          { id:"slim_display", name:"9.9인치 슬림 디스플레이", price:350000 },
+          { id:"convenience2", name:"컨비니언스Ⅱ", price:450000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:960000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ],
+
+        premium: [
+          { id:"sunroof", name:"와이드 선루프", price:900000 },
+          { id:"pleos146", name:"플레오스 커넥트 14.6인치 + 9.9인치 슬림 디스플레이", price:830000 },
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:400000 },
+          { id:"exterior", name:"익스테리어 디자인", price:1400000 },
+          { id:"platinum1", name:"플래티넘Ⅰ", price:930000 },
+          { id:"comfort", name:"컴포트", price:760000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ],
+
+        inspiration: [
+          { id:"sunroof", name:"와이드 선루프", price:900000 },
+          { id:"platinum2", name:"플래티넘Ⅱ", price:900000 },
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:650000 },
+          { id:"parking1", name:"파킹 어시스트Ⅰ", price:800000, excludes:["parking2"] },
+          { id:"parking2", name:"파킹 어시스트Ⅱ", price:1300000, excludes:["parking1"] },
+          { id:"wheel18", name:"18인치 알로이 휠 & 타이어", price:500000 },
+          { id:"bno", name:"Audio by BANG & OLUFSEN 사운드", price:1100000 },
+          { id:"lighting", name:"H Genuine Accessories · 라이팅 플러스 패키지", price:150000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:300000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:420000 }
+        ]
+      }
+    }
+  }
+
 };
