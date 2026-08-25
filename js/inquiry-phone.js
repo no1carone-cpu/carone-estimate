@@ -1,0 +1,16 @@
+const SUPABASE_URL="여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY="여기에_PUBLISHABLE_KEY_입력";
+const db=window.supabase&&!SUPABASE_URL.startsWith("여기에_")?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY):null;
+const $=x=>document.getElementById(x), safe=(v,f="-")=>v==null||v===""?f:String(v), won=v=>Number(v||0).toLocaleString("ko-KR")+"원";
+const dt=v=>{let d=new Date(v);return isNaN(d)?"-":d.toLocaleString("ko-KR")};
+$("phone").oninput=e=>{let n=e.target.value.replace(/\D/g,"").slice(0,11);e.target.value=n.length>7?n.replace(/(\d{3})(\d{4})(\d+)/,"$1-$2-$3"):n.length>3?n.replace(/(\d{3})(\d+)/,"$1-$2"):n};
+$("f").onsubmit=async e=>{e.preventDefault();let er=$("error"),b=$("btn"),phone=$("phone").value,pin=$("pin").value;er.textContent="";
+if(!db){er.textContent="Supabase 연결 정보가 설정되지 않았습니다.";return}if(phone.replace(/\D/g,"").length<10){er.textContent="전화번호를 확인해주세요.";return}
+b.disabled=true;b.textContent="조회 중...";let {data,error}=await db.rpc("get_customer_inquiries_by_phone",{p_phone:phone,p_access_pin:pin});b.disabled=false;b.textContent="내 견적 확인";
+if(error){er.textContent="조회 오류: "+error.message;return}if(!Array.isArray(data)||!data.length){$("results").classList.remove("show");er.textContent="일치하는 견적문의가 없습니다.";return}render(data)};
+function render(a){$("results").classList.add("show");$("count").textContent="총 "+a.length+"건";let l=$("list");l.innerHTML="";
+a.forEach(i=>{let c=document.createElement("article");c.className="card";c.innerHTML=`<button type="button"><div class="top"><div><div class="code">${safe(i.inquiry_code)}</div><div class="car">${safe(i.car_name)} · ${safe(i.trim)}</div><div class="meta">${dt(i.created_at)} · ${safe(i.region)}</div></div><span class="status">${safe(i.status,"신규")}</span></div></button>
+<div class="detail"><div class="grid"><div class="row"><span>엔진</span><strong>${safe(i.engine)}</strong></div><div class="row"><span>구동</span><strong>${safe(i.drive)}</strong></div><div class="row"><span>인승</span><strong>${safe(i.seat)}</strong></div><div class="row"><span>트림</span><strong>${safe(i.trim)}</strong></div><div class="row"><span>외장색</span><strong>${safe(i.color)}</strong></div><div class="row"><span>선택품목</span><strong>${safe(i.options,"없음")}</strong></div></div>
+<div class="price"><div class="pr"><span>공식 차량가격</span><strong>${won(i.vehicle_price)}</strong></div><div class="pr"><span>예상 취득세</span><strong>${won(i.acquisition_tax)}</strong></div><div class="pr total"><span>차량가격 + 예상 취득세</span><strong>${won(i.total_price)}</strong></div></div><div class="comments"><h3>카원 답변</h3><div class="cl"></div></div></div>`;
+let cl=c.querySelector(".cl");if(i.comments&&i.comments.length)i.comments.forEach(x=>{let d=document.createElement("div");d.className="comment";let b=document.createElement("b");b.textContent=safe(x.author,"카원 상담팀");let t=document.createTextNode("  "+dt(x.created_at)+"\n"+safe(x.comment,""));d.append(b,t);cl.append(d)});else cl.innerHTML='<div class="empty">아직 등록된 답변이 없습니다.</div>';
+c.querySelector("button").onclick=()=>c.querySelector(".detail").classList.toggle("open");l.append(c)})}
