@@ -1,16 +1,725 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>카원 | 내 견적문의</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f7f7f9;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#19171d}.page{max-width:900px;margin:auto;padding:35px 14px 60px}
-header{text-align:center;margin-bottom:22px}header small{color:#4b2586;font-weight:900;letter-spacing:.12em}h1{font-size:36px;margin:7px 0}header p{color:#89828e;font-size:12px;line-height:1.7}
-.login,.card{background:#fff;border:1px solid #e8e3eb;border-radius:18px}.login{max-width:620px;margin:auto;padding:20px;box-shadow:0 12px 38px #3223410f}.login h2{font-size:16px;margin:0 0 5px}.desc{font-size:10px;color:#89828e;margin-bottom:14px}
-form{display:grid;grid-template-columns:1fr .7fr auto;gap:8px}input{height:46px;border:1px solid #ddd7e1;border-radius:11px;padding:0 12px;font-size:15px;min-width:0}.btn{border:0;border-radius:11px;background:#4b2586;color:white;padding:0 18px;font-weight:900;font-size:11px}.error{min-height:17px;color:#c84659;font-size:10px;margin-top:8px}
-#results{display:none;margin-top:26px}#results.show{display:block}.rh{display:flex;justify-content:space-between;align-items:end;margin:0 3px 10px}.rh h2{margin:0;font-size:18px}.rh span{font-size:10px;color:#89828e}
-.card{margin-bottom:10px;overflow:hidden}.card>button{width:100%;border:0;background:white;padding:16px;text-align:left;cursor:pointer}.top{display:flex;justify-content:space-between;gap:10px}.code{font-size:9px;color:#4b2586;font-weight:900}.car{font-size:15px;font-weight:900;margin-top:4px}.meta{font-size:10px;color:#89828e;margin-top:7px}.status{font-size:9px;font-weight:900;color:#4b2586;background:#f6f2fb;border-radius:99px;padding:6px 9px;height:max-content}
-.detail{display:none;border-top:1px solid #e8e3eb;padding:17px}.detail.open{display:block}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #f0edf2;font-size:11px}.row span{color:#89828e}.price{margin-top:15px;padding:15px;border-radius:13px;background:#4b2586;color:white}.pr{display:flex;justify-content:space-between;font-size:10px;margin:6px 0}.total{border-top:1px solid #ffffff44;padding-top:10px;margin-top:10px;font-size:16px}
-.comments{margin-top:17px}.comment{background:#faf9fb;border:1px solid #e8e3eb;border-radius:11px;padding:12px;margin-top:7px;font-size:11px;line-height:1.7}.comment b{color:#4b2586}.empty{color:#89828e;font-size:11px;padding:12px 0}
-@media(max-width:650px){.page{padding:20px 8px 40px}form{grid-template-columns:1fr}.btn{height:46px}.grid{grid-template-columns:1fr}h1{font-size:28px}}
-</style></head><body><main class="page"><header><small>CARONE CUSTOMER LOOKUP</small><h1>내 견적문의 확인</h1><p>문의번호를 기억하지 않아도 됩니다.<br>견적문의 당시 입력한 전화번호와 조회 비밀번호로 확인하세요.</p></header>
-<section class="login"><h2>내 문의 찾기</h2><div class="desc">전화번호와 조회 비밀번호가 모두 일치하는 견적만 표시됩니다.</div>
-<form id="f"><input id="phone" type="tel" placeholder="010-1234-5678" required><input id="pin" type="password" inputmode="numeric" maxlength="6" placeholder="조회 비밀번호" required><button class="btn" id="btn">내 견적 확인</button></form><div id="error" class="error"></div></section>
-<section id="results"><div class="rh"><h2>내 견적문의</h2><span id="count"></span></div><div id="list"></div></section></main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/inquiry-phone.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카원 | 견적문의</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --purple: #4b2586;
+      --purple2: #6842aa;
+      --purple-soft: #f6f2fb;
+      --mint-soft: #eafffd;
+      --ink: #19171d;
+      --text: #514a58;
+      --muted: #8f8795;
+      --line: #e7e2ea;
+      --bg: #f7f7f9;
+      --white: #ffffff;
+      --danger: #c84659;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family:
+        Pretendard,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    button, input { font: inherit; }
+
+    .page {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+      padding: 30px 14px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 12px 4px 25px;
+    }
+
+    .kicker {
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    .hero h1 {
+      margin: 7px 0 0;
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.12;
+      letter-spacing: -0.055em;
+    }
+
+    .hero p {
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* 내 문의 조회 */
+    .my-lookup {
+      position: relative;
+      overflow: hidden;
+      padding: 23px;
+      border: 1px solid #dfd7e8;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #faf7fe 65%,
+          #f1fffd 100%
+        );
+      box-shadow: 0 12px 38px rgba(50, 35, 65, .06);
+    }
+
+    .my-lookup::after {
+      content: "";
+      position: absolute;
+      right: -55px;
+      top: -60px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(22, 229, 223, .10);
+      pointer-events: none;
+    }
+
+    .lookup-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .lookup-label {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: .1em;
+    }
+
+    .lookup-top h2 {
+      margin: 4px 0 0;
+      font-size: 21px;
+      letter-spacing: -0.045em;
+    }
+
+    .lookup-top p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .private-badge {
+      flex: none;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .lookup-form {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr .8fr auto;
+      gap: 8px;
+    }
+
+    .lookup-form input {
+      min-width: 0;
+      height: 47px;
+      padding: 0 12px;
+      border: 1px solid #dcd6e0;
+      border-radius: 11px;
+      background: #fff;
+      outline: none;
+      font-size: 15px;
+      color: var(--ink);
+    }
+
+    .lookup-form input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(75, 37, 134, .08);
+    }
+
+    .primary-btn {
+      min-height: 47px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 7px 20px rgba(75, 37, 134, .16);
+    }
+
+    .primary-btn:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .lookup-error {
+      position: relative;
+      z-index: 1;
+      min-height: 17px;
+      margin-top: 8px;
+      color: var(--danger);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .security-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 2px;
+      color: #aaa2ae;
+      font-size: 9px;
+    }
+
+    /* 내 문의 결과 */
+    .my-results {
+      display: none;
+      margin-top: 13px;
+    }
+
+    .my-results.show { display: block; }
+
+    .my-results-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 3px 2px 9px;
+    }
+
+    .my-results-head h2 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .my-count {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .my-card {
+      margin-bottom: 9px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .my-card-button {
+      width: 100%;
+      padding: 15px 16px;
+      border: 0;
+      background: #fff;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .my-card-button:hover {
+      background: #faf8fd;
+    }
+
+    .my-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .my-code {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .my-car {
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .my-meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .status {
+      flex: none;
+      display: inline-flex;
+      justify-content: center;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .status.상담중 {
+      background: #fff8e9;
+      color: #946400;
+    }
+
+    .status.답변완료,
+    .status.계약완료 {
+      background: var(--mint-soft);
+      color: #087c79;
+    }
+
+    .my-detail {
+      display: none;
+      padding: 16px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .my-detail.open { display: block; }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 18px;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0edf2;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .spec-row span { color: var(--muted); }
+
+    .spec-row strong {
+      text-align: right;
+      word-break: keep-all;
+    }
+
+    .price-box {
+      margin-top: 14px;
+      padding: 15px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 6px 0;
+      font-size: 10px;
+      opacity: .85;
+    }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.24);
+    }
+
+    .price-total span { font-size: 10px; }
+    .price-total strong { font-size: 19px; }
+
+    .comments {
+      margin-top: 17px;
+    }
+
+    .comments h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+
+    .comment {
+      margin-top: 7px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #faf9fb;
+    }
+
+    .comment-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .comment-author {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .comment-date {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .comment-body {
+      color: #514a58;
+      font-size: 11px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .empty-comment {
+      padding: 13px 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* 공개 문의 현황 */
+    .public-section {
+      margin-top: 33px;
+    }
+
+    .public-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 15px;
+      padding: 0 3px 11px;
+    }
+
+    .public-label {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: .1em;
+    }
+
+    .public-title h2 {
+      margin: 4px 0 0;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .public-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 9px;
+      text-align: right;
+      line-height: 1.55;
+    }
+
+    .board {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .board-head {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) 90px 90px 120px;
+      gap: 10px;
+      padding: 11px 15px;
+      border-bottom: 1px solid var(--line);
+      background: #f9f8fa;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .board-row {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) 90px 90px 120px;
+      gap: 10px;
+      align-items: center;
+      padding: 14px 15px;
+      border-bottom: 1px solid #f0edf2;
+    }
+
+    .board-row:last-child { border-bottom: 0; }
+
+    .row-no {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .row-car {
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .row-region,
+    .row-date {
+      color: #716a76;
+      font-size: 9px;
+    }
+
+    .public-empty {
+      padding: 40px 15px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .pager {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .pager button {
+      min-width: 38px;
+      min-height: 38px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .pager button:disabled {
+      color: #bdb6c1;
+      cursor: default;
+    }
+
+    .page-info {
+      min-width: 65px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 9px;
+    }
+
+    .public-note {
+      margin-top: 11px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f7f5f9;
+      color: #938b98;
+      font-size: 9px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .page { padding: 20px 8px 42px; }
+
+      .lookup-top {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .lookup-form {
+        grid-template-columns: 1fr;
+      }
+
+      .primary-btn { height: 47px; }
+
+      .spec-grid { grid-template-columns: 1fr; }
+
+      .public-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .public-title p { text-align: left; }
+
+      .board-head { display: none; }
+
+      .board-row {
+        grid-template-columns: minmax(0,1fr) auto;
+        gap: 6px 10px;
+      }
+
+      .row-no {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .row-car {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .board-row > .status {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
+      .row-region {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      .row-date {
+        grid-column: 2;
+        grid-row: 3;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <header class="hero">
+    <div class="kicker">CARONE ESTIMATE BOARD</div>
+    <h1>견적문의</h1>
+    <p>
+      내 견적은 전화번호와 조회 비밀번호로 안전하게 확인하고,<br>
+      아래에서는 카원에 접수되고 있는 최근 견적문의 현황을 확인할 수 있습니다.
+    </p>
+  </header>
+
+  <!-- 내 문의 조회 -->
+  <section class="my-lookup">
+    <div class="lookup-top">
+      <div>
+        <div class="lookup-label">MY ESTIMATE</div>
+        <h2>내 견적문의 확인</h2>
+        <p>
+          견적 접수 당시 입력한 전화번호와 조회 비밀번호를 입력해주세요.<br>
+          문의번호는 기억하지 않아도 됩니다.
+        </p>
+      </div>
+
+      <div class="private-badge">🔒 고객 전용</div>
+    </div>
+
+    <form id="lookupForm" class="lookup-form">
+      <input
+        id="phone"
+        type="tel"
+        inputmode="tel"
+        autocomplete="tel"
+        placeholder="010-1234-5678"
+        required
+      >
+
+      <input
+        id="pin"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="조회 비밀번호"
+        required
+      >
+
+      <button
+        id="lookupBtn"
+        class="primary-btn"
+        type="submit">
+        내 문의 확인
+      </button>
+    </form>
+
+    <div id="lookupError" class="lookup-error"></div>
+    <div class="security-note">
+      전화번호와 비밀번호가 모두 일치하는 본인 문의만 상세내용이 표시됩니다.
+    </div>
+  </section>
+
+  <!-- 내 문의 조회 결과 -->
+  <section id="myResults" class="my-results">
+    <div class="my-results-head">
+      <h2>내가 남긴 견적문의</h2>
+      <div id="myCount" class="my-count"></div>
+    </div>
+
+    <div id="myList"></div>
+  </section>
+
+  <!-- 전체 문의 현황 -->
+  <section class="public-section">
+    <div class="public-title">
+      <div>
+        <div class="public-label">RECENT INQUIRIES</div>
+        <h2>최근 견적문의 현황</h2>
+      </div>
+
+      <p>
+        개인정보와 상세 견적은 공개되지 않습니다.<br>
+        차량 · 지역 · 진행상태 · 접수일만 표시됩니다.
+      </p>
+    </div>
+
+    <div class="board">
+      <div class="board-head">
+        <div>번호</div>
+        <div>차량</div>
+        <div>지역</div>
+        <div>상태</div>
+        <div>접수일</div>
+      </div>
+
+      <div id="boardList">
+        <div class="public-empty">
+          견적문의 현황을 불러오는 중입니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="pager">
+      <button id="prevBtn" type="button">이전</button>
+      <span id="pageInfo" class="page-info">1 / 1</span>
+      <button id="nextBtn" type="button">다음</button>
+    </div>
+
+    <div class="public-note">
+      다른 고객의 문의는 접수 사실과 진행상태만 확인할 수 있으며,
+      상세 견적·전화번호·직원 답변은 공개되지 않습니다.
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/inquiry-phone.js"></script>
+
+</body>
+</html>
