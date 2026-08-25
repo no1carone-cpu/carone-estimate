@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -566,6 +566,15 @@ function renderOptions() {
           toast(
             `${required?.name || "필수 옵션"}을 함께 선택했습니다.`
           );
+        }
+
+        // 함께 선택할 수 없는 옵션은 자동으로 해제합니다.
+        if (Array.isArray(item.excludes)) {
+          item.excludes.forEach(id => {
+            if (state.options.has(id)) {
+              state.options.delete(id);
+            }
+          });
         }
 
         // 패키지에 포함된 개별 옵션은 중복 계산하지 않습니다.

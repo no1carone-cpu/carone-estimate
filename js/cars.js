@@ -1104,4 +1104,506 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI The new GRANDEUR / Hybrid
+     현대자동차 공식 가격표 기준
+     - 가솔린/Hybrid: 2026-07-01
+     - LPG 공식 현대 가격자료: 2026-05-14
+     ========================================================= */
+  grandeur: {
+    brand: "HYUNDAI",
+    name: "The new GRANDEUR",
+    displayName: "더 뉴 그랜저",
+    year: "2026년 현대자동차 공식 가격표 기준",
+    type: "준대형 세단",
+    image: "grandeur.png",
+
+    engineHelp:
+      "가솔린 2.5, 가솔린 3.5, LPG 3.5, 하이브리드 1.6 터보를 한 화면에서 선택할 수 있습니다.",
+
+    trimHelp:
+      "파워트레인에 따라 공식 판매 트림과 가격이 자동으로 변경됩니다. 하이브리드는 세제혜택 후 판매가격을 기준으로 표시합니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas25",
+        name: "가솔린 2.5",
+        price: 0,
+        sub: "스마트스트림 가솔린 2.5 · 198PS · 25.3kgf·m"
+      },
+      {
+        id: "gas35",
+        name: "가솔린 3.5",
+        price: 0,
+        sub: "스마트스트림 가솔린 3.5 · 300PS · 36.6kgf·m"
+      },
+      {
+        id: "lpg35",
+        name: "LPG 3.5",
+        price: 0,
+        sub: "스마트스트림 LPG 3.5 · 240PS · 32.0kgf·m"
+      },
+      {
+        id: "hybrid",
+        name: "하이브리드 1.6 터보",
+        price: 0,
+        sub: "스마트스트림 가솔린 1.6 터보 하이브리드 · 세제혜택 후 가격"
+      }
+    ],
+
+    drivesByEngine: {
+      gas25: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+      ],
+
+      gas35: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
+        {
+          id: "htrac",
+          name: "HTRAC",
+          price: 2200000,
+          sub: "+2,200,000원 · 가솔린 3.5 선택 시"
+        }
+      ],
+
+      lpg35: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+      ],
+
+      hybrid: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+      ]
+    },
+
+    seats: [
+      {
+        id: "5",
+        name: "5인승",
+        price: 0,
+        sub: "기본"
+      }
+    ],
+
+    trimsByEngine: {
+      gas25: [
+        {
+          id: "premium",
+          name: "프리미엄",
+          price: 42450000,
+          sub: "가솔린 2.5 기준"
+        },
+        {
+          id: "exclusive",
+          name: "익스클루시브",
+          price: 46940000,
+          sub: "가솔린 2.5 기준"
+        },
+        {
+          id: "calligraphy",
+          name: "캘리그래피",
+          price: 53100000,
+          sub: "가솔린 2.5 기준"
+        },
+        {
+          id: "black_ink",
+          name: "Black Ink",
+          price: 54000000,
+          sub: "가솔린 2.5 기준 · 블랙 전용 디자인"
+        }
+      ],
+
+      gas35: [
+        {
+          id: "premium",
+          name: "프리미엄",
+          price: 44910000,
+          sub: "가솔린 3.5 공식가격"
+        },
+        {
+          id: "exclusive",
+          name: "익스클루시브",
+          price: 49410000,
+          sub: "가솔린 3.5 공식가격"
+        },
+        {
+          id: "calligraphy",
+          name: "캘리그래피",
+          price: 55570000,
+          sub: "가솔린 3.5 공식가격"
+        },
+        {
+          id: "black_ink",
+          name: "Black Ink",
+          price: 56470000,
+          sub: "가솔린 3.5 공식가격 · 블랙 전용 디자인"
+        }
+      ],
+
+      lpg35: [
+        {
+          id: "premium",
+          name: "프리미엄",
+          price: 43930000,
+          sub: "LPG 3.5"
+        },
+        {
+          id: "exclusive",
+          name: "익스클루시브",
+          price: 48420000,
+          sub: "LPG 3.5"
+        }
+      ],
+
+      hybrid: [
+        {
+          id: "premium",
+          name: "프리미엄",
+          price: 48330000,
+          sub: "세제혜택 후"
+        },
+        {
+          id: "exclusive",
+          name: "익스클루시브",
+          price: 52820000,
+          sub: "세제혜택 후"
+        },
+        {
+          id: "calligraphy",
+          name: "캘리그래피",
+          price: 58990000,
+          sub: "세제혜택 후"
+        },
+        {
+          id: "black_ink",
+          name: "Black Ink",
+          price: 59890000,
+          sub: "세제혜택 후 · 블랙 전용 디자인"
+        }
+      ]
+    },
+
+    colors: [
+      {
+        id: "transmission_blue",
+        name: "트랜스미션 블루 펄",
+        price: 0,
+        color: "#5d6975",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "aero_silver",
+        name: "에어로 실버 메탈릭",
+        price: 0,
+        color: "#a8aaab",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "nocturne_gray",
+        name: "녹턴 그레이 메탈릭",
+        price: 0,
+        color: "#55575a",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "abyss_black",
+        name: "어비스 블랙 펄",
+        price: 0,
+        color: "#111214",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "biophilic_blue",
+        name: "바이오필릭 블루 펄",
+        price: 0,
+        color: "#263b4b",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "artisanal_burgundy",
+        name: "어비스 버건디 펄",
+        price: 0,
+        color: "#58373a",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "serenity_white",
+        name: "세레니티 화이트 펄",
+        price: 100000,
+        color: "#f2f1ed",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "nocturne_gray_matte",
+        name: "녹턴 그레이 매트",
+        price: 300000,
+        color: "#666666",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "transmission_blue_matte",
+        name: "트랜스미션 블루 매트",
+        price: 300000,
+        color: "#64717a",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+      {
+        id: "artisanal_burgundy_matte",
+        name: "어비스 버건디 매트",
+        price: 300000,
+        color: "#604447",
+        allowedTrims: ["premium", "exclusive", "calligraphy"]
+      },
+
+      {
+        id: "abyss_black",
+        name: "어비스 블랙 펄",
+        price: 0,
+        color: "#111214",
+        allowedTrims: ["black_ink"]
+      },
+      {
+        id: "serenity_white",
+        name: "세레니티 화이트 펄",
+        price: 100000,
+        color: "#f2f1ed",
+        allowedTrims: ["black_ink"]
+      }
+    ],
+
+    optionsByEngine: {
+      gas25: {
+        premium: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "smartsense1", name: "현대 스마트센스Ⅰ", price: 1400000 },
+          { id: "parking", name: "파킹 어시스트", price: 1700000 },
+          { id: "premium_choice", name: "프리미엄 초이스", price: 1200000 },
+
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000, requires: "premium_choice", note: "프리미엄 초이스 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"], note: "파노라마 선루프와 동시 선택 불가" },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        exclusive: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "platinum", name: "플래티넘", price: 2050000 },
+          { id: "smartsense2", name: "현대 스마트센스Ⅱ", price: 1400000 },
+          { id: "seatcomfort1", name: "시트 컴포트Ⅰ", price: 1200000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드 패키지", price: 1200000 },
+          { id: "wheel20", name: "20인치 알로이 휠 & 타이어", price: 250000, requires: "platinum", note: "플래티넘 선택 시" },
+
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"], note: "파노라마 선루프와 동시 선택 불가" },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        calligraphy: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "wheel20_calli", name: "20인치 알로이 휠 & 타이어(캘리그래피)", price: 450000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"], note: "파노라마 선루프와 중복 선택 불가" },
+
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20_calli", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"], note: "파노라마 선루프·스마트 비전 루프와 동시 선택 불가" },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        black_ink: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"], note: "파노라마 선루프와 중복 선택 불가" },
+
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"], note: "파노라마 선루프·스마트 비전 루프와 동시 선택 불가" },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ]
+      },
+
+      gas35: {
+        premium: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "smartsense1", name: "현대 스마트센스Ⅰ", price: 1400000 },
+          { id: "parking", name: "파킹 어시스트", price: 1700000 },
+          { id: "premium_choice", name: "프리미엄 초이스", price: 1200000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000, requires: "premium_choice", note: "프리미엄 초이스 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        exclusive: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "platinum", name: "플래티넘", price: 2050000 },
+          { id: "smartsense2", name: "현대 스마트센스Ⅱ", price: 1400000 },
+          { id: "seatcomfort1", name: "시트 컴포트Ⅰ", price: 1200000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드 패키지", price: 1200000 },
+          { id: "wheel20", name: "20인치 알로이 휠 & 타이어", price: 250000, requires: "platinum", note: "플래티넘 선택 시" },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        calligraphy: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "wheel20_calli", name: "20인치 알로이 휠 & 타이어(캘리그래피)", price: 450000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"] },
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20_calli", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        black_ink: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"] },
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ]
+      },
+
+      lpg35: {
+        premium: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "smartsense1", name: "현대 스마트센스Ⅰ", price: 1400000 },
+          { id: "parking", name: "파킹 어시스트", price: 1700000 },
+          { id: "premium_choice", name: "프리미엄 초이스", price: 1200000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000, requires: "premium_choice" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        exclusive: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "platinum_lpg", name: "플래티넘(LPG 3.5)", price: 1650000 },
+          { id: "smartsense2", name: "현대 스마트센스Ⅱ", price: 1400000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드 패키지", price: 1200000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ]
+      },
+
+      hybrid: {
+        premium: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "smartsense1", name: "현대 스마트센스Ⅰ", price: 1400000 },
+          { id: "parking", name: "파킹 어시스트", price: 1700000 },
+          { id: "premium_choice", name: "프리미엄 초이스", price: 1200000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000, requires: "premium_choice" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        exclusive: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000, excludes: ["seatcomfort2"] },
+          { id: "platinum", name: "플래티넘", price: 2050000 },
+          { id: "smartsense2", name: "현대 스마트센스Ⅱ", price: 1400000 },
+          { id: "seatcomfort2", name: "시트 컴포트Ⅱ", price: 1850000, excludes: ["builtincam"], note: "빌트인 캠 2 Plus와 동시 선택 불가" },
+          { id: "bose", name: "BOSE 프리미엄 사운드 패키지", price: 1200000 },
+          { id: "wheel20", name: "20인치 알로이 휠 & 타이어", price: 250000, requires: "platinum", note: "플래티넘 선택 시" },
+
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        calligraphy: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "wheel20_calli", name: "20인치 알로이 휠 & 타이어(캘리그래피)", price: 450000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"] },
+
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "sputter20", name: "H Genuine Accessories · 20인치 고휘도 스퍼터링 휠", price: 950000, requires: "wheel20_calli", note: "20인치 알로이 휠 & 타이어 선택 시" },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ],
+
+        black_ink: [
+          { id: "sunroof", name: "파노라마 선루프", price: 1200000, excludes: ["smartvision", "blackroof"] },
+          { id: "builtincam", name: "빌트인 캠 2 Plus", price: 650000 },
+          { id: "seatcomfortplus", name: "시트 컴포트 플러스", price: 1500000 },
+          { id: "smartvision", name: "스마트 비전 루프", price: 1800000, excludes: ["sunroof", "blackroof"] },
+
+          { id: "smartcard", name: "H Genuine Accessories · 스마트 카드키", price: 150000 },
+          { id: "essential", name: "H Genuine Accessories · Essential Acc. 패키지", price: 110000 },
+          { id: "ledmetal", name: "H Genuine Accessories · LED 메탈 패키지", price: 540000 },
+          { id: "airpurifier", name: "H Genuine Accessories · 빌트인 공기청정기 2.0", price: 590000 },
+          { id: "blackroof", name: "H Genuine Accessories · 블랙 루프 스킨", price: 370000, excludes: ["sunroof", "smartvision"] },
+          { id: "film1", name: "H Genuine Accessories · 차량 보호 필름 1", price: 410000 },
+          { id: "film2", name: "H Genuine Accessories · 차량 보호 필름 2", price: 400000 }
+        ]
+      }
+    }
+  }
+
 };
