@@ -2520,4 +2520,160 @@ window.CAR_DATA = {
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI TUCSON / TUCSON Hybrid
+     현대자동차 공식 홈페이지 2026-08-01 가격표 기준
+     ========================================================= */
+  tucson: {
+    brand: "HYUNDAI",
+    name: "TUCSON",
+    displayName: "투싼",
+    year: "2026년 8월 1일 현대자동차 공식 가격표 기준",
+    type: "준중형 SUV",
+    image: "tucson.png",
+
+    engineHelp:
+      "스마트스트림 가솔린 1.6 터보와 1.6 터보 하이브리드를 선택할 수 있습니다. N Line도 동일 화면에서 선택합니다.",
+    trimHelp:
+      "현대자동차 공식 홈페이지의 Modern / Premium / H-Pick / Inspiration / N Line 판매구조를 반영합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"gas16t", name:"가솔린 1.6 터보", price:0, sub:"스마트스트림 가솔린 1.6 터보 · 7단 DCT" },
+      { id:"hev16t", name:"Hybrid 1.6 터보", price:0, sub:"1.6 터보 하이브리드 · 시스템 최고출력 235PS · 6단 자동변속기" }
+    ],
+
+    drivesByEngine: {
+      gas16t: [
+        { id:"2wd", name:"2WD", price:0, sub:"전륜구동" },
+        { id:"htrac", name:"HTRAC", price:2000000, sub:"전자식 AWD · 험로주행모드" }
+      ],
+      hev16t: [
+        { id:"2wd", name:"2WD", price:0, sub:"하이브리드 전륜구동" },
+        { id:"htrac", name:"HTRAC", price:2230000, sub:"하이브리드 전자식 AWD · 험로주행모드" }
+      ]
+    },
+
+    seats: [
+      { id:"5", name:"5인승", price:0, sub:"기본" }
+    ],
+
+    trimsByEngine: {
+      gas16t: [
+        { id:"modern", name:"Modern", price:28440000, sub:"현대닷컴 2026-08-01 공식가격" },
+        { id:"premium", name:"Premium", price:31120000, sub:"Modern 기본품목 포함" },
+        { id:"hpick", name:"H-Pick", price:32000000, sub:"고객 선호 안전·편의사양 구성" },
+        { id:"inspiration", name:"Inspiration", price:34540000, sub:"상위 편의·디자인 사양" },
+        { id:"nline", name:"N Line", price:35400000, sub:"N Line 전용 외장·내장 및 19인치 휠" }
+      ],
+      hev16t: [
+        { id:"modern", name:"Modern", price:33180000, sub:"세제혜택 후 공식 시작가격" },
+        { id:"premium", name:"Premium", price:35660000, sub:"세제혜택 후" },
+        { id:"hpick", name:"H-Pick", price:36500000, sub:"세제혜택 후" },
+        { id:"inspiration", name:"Inspiration", price:39180000, sub:"세제혜택 후" },
+        { id:"nline", name:"N Line", price:39830000, sub:"N Line Hybrid · 세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id:"creamy_white", name:"크리미 화이트 펄", price:0, color:"#f1f0e9" },
+      { id:"shimmering_silver", name:"쉬머링 실버 메탈릭", price:0, color:"#a6a8aa" },
+      { id:"amazon_gray", name:"아마존 그레이 메탈릭", price:0, color:"#545a57" },
+      { id:"ecotronic_gray", name:"에코트로닉 그레이 펄", price:0, color:"#626669" },
+      { id:"phantom_black", name:"팬텀 블랙 펄", price:0, color:"#111214" }
+    ],
+
+    optionsByEngine: {
+      gas16t: {
+        modern: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"smartsense", name:"현대 스마트센스", price:790000 },
+          { id:"comfort1", name:"컴포트Ⅰ", price:590000 },
+          { id:"exterior1", name:"익스테리어 디자인Ⅰ", price:690000 }
+        ],
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
+          { id:"parking1", name:"파킹어시스트Ⅰ(가솔린)", price:1230000 },
+          { id:"comfort2", name:"컴포트Ⅱ", price:590000 }
+        ],
+        hpick: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
+          { id:"parking1", name:"파킹어시스트Ⅰ(가솔린)", price:1230000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"blackexterior", name:"블랙 익스테리어", price:690000 }
+        ],
+        nline: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 }
+        ]
+      },
+
+      hev16t: {
+        modern: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"smartsense", name:"현대 스마트센스", price:790000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:400000, excludes:["black_sidestep"] },
+          { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드 스텝", price:450000, excludes:["sidestep"] }
+        ],
+        premium: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
+          { id:"parking1", name:"파킹어시스트Ⅰ", price:1230000 },
+          { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:400000, excludes:["black_sidestep"] },
+          { id:"black_sidestep", name:"H Genuine Accessories · 블랙 사이드 스텝", price:450000, excludes:["sidestep"] }
+        ],
+        hpick: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
+          { id:"parking1", name:"파킹어시스트Ⅰ", price:1230000 },
+          { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        inspiration: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"blackexterior", name:"블랙 익스테리어", price:690000 },
+          { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        nline: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
+          { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ]
+      }
+    }
+  }
+
 };
