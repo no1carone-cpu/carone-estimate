@@ -595,68 +595,11 @@
       .choice.active { padding: 14px; }
     }
   
-
-    .estimate-contact-btn{border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:16px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff;font-size:15px;font-weight:900;text-decoration:none;box-shadow:0 8px 22px rgba(75,37,134,.20)}
-    .estimate-nav{grid-column:1/-1;width:100%;margin:0 0 -4px}.back-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid #e6e0ed;border-radius:11px;background:#fff;color:var(--purple);font-size:12px;font-weight:850;text-decoration:none}.arrow-back{font-size:19px}
-    .inquiry-modal{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:18px}.inquiry-modal.open{display:flex}.inquiry-backdrop{position:absolute;inset:0;background:rgba(20,15,27,.58);backdrop-filter:blur(5px)}
-    .inquiry-panel{position:relative;z-index:2;width:min(520px,100%);max-height:calc(100vh - 36px);overflow-y:auto;padding:27px;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(20,15,27,.28)}
-    .inquiry-close{position:absolute;top:14px;right:15px;width:34px;height:34px;border:0;border-radius:10px;background:#f5f2f7;color:#746b7c;font-size:23px;cursor:pointer}
-    .inquiry-kicker{margin-bottom:6px;color:var(--purple);font-size:10px;font-weight:950;letter-spacing:.09em}.inquiry-panel h2{margin:0;padding-right:35px;font-size:25px}.inquiry-desc{margin:9px 0 18px;color:var(--muted);font-size:12px;line-height:1.65}
-    .inquiry-estimate-preview{margin-bottom:20px;padding:15px 16px;border-radius:14px;background:linear-gradient(135deg,var(--purple-soft),#fbfaff);border:1px solid #e4dced;color:#5c5364;font-size:11px;line-height:1.7}.inquiry-estimate-preview strong{display:block;margin-bottom:4px;color:var(--ink);font-size:14px}
-    .form-label{display:block;margin:14px 0 7px;color:#4c4553;font-size:12px;font-weight:850}.form-label span{color:#d84f62}.form-input{width:100%;height:48px;padding:0 13px;border:1px solid #ddd7e1;border-radius:12px;background:#fff;color:var(--ink);outline:none;font-size:13px}
-    .privacy-box{margin-top:18px;padding:13px 14px;border-radius:12px;background:#f8f8fa;border:1px solid #e9e6ec}.privacy-box strong{font-size:11px}.privacy-box p{margin:6px 0 0;color:#7d7682;font-size:10px;line-height:1.65}
-    .privacy-check{display:flex;align-items:flex-start;gap:9px;margin-top:13px;color:#5e5665;font-size:11px;line-height:1.5}.form-error{min-height:17px;margin-top:10px;color:#d34c5e;font-size:10px;font-weight:750}
-    .submit-inquiry-btn{width:100%;min-height:52px;margin-top:4px;border:0;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff;font-size:14px;font-weight:900;cursor:pointer}.submit-inquiry-btn:disabled{opacity:.55;cursor:wait}
-    .form-success{padding:22px 10px 6px;text-align:center}.success-icon{width:45px;height:45px;margin:0 auto 10px;display:grid;place-items:center;border-radius:50%;background:var(--mint-soft);color:#087f7c;font-size:22px;font-weight:950}.form-success strong{display:block;font-size:16px}.form-success p{margin:6px 0 0;color:var(--muted);font-size:11px}
-
-
-    .pin-helper {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.55;
-    }
-
-    .pin-helper strong {
-      color: var(--purple);
-    }
-
-    .inquiry-code-box {
-      margin-top: 17px;
-      padding: 14px;
-      border-radius: 13px;
-      background: var(--purple-soft);
-      border: 1px solid #dfd4ec;
-    }
-
-    .inquiry-code-box span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      margin-bottom: 4px;
-    }
-
-    .inquiry-code-box strong {
-      display: block;
-      color: var(--purple);
-      font-size: 18px;
-      letter-spacing: .02em;
-      word-break: break-all;
-    }
-
-    .success-notice {
-      margin-top: 11px !important;
-      line-height: 1.65;
-    }
-
   </style>
 </head>
 <body>
 
 <main class="page" id="estimatePage">
-  <div class="estimate-nav">
-    <a href="cars.html" class="back-btn"><span class="arrow-back">‹</span> 차량 다시 선택하기</a>
-  </div>
 
   <div class="left">
 
@@ -673,15 +616,10 @@
         <img
           id="vehicleImage"
           class="vehicle-image"
+          src=""
           alt=""
-          onload="
-            this.style.display='block';
-            document.getElementById('vehiclePlaceholder').style.display='none';
-          "
-          onerror="
-            this.style.display='none';
-            document.getElementById('vehiclePlaceholder').style.display='block';
-          "
+          onload="document.getElementById('vehiclePlaceholder').style.display='none';"
+          onerror="this.style.display='none'; document.getElementById('vehiclePlaceholder').style.display='block';"
         >
         <div id="vehiclePlaceholder" class="vehicle-placeholder">
           <span class="car-icon">🚙</span>
@@ -817,9 +755,6 @@
         <div class="grand-total-price" id="grandTotal"></div>
         <div class="grand-total-caption">탁송료 · 공채 · 번호판 등 기타 등록 부대비용은 포함되지 않습니다.</div>
       </div>
-      <button type="button" class="estimate-contact-btn" id="openInquiryBtn">
-        이 견적으로 문의하기
-      </button>
     </div>
 
     <div class="summary-notice">
@@ -835,94 +770,8 @@
   <p>주소의 car 값이 올바른지 확인해주세요.<br>예: estimate.html?car=sorento</p>
 </div>
 
-
-<div class="inquiry-modal" id="inquiryModal" aria-hidden="true">
-  <div class="inquiry-backdrop" id="inquiryBackdrop"></div>
-  <div class="inquiry-panel" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
-    <button type="button" class="inquiry-close" id="inquiryClose" aria-label="닫기">×</button>
-    <div class="inquiry-kicker">CARONE ESTIMATE INQUIRY</div>
-    <h2 id="inquiryTitle">이 견적으로 문의하기</h2>
-    <p class="inquiry-desc">선택하신 견적 정보와 함께 연락처를 남겨주시면 카원 담당자가 확인 후 연락드립니다.</p>
-    <div class="inquiry-estimate-preview" id="inquiryEstimatePreview"></div>
-
-    <form id="estimateInquiryForm" novalidate>
-      <label class="form-label" for="inquiryPhone">전화번호 <span>*</span></label>
-      <input id="inquiryPhone" class="form-input" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678" maxlength="20" required>
-
-      <label class="form-label" for="inquiryRegion">지역 <span>*</span></label>
-      <input id="inquiryRegion" class="form-input" type="text" placeholder="예: 서울 강남구" maxlength="50" required>
-
-      <label class="form-label" for="inquiryPin">문의 조회 비밀번호 <span>*</span></label>
-      <input
-        id="inquiryPin"
-        class="form-input"
-        type="password"
-        inputmode="numeric"
-        autocomplete="new-password"
-        placeholder="숫자 4~6자리"
-        minlength="4"
-        maxlength="6"
-        required
-      >
-
-      <label class="form-label" for="inquiryPinConfirm">조회 비밀번호 확인 <span>*</span></label>
-      <input
-        id="inquiryPinConfirm"
-        class="form-input"
-        type="password"
-        inputmode="numeric"
-        autocomplete="new-password"
-        placeholder="한 번 더 입력해주세요"
-        minlength="4"
-        maxlength="6"
-        required
-      >
-
-      <div class="pin-helper">
-        문의 답변을 확인할 때 <strong>문의번호 + 조회 비밀번호</strong>가 필요합니다.
-        비밀번호는 원문으로 저장되지 않습니다.
-      </div>
-
-      <div class="privacy-box">
-        <strong>개인정보 수집 및 이용 안내</strong>
-        <p>
-          목적: 신차 견적 문의 접수, 상담 및 고객 전용 답변 조회<br>
-          항목: 전화번호, 지역, 선택 차량 및 견적 정보<br>
-          조회 비밀번호는 원문이 아닌 검증용 해시 형태로 저장됩니다.
-        </p>
-      </div>
-
-      <label class="privacy-check">
-        <input type="checkbox" id="privacyAgreed">
-        <span>개인정보 수집 및 이용에 동의합니다.</span>
-      </label>
-
-      <div class="form-error" id="formError"></div>
-
-      <button type="submit" class="submit-inquiry-btn" id="submitInquiryBtn">견적 문의 접수</button>
-
-      <div class="form-success" id="formSuccess" style="display:none;">
-        <div class="success-icon">✓</div>
-        <strong>견적 문의가 접수되었습니다.</strong>
-        <p>카원 담당자가 확인 후 답변을 남겨드립니다.</p>
-
-        <div class="inquiry-code-box">
-          <span>문의번호</span>
-          <strong id="issuedInquiryCode">-</strong>
-        </div>
-
-        <p class="success-notice">
-          문의번호와 방금 설정한 조회 비밀번호는<br>
-          고객 전용 답변 확인에 필요합니다. 꼭 보관해주세요.
-        </p>
-      </div>
-    </form>
-  </div>
-</div>
-
 <div class="toast" id="toast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/cars.js"></script>
 <script src="js/estimate.js"></script>
 
