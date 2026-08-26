@@ -3440,5 +3440,94 @@ electrified_g80:{
   ]}},
   evEngineIds:["ev"],
   evAcquisitionTaxReduction:1400000
+},
+g70:{
+ brand:"GENESIS",name:"G70",displayName:"G70",year:"2026-08 Genesis 공식 BTO 기준",type:"럭셔리 스포츠 세단",image:"g70.png",
+ engineHelp:"제네시스 공식 BTO 기준 가솔린 2.5 터보 / 가솔린 3.3 터보를 선택합니다.",
+ trimHelp:"기본가격 45,000,000원(2.5T 2WD 기본모델)에서 엔진·구동·스포츠 패키지·선택품목을 더하는 BTO 구조입니다.",
+ tax:{rate:0.07,vatIncluded:true},
+ engines:[{id:"gas25",name:"가솔린 2.5 터보",price:0,sub:"2,497cc · 304PS"},{id:"gas33",name:"가솔린 3.3 터보",price:4950000,sub:"3,342cc · 370PS · +4,950,000원"}],
+ drivesByEngine:{gas25:[{id:"2wd",name:"2WD (후륜)",price:0,sub:"기본"},{id:"awd",name:"AWD",price:2470000,sub:"+2,470,000원"}],gas33:[{id:"2wd",name:"2WD (후륜)",price:0,sub:"기본"},{id:"awd",name:"AWD",price:2470000,sub:"+2,470,000원"}]},
+ seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
+ trimsByEngine:{gas25:[{id:"base",name:"기본모델",price:45000000,sub:"18인치 휠 기본"},{id:"sport",name:"스포츠 패키지",price:48560000,sub:"+3,560,000원"}],gas33:[{id:"base",name:"기본모델",price:45000000,sub:"3.3T 추가금은 엔진 선택에서 반영"},{id:"sport",name:"스포츠 패키지",price:48560000,sub:"+3,560,000원"}]},
+ colors:[{id:"vatna_gray",name:"바트나 그레이",price:0,color:"#6d7070"},{id:"uyuni_white",name:"우유니 화이트",price:0,color:"#f1f1ed"},{id:"vik_black",name:"비크 블랙",price:0,color:"#111214"}],
+ optionsByEngine:{
+  gas25:{
+   base:[{id:"popular",name:"파퓰러 패키지",price:4100000},{id:"sunroof",name:"와이드 선루프",price:790000},{id:"ecs",name:"전자제어 서스펜션",price:990000},{id:"convenience",name:"컨비니언스 패키지",price:1290000,excludes:["popular"]},{id:"hightech",name:"하이테크 패키지",price:1580000,excludes:["popular"]},{id:"lexicon",name:"렉시콘 사운드 패키지",price:1190000},{id:"drive",name:"드라이빙 어시스턴스 패키지",price:1680000,excludes:["popular"]},{id:"interior",name:"천연가죽/시그니쳐 디자인 셀렉션",price:2370000}],
+   sport:[{id:"popular",name:"파퓰러 패키지",price:4100000},{id:"sunroof",name:"와이드 선루프",price:790000},{id:"convenience",name:"컨비니언스 패키지",price:1290000,excludes:["popular"]},{id:"hightech",name:"하이테크 패키지",price:1580000,excludes:["popular"]},{id:"lexicon",name:"렉시콘 사운드 패키지",price:1190000},{id:"drive",name:"드라이빙 어시스턴스 패키지",price:1680000,excludes:["popular"]},{id:"interior",name:"천연가죽/시그니쳐 디자인 셀렉션",price:2370000}]
+  },
+  gas33:{
+   base:[{id:"popular",name:"파퓰러 패키지",price:4100000},{id:"sunroof",name:"와이드 선루프",price:790000},{id:"convenience",name:"컨비니언스 패키지",price:1290000,excludes:["popular"]},{id:"hightech",name:"하이테크 패키지",price:1580000,excludes:["popular"]},{id:"lexicon",name:"렉시콘 사운드 패키지",price:1190000},{id:"drive",name:"드라이빙 어시스턴스 패키지",price:1680000,excludes:["popular"]},{id:"interior",name:"천연가죽/시그니쳐 디자인 셀렉션",price:2370000}],
+   sport:[{id:"popular",name:"파퓰러 패키지",price:4100000},{id:"sunroof",name:"와이드 선루프",price:790000},{id:"convenience",name:"컨비니언스 패키지",price:1290000,excludes:["popular"]},{id:"hightech",name:"하이테크 패키지",price:1580000,excludes:["popular"]},{id:"lexicon",name:"렉시콘 사운드 패키지",price:1190000},{id:"drive",name:"드라이빙 어시스턴스 패키지",price:1680000,excludes:["popular"]},{id:"interior",name:"천연가죽/시그니쳐 디자인 셀렉션",price:2370000}]
+  }
+ }
+},
+g90:{
+  brand:"GENESIS",
+  name:"G90",
+  displayName:"G90",
+  year:"2026-08 Genesis 공식 BTO 기준",
+  type:"플래그십 럭셔리 세단",
+  image:"g90.png",
+  engineHelp:"가솔린 3.5 터보 또는 가솔린 3.5 터보 48V 일렉트릭 슈퍼차저를 선택합니다.",
+  trimHelp:"제네시스 공식 BTO의 기본가격 97,480,000원을 기준으로 엔진·구동·휠·시트·패키지를 더하는 구조입니다. Long Wheel Base는 별도 모델이라 이번 G90 일반형에는 포함하지 않았습니다.",
+  tax:{rate:0.07,vatIncluded:true},
+
+  engines:[
+    {id:"gas35",name:"가솔린 3.5 터보",price:0,sub:"3,470cc · 380PS"},
+    {id:"gas35esc",name:"가솔린 3.5 터보 48V 일렉트릭 슈퍼차저",price:6000000,sub:"3,470cc · 415PS · +6,000,000원"}
+  ],
+
+  drivesByEngine:{
+    gas35:[
+      {id:"2wd",name:"2WD",price:0,sub:"후륜구동 · 기본"},
+      {id:"awd",name:"AWD",price:3500000,sub:"+3,500,000원"}
+    ],
+    gas35esc:[
+      {id:"2wd",name:"2WD",price:0,sub:"후륜구동 · 기본"},
+      {id:"awd",name:"AWD",price:3500000,sub:"+3,500,000원"}
+    ]
+  },
+
+  seats:[
+    {id:"5",name:"스탠다드 시트 (5인승)",price:0,sub:"기본"},
+    {id:"4",name:"퍼스트 클래스 VIP 시트 (4인승)",price:3400000,sub:"+3,400,000원"}
+  ],
+
+  trimsByEngine:{
+    gas35:[{id:"base",name:"기본 모델",price:97480000,sub:"개별소비세 5.0% 기준"}],
+    gas35esc:[{id:"base",name:"기본 모델",price:97480000,sub:"엔진 추가금은 엔진 선택에서 반영"}]
+  },
+
+  colors:[
+    {id:"uyuni",name:"우유니 화이트",price:0,color:"#f1f1ed"},
+    {id:"vik",name:"비크 블랙",price:0,color:"#111214"},
+    {id:"maui",name:"마우이 블랙",price:0,color:"#151516"}
+  ],
+
+  optionsByEngine:{
+    gas35:{base:[
+      {id:"wheel21",name:"21인치 다이아몬드 컷팅 휠",price:1200000},
+      {id:"signature",name:"시그니쳐 디자인 셀렉션",price:5500000},
+      {id:"popular",name:"파퓰러 컬렉션",price:5600000,note:"앞좌석 컴포트 + 뒷좌석 컴포트 I"},
+      {id:"popular_rear2",name:"파퓰러 컬렉션 + 뒷좌석 컴포트 패키지 II",price:8000000,excludes:["popular"]},
+      {id:"premium",name:"프리미엄 컬렉션",price:17100000,excludes:["popular","popular_rear2"]},
+      {id:"prestige",name:"프레스티지 컬렉션",price:23000000,excludes:["popular","popular_rear2","premium"]},
+      {id:"rearcomfort1",name:"뒷좌석 컴포트 패키지 I",price:3500000},
+      {id:"airsuspension",name:"멀티 챔버 에어 서스펜션",price:3500000},
+      {id:"builtincam",name:"빌트인 캠 패키지",price:800000}
+    ]},
+    gas35esc:{base:[
+      {id:"wheel21",name:"21인치 다이아몬드 컷팅 휠",price:1200000},
+      {id:"signature",name:"시그니쳐 디자인 셀렉션",price:5500000},
+      {id:"popular",name:"파퓰러 컬렉션",price:5600000,note:"앞좌석 컴포트 + 뒷좌석 컴포트 I"},
+      {id:"popular_rear2",name:"파퓰러 컬렉션 + 뒷좌석 컴포트 패키지 II",price:8000000,excludes:["popular"]},
+      {id:"premium",name:"프리미엄 컬렉션",price:17100000,excludes:["popular","popular_rear2"]},
+      {id:"prestige",name:"프레스티지 컬렉션",price:23000000,excludes:["popular","popular_rear2","premium"]},
+      {id:"rearcomfort1",name:"뒷좌석 컴포트 패키지 I",price:3500000},
+      {id:"airsuspension",name:"멀티 챔버 에어 서스펜션",price:3500000},
+      {id:"builtincam",name:"빌트인 캠 패키지",price:800000}
+    ]}
+  }
 }
 };
