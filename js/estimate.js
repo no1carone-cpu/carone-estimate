@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -269,6 +269,14 @@ function toast(message) {
   }, 2400);
 }
 
+
+function normalizeEstimateNavigation() {
+  const back = $("backToCars");
+  if (back) {
+    back.href = new URL("cars.html", window.location.href).href;
+  }
+}
+
 function loadVehicleInfo() {
   document.title = `카원 | ${CAR.displayName} 공식견적`;
 
@@ -286,8 +294,19 @@ function loadVehicleInfo() {
   $("vehiclePlaceholderTitle").textContent = `${CAR.displayName} 차량 이미지 영역`;
 
   const image = $("vehicleImage");
+  const placeholder = $("vehiclePlaceholder");
+
   image.alt = CAR.displayName;
-  image.src = CAR.image || "";
+  image.style.display = "block";
+  if (placeholder) placeholder.style.display = "block";
+
+  /*
+    cars.html과 estimate.html은 같은 저장소 루트에 있으므로
+    CAR.image의 루트 상대 파일명을 그대로 사용합니다.
+    이전 이미지 로딩 실패로 display:none이 남아 있어도 매번 복구합니다.
+  */
+  const imagePath = String(CAR.image || "").replace(/^\.\//, "");
+  image.src = imagePath;
 
   const hiddenSections = new Set(CAR.hiddenSections || []);
 
@@ -611,16 +630,8 @@ function calculateTax(total) {
     Array.isArray(CAR.evEngineIds) &&
     CAR.evEngineIds.includes(state.engine);
 
-  const isEcoTaxVehicle =
-    Array.isArray(CAR.ecoTaxEngineIds) &&
-    CAR.ecoTaxEngineIds.includes(state.engine);
-
   const taxReduction =
-    isEV
-      ? (CAR.evAcquisitionTaxReduction || 0)
-      : isEcoTaxVehicle
-        ? (CAR.ecoAcquisitionTaxReduction || 0)
-        : 0;
+    isEV ? (CAR.evAcquisitionTaxReduction || 0) : 0;
 
   const acquisitionTax =
     Math.max(0, rawAcquisitionTax - taxReduction);
@@ -971,3 +982,5 @@ window.addEventListener("load", () => {
   renderAll();
   setupInquiryUI();
 });
+
+normalizeEstimateNavigation();
