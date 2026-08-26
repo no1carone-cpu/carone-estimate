@@ -3939,4 +3939,209 @@ g90:{
     }
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI 2027 NEXO
+     현대자동차 공식 가격표 2026-07-14 출시 / 2026-08 현재 기준
+     ========================================================= */
+  nexo: {
+    brand: "HYUNDAI",
+    name: "NEXO",
+    displayName: "디 올 뉴 넥쏘",
+    year: "2027 NEXO · 현대자동차 공식 가격표 기준",
+    type: "수소전기 SUV",
+    image: "images/hyundai/nexo.png",
+
+    engineHelp:
+      "150kW 수소연료전지 시스템과 2WD가 기본입니다. 국비·지자체 수소차 보조금은 지역과 시점에 따라 달라지므로 자동 차감하지 않습니다.",
+
+    trimHelp:
+      "현대자동차 2027 NEXO 공식 가격표의 세제혜택 후 판매가격과 트림별 공식 선택품목을 반영합니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "fcev",
+        name: "수소전기 150kW",
+        price: 0,
+        sub: "150kW 구동모터 · 수소연료전지 시스템"
+      }
+    ],
+
+    drivesByEngine: {
+      fcev: [
+        {
+          id: "2wd",
+          name: "2WD",
+          price: 0,
+          sub: "전륜구동 · 기본"
+        }
+      ]
+    },
+
+    seats: [
+      {
+        id: "5",
+        name: "5인승",
+        price: 0,
+        sub: "기본"
+      }
+    ],
+
+    trimsByEngine: {
+      fcev: [
+        {
+          id: "exclusive",
+          name: "익스클루시브",
+          price: 76470000,
+          sub: "세제혜택 후 · 세제혜택 전 80,447,000원"
+        },
+        {
+          id: "exclusive_special",
+          name: "익스클루시브 스페셜",
+          price: 79370000,
+          sub: "세제혜택 후 · 세제혜택 전 83,497,000원"
+        },
+        {
+          id: "prestige",
+          name: "프레스티지",
+          price: 83790000,
+          sub: "세제혜택 후 · 세제혜택 전 88,147,000원"
+        }
+      ]
+    },
+
+    colors: [
+      {
+        id: "ecotronic_gray",
+        name: "에코트로닉 그레이 펄",
+        price: 0,
+        color: "#62676a"
+      },
+      {
+        id: "creamy_white",
+        name: "크리미 화이트 펄",
+        price: 0,
+        color: "#f2f1eb"
+      },
+      {
+        id: "goyo_copper",
+        name: "고요 카퍼 펄",
+        price: 0,
+        color: "#8a6758"
+      },
+      {
+        id: "amazon_gray",
+        name: "아마존 그레이 메탈릭",
+        price: 0,
+        color: "#5a605e"
+      },
+      {
+        id: "phantom_black",
+        name: "팬텀 블랙 펄",
+        price: 0,
+        color: "#111214"
+      },
+      {
+        id: "ocean_indigo_matte",
+        name: "오션 인디고 매트",
+        price: 0,
+        color: "#485761"
+      }
+    ],
+
+    optionsByEngine: {
+      fcev: {
+        exclusive: [
+          {
+            id: "builtincam",
+            name: "빌트인 캠 2 Plus + 증강현실 내비게이션",
+            price: 600000
+          },
+          {
+            id: "smartsense",
+            name: "현대 스마트센스",
+            price: 680000
+          },
+          {
+            id: "comfortplus",
+            name: "컴포트 플러스",
+            price: 1530000
+          }
+        ],
+
+        exclusive_special: [
+          {
+            id: "builtincam",
+            name: "빌트인 캠 2 Plus + 증강현실 내비게이션",
+            price: 600000
+          },
+          {
+            id: "v2l",
+            name: "실내/외 V2L",
+            price: 850000
+          },
+          {
+            id: "parking",
+            name: "파킹 어시스트",
+            price: 950000
+          },
+          {
+            id: "bno",
+            name: "Audio by BANG & OLUFSEN 사운드",
+            price: 1150000
+          },
+          {
+            id: "wheel19",
+            name: "19인치 알로이 휠 & 타이어",
+            price: 250000
+          }
+        ],
+
+        prestige: [
+          {
+            id: "builtincam",
+            name: "빌트인 캠 2 Plus + 증강현실 내비게이션",
+            price: 600000
+          },
+          {
+            id: "v2l",
+            name: "실내/외 V2L",
+            price: 850000
+          },
+          {
+            id: "visionroof",
+            name: "비전 루프",
+            price: 900000
+          },
+          {
+            id: "digital_side",
+            name: "디지털 사이드 미러",
+            price: 1380000
+          },
+          {
+            id: "camera",
+            name: "카메라 패키지",
+            price: 750000,
+            note: "디지털 센터 미러 + 운전자 모니터링 시스템"
+          },
+          {
+            id: "rear_entertainment",
+            name: "H Genuine Accessories · 후석 스마트 엔터테인먼트 시스템",
+            price: 2770000
+          }
+        ]
+      }
+    },
+
+    /* 수소전기차 취득세 감면 */
+    ecoTaxEngineIds: ["fcev"],
+    ecoAcquisitionTaxReduction: 1400000
+  }
+
 };

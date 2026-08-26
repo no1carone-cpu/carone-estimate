@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -611,8 +611,16 @@ function calculateTax(total) {
     Array.isArray(CAR.evEngineIds) &&
     CAR.evEngineIds.includes(state.engine);
 
+  const isEcoTaxVehicle =
+    Array.isArray(CAR.ecoTaxEngineIds) &&
+    CAR.ecoTaxEngineIds.includes(state.engine);
+
   const taxReduction =
-    isEV ? (CAR.evAcquisitionTaxReduction || 0) : 0;
+    isEV
+      ? (CAR.evAcquisitionTaxReduction || 0)
+      : isEcoTaxVehicle
+        ? (CAR.ecoAcquisitionTaxReduction || 0)
+        : 0;
 
   const acquisitionTax =
     Math.max(0, rawAcquisitionTax - taxReduction);
