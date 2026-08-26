@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>카원 신차견적 | 차량 선택</title>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>카원 신차견적 | 차량 선택</title>
+<style>
     * { box-sizing: border-box; }
 
     :root {
@@ -477,621 +477,46 @@
   </style>
 </head>
 <body>
-
 <main class="wrap">
-
-  <section class="intro">
-    <div class="kicker">CARONE SMART ESTIMATE</div>
-    <h1>어떤 차량을<br>알아보고 계신가요?</h1>
-    <p>
+<section class="intro">
+<div class="kicker">CARONE SMART ESTIMATE</div>
+<h1>어떤 차량을<br/>알아보고 계신가요?</h1>
+<p>
       원하는 현대·제네시스·기아 차량을 선택하면 트림과 옵션을 직접 구성하고
       카원 계약 혜택까지 한 번에 확인할 수 있습니다.
     </p>
-  </section>
-
-  <div class="toolbar">
-    <div class="tabs" aria-label="브랜드 필터">
-      <button class="tab active" data-filter="all">전체</button>
-      <button class="tab" data-filter="hyundai">현대</button>
-      <button class="tab" data-filter="kia">기아</button>
+</section>
+<div class="toolbar">
+<div aria-label="브랜드 필터" class="tabs">
+<button class="tab active" data-filter="all">전체</button>
+<button class="tab" data-filter="hyundai">현대</button>
+<button class="tab" data-filter="kia">기아</button>
+</div>
+<div class="count">
+<span id="visibleCount">39</span>개 차량
     </div>
-
-    <div class="count">
-      <span id="visibleCount">39</span>개 차량
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="section-heading">
-      <h2 id="sectionTitle">현대 · 제네시스 · 기아 차량</h2>
-      <span>차량을 선택해주세요</span>
-    </div>
-
-    <div class="car-grid" id="carGrid">
-
-      <article class="car-card" data-brand="hyundai" data-name="디 올-뉴 G80" data-ready="true" data-url="estimate.html?car=g80">
-        <div class="image-box">
-          <img class="car-img" src="g80.png" alt="제네시스 G80">
-          <div class="placeholder"><span class="icon">🚘</span><small>G80</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">디 올-뉴 G80</h3>
-          <div class="car-type">럭셔리 대형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-      <article class="car-card" data-brand="genesis" data-name="G70" data-ready="true" data-url="estimate.html?car=g70">
-        <div class="image-box">
-          <img class="car-img" src="g70.png" alt="제네시스 G70">
-          <div class="placeholder"><span class="icon">🚘</span><small>G70</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">G70</h3>
-          <div class="car-type">럭셔리 스포츠 세단 · 2.5T · 3.3T</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="genesis" data-name="G90" data-ready="true" data-url="estimate.html?car=g90">
-        <div class="image-box">
-          <img class="car-img" src="g90.png" alt="제네시스 G90">
-          <div class="placeholder"><span class="icon">🚘</span><small>G90</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">G90</h3>
-          <div class="car-type">플래그십 럭셔리 세단 · 3.5T · 48V e-S/C</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="genesis" data-name="GV70" data-ready="true" data-url="estimate.html?car=gv70">
-        <div class="image-box">
-          <img class="car-img" src="gv70.png" alt="제네시스 GV70">
-          <div class="placeholder"><span class="icon">🚙</span><small>GV70</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">GV70</h3>
-          <div class="car-type">럭셔리 중형 SUV · 2.5T · 3.5T</div>
-          <div class="card-bottom">
-            <span class="link-text">견적 만들기</span>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="genesis" data-name="GV80" data-ready="true" data-url="estimate.html?car=gv80">
-        <div class="image-box">
-          <img class="car-img" src="gv80.png" alt="제네시스 GV80">
-          <div class="placeholder"><span class="icon">🚙</span><small>GV80</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">GV80</h3>
-          <div class="car-type">럭셔리 대형 SUV · 2.5T · 3.5T · 5/6/7인승</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="더 뉴 그랜저 / Hybrid" data-ready="true" data-url="estimate.html?car=grandeur">
-        <div class="image-box">
-          <img class="car-img" src="grandeur.png" alt="현대 더 뉴 그랜저">
-          <div class="placeholder"><span class="icon">🚘</span><small>더 뉴 그랜저</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">더 뉴 그랜저 / Hybrid</h3>
-          <div class="car-type">준대형 세단 · 가솔린 · LPG · Hybrid</div>
-          <div class="card-bottom">
-            <span class="link-text">견적 만들기</span>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="쏘나타 디 엣지 / Hybrid" data-ready="true" data-url="estimate.html?car=sonata">
-        <div class="image-box">
-          <img class="car-img" src="sonata.png" alt="현대 쏘나타 디 엣지">
-          <div class="placeholder"><span class="icon">🚘</span><small>쏘나타 디 엣지</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">쏘나타 디 엣지 / Hybrid</h3>
-          <div class="car-type">중형 세단 · 가솔린 · LPi · N Line · Hybrid</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="디 올 뉴 팰리세이드 / Hybrid" data-ready="true" data-url="estimate.html?car=palisade">
-        <div class="image-box">
-          <img class="car-img" src="palisade.png" alt="현대 디 올 뉴 팰리세이드">
-          <div class="placeholder"><span class="icon">🚙</span><small>디 올 뉴 팰리세이드</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">디 올 뉴 팰리세이드 / Hybrid</h3>
-          <div class="car-type">대형 SUV · 7/9인승 · 가솔린 · Hybrid</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="싼타페 / 싼타페 Hybrid" data-ready="true" data-url="estimate.html?car=santafe">
-        <div class="image-box">
-          <img class="car-img" src="santafe.png" alt="현대 싼타페">
-          <div class="placeholder"><span class="icon">🚙</span><small>싼타페</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">싼타페 / Hybrid</h3>
-          <div class="car-type">중형 SUV · 5/6/7인승 · 가솔린 · Hybrid</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="디 올 뉴 아반떼 / Hybrid" data-ready="true" data-url="estimate.html?car=avante">
-        <div class="image-box">
-          <img class="car-img" src="avante.png" alt="현대 디 올 뉴 아반떼">
-          <div class="placeholder"><span class="icon">🚗</span><small>디 올 뉴 아반떼</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">디 올 뉴 아반떼 / Hybrid</h3>
-          <div class="car-type">준중형 세단 · 가솔린 2.0 · Hybrid 1.6</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="투싼 / 투싼 Hybrid" data-ready="true" data-url="estimate.html?car=tucson">
-        <div class="image-box">
-          <img class="car-img" src="tucson.png" alt="현대 투싼">
-          <div class="placeholder"><span class="icon">🚙</span><small>투싼</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">투싼 / Hybrid</h3>
-          <div class="car-type">준중형 SUV · 가솔린 1.6T · Hybrid · N Line</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="코나 / Hybrid / Electric" data-ready="true" data-url="estimate.html?car=kona">
-        <div class="image-box">
-          <img class="car-img" src="kona.png" alt="현대 코나">
-          <div class="placeholder"><span class="icon">⚡</span><small>코나</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">코나 / Hybrid / Electric</h3>
-          <div class="car-type">소형 SUV · 가솔린 · Hybrid · EV · N Line</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="아이오닉 5" data-ready="true" data-url="estimate.html?car=ioniq5">
-        <div class="image-box">
-          <img class="car-img" src="ioniq5.png" alt="현대 아이오닉 5">
-          <div class="placeholder"><span class="icon">⚡</span><small>IONIQ 5</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">IONIQ 5</h3>
-          <div class="car-type">중형 전기 SUV · Standard · Long Range · N Line</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="아이오닉 6" data-ready="true" data-url="estimate.html?car=ioniq6">
-        <div class="image-box">
-          <img class="car-img" src="ioniq6.png" alt="현대 더 뉴 아이오닉 6">
-          <div class="placeholder"><span class="icon">⚡</span><small>IONIQ 6</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">The new IONIQ 6</h3>
-          <div class="car-type">전기 세단 · Standard · Long Range · N Line</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="아이오닉 9" data-ready="true" data-url="estimate.html?car=ioniq9">
-        <div class="image-box">
-          <img class="car-img" src="ioniq9.png" alt="현대 아이오닉 9">
-          <div class="placeholder"><span class="icon">⚡</span><small>IONIQ 9</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">IONIQ 9</h3>
-          <div class="car-type">대형 전기 SUV · 6/7인승 · 2WD · HTRACⅠ/Ⅱ</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-
-      <article class="car-card" data-brand="genesis" data-name="GV60" data-ready="true" data-url="estimate.html?car=gv60">
-        <div class="image-box">
-          <img class="car-img" src="gv60.png" alt="제네시스 GV60">
-          <div class="placeholder"><span class="icon">⚡</span><small>GV60</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">GV60</h3>
-          <div class="car-type">프리미엄 전기 SUV · AWD · Performance</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="genesis" data-name="Electrified GV70" data-ready="true" data-url="estimate.html?car=electrified_gv70">
-        <div class="image-box">
-          <img class="car-img" src="electrified-gv70.png" alt="제네시스 Electrified GV70">
-          <div class="placeholder"><span class="icon">⚡</span><small>Electrified GV70</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">Electrified GV70</h3>
-          <div class="car-type">프리미엄 전기 SUV · AWD</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="genesis" data-name="Electrified G80" data-ready="true" data-url="estimate.html?car=electrified_g80">
-        <div class="image-box">
-          <img class="car-img" src="electrified-g80.png" alt="제네시스 Electrified G80">
-          <div class="placeholder"><span class="icon">⚡</span><small>Electrified G80</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">GENESIS</div>
-          <h3 class="car-name">Electrified G80</h3>
-          <div class="car-type">프리미엄 전기 세단 · AWD</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="hyundai" data-name="넥쏘" data-ready="true" data-url="estimate.html?car=nexo">
-        <div class="image-box">
-          <img class="car-img" src="nexo.png" alt="현대 디 올 뉴 넥쏘">
-          <div class="placeholder"><span class="icon">💧</span><small>NEXO</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">HYUNDAI</div>
-          <h3 class="car-name">디 올 뉴 넥쏘</h3>
-          <div class="car-type">수소전기 SUV · 150kW · 2WD</div>
-          <div class="card-bottom">
-            <span class="link-text">견적 만들기</span>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="카니발 7인승" data-ready="true" data-url="estimate.html?car=carnival&seat=7">
-        <div class="image-box">
-          <img class="car-img" src="carnival.png" alt="카니발 7인승">
-          <div class="placeholder"><span class="icon">🚐</span><small>카니발 7인승</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">카니발 7인승</h3>
-          <div class="car-type">대형 RV</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="카니발 9인승" data-ready="true" data-url="estimate.html?car=carnival&seat=9">
-        <div class="image-box">
-          <img class="car-img" src="carnival.png" alt="카니발 9인승">
-          <div class="placeholder"><span class="icon">🚐</span><small>카니발 9인승</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">카니발 9인승</h3>
-          <div class="car-type">대형 RV</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="쏘렌토" data-ready="true" data-url="estimate.html?car=sorento">
-        <div class="image-box">
-          <img class="car-img" src="sorento.png" alt="쏘렌토 / 쏘렌토 HEV">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">쏘렌토</h3>
-          <div class="car-type">중형 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="타스만" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/tasman.png" alt="타스만">
-          <div class="placeholder"><span class="icon">🚙</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">타스만</h3>
-          <div class="car-type">픽업</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="K9 3.3" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/k9-33.png" alt="K9 3.3">
-          <div class="placeholder"><span class="icon">🚙</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">K9 3.3</h3>
-          <div class="car-type">대형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="K9 3.8" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/k9-38.png" alt="K9 3.8">
-          <div class="placeholder"><span class="icon">🚙</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">K9 3.8</h3>
-          <div class="car-type">대형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="K8 / K8 HEV" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/k8.png" alt="K8 / K8 HEV">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">K8 / K8 HEV</h3>
-          <div class="car-type">준대형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="K5 / K5 HEV" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/k5.png" alt="K5 / K5 HEV">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">K5 / K5 HEV</h3>
-          <div class="car-type">중형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="K3" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/k3.png" alt="K3">
-          <div class="placeholder"><span class="icon">🚙</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">K3</h3>
-          <div class="car-type">준중형 세단</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="셀토스" data-ready="true" data-url="estimate.html?car=seltos">
-        <div class="image-box">
-          <img class="car-img" src="seltos.png" alt="셀토스">
-          <div class="placeholder"><span class="icon">🚙</span><small>셀토스</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">셀토스</h3>
-          <div class="car-type">소형 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="스포티지" data-ready="true" data-url="estimate.html?car=sportage">
-        <div class="image-box">
-          <img class="car-img" src="sportage.png" alt="스포티지">
-          <div class="placeholder"><span class="icon">🚙</span><small>스포티지</small></div>
-          <span class="status-badge ready">견적 가능</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">스포티지</h3>
-          <div class="car-type">준중형 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 만들기</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="니로 HEV" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/niro-hev.png" alt="니로 HEV">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">니로 HEV</h3>
-          <div class="car-type">하이브리드 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="더 뉴 레이" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ray.png" alt="더 뉴 레이">
-          <div class="placeholder"><span class="icon">🚐</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">더 뉴 레이</h3>
-          <div class="car-type">경형 RV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="레이 EV 라이트" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ray-ev-light.png" alt="레이 EV 라이트">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">레이 EV 라이트</h3>
-          <div class="car-type">경형 전기 RV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="레이 EV 에어" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ray-ev-air.png" alt="레이 EV 에어">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">레이 EV 에어</h3>
-          <div class="car-type">경형 전기 RV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="니로 EV / EV6" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/niro-ev-ev6.png" alt="니로 EV / EV6">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">니로 EV / EV6</h3>
-          <div class="car-type">전기 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="EV3 / EV4" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ev3-ev4.png" alt="EV3 / EV4">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">EV3 / EV4</h3>
-          <div class="car-type">전기차</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="EV9 에어" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ev9-air.png" alt="EV9 에어">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">EV9 에어</h3>
-          <div class="car-type">대형 전기 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="EV9 어스" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ev9-earth.png" alt="EV9 어스">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">EV9 어스</h3>
-          <div class="car-type">대형 전기 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="EV9 GT-LINE" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ev9-gtline.png" alt="EV9 GT-LINE">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">EV9 GT-LINE</h3>
-          <div class="car-type">대형 전기 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-      <article class="car-card" data-brand="kia" data-name="EV9 GT" data-ready="false">
-        <div class="image-box">
-          <img class="car-img" src="images/kia/ev9-gt.png" alt="EV9 GT">
-          <div class="placeholder"><span class="icon">⚡</span><small>차량 이미지 준비중</small></div>
-          <span class="status-badge soon">준비중</span>
-        </div>
-        <div class="card-body">
-          <div class="brand">KIA</div>
-          <h3 class="car-name">EV9 GT</h3>
-          <div class="car-type">고성능 대형 전기 SUV</div>
-          <div class="card-bottom"><span class="link-text">견적 준비중</span><span class="arrow">›</span></div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <div class="footer-note">
+</div>
+<section class="section">
+<div class="section-heading">
+<h2 id="sectionTitle">현대 · 제네시스 · 기아 차량</h2>
+<span>차량을 선택해주세요</span>
+</div>
+<div class="car-grid" id="carGrid">
+<!-- js/cars.js의 CAR_DATA에서 자동 생성됩니다. -->
+</div>
+</section>
+<div class="footer-note">
     차량별 세부 가격과 선택품목은 각 견적 페이지에서 확인할 수 있습니다.
     준비중인 차종은 순차적으로 추가됩니다.
   </div>
 </main>
-
 <div class="toast" id="toast"></div>
 
+
+<script src="js/cars.js"></script>
 <script>
   const tabs = document.querySelectorAll(".tab");
-  const cards = document.querySelectorAll(".car-card");
+  const carGrid = document.getElementById("carGrid");
   const visibleCount = document.getElementById("visibleCount");
   const sectionTitle = document.getElementById("sectionTitle");
   const toastEl = document.getElementById("toast");
@@ -1106,13 +531,210 @@
     }, 2200);
   }
 
+  function normalizeBrand(brand) {
+    const value = String(brand || "").toUpperCase();
+
+    if (value === "KIA") return "kia";
+    if (value === "GENESIS") return "genesis";
+    return "hyundai";
+  }
+
+  function filterBrand(brand) {
+    return normalizeBrand(brand) === "kia" ? "kia" : "hyundai";
+  }
+
+  function getIcon(car) {
+    const text = [
+      car?.displayName,
+      car?.name,
+      car?.type,
+      car?.engineHelp
+    ].filter(Boolean).join(" ").toLowerCase();
+
+    if (text.includes("수소")) return "💧";
+    if (
+      text.includes("electric") ||
+      text.includes("전기") ||
+      text.includes("ev")
+    ) return "⚡";
+    if (text.includes("rv") || text.includes("카니발")) return "🚐";
+    if (text.includes("세단")) return "🚘";
+    return "🚙";
+  }
+
+  function makeCard({
+    key = "",
+    brand = "",
+    title = "",
+    type = "",
+    image = "",
+    ready = true,
+    url = "",
+    icon = ""
+  }) {
+    const article = document.createElement("article");
+
+    article.className = "car-card";
+    article.dataset.brand = normalizeBrand(brand);
+    article.dataset.filterBrand = filterBrand(brand);
+    article.dataset.name = title;
+    article.dataset.ready = ready ? "true" : "false";
+
+    if (ready) {
+      article.dataset.url =
+        url || `estimate.html?car=${encodeURIComponent(key)}`;
+    }
+
+    article.innerHTML = `
+      <div class="image-box">
+        <img class="car-img" src="${image || ""}" alt="${title}">
+        <div class="placeholder">
+          <span class="icon">${icon || "🚙"}</span>
+          <small>${ready ? title : "차량 이미지 준비중"}</small>
+        </div>
+        <span class="status-badge ${ready ? "ready" : "soon"}">
+          ${ready ? "견적 가능" : "준비중"}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <div class="brand">${String(brand || "").toUpperCase()}</div>
+        <h3 class="car-name">${title}</h3>
+        <div class="car-type">${type || ""}</div>
+        <div class="card-bottom">
+          <span class="link-text">${ready ? "견적 만들기" : "견적 준비중"}</span>
+          <span class="arrow">›</span>
+        </div>
+      </div>
+    `;
+
+    article.addEventListener("click", () => {
+      if (ready) {
+        window.location.href = article.dataset.url;
+      } else {
+        showToast(`${title} 견적은 현재 준비중입니다.`);
+      }
+    });
+
+    const img = article.querySelector(".car-img");
+    const placeholder = article.querySelector(".placeholder");
+
+    const showImage = () => {
+      img.style.display = "block";
+      placeholder.style.display = "none";
+    };
+
+    const showPlaceholder = () => {
+      img.style.display = "none";
+      placeholder.style.display = "block";
+    };
+
+    img.addEventListener("load", showImage);
+    img.addEventListener("error", showPlaceholder);
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) showImage();
+      else showPlaceholder();
+    }
+
+    return article;
+  }
+
+  function getOrderedKeys() {
+    const data = window.CAR_DATA || {};
+    const keys = Object.keys(data);
+    const preferred = Array.isArray(window.CAR_DISPLAY_ORDER)
+      ? window.CAR_DISPLAY_ORDER
+      : [];
+
+    return [
+      ...preferred.filter(key => keys.includes(key)),
+      ...keys.filter(key => !preferred.includes(key))
+    ];
+  }
+
+  function renderCatalog() {
+    const data = window.CAR_DATA || {};
+    const meta = window.CAR_CATALOG_META || {};
+    const special = window.CAR_SPECIAL_CARDS || {};
+
+    carGrid.innerHTML = "";
+
+    getOrderedKeys().forEach(key => {
+      const car = data[key];
+      if (!car) return;
+
+      const brand = car.brand || "HYUNDAI";
+      const cardMeta = meta[key] || {};
+
+      if (Array.isArray(special[key]) && special[key].length) {
+        special[key].forEach(item => {
+          carGrid.appendChild(makeCard({
+            key,
+            brand,
+            title: item.title || car.displayName || car.name || key,
+            type: item.type || car.type || "",
+            image: item.image || car.image || "",
+            ready: true,
+            url: item.url || `estimate.html?car=${encodeURIComponent(key)}`,
+            icon: item.icon || getIcon(car)
+          }));
+        });
+        return;
+      }
+
+      carGrid.appendChild(makeCard({
+        key,
+        brand,
+        title:
+          cardMeta.title ||
+          car.catalogTitle ||
+          car.displayName ||
+          car.name ||
+          key,
+        type:
+          cardMeta.type ||
+          car.catalogType ||
+          car.type ||
+          "",
+        image:
+          cardMeta.image ||
+          car.image ||
+          "",
+        ready: true,
+        url:
+          cardMeta.url ||
+          `estimate.html?car=${encodeURIComponent(key)}`,
+        icon:
+          cardMeta.icon ||
+          getIcon(car)
+      }));
+    });
+
+    (window.CAR_PENDING || []).forEach(item => {
+      carGrid.appendChild(makeCard({
+        brand: item.brand,
+        title: item.displayName,
+        type: item.type,
+        image: item.image,
+        ready: false,
+        icon: item.icon
+      }));
+    });
+
+    applyFilter(
+      document.querySelector(".tab.active")?.dataset.filter || "all"
+    );
+  }
+
   function applyFilter(filter) {
+    const cards = document.querySelectorAll(".car-card");
     let count = 0;
 
     cards.forEach(card => {
       const visible =
         filter === "all" ||
-        card.dataset.brand === filter;
+        card.dataset.filterBrand === filter;
 
       card.classList.toggle("hide", !visible);
 
@@ -1138,39 +760,16 @@
     });
   });
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      if (card.dataset.ready === "true") {
-        window.location.href = card.dataset.url;
-      } else {
-        showToast(`${card.dataset.name} 견적은 현재 준비중입니다.`);
-      }
-    });
-  });
-
-  /* 이미지가 존재하면 placeholder를 자동으로 숨깁니다. */
-  document.querySelectorAll(".car-img").forEach(img => {
-    const placeholder = img.parentElement.querySelector(".placeholder");
-
-    function showImage() {
-      img.style.display = "block";
-      if (placeholder) placeholder.style.display = "none";
-    }
-
-    function showPlaceholder() {
-      img.style.display = "none";
-      if (placeholder) placeholder.style.display = "block";
-    }
-
-    img.addEventListener("load", showImage);
-    img.addEventListener("error", showPlaceholder);
-
-    if (img.complete) {
-      if (img.naturalWidth > 0) showImage();
-      else showPlaceholder();
-    }
-  });
+  if (!window.CAR_DATA) {
+    carGrid.innerHTML = `
+      <div style="grid-column:1/-1;padding:30px;text-align:center;color:#918b97;">
+        차량 데이터를 불러오지 못했습니다.<br>
+        js/cars.js 경로를 확인해주세요.
+      </div>
+    `;
+  } else {
+    renderCatalog();
+  }
 </script>
-
 </body>
 </html>
