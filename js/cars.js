@@ -3530,4 +3530,413 @@ g90:{
     ]}
   }
 }
+  ,
+
+  /* =========================================================
+     GENESIS GV70
+     Genesis 공식 BTO 2026-08 기준
+     ========================================================= */
+  gv70: {
+    brand: "GENESIS",
+    name: "GV70",
+    displayName: "GV70",
+    year: "2026년 8월 Genesis 공식 BTO 기준",
+    type: "럭셔리 중형 SUV",
+    image: "gv70.png",
+
+    engineHelp:
+      "가솔린 2.5 터보와 가솔린 3.5 터보를 선택할 수 있습니다.",
+
+    trimHelp:
+      "GV70은 제네시스 BTO 방식입니다. 기본가격에 엔진, 구동, 그래파이트 패키지, 내장/휠, 파퓰러 패키지와 선택품목을 조합합니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas25",
+        name: "가솔린 2.5 터보",
+        price: 0,
+        sub: "2,497cc · 304PS · 43.0kgf·m"
+      },
+      {
+        id: "gas35",
+        name: "가솔린 3.5 터보",
+        price: 5500000,
+        sub: "3,470cc · 380PS · 54.0kgf·m · +5,500,000원"
+      }
+    ],
+
+    drivesByEngine: {
+      gas25: [
+        {
+          id: "2wd",
+          name: "2WD (후륜)",
+          price: 0,
+          sub: "기본"
+        },
+        {
+          id: "awd",
+          name: "AWD",
+          price: 3000000,
+          sub: "터레인 모드 포함 · +3,000,000원"
+        }
+      ],
+
+      gas35: [
+        {
+          id: "2wd",
+          name: "2WD (후륜)",
+          price: 0,
+          sub: "기본"
+        },
+        {
+          id: "awd",
+          name: "AWD",
+          price: 3000000,
+          sub: "터레인 모드 포함 · +3,000,000원"
+        }
+      ]
+    },
+
+    seats: [
+      {
+        id: "5",
+        name: "5인승",
+        price: 0,
+        sub: "기본"
+      }
+    ],
+
+    trimsByEngine: {
+      gas25: [
+        {
+          id: "base",
+          name: "기본 모델",
+          price: 54730000,
+          sub: "2.5T · 2WD · 19인치 기본 구성"
+        }
+      ],
+
+      gas35: [
+        {
+          id: "base",
+          name: "기본 모델",
+          price: 54730000,
+          sub: "3.5T 추가금은 엔진 선택에서 반영"
+        }
+      ]
+    },
+
+    colors: [
+      {
+        id: "uyuni_white",
+        name: "우유니 화이트",
+        price: 0,
+        color: "#f2f1ed"
+      },
+      {
+        id: "savile_silver",
+        name: "세빌 실버",
+        price: 0,
+        color: "#a4a6a6"
+      },
+      {
+        id: "makalu_gray",
+        name: "마칼루 그레이",
+        price: 0,
+        color: "#606467"
+      },
+      {
+        id: "vik_black",
+        name: "비크 블랙",
+        price: 0,
+        color: "#111214"
+      },
+      {
+        id: "tromso_green",
+        name: "트롬소 그린",
+        price: 0,
+        color: "#3d514b"
+      },
+      {
+        id: "ceres_blue",
+        name: "세레스 블루",
+        price: 0,
+        color: "#355269"
+      },
+      {
+        id: "bering_blue",
+        name: "베링 블루",
+        price: 0,
+        color: "#486476"
+      }
+    ],
+
+    extraChoiceGroups: [
+      {
+        id: "graphite",
+        step: "3",
+        position: "beforeColor",
+        title: "패키지를 선택해주세요",
+        help: "현재 공식 GV70 BTO의 기본 모델 또는 그래파이트 패키지를 선택합니다.",
+        summaryLabel: "패키지",
+        items: [
+          {
+            id: "standard",
+            name: "기본 모델",
+            price: 0,
+            sub: "기본 외장/내장 구성"
+          },
+          {
+            id: "graphite",
+            name: "그래파이트 패키지",
+            price: 3100000,
+            sub: "+3,100,000원"
+          }
+        ]
+      },
+
+      {
+        id: "wheel",
+        step: "5",
+        position: "afterColor",
+        title: "휠 & 타이어를 선택해주세요",
+        help: "공식 BTO에서 가격이 명확히 확인되는 휠 구성을 반영했습니다.",
+        summaryLabel: "휠 & 타이어",
+        items: [
+          {
+            id: "19",
+            name: "19인치 다크 하이퍼 실버 휠",
+            price: 0,
+            sub: "기본"
+          },
+          {
+            id: "21",
+            name: "21인치 다크 스퍼터링 휠",
+            price: 2300000,
+            sub: "+2,300,000원",
+            allowedEngines: ["gas35"]
+          }
+        ]
+      },
+
+      {
+        id: "interior",
+        step: "6",
+        position: "afterColor",
+        title: "내장 디자인을 선택해주세요",
+        help: "가격이 공식 BTO에서 명확하게 확인된 내장 디자인만 계산에 반영합니다.",
+        summaryLabel: "내장 디자인",
+        items: [
+          {
+            id: "standard",
+            name: "스탠다드 디자인 · 옵시디언 블랙 모노톤",
+            price: 0,
+            sub: "기본"
+          },
+          {
+            id: "signature1",
+            name: "시그니쳐 디자인 셀렉션Ⅰ",
+            price: 1700000,
+            sub: "+1,700,000원"
+          }
+        ]
+      }
+    ],
+
+    options: {
+      base: [
+        {
+          id: "popular1",
+          name: "파퓰러 패키지 I",
+          price: 2950000,
+          includes: ["hud", "drive1"],
+          note: "HUD + 드라이빙 어시스턴스 패키지 I"
+        },
+        {
+          id: "popular2",
+          name: "파퓰러 패키지 II",
+          price: 6600000,
+          includes: ["hud", "drive1", "rearcomfort", "drive2", "builtincam"],
+          note: "HUD + 드라이빙 I + 2열 컴포트 + 드라이빙 II + 빌트인 캠"
+        },
+        {
+          id: "prestige",
+          name: "프레스티지 패키지",
+          price: 11900000,
+          includes: [
+            "hud",
+            "sunroof",
+            "drive1",
+            "rearcomfort",
+            "drive2",
+            "convenience",
+            "bang",
+            "builtincam"
+          ],
+          note: "공식 패키지 구성"
+        },
+
+        {
+          id: "hud",
+          name: "헤드업 디스플레이",
+          price: 1300000
+        },
+        {
+          id: "drive1",
+          name: "드라이빙 어시스턴스 패키지 I",
+          price: 1950000
+        },
+        {
+          id: "rearcomfort",
+          name: "2열 컴포트 패키지",
+          price: 1100000
+        },
+        {
+          id: "drive2",
+          name: "드라이빙 어시스턴스 패키지 II",
+          price: 2000000
+        },
+        {
+          id: "builtincam",
+          name: "빌트인 캠 패키지",
+          price: 850000
+        },
+        {
+          id: "preview",
+          name: "프리뷰 전자제어 서스펜션",
+          price: 1100000
+        },
+        {
+          id: "sunroof",
+          name: "파노라마 선루프",
+          price: 1400000
+        },
+        {
+          id: "convenience",
+          name: "컨비니언스 패키지",
+          price: 2500000
+        },
+        {
+          id: "bang",
+          name: "뱅앤올룹슨 사운드 패키지",
+          price: 1700000
+        },
+        {
+          id: "elsd",
+          name: "전자식 차동제한장치 (e-LSD)",
+          price: 350000
+        }
+      ]
+    }
+  }
+
+  ,
+
+  /* =========================================================
+     GENESIS GV80
+     Genesis 공식 BTO 2026-08 기준
+     ========================================================= */
+  gv80: {
+    brand: "GENESIS",
+    name: "GV80",
+    displayName: "GV80",
+    year: "2027 GV80 · Genesis 공식 BTO 2026-08 기준",
+    type: "럭셔리 대형 SUV",
+    image: "gv80.png",
+
+    engineHelp:
+      "제네시스 공식 BTO 기준 가솔린 2.5 터보 / 가솔린 3.5 터보를 선택합니다.",
+
+    trimHelp:
+      "기본가격 68,860,000원에서 엔진, AWD, 인승, 휠과 공식 선택 패키지를 더하는 BTO 구조입니다. GV80 Coupe와 GV80 Black은 별도 모델이라 포함하지 않습니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas25",
+        name: "가솔린 2.5 터보",
+        price: 0,
+        sub: "2,497cc · 304PS · 43.0kgf·m"
+      },
+      {
+        id: "gas35",
+        name: "가솔린 3.5 터보",
+        price: 5500000,
+        sub: "3,470cc · 380PS · 54.0kgf·m · +5,500,000원"
+      }
+    ],
+
+    drivesByEngine: {
+      gas25: [
+        { id: "2wd", name: "2WD (후륜)", price: 0, sub: "기본" },
+        { id: "awd", name: "AWD", price: 3000000, sub: "+3,000,000원" }
+      ],
+      gas35: [
+        { id: "2wd", name: "2WD (후륜)", price: 0, sub: "기본" },
+        { id: "awd", name: "AWD", price: 3000000, sub: "+3,000,000원" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" },
+      { id: "6", name: "6인승", price: 2500000, sub: "+2,500,000원" },
+      { id: "7", name: "7인승", price: 1000000, sub: "+1,000,000원" }
+    ],
+
+    trimsByEngine: {
+      gas25: [
+        { id: "base", name: "기본 모델", price: 68860000, sub: "2.5T · 2WD · 5인승 기본가격" }
+      ],
+      gas35: [
+        { id: "base", name: "기본 모델", price: 68860000, sub: "3.5T 추가금은 엔진 선택에서 반영" }
+      ]
+    },
+
+    colors: [
+      { id: "uyuni_white", name: "우유니 화이트", price: 0, color: "#f2f1ed" },
+      { id: "savile_silver", name: "세빌 실버", price: 0, color: "#a4a6a6" },
+      { id: "makalu_gray", name: "마칼루 그레이", price: 0, color: "#606467" },
+      { id: "vik_black", name: "비크 블랙", price: 0, color: "#111214" },
+      { id: "ceres_blue", name: "세레스 블루", price: 0, color: "#355269" },
+      { id: "bering_blue", name: "베링 블루", price: 0, color: "#486476" }
+    ],
+
+    extraChoiceGroups: [
+      {
+        id: "wheel",
+        step: "5",
+        position: "afterColor",
+        title: "휠 & 타이어를 선택해주세요",
+        help: "제네시스 공식 GV80 BTO 가격을 반영합니다.",
+        summaryLabel: "휠 & 타이어",
+        items: [
+          { id: "19", name: "19인치 다이아몬드 컷팅 휠", price: 0, sub: "기본" },
+          { id: "20", name: "20인치 다이아몬드 컷팅 휠", price: 1300000, sub: "+1,300,000원" },
+          { id: "22", name: "22인치 다이아몬드 컷팅 휠", price: 2500000, sub: "+2,500,000원" }
+        ]
+      }
+    ],
+
+    options: {
+      base: [
+        {
+          id: "popular_awd",
+          name: "파퓰러 패키지 [AWD]",
+          price: 6200000,
+          allowedExtra: {},
+          note: "공식 BTO 확인 가격 · AWD 구성용"
+        }
+      ]
+    }
+  }
+
 };
