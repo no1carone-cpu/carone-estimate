@@ -4375,3 +4375,217 @@ g90:{
   }
 
 };
+
+
+/* =========================================================
+   차량 선택 메인 자동생성용 메타데이터
+   ---------------------------------------------------------
+   cars.html은 이제 CAR_DATA를 읽어서 카드를 자동 생성합니다.
+   새 차량은 CAR_DATA에만 추가하면 기본 카드가 자동으로 생깁니다.
+
+   아래 값들은 "견적 계산 데이터"가 아니라
+   메인 목록의 표시명/순서/준비중 카드만 관리합니다.
+   ========================================================= */
+
+window.CAR_CATALOG_META = {
+  "g80": {
+    "title": "디 올-뉴 G80",
+    "type": "럭셔리 세단 · 2.5T · 3.5T"
+  },
+  "grandeur": {
+    "title": "더 뉴 그랜저 / Hybrid",
+    "type": "준대형 세단 · Hybrid"
+  },
+  "sonata": {
+    "title": "쏘나타 디 엣지 / Hybrid",
+    "type": "중형 세단 · Hybrid"
+  },
+  "palisade": {
+    "title": "디 올 뉴 팰리세이드 / Hybrid",
+    "type": "대형 SUV · Hybrid"
+  },
+  "santafe": {
+    "title": "싼타페 / 싼타페 Hybrid",
+    "type": "중형 SUV · Hybrid"
+  },
+  "avante": {
+    "title": "디 올 뉴 아반떼 / Hybrid",
+    "type": "준중형 세단 · Hybrid · N Line"
+  },
+  "tucson": {
+    "title": "투싼 / 투싼 Hybrid",
+    "type": "준중형 SUV · Hybrid"
+  },
+  "kona": {
+    "title": "코나 / Hybrid / Electric",
+    "type": "소형 SUV · Hybrid · EV"
+  },
+  "sorento": {
+    "title": "쏘렌토",
+    "type": "중형 SUV · 가솔린 · 디젤 · Hybrid"
+  },
+  "sportage": {
+    "title": "스포티지",
+    "type": "준중형 SUV"
+  },
+  "seltos": {
+    "title": "셀토스",
+    "type": "소형 SUV"
+  }
+};
+
+window.CAR_SPECIAL_CARDS = {
+  "carnival": [
+    {
+      "title": "카니발 7인승",
+      "type": "대형 RV · 7인승",
+      "url": "estimate.html?car=carnival&seat=7"
+    },
+    {
+      "title": "카니발 9인승",
+      "type": "대형 RV · 9인승",
+      "url": "estimate.html?car=carnival&seat=9"
+    }
+  ]
+};
+
+window.CAR_DISPLAY_ORDER = [
+  "g80",
+  "g70",
+  "g90",
+  "gv70",
+  "gv80",
+  "grandeur",
+  "sonata",
+  "palisade",
+  "santafe",
+  "avante",
+  "tucson",
+  "kona",
+  "ioniq5",
+  "ioniq6",
+  "ioniq9",
+  "gv60",
+  "electrified_gv70",
+  "electrified_g80",
+  "nexo",
+  "carnival",
+  "sorento",
+  "seltos",
+  "sportage"
+];
+
+window.CAR_PENDING = [
+  {
+    "brand": "KIA",
+    "displayName": "타스만",
+    "type": "픽업",
+    "image": "images/kia/tasman.png",
+    "icon": "🚙"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "K9 3.3",
+    "type": "대형 세단",
+    "image": "images/kia/k9-33.png",
+    "icon": "🚙"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "K9 3.8",
+    "type": "대형 세단",
+    "image": "images/kia/k9-38.png",
+    "icon": "🚙"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "K8 / K8 HEV",
+    "type": "준대형 세단",
+    "image": "images/kia/k8.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "K5 / K5 HEV",
+    "type": "중형 세단",
+    "image": "images/kia/k5.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "K3",
+    "type": "준중형 세단",
+    "image": "images/kia/k3.png",
+    "icon": "🚙"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "니로 HEV",
+    "type": "하이브리드 SUV",
+    "image": "images/kia/niro-hev.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "더 뉴 레이",
+    "type": "경형 RV",
+    "image": "images/kia/ray.png",
+    "icon": "🚐"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "레이 EV 라이트",
+    "type": "경형 전기 RV",
+    "image": "images/kia/ray-ev-light.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "레이 EV 에어",
+    "type": "경형 전기 RV",
+    "image": "images/kia/ray-ev-air.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "니로 EV / EV6",
+    "type": "전기 SUV",
+    "image": "images/kia/niro-ev-ev6.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "EV3 / EV4",
+    "type": "전기차",
+    "image": "images/kia/ev3-ev4.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "EV9 에어",
+    "type": "대형 전기 SUV",
+    "image": "images/kia/ev9-air.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "EV9 어스",
+    "type": "대형 전기 SUV",
+    "image": "images/kia/ev9-earth.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "EV9 GT-LINE",
+    "type": "대형 전기 SUV",
+    "image": "images/kia/ev9-gtline.png",
+    "icon": "⚡"
+  },
+  {
+    "brand": "KIA",
+    "displayName": "EV9 GT",
+    "type": "고성능 대형 전기 SUV",
+    "image": "images/kia/ev9-gt.png",
+    "icon": "⚡"
+  }
+];
