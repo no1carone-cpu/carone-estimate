@@ -536,11 +536,16 @@
 
 
 
-    .back-to-cars {
+    .estimate-nav {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      margin: 0 0 -4px;
+    }
+    .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      margin: 0 0 12px;
       padding: 10px 14px;
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -550,14 +555,8 @@
       font-size: 12px;
       font-weight: 900;
       box-shadow: 0 4px 14px rgba(34,25,44,.04);
-      transition: .18s ease;
     }
-
-    .back-to-cars:hover {
-      transform: translateY(-1px);
-      border-color: #b9a8ce;
-      box-shadow: 0 7px 18px rgba(75,37,134,.08);
-    }
+    .back-btn:hover { border-color: #b9a8ce; }
 
     .embed-intro {
       display: flex;
@@ -625,9 +624,12 @@
 
 <main class="page" id="estimatePage">
 
-  <div class="left">
+  <div class="estimate-nav">
+    <a href="cars.html" class="back-btn" id="backToCars">‹ 차량 다시 선택하기</a>
+  </div>
 
-    <a class="back-to-cars" href="cars.html" aria-label="차량 선택 화면으로 돌아가기">← 차량 다시 선택하기</a>
+
+  <div class="left">
 
     <div class="embed-intro">
       <div>
