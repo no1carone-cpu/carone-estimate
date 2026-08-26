@@ -7,8 +7,8 @@
 
 
 /* Supabase 연결 정보: 아래 두 값만 바꾸세요 */
-const SUPABASE_URL = "https://ugnfrdbqqvfwnxcmlhnp.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HYUeFJMb-bRHLNJAEbiMHw_5K4IJzq5";
+const SUPABASE_URL = "여기에_PROJECT_URL_입력";
+const SUPABASE_PUBLISHABLE_KEY = "여기에_PUBLISHABLE_KEY_입력";
 
 const supabaseClient =
   window.supabase &&
@@ -297,16 +297,43 @@ function loadVehicleInfo() {
   const placeholder = $("vehiclePlaceholder");
 
   image.alt = CAR.displayName;
-  image.style.display = "block";
-  if (placeholder) placeholder.style.display = "block";
 
   /*
-    cars.html과 estimate.html은 같은 저장소 루트에 있으므로
-    CAR.image의 루트 상대 파일명을 그대로 사용합니다.
-    이전 이미지 로딩 실패로 display:none이 남아 있어도 매번 복구합니다.
+    핵심 수정:
+    estimate.html의 초기 src=""에서 발생할 수 있는 onerror와
+    display:none 잔류 문제를 막기 위해 이벤트를 JS에서 먼저 연결하고
+    마지막에 실제 차량 이미지 src를 할당합니다.
   */
+  image.onload = function () {
+    this.style.display = "block";
+
+    if (placeholder) {
+      placeholder.style.display = "none";
+    }
+  };
+
+  image.onerror = function () {
+    this.style.display = "none";
+
+    if (placeholder) {
+      placeholder.style.display = "block";
+    }
+  };
+
+  image.style.display = "block";
+
+  if (placeholder) {
+    placeholder.style.display = "block";
+  }
+
   const imagePath = String(CAR.image || "").replace(/^\.\//, "");
-  image.src = imagePath;
+
+  if (imagePath) {
+    image.src = imagePath;
+  } else {
+    image.removeAttribute("src");
+    image.style.display = "none";
+  }
 
   const hiddenSections = new Set(CAR.hiddenSections || []);
 
@@ -978,6 +1005,7 @@ function renderAll() {
 }
 
 window.addEventListener("load", () => {
+  normalizeEstimateNavigation();
   loadVehicleInfo();
   renderAll();
   setupInquiryUI();
