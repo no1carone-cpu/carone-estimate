@@ -542,6 +542,7 @@
       align-items: center;
       margin: 0 0 -4px;
     }
+
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -555,8 +556,14 @@
       font-size: 12px;
       font-weight: 900;
       box-shadow: 0 4px 14px rgba(34,25,44,.04);
+      transition: .18s ease;
     }
-    .back-btn:hover { border-color: #b9a8ce; }
+
+    .back-btn:hover {
+      transform: translateY(-1px);
+      border-color: #b9a8ce;
+      box-shadow: 0 7px 18px rgba(75,37,134,.08);
+    }
 
     .embed-intro {
       display: flex;
@@ -646,9 +653,7 @@
           class="vehicle-image"
           src=""
           alt=""
-          onload="document.getElementById('vehiclePlaceholder').style.display='none';"
-          onerror="this.style.display='none'; document.getElementById('vehiclePlaceholder').style.display='block';"
-        >
+>
         <div id="vehiclePlaceholder" class="vehicle-placeholder">
           <span class="car-icon">🚙</span>
           <b id="vehiclePlaceholderTitle">차량 이미지 영역</b>
