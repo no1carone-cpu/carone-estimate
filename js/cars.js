@@ -1,4 +1,12 @@
 /*
+  [공식사이트 재검증 메모 · 2026-08-26]
+  - 쏘렌토: 기존 누락된 터보 하이브리드 2WD/전자식4WD 및 공식 가격 추가
+  - GV60: 현행 Standard 2WD / Standard AWD / Performance AWD 체계로 재작성
+  - 그 외 데이터는 이번 검증에서 확인된 명백한 불일치가 없어 기존값 유지
+  - 제조사 가격표/BTO는 수시 갱신될 수 있으므로 계약 직전 공식 견적 재확인 권장
+*/
+
+/*
   카원 차량 데이터 파일
   ----------------------
   새 차종은 이 파일에 추가합니다.
@@ -12,17 +20,23 @@ window.CAR_DATA = {
 
   /* =========================================================
      2026 쏘렌토
+     기아 공식 가격표 2026-08 기준 재검증
+     - 2.5 가솔린 터보 / 2.2 디젤
+     - 터보 하이브리드 2WD / 전자식 4WD
      ========================================================= */
   sorento: {
     brand: "KIA",
     name: "The 2026 Sorento",
     displayName: "2026 쏘렌토",
-    year: "2026년형",
+    year: "2026년형 · 공식 가격표 2026-08 재검증",
     type: "중형 SUV",
     image: "sorento.png",
 
-    engineHelp: "2.5 가솔린 터보를 기준으로 디젤 선택 시 공식 추가금이 반영됩니다.",
-    trimHelp: "표시 금액은 2.5 가솔린 터보 기준 트림 기본가격입니다.",
+    engineHelp:
+      "2.5 가솔린 터보, 2.2 디젤, 터보 하이브리드 2WD/전자식4WD를 선택할 수 있습니다. 하이브리드는 공식 세제혜택 여부가 구동방식에 따라 달라 최종 판매가격 자체를 엔진 항목별로 분리했습니다.",
+
+    trimHelp:
+      "파워트레인에 따라 공식 트림가격과 선택품목이 자동으로 변경됩니다.",
 
     tax: {
       rate: 0.07,
@@ -41,23 +55,37 @@ window.CAR_DATA = {
         name: "2.2 디젤",
         price: 1730000,
         sub: "가솔린 기준 +1,730,000원"
+      },
+      {
+        id: "hybrid2wd",
+        name: "터보 하이브리드 (2WD)",
+        price: 0,
+        sub: "세제혜택 후 공식 판매가격"
+      },
+      {
+        id: "hybrid4wd",
+        name: "터보 하이브리드 (전자식 4WD)",
+        price: 0,
+        sub: "공식 4WD 판매가격 · 구동 추가금이 트림가격에 포함"
       }
     ],
 
-    drives: [
-      {
-        id: "2wd",
-        name: "2WD",
-        price: 0,
-        sub: "전륜구동"
-      },
-      {
-        id: "4wd",
-        name: "전자식 4WD",
-        price: 2320000,
-        sub: "+2,320,000원"
-      }
-    ],
+    drivesByEngine: {
+      gas: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
+        { id: "4wd", name: "전자식 4WD", price: 2320000, sub: "+2,320,000원" }
+      ],
+      diesel: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
+        { id: "4wd", name: "전자식 4WD", price: 2320000, sub: "+2,320,000원" }
+      ],
+      hybrid2wd: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+      ],
+      hybrid4wd: [
+        { id: "4wd", name: "전자식 4WD", price: 0, sub: "트림가격에 4WD 구성 반영" }
+      ]
+    },
 
     seats: [
       { id: "5", name: "5인승", price: 0, sub: "기본" },
@@ -65,12 +93,35 @@ window.CAR_DATA = {
       { id: "7", name: "7인승", price: 690000, sub: "+690,000원" }
     ],
 
-    trims: [
-      { id: "prestige", name: "프레스티지", price: 36310000, sub: "2026 쏘렌토 시작 트림" },
-      { id: "noblesse", name: "노블레스", price: 39460000, sub: "12.3인치 클러스터 · 서라운드 뷰 등" },
-      { id: "signature", name: "시그니처", price: 42270000, sub: "20인치 휠 · 프로젝션 LED · 앰비언트 라이트" },
-      { id: "xline", name: "X-Line", price: 43210000, sub: "X-Line 전용 외장 · 전용 가죽시트" }
-    ],
+    trimsByEngine: {
+      gas: [
+        { id: "prestige", name: "프레스티지", price: 36310000 },
+        { id: "noblesse", name: "노블레스", price: 39460000 },
+        { id: "signature", name: "시그니처", price: 42270000 },
+        { id: "xline", name: "X-Line", price: 43210000 }
+      ],
+
+      diesel: [
+        { id: "prestige", name: "프레스티지", price: 36310000 },
+        { id: "noblesse", name: "노블레스", price: 39460000 },
+        { id: "signature", name: "시그니처", price: 42270000 },
+        { id: "xline", name: "X-Line", price: 43210000 }
+      ],
+
+      hybrid2wd: [
+        { id: "prestige", name: "프레스티지", price: 39530000, sub: "세제혜택 후" },
+        { id: "noblesse", name: "노블레스", price: 42790000, sub: "세제혜택 후" },
+        { id: "signature", name: "시그니처", price: 45310000, sub: "세제혜택 후" },
+        { id: "xline", name: "X-Line", price: 46250000, sub: "세제혜택 후" }
+      ],
+
+      hybrid4wd: [
+        { id: "prestige", name: "프레스티지", price: 42850000, sub: "전자식4WD 공식가격" },
+        { id: "noblesse", name: "노블레스", price: 46100000, sub: "전자식4WD 공식가격" },
+        { id: "signature", name: "시그니처", price: 48630000, sub: "전자식4WD 공식가격" },
+        { id: "xline", name: "X-Line", price: 49570000, sub: "전자식4WD 공식가격" }
+      ]
+    },
 
     colors: [
       { id: "white", name: "스노우 화이트 펄", price: 80000, color: "#f8f8f3" },
@@ -79,44 +130,148 @@ window.CAR_DATA = {
       { id: "green", name: "시티스케이프 그린", price: 0, color: "#475c55" }
     ],
 
-    options: {
-      prestige: [
-        { id: "style", name: "스타일", price: 1240000 },
-        { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
-        { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
-        { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
-        { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
-      ],
+    optionsByEngine: {
+      gas: {
+        prestige: [
+          { id: "style", name: "스타일", price: 1240000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        noblesse: [
+          { id: "style", name: "스타일", price: 1140000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        signature: [
+          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        xline: [
+          { id: "comfort", name: "컴포트", price: 600000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ]
+      },
 
-      noblesse: [
-        { id: "style", name: "스타일", price: 1140000 },
-        { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
-        { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-        { id: "smart", name: "스마트 커넥트", price: 800000 },
-        { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-        { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
-      ],
+      diesel: {
+        prestige: [
+          { id: "style", name: "스타일", price: 1240000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 적용 시" },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        noblesse: [
+          { id: "style", name: "스타일", price: 1140000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        signature: [
+          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        xline: [
+          { id: "comfort", name: "컴포트", price: 600000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ]
+      },
 
-      signature: [
-        { id: "comfort", name: "컴포트", price: 1090000 },
-        { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
-        { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-        { id: "smart", name: "스마트 커넥트", price: 700000 },
-        { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-        { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
-      ],
+      hybrid2wd: {
+        prestige: [
+          { id: "style", name: "스타일", price: 1140000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        noblesse: [
+          { id: "style", name: "스타일", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        signature: [
+          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
+          { id: "wheel19", name: "19인치 휠", price: 300000 }
+        ],
+        xline: [
+          { id: "comfort", name: "컴포트", price: 600000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
+          { id: "wheel19", name: "19인치 휠", price: 300000 }
+        ]
+      },
 
-      xline: [
-        { id: "comfort", name: "컴포트", price: 600000 },
-        { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
-        { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-        { id: "smart", name: "스마트 커넥트", price: 700000 },
-        { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-        { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
-      ]
+      hybrid4wd: {
+        prestige: [
+          { id: "style", name: "스타일", price: 1140000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        noblesse: [
+          { id: "style", name: "스타일", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        signature: [
+          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
+          { id: "wheel19", name: "19인치 휠", price: 300000 }
+        ],
+        xline: [
+          { id: "comfort", name: "컴포트", price: 600000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
+          { id: "wheel19", name: "19인치 휠", price: 300000 }
+        ]
+      }
     }
   },
-
 
   /* =========================================================
      2026 스포티지
@@ -3350,14 +3505,89 @@ window.CAR_DATA = {
     evAcquisitionTaxReduction: 1400000
   }
 ,
-gv60:{brand:"GENESIS",name:"GV60",displayName:"GV60",year:"2027 Genesis 공식 가격표",type:"프리미엄 전기 SUV",image:"gv60.png",tax:{rate:0.07,vatIncluded:true},
-engines:[{id:"std",name:"Standard AWD",price:0,sub:"255kW"},{id:"perf",name:"Performance AWD",price:0,sub:"360kW Boost"}],
-drivesByEngine:{std:[{id:"awd",name:"AWD",price:0,sub:"기본"}],perf:[{id:"awd",name:"AWD",price:0,sub:"Performance"}]},
-seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
-trimsByEngine:{std:[{id:"standard",name:"Standard",price:68150000,sub:"세제혜택 후"}],perf:[{id:"performance",name:"Performance",price:73480000,sub:"세제혜택 후"}]},
-colors:[{id:"uyuni",name:"우유니 화이트",price:0,color:"#f2f2f0"},{id:"vik",name:"비크 블랙",price:0,color:"#111214"},{id:"hana",name:"하나우마 민트",price:0,color:"#8aa5a1"}],
-optionsByEngine:{std:{standard:[{id:"vision",name:"디지털 비전 패키지",price:1800000},{id:"comfort",name:"컴포트 패키지",price:1200000},{id:"sunroof",name:"파노라마 선루프",price:900000}]},perf:{performance:[{id:"vision",name:"디지털 비전 패키지",price:1800000},{id:"luxury",name:"럭셔리 인테리어",price:1400000},{id:"sunroof",name:"파노라마 선루프",price:900000}]}},
-evEngineIds:["std","perf"],evAcquisitionTaxReduction:1400000},
+gv60: {
+  brand: "GENESIS",
+  name: "GV60",
+  displayName: "GV60",
+  year: "현행 GV60 · Genesis 공식 BTO 2026-08 재검증",
+  type: "프리미엄 전기 SUV",
+  image: "gv60.png",
+
+  engineHelp:
+    "현행 GV60은 스탠다드 2WD / 스탠다드 AWD / 퍼포먼스 AWD로 운영됩니다.",
+
+  trimHelp:
+    "제네시스 공식 BTO 및 공식 발표 판매가격을 기준으로 세제혜택 후 가격을 반영했습니다. 퍼포먼스 AWD는 2026년 강화된 효율기준에 따라 친환경차 세제혜택 대상에서 제외될 수 있어 최종 계약가격을 공식 BTO에서 재확인하세요.",
+
+  tax: { rate: 0.07, vatIncluded: true },
+
+  engines: [
+    {
+      id: "std2wd",
+      name: "Standard 2WD",
+      price: 0,
+      sub: "84kWh · 168kW · 세제혜택 후 64,900,000원"
+    },
+    {
+      id: "stdawd",
+      name: "Standard AWD",
+      price: 0,
+      sub: "84kWh · 234kW · 세제혜택 후 68,510,000원"
+    },
+    {
+      id: "perfawd",
+      name: "Performance AWD",
+      price: 0,
+      sub: "84kWh · 최대 360kW(부스트) · 공식 판매가격 72,880,000원"
+    }
+  ],
+
+  drivesByEngine: {
+    std2wd: [{ id: "2wd", name: "2WD", price: 0, sub: "후륜구동" }],
+    stdawd: [{ id: "awd", name: "AWD", price: 0, sub: "스탠다드 AWD" }],
+    perfawd: [{ id: "awd", name: "AWD", price: 0, sub: "퍼포먼스 AWD" }]
+  },
+
+  seats: [
+    { id: "5", name: "5인승", price: 0, sub: "기본" }
+  ],
+
+  trimsByEngine: {
+    std2wd: [
+      { id: "standard", name: "Standard 2WD", price: 64900000, sub: "공식 세제혜택 후 판매가격" }
+    ],
+    stdawd: [
+      { id: "standard", name: "Standard AWD", price: 68510000, sub: "공식 세제혜택 후 판매가격" }
+    ],
+    perfawd: [
+      { id: "performance", name: "Performance AWD", price: 72880000, sub: "공식 판매가격" }
+    ]
+  },
+
+  colors: [
+    { id: "uyuni", name: "우유니 화이트", price: 0, color: "#f2f2f0" },
+    { id: "savile", name: "세빌 실버", price: 0, color: "#a5a7a8" },
+    { id: "makalu", name: "마칼루 그레이", price: 0, color: "#5d6163" },
+    { id: "vik", name: "비크 블랙", price: 0, color: "#111214" },
+    { id: "ceres", name: "세레스 블루", price: 0, color: "#38536a" },
+    { id: "tromso", name: "트롬소 그린", price: 0, color: "#40534c" }
+  ],
+
+  /*
+    이전 데이터의 '디지털 비전 패키지 180만원 / 컴포트 120만원 /
+    퍼포먼스 7,348만원'은 현행 공식 BTO와 불일치하여 제거했습니다.
+    GV60 선택 패키지는 BTO 조합·세제 적용에 따라 최종가격이 달라지므로
+    현재 이 파일에는 공식 판매가격이 확정된 파워트레인 기본금액만 계산합니다.
+  */
+  optionsByEngine: {
+    std2wd: { standard: [] },
+    stdawd: { standard: [] },
+    perfawd: { performance: [] }
+  },
+
+  evEngineIds: ["std2wd", "stdawd"],
+  evAcquisitionTaxReduction: 1400000
+},
 electrified_gv70:{
   brand:"GENESIS",
   name:"Electrified GV70",
