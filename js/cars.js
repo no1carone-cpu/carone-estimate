@@ -3065,4 +3065,380 @@ window.CAR_DATA = {
     evAcquisitionTaxReduction: 1400000
   }
 
+  ,
+
+  /* =========================================================
+     HYUNDAI The new IONIQ 6
+     현대자동차 공식 가격표 2026-08-01 기준
+     ========================================================= */
+  ioniq6: {
+    brand: "HYUNDAI",
+    name: "The new IONIQ 6",
+    displayName: "더 뉴 아이오닉 6",
+    year: "2026년 8월 1일 현대자동차 공식 가격표 기준",
+    type: "전기 세단",
+    image: "ioniq6.png",
+
+    engineHelp:
+      "63.0kWh Standard와 84.0kWh Long Range를 선택합니다. 구매보조금은 지역과 시점에 따라 달라지므로 자동 차감하지 않습니다.",
+    trimHelp:
+      "현대자동차 공식 가격표의 세제혜택 후 판매가격을 사용합니다. IONIQ 6 N은 별도 고성능 차종이므로 포함하지 않습니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"ev_std", name:"Standard 63.0kWh", price:0, sub:"63.0kWh · 2WD" },
+      { id:"ev_long", name:"Long Range 84.0kWh", price:0, sub:"84.0kWh · 2WD / HTRAC" }
+    ],
+
+    drivesByEngine: {
+      ev_std: [
+        { id:"2wd", name:"2WD", price:0, sub:"후륜구동" }
+      ],
+      ev_long: [
+        { id:"2wd", name:"2WD", price:0, sub:"후륜구동" },
+        { id:"htrac", name:"HTRAC", price:2470000, sub:"+2,470,000원 · 전륜 모터 추가" }
+      ]
+    },
+
+    seats: [
+      { id:"5", name:"5인승", price:0, sub:"기본" }
+    ],
+
+    trimsByEngine: {
+      ev_std: [
+        { id:"evalue", name:"E-Value +", price:48560000, sub:"세제혜택 후 · 세제혜택 전 51,090,000원" },
+        { id:"exclusive", name:"Exclusive", price:50950000, sub:"세제혜택 후 · 세제혜택 전 53,600,000원" },
+        { id:"prestige", name:"Prestige", price:55530000, sub:"세제혜택 후 · 세제혜택 전 58,420,000원" }
+      ],
+
+      ev_long: [
+        { id:"elite", name:"E-Lite", price:50640000, sub:"세제혜택 후 · 세제혜택 전 53,270,000원" },
+        { id:"exclusive", name:"Exclusive", price:55150000, sub:"세제혜택 후 · 세제혜택 전 58,020,000원" },
+        { id:"exclusive_nline", name:"Exclusive N Line", price:57450000, sub:"세제혜택 후 · 세제혜택 전 60,440,000원" },
+        { id:"prestige", name:"Prestige", price:59730000, sub:"세제혜택 후 · 세제혜택 전 62,830,000원" },
+        { id:"prestige_nline", name:"Prestige N Line", price:61320000, sub:"세제혜택 후 · 세제혜택 전 64,510,000원" }
+      ]
+    },
+
+    colors: [
+      { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
+      { id:"serenity_white", name:"세레니티 화이트 펄", price:0, color:"#f1f0eb" },
+      { id:"nocturne_gray", name:"녹턴 그레이 메탈릭", price:0, color:"#62666a" },
+      { id:"biophilic_blue", name:"바이오필릭 블루 펄", price:0, color:"#354858" },
+      { id:"gravity_gold_matte", name:"그래비티 골드 매트", price:300000, color:"#aaa18e" },
+      { id:"nocturne_gray_matte", name:"녹턴 그레이 매트", price:300000, color:"#747777" },
+      { id:"ultimate_red", name:"얼티메이트 레드 메탈릭", price:0, color:"#842b2e", allowedTrims:["exclusive_nline","prestige_nline"] }
+    ],
+
+    optionsByEngine: {
+      ev_std: {
+        evalue: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"comfort_choice", name:"컴포트 초이스", price:1200000 },
+          { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:1480000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"convenience", name:"컨비니언스", price:690000 },
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:1510000 },
+          { id:"parking", name:"파킹 어시스트", price:800000 },
+          { id:"comfort_plus", name:"컴포트 플러스", price:680000 },
+          { id:"platinum", name:"플래티넘", price:710000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        prestige: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"digital_side", name:"디지털 사이드 미러", price:1380000 },
+          { id:"hightech", name:"하이테크 플러스", price:950000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ]
+      },
+
+      ev_long: {
+        elite: [
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        exclusive: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"convenience", name:"컨비니언스", price:690000 },
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:1510000 },
+          { id:"parking", name:"파킹 어시스트", price:800000 },
+          { id:"comfort_plus", name:"컴포트 플러스", price:680000 },
+          { id:"platinum", name:"플래티넘", price:710000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        exclusive_nline: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"convenience", name:"컨비니언스", price:690000 },
+          { id:"smartsense2", name:"현대 스마트센스Ⅱ", price:1510000 },
+          { id:"parking", name:"파킹 어시스트", price:800000 },
+          { id:"comfort_plus", name:"컴포트 플러스", price:680000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        prestige: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"digital_side", name:"디지털 사이드 미러", price:1380000 },
+          { id:"hightech", name:"하이테크 플러스", price:950000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ],
+
+        prestige_nline: [
+          { id:"builtincam", name:"빌트인 캠 2 Plus", price:600000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"wheel20", name:"20인치 휠 & 피렐리 타이어", price:590000 },
+          { id:"digital_side", name:"디지털 사이드 미러", price:1380000 },
+          { id:"hightech", name:"하이테크 플러스", price:950000 },
+          { id:"suede", name:"스웨이드 내장재", price:300000, requires:"hightech", note:"하이테크 플러스 선택 시" },
+          { id:"alcantara", name:"알칸타라/천연가죽 시트", price:400000 },
+          { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 Ⅰ", price:380000 },
+          { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 Ⅱ", price:400000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["ev_std", "ev_long"],
+    evAcquisitionTaxReduction: 1400000
+  }
+
+  ,
+
+  /* =========================================================
+     HYUNDAI 2027 IONIQ 9
+     현대자동차 공식 가격표 기준
+     현 모델 출시일: 2026-03-05 / 보조금 표: 2026-08-01
+     ========================================================= */
+  ioniq9: {
+    brand: "HYUNDAI",
+    name: "IONIQ 9",
+    displayName: "아이오닉 9",
+    year: "2027 IONIQ 9 · 현대자동차 공식 가격표 기준",
+    type: "대형 전기 SUV",
+    image: "ioniq9.png",
+
+    engineHelp:
+      "110.3kWh 배터리의 IONIQ 9입니다. 2WD, 항속형 AWD(HTRACⅠ), 성능형 AWD(HTRACⅡ)를 선택할 수 있습니다.",
+    trimHelp:
+      "7인승과 6인승의 공식 판매가격이 서로 달라 인승 선택에 따라 Exclusive / Prestige / Calligraphy 가격이 자동 변경됩니다. 국비·지자체 보조금은 자동 차감하지 않습니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"ev110", name:"110.3kWh Electric", price:0, sub:"E-GMP · 110.3kWh 리튬이온 배터리" }
+    ],
+
+    drivesByEngine: {
+      ev110: [
+        { id:"2wd", name:"2WD", price:0, sub:"항속형 후륜구동 · 160kW" },
+        { id:"htrac1", name:"HTRACⅠ", price:2800000, sub:"항속형 AWD · 66kW 전륜 모터 추가" },
+        { id:"htrac2", name:"HTRACⅡ", price:3700000, sub:"성능형 AWD · 157kW 전륜 모터 추가" }
+      ]
+    },
+
+    seats: [
+      { id:"7", name:"7인승", price:0, sub:"2열 6:4 분할 폴딩 시트" },
+      { id:"6", name:"6인승", price:0, sub:"2열 스위블링 독립 시트" }
+    ],
+
+    trimsBySeat: {
+      "7": [
+        { id:"exclusive", name:"Exclusive", price:67590000, sub:"세제혜택 후 · 세제혜택 전 71,100,000원" },
+        { id:"prestige", name:"Prestige", price:73250000, sub:"세제혜택 후 · 세제혜택 전 77,050,000원" },
+        { id:"calligraphy", name:"Calligraphy", price:78110000, sub:"세제혜택 후 · 세제혜택 전 82,170,000원" }
+      ],
+      "6": [
+        { id:"exclusive", name:"Exclusive", price:68170000, sub:"세제혜택 후 · 세제혜택 전 71,710,000원" },
+        { id:"prestige", name:"Prestige", price:73740000, sub:"세제혜택 후 · 세제혜택 전 77,570,000원" },
+        { id:"calligraphy", name:"Calligraphy", price:79600000, sub:"세제혜택 후 · 세제혜택 전 83,740,000원" }
+      ]
+    },
+
+    colors: [
+      { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
+      { id:"serenity_white", name:"세레니티 화이트 펄", price:0, color:"#f2f1ec" },
+      { id:"nocturne_gray", name:"녹턴 그레이 메탈릭", price:0, color:"#62666a" },
+      { id:"celadon_gray", name:"셀라돈 그레이 메탈릭", price:0, color:"#7c827e" },
+      { id:"ionosphere_green", name:"이오노스피어 그린 펄", price:0, color:"#52635e" },
+      { id:"nocturne_gray_matte", name:"녹턴 그레이 매트", price:300000, color:"#747777" },
+      { id:"celadon_gray_matte", name:"셀라돈 그레이 매트", price:300000, color:"#888d88", allowedTrims:["calligraphy"] }
+    ],
+
+    optionsBySeat: {
+      "7": {
+        exclusive: [
+          { id:"parking", name:"파킹 어시스트", price:1350000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:1190000 },
+          { id:"convenience7", name:"7인승 컨비니언스 플러스", price:600000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 }
+        ],
+        prestige: [
+          { id:"wheel21", name:"21인치 휠 & 타이어", price:1000000 },
+          { id:"platinum", name:"플래티넘", price:1100000 },
+          { id:"comfortplus", name:"컴포트 플러스", price:630000 },
+          { id:"digital_side", name:"컴팩트 디지털 사이드 미러", price:1380000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 }
+        ],
+        calligraphy: [
+          { id:"wheel19", name:"19인치 휠 & 타이어", price:-1000000, excludes:["blackink"] },
+          { id:"digital_side", name:"컴팩트 디지털 사이드 미러", price:1380000 },
+          { id:"blackink", name:"블랙잉크", price:400000, excludes:["wheel19"] },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 }
+        ]
+      },
+
+      "6": {
+        exclusive: [
+          { id:"parking", name:"파킹 어시스트", price:1350000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:1190000 },
+          { id:"convenience6", name:"6인승 컨비니언스 플러스", price:400000 },
+          { id:"relax1_2", name:"1열 릴랙션 컴포트 + 2열 프리미엄 릴랙션 시트", price:1300000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 }
+        ],
+        prestige: [
+          { id:"wheel21", name:"21인치 휠 & 타이어", price:1000000 },
+          { id:"platinum", name:"플래티넘", price:1100000 },
+          { id:"comfortplus", name:"컴포트 플러스", price:630000 },
+          { id:"digital_side", name:"컴팩트 디지털 사이드 미러", price:1380000 },
+          { id:"relax2", name:"2열 프리미엄 릴랙션 시트", price:1000000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 }
+        ],
+        calligraphy: [
+          { id:"wheel19", name:"19인치 휠 & 타이어", price:-1000000, excludes:["blackink"] },
+          { id:"digital_side", name:"컴팩트 디지털 사이드 미러", price:1380000 },
+          { id:"bodycare2", name:"2열 다이내믹 바디케어 시트", price:800000 },
+          { id:"blackink", name:"블랙잉크", price:400000, excludes:["wheel19"] },
+          { id:"sunroof", name:"파노라마 선루프", price:1190000 },
+          { id:"builtincam", name:"빌트인 캠 2 + 증강현실 내비게이션", price:590000 },
+          { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
+          { id:"rear_entertainment", name:"H Genuine Accessories · 후석 스마트 엔터테인먼트 시스템", price:2770000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["ev110"],
+    evAcquisitionTaxReduction: 1400000
+  }
+,
+gv60:{brand:"GENESIS",name:"GV60",displayName:"GV60",year:"2027 Genesis 공식 가격표",type:"프리미엄 전기 SUV",image:"gv60.png",tax:{rate:0.07,vatIncluded:true},
+engines:[{id:"std",name:"Standard AWD",price:0,sub:"255kW"},{id:"perf",name:"Performance AWD",price:0,sub:"360kW Boost"}],
+drivesByEngine:{std:[{id:"awd",name:"AWD",price:0,sub:"기본"}],perf:[{id:"awd",name:"AWD",price:0,sub:"Performance"}]},
+seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
+trimsByEngine:{std:[{id:"standard",name:"Standard",price:68150000,sub:"세제혜택 후"}],perf:[{id:"performance",name:"Performance",price:73480000,sub:"세제혜택 후"}]},
+colors:[{id:"uyuni",name:"우유니 화이트",price:0,color:"#f2f2f0"},{id:"vik",name:"비크 블랙",price:0,color:"#111214"},{id:"hana",name:"하나우마 민트",price:0,color:"#8aa5a1"}],
+optionsByEngine:{std:{standard:[{id:"vision",name:"디지털 비전 패키지",price:1800000},{id:"comfort",name:"컴포트 패키지",price:1200000},{id:"sunroof",name:"파노라마 선루프",price:900000}]},perf:{performance:[{id:"vision",name:"디지털 비전 패키지",price:1800000},{id:"luxury",name:"럭셔리 인테리어",price:1400000},{id:"sunroof",name:"파노라마 선루프",price:900000}]}},
+evEngineIds:["std","perf"],evAcquisitionTaxReduction:1400000},
+electrified_gv70:{
+  brand:"GENESIS",
+  name:"Electrified GV70",
+  displayName:"Electrified GV70",
+  year:"2026-08 Genesis 공식 BTO 기준",
+  type:"프리미엄 전기 SUV",
+  image:"electrified-gv70.png",
+  engineHelp:"전기모터 + AWD가 기본입니다. 제네시스 공식 BTO의 세제혜택 후 예상 견적 금액을 기준으로 계산합니다.",
+  trimHelp:"Electrified GV70은 단일 기본 모델에 휠·패키지·선택품목을 조합하는 BTO 구조입니다. 국비·지자체 보조금은 자동 차감하지 않습니다.",
+  tax:{rate:0.07,vatIncluded:true},
+  engines:[{id:"ev",name:"전기모터",price:0,sub:"듀얼 모터"}],
+  drivesByEngine:{ev:[{id:"awd",name:"AWD",price:0,sub:"기본"}]},
+  seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
+  trimsByEngine:{ev:[
+    {id:"base19",name:"기본 모델 · 19인치",price:75800000,sub:"공식 BTO 세제혜택 후 예상가격"},
+    {id:"base20",name:"기본 모델 · 20인치",price:76560000,sub:"공식 BTO 세제혜택 후 예상가격"}
+  ]},
+  colors:[
+    {id:"uyuni",name:"우유니 화이트",price:0,color:"#f1f1ee"},
+    {id:"vik",name:"비크 블랙",price:0,color:"#111214"}
+  ],
+  optionsByEngine:{ev:{
+    base19:[
+      {id:"popular2",name:"파퓰러 패키지 II",price:6600000},
+      {id:"prestige",name:"프레스티지 패키지",price:11600000},
+      {id:"hud",name:"헤드업 디스플레이",price:1300000},
+      {id:"sunroof",name:"파노라마 선루프",price:1400000},
+      {id:"convenience",name:"컨비니언스 패키지",price:2200000},
+      {id:"drive1",name:"드라이빙 어시스턴스 패키지 I",price:1950000},
+      {id:"drive2",name:"드라이빙 어시스턴스 패키지 II",price:2000000},
+      {id:"rearcomfort",name:"2열 컴포트 패키지",price:1000000},
+      {id:"bang",name:"뱅앤올룹슨 사운드 패키지",price:1700000},
+      {id:"builtincam",name:"빌트인 캠 패키지",price:850000}
+    ],
+    base20:[
+      {id:"popular2",name:"파퓰러 패키지 II",price:6600000},
+      {id:"prestige",name:"프레스티지 패키지",price:11600000},
+      {id:"hud",name:"헤드업 디스플레이",price:1300000},
+      {id:"sunroof",name:"파노라마 선루프",price:1400000},
+      {id:"convenience",name:"컨비니언스 패키지",price:2200000},
+      {id:"drive1",name:"드라이빙 어시스턴스 패키지 I",price:1950000},
+      {id:"drive2",name:"드라이빙 어시스턴스 패키지 II",price:2000000},
+      {id:"rearcomfort",name:"2열 컴포트 패키지",price:1000000},
+      {id:"bang",name:"뱅앤올룹슨 사운드 패키지",price:1700000},
+      {id:"builtincam",name:"빌트인 캠 패키지",price:850000}
+    ]
+  }},
+  evEngineIds:["ev"],
+  evAcquisitionTaxReduction:1400000
+},
+electrified_g80:{
+  brand:"GENESIS",
+  name:"Electrified G80",
+  displayName:"Electrified G80",
+  year:"2027 · Genesis 공식 BTO 2026-08 기준",
+  type:"프리미엄 전기 세단",
+  image:"electrified-g80.png",
+  engineHelp:"전기모터와 AWD가 기본입니다. 19인치 디쉬 타입 휠이 기본 적용됩니다.",
+  trimHelp:"제네시스 공식 BTO의 세제혜택 후 기본 판매가격을 기준으로 계산합니다. 국비·지자체 보조금은 자동 차감하지 않습니다.",
+  tax:{rate:0.07,vatIncluded:true},
+  engines:[{id:"ev",name:"전기모터",price:0,sub:"듀얼 모터"}],
+  drivesByEngine:{ev:[{id:"awd",name:"AWD",price:0,sub:"기본 · DAS 적용"}]},
+  seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
+  trimsByEngine:{ev:[
+    {id:"base",name:"기본 모델 · 19인치",price:84790000,sub:"세제혜택 후 · 세제혜택 전 89,080,000원"}
+  ]},
+  colors:[
+    {id:"uyuni",name:"우유니 화이트",price:0,color:"#f2f1ed"},
+    {id:"vik",name:"비크 블랙",price:0,color:"#111214"},
+    {id:"makalu_gray",name:"마칼루 그레이",price:0,color:"#62676b"},
+    {id:"tasman_blue",name:"태즈먼 블루",price:0,color:"#41586c"}
+  ],
+  optionsByEngine:{ev:{base:[
+    {id:"signature",name:"시그니쳐 디자인 셀렉션",price:3000000},
+    {id:"popular",name:"파퓰러 패키지",price:5400000,note:"HUD + 드라이빙 어시스턴스 I/II + 빌트인 캠 패키지"},
+    {id:"rear_steer",name:"후륜 조향 시스템",price:1500000},
+    {id:"convenience",name:"컨비니언스 패키지",price:1600000},
+    {id:"convenience_rear",name:"컨비니언스 패키지 + 2열 컴포트 패키지",price:6100000,excludes:["convenience"]},
+    {id:"builtincam",name:"빌트인 캠 패키지",price:850000,note:"빌트인 캠 2 + 증강현실 내비게이션"}
+  ]}},
+  evEngineIds:["ev"],
+  evAcquisitionTaxReduction:1400000
+}
 };
