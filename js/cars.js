@@ -2963,4 +2963,106 @@ window.CAR_DATA = {
     evAcquisitionTaxReduction: 1400000
   }
 
+  ,
+
+  ioniq5: {
+    brand: "HYUNDAI",
+    name: "IONIQ 5",
+    displayName: "아이오닉 5",
+    year: "2027 IONIQ 5 · 현대자동차 공식 가격표 기준",
+    type: "중형 전기 SUV",
+    image: "ioniq5.png",
+    engineHelp: "63.0kWh Standard와 84.0kWh Long Range를 선택합니다. 국비·지자체 보조금은 자동 차감하지 않습니다.",
+    trimHelp: "현대자동차 2027 IONIQ 5 공식 가격표의 세제혜택 후 판매가격과 공식 선택품목 가격을 반영합니다.",
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"ev_std", name:"Standard 63.0kWh", price:0, sub:"63.0kWh · 2WD" },
+      { id:"ev_long", name:"Long Range 84.0kWh", price:0, sub:"84.0kWh · 2WD / HTRAC" }
+    ],
+    drivesByEngine: {
+      ev_std: [{ id:"2wd", name:"2WD", price:0, sub:"후륜구동" }],
+      ev_long: [
+        { id:"2wd", name:"2WD", price:0, sub:"후륜구동" },
+        { id:"htrac", name:"HTRAC", price:2470000, sub:"+2,470,000원" }
+      ]
+    },
+    seats: [{ id:"5", name:"5인승", price:0, sub:"기본" }],
+
+    trimsByEngine: {
+      ev_std: [
+        { id:"evalue", name:"E-Value +", price:47350000, sub:"세제혜택 후 · 세제혜택 전 49,810,000원" }
+      ],
+      ev_long: [
+        { id:"elite", name:"E-Lite", price:50640000, sub:"세제혜택 후 · 세제혜택 전 53,270,000원" },
+        { id:"modern", name:"Modern", price:52900000, sub:"세제혜택 후 · 세제혜택 전 55,650,000원" },
+        { id:"premium", name:"Premium", price:58250000, sub:"세제혜택 후 · 세제혜택 전 61,270,000원" },
+        { id:"nline", name:"N Line", price:59450000, sub:"세제혜택 후 · 세제혜택 전 62,540,000원" },
+        { id:"inspiration", name:"Inspiration", price:61280000, sub:"세제혜택 후 · 세제혜택 전 64,470,000원" }
+      ]
+    },
+
+    colors: [
+      { id:"lucid_blue", name:"루시드 블루 펄", price:0, color:"#536779" },
+      { id:"atlas_white", name:"아틀라스 화이트", price:100000, color:"#f0efea" },
+      { id:"cyber_gray", name:"사이버 그레이 메탈릭", price:0, color:"#707477" },
+      { id:"ecotronic_gray", name:"에코트로닉 그레이 펄", price:0, color:"#565b5d" },
+      { id:"digital_teal", name:"디지털 틸그린 펄", price:0, color:"#405d5a" },
+      { id:"gravity_gold_matte", name:"그래비티 골드 매트", price:300000, color:"#aaa18e" },
+      { id:"celadon_gray_matte", name:"셀라돈 그레이 매트", price:300000, color:"#777c78", excludedTrims:["nline"] },
+      { id:"frosted_brown_matte", name:"프로스티드 브라운 매트", price:300000, color:"#74675f", excludedTrims:["nline"] },
+      { id:"ultimate_red", name:"얼티메이트 레드 메탈릭", price:0, color:"#852b2c", allowedTrims:["nline"] }
+    ],
+
+    optionsByEngine: {
+      ev_std: {
+        evalue: [
+          { id:"smartsense", name:"현대 스마트센스", price:1100000 },
+          { id:"comfort_choice", name:"컴포트 초이스", price:1100000 },
+          { id:"builtincam_pkg", name:"빌트인 캠 2 패키지", price:600000, requires:"comfort_choice", note:"컴포트 초이스 선택 시" }
+        ]
+      },
+      ev_long: {
+        elite: [],
+        modern: [
+          { id:"comfort", name:"컴포트", price:1500000 },
+          { id:"smartsense", name:"현대 스마트센스", price:1100000 },
+          { id:"style", name:"스타일", price:1200000 },
+          { id:"parking", name:"파킹 어시스트", price:1500000, requires:"style", note:"스타일 선택 시" },
+          { id:"hipass", name:"하이패스 패키지", price:250000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"hipass", note:"하이패스 패키지 선택 시" }
+        ],
+        premium: [
+          { id:"digital_center", name:"디지털 센터 미러", price:500000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"wheel20", name:"20인치 휠 & 미쉐린 타이어", price:490000 },
+          { id:"parking", name:"파킹 어시스트", price:1500000 },
+          { id:"platinum", name:"플래티넘", price:1100000 },
+          { id:"comfort_plus", name:"컴포트 플러스", price:600000 },
+          { id:"visionroof", name:"비전루프", price:740000 }
+        ],
+        nline: [
+          { id:"digital_center", name:"디지털 센터 미러", price:500000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"parking", name:"파킹 어시스트", price:1500000 },
+          { id:"digital_side", name:"디지털 사이드 미러", price:1380000, requires:"parking", note:"파킹 어시스트 선택 시" },
+          { id:"platinum", name:"플래티넘", price:1100000 },
+          { id:"comfort_plus", name:"컴포트 플러스", price:600000 },
+          { id:"visionroof", name:"비전루프", price:740000 },
+          { id:"alcantara", name:"알칸타라/천연가죽 시트", price:400000 }
+        ],
+        inspiration: [
+          { id:"digital_center", name:"디지털 센터 미러", price:500000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"wheel20", name:"20인치 휠 & 미쉐린 타이어", price:490000 },
+          { id:"digital_side", name:"디지털 사이드 미러", price:1380000 },
+          { id:"visionroof", name:"비전루프", price:740000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["ev_std", "ev_long"],
+    evAcquisitionTaxReduction: 1400000
+  }
+
 };
