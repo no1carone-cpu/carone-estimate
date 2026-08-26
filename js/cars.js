@@ -4181,7 +4181,7 @@ g90:{
     displayName: "디 올 뉴 넥쏘",
     year: "2027 NEXO · 현대자동차 공식 가격표 기준",
     type: "수소전기 SUV",
-    image: "images/hyundai/nexo.png",
+    image: "nexo.png",
 
     engineHelp:
       "150kW 수소연료전지 시스템과 2WD가 기본입니다. 국비·지자체 수소차 보조금은 지역과 시점에 따라 달라지므로 자동 차감하지 않습니다.",
