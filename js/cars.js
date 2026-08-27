@@ -734,6 +734,125 @@ window.CAR_DATA = {
 
   ,
 
+
+  /* =========================================================
+     The 2027 Tasman
+     Kia 공식 가격 페이지 2026-08-01 기준
+     - 스마트스트림 G2.5 T-GDI / 8단 자동변속기
+     - 일반 타스만 기준 (오픈베드 제외)
+     - 비영업용 화물자동차 취득세율 5% 적용
+     ========================================================= */
+  tasman: {
+    brand: "KIA",
+    name: "The 2027 Tasman",
+    displayName: "타스만",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "픽업 · 2.5 가솔린 터보",
+    image: "tasman.png",
+
+    engineHelp:
+      "기아 공식 가격표의 스마트스트림 G2.5 T-GDI 엔진 및 8단 자동변속기 기준입니다.",
+
+    trimHelp:
+      "다이내믹 · 어드벤처 · 베스트 셀렉션 · 익스트림 · X-Pro 공식 판매가격과 선택품목을 반영합니다.",
+
+    tax: {
+      rate: 0.05,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas25t",
+        name: "2.5 가솔린 터보",
+        price: 0,
+        sub: "스마트스트림 G2.5 T-GDI · 8단 자동변속기"
+      }
+    ],
+
+    /*
+      베스트 셀렉션과 X-Pro는 공식 판매가격에 전자식 4WD가 포함되어 있습니다.
+      나머지 트림은 2WD 기본 + 전자식 4WD 선택 구조입니다.
+      현재 공용 견적기는 트림별 구동 선택 제한을 직접 지원하지 않으므로,
+      4WD 포함 트림은 기본가격 자체에 공식 4WD 구성을 포함시키고
+      옵션 목록에서는 4WD를 중복 선택하지 않도록 분리합니다.
+    */
+    drivesByEngine: {
+      gas25t: [
+        { id: "2wd", name: "2WD", price: 0, sub: "기본 구동" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      gas25t: [
+        { id: "dynamic", name: "다이내믹", price: 35000000 },
+        { id: "adventure", name: "어드벤처", price: 41200000 },
+        { id: "best", name: "베스트 셀렉션", price: 43500000, sub: "전자식 4WD 기본 포함" },
+        { id: "extreme", name: "익스트림", price: 45050000 },
+        { id: "xpro", name: "X-Pro", price: 52550000, sub: "전자식 4WD 기본 포함" }
+      ]
+    },
+
+    colors: [
+      { id: "basic", name: "기본 외장색", price: 0, color: "#6b6c6b" },
+      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f4f4ef" }
+    ],
+
+    optionsByEngine: {
+      gas25t: {
+        dynamic: [
+          { id: "4wd", name: "전자식 4WD", price: 2650000 },
+          { id: "style", name: "스타일", price: 750000 },
+          { id: "convenience", name: "컨비니언스", price: 500000 },
+          { id: "nav", name: "12.3인치 내비게이션", price: 900000, requires: "convenience", note: "컨비니언스 적용 시 선택 가능" },
+          { id: "cluster", name: "12.3인치 클러스터", price: 600000, requires: "nav", note: "12.3인치 내비게이션 적용 시 선택 가능" },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1500000, requires: "cluster", note: "12.3인치 클러스터 적용 시 선택 가능" }
+        ],
+
+        adventure: [
+          { id: "4wd", name: "전자식 4WD", price: 2650000 },
+          { id: "style", name: "스타일", price: 750000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 600000, note: "공식 가격표: 내비게이션 적용 시 선택 가능" },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1500000, requires: "cluster", note: "12.3인치 클러스터 적용 시 선택 가능" },
+          { id: "monitoring", name: "모니터링", price: 1200000 },
+          { id: "hightech", name: "하이테크", price: 950000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 600000 },
+          { id: "sunroof", name: "선루프", price: 500000 }
+        ],
+
+        best: [
+          { id: "style", name: "스타일", price: 750000 },
+          { id: "cluster", name: "12.3인치 클러스터", price: 600000, note: "공식 가격표: 내비게이션 적용 시 선택 가능" },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1500000, requires: "cluster", note: "12.3인치 클러스터 적용 시 선택 가능" },
+          { id: "hightech", name: "하이테크", price: 950000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 600000 },
+          { id: "sunroof", name: "선루프", price: 500000 },
+          { id: "bodycolor", name: "바디칼라 클래딩", price: 200000 }
+        ],
+
+        extreme: [
+          { id: "4wd", name: "전자식 4WD", price: 2650000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1500000, note: "공식 가격표: 12.3인치 클러스터 적용 시 선택 가능" },
+          { id: "monitoring", name: "모니터링", price: 1200000 },
+          { id: "hightech", name: "하이테크", price: 950000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 600000 },
+          { id: "sunroof", name: "선루프", price: 500000 }
+        ],
+
+        xpro: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1500000 },
+          { id: "hightech", name: "하이테크", price: 950000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 600000 },
+          { id: "sunroof", name: "선루프", price: 500000 }
+        ]
+      }
+    }
+  },
+
   /* =========================================================
      The all-new Seltos
      기아 공식 가격: 2026-08-01 기준
@@ -790,9 +909,7 @@ window.CAR_DATA = {
 
     colors: [
       { id: "basic", name: "기본 외장색", price: 0, color: "#676a6d" },
-      { id: "white", name: "스노우 화이트 펄", price: 80000, color: "#f7f7f2" },
-      { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, color: "#c8c4b8", allowedTrims: ["xline"] },
-      { id: "red_matte", name: "마그마 매트 레드", price: 300000, color: "#88433e", allowedTrims: ["xline"] }
+      { id: "white", name: "스노우 화이트 펄", price: 80000, color: "#f7f7f2" }
     ],
 
     optionsByEngine: {
@@ -829,6 +946,8 @@ window.CAR_DATA = {
           { id: "twotone", name: "투톤루프", price: 300000 }
         ],
         xline: [
+          { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, note: "X-Line 전용 외장색" },
+          { id: "red_matte", name: "마그마 매트 레드", price: 300000, note: "X-Line 전용 외장색" },
           { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링", price: 1040000 },
@@ -875,6 +994,8 @@ window.CAR_DATA = {
           { id: "twotone", name: "투톤루프", price: 300000 }
         ],
         xline: [
+          { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, note: "X-Line 전용 외장색" },
+          { id: "red_matte", name: "마그마 매트 레드", price: 300000, note: "X-Line 전용 외장색" },
           { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링", price: 1040000 },
@@ -4431,6 +4552,10 @@ window.CAR_CATALOG_META = {
   "seltos": {
     "title": "셀토스",
     "type": "소형 SUV"
+  },
+  "tasman": {
+    "title": "타스만",
+    "type": "픽업 · 2.5 가솔린 터보"
   }
 };
 
@@ -4472,17 +4597,11 @@ window.CAR_DISPLAY_ORDER = [
   "carnival",
   "sorento",
   "seltos",
+  "tasman",
   "sportage"
 ];
 
 window.CAR_PENDING = [
-  {
-    "brand": "KIA",
-    "displayName": "타스만",
-    "type": "픽업",
-    "image": "images/kia/tasman.png",
-    "icon": "🚙"
-  },
   {
     "brand": "KIA",
     "displayName": "K9 3.3",
