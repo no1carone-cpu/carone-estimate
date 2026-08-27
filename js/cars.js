@@ -743,6 +743,244 @@ window.CAR_DATA = {
 
 
 
+
+
+  /* =========================================================
+     The 2026 Kia EV9 GT
+     Kia 공식 가격 페이지 2026-08-01 기준
+     ========================================================= */
+  ev9gt: {
+    brand: "KIA",
+    name: "The 2026 Kia EV9 GT",
+    displayName: "EV9 GT",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "고성능 대형 전기 SUV · GT 4WD",
+    image: "ev9gt.png",
+
+    engineHelp:
+      "기아 공식 EV9 GT 가격표 기준 99.8kWh 배터리와 374kW 듀얼 모터 4WD(전륜 139kW / 후륜 235kW) 구성입니다.",
+
+    trimHelp:
+      "EV9 GT는 GT 4WD 단일 트림, 6인승으로 운영됩니다. 세제혜택 후 공식 판매가격을 사용합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      {
+        id: "gt",
+        name: "GT",
+        price: 0,
+        sub: "99.8kWh · 374kW 듀얼 모터"
+      }
+    ],
+
+    drivesByEngine: {
+      gt: [
+        {
+          id: "4wd",
+          name: "4WD",
+          price: 0,
+          sub: "전륜 139kW + 후륜 235kW · 기본"
+        }
+      ]
+    },
+
+    seats: [
+      {
+        id: "6",
+        name: "6인승",
+        price: 0,
+        sub: "2열 독립 프리미엄 릴렉션 시트 · 기본"
+      }
+    ],
+
+    trimsByEngine: {
+      gt: [
+        {
+          id: "gt",
+          name: "GT",
+          price: 84740000,
+          sub: "세제혜택 후"
+        }
+      ]
+    },
+
+    colors: [
+      { id:"basic", name:"기본 외장색", price:0, color:"#55595A" },
+      { id:"snow_white", name:"스노우 화이트 펄", price:100000, color:"#F4F4EF" },
+      { id:"panthera_matte", name:"판테라 매트 메탈", price:490000, color:"#505253" }
+    ],
+
+    optionsByEngine: {
+      gt: {
+        gt: [
+          {
+            id:"style_plus",
+            name:"스타일 플러스",
+            price:1980000,
+            note:"무광 외장 칼라 동시 선택 불가"
+          },
+          {
+            id:"dual_sunroof",
+            name:"듀얼 선루프",
+            price:1190000
+          }
+        ]
+      }
+    },
+
+    evEngineIds:["gt"],
+    evAcquisitionTaxReduction:1400000
+  },
+
+  /* =========================================================
+     The 2026 EV9
+     Kia 공식 가격 페이지 2026-08-01 기준
+     EV9 GT는 기아 공식 별도 모델이므로 이 데이터에서 제외
+     ========================================================= */
+  ev9: {
+    brand: "KIA",
+    name: "The 2026 EV9",
+    displayName: "EV9",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "대형 전기 SUV · Standard · Long Range",
+    image: "ev9.png",
+
+    engineHelp:
+      "기아 공식 판매구조에 맞춰 2WD 스탠다드(76.1kWh), 2WD 롱레인지(99.8kWh), 4WD 롱레인지(99.8kWh)를 분리했습니다. EV9 GT는 별도 공식 모델이라 포함하지 않습니다.",
+
+    trimHelp:
+      "세제혜택 후 공식 판매가격을 사용합니다. GT-Line은 4WD 롱레인지에서만 운영됩니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"standard_2wd", name:"2WD 스탠다드", price:0, sub:"76.1kWh · 싱글 모터 2WD" },
+      { id:"longrange_2wd", name:"2WD 롱레인지", price:0, sub:"99.8kWh · 싱글 모터 2WD" },
+      { id:"longrange_4wd", name:"4WD 롱레인지", price:0, sub:"99.8kWh · 듀얼 모터 4WD" }
+    ],
+
+    drivesByEngine: {
+      standard_2wd:[{id:"2wd",name:"2WD",price:0}],
+      longrange_2wd:[{id:"2wd",name:"2WD",price:0}],
+      longrange_4wd:[{id:"4wd",name:"4WD",price:0}]
+    },
+
+    seats:[
+      {id:"7",name:"7인승",price:0,sub:"기본 · 6인승 변경은 선택품목에서 적용"}
+    ],
+
+    trimsByEngine: {
+      standard_2wd:[
+        {id:"light",name:"라이트",price:61970000,sub:"세제혜택 후"},
+        {id:"air",name:"에어",price:64120000,sub:"세제혜택 후"},
+        {id:"earth",name:"어스",price:68910000,sub:"세제혜택 후"}
+      ],
+      longrange_2wd:[
+        {id:"light",name:"라이트",price:66420000,sub:"세제혜택 후"},
+        {id:"air",name:"에어",price:68570000,sub:"세제혜택 후"},
+        {id:"earth",name:"어스",price:73360000,sub:"세제혜택 후"}
+      ],
+      longrange_4wd:[
+        {id:"light",name:"라이트",price:69900000,sub:"세제혜택 후"},
+        {id:"air",name:"에어",price:72050000,sub:"세제혜택 후"},
+        {id:"earth",name:"어스",price:76890000,sub:"세제혜택 후"},
+        {id:"gtline",name:"GT-Line",price:79170000,sub:"세제혜택 후"}
+      ]
+    },
+
+    colors:[
+      {id:"basic",name:"기본 외장색",price:0,color:"#6C7072"},
+      {id:"snow_white",name:"스노우 화이트 펄",price:100000,color:"#F4F4EF"},
+      {id:"ivory_matte",name:"아이보리 매트 실버",price:490000,color:"#C8C4B9"}
+    ],
+
+    optionsByEngine: {
+      standard_2wd:{
+        light:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"convenience",name:"컨비니언스",price:1090000},
+          {id:"hud",name:"헤드업 디스플레이",price:590000},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"monitoring_plus",name:"모니터링 플러스",price:1980000}
+        ],
+        air:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
+        ],
+        earth:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
+        ]
+      },
+
+      longrange_2wd:{
+        light:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"convenience",name:"컨비니언스",price:1090000},
+          {id:"hud",name:"헤드업 디스플레이",price:590000},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"monitoring_plus",name:"모니터링 플러스",price:1980000}
+        ],
+        air:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
+          {id:"wheel20",name:"20인치 휠",price:590000}
+        ],
+        earth:[
+          {id:"seat6",name:"6인승",price:490000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
+          {id:"wheel20",name:"20인치 휠",price:590000}
+        ]
+      },
+
+      longrange_4wd:{
+        light:[
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"wheel21",name:"21인치 휠",price:1190000},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
+        ],
+        air:[
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
+          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"wheel21",name:"21인치 휠",price:1190000},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
+        ],
+        earth:[
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
+          {id:"style",name:"스타일",price:690000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
+          {id:"hightech",name:"하이테크",price:1980000}
+        ],
+        gtline:[
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
+          {id:"builtincam2",name:"빌트인 캠 2",price:590000},
+          {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
+          {id:"hightech",name:"하이테크",price:1980000}
+        ]
+      }
+    },
+
+    evEngineIds:["standard_2wd","longrange_2wd","longrange_4wd"],
+    evAcquisitionTaxReduction:1400000
+  },
+
   /* =========================================================
      The 2027 EV6
      Kia 공식 가격 페이지 2026-08-03 기준
@@ -5719,6 +5957,14 @@ window.CAR_CATALOG_META = {
   "ev6": {
     "title": "EV6",
     "type": "전기 크로스오버 · Standard · Long Range"
+  },
+  "ev9": {
+    "title": "EV9",
+    "type": "대형 전기 SUV · Standard · Long Range"
+  },
+  "ev9gt": {
+    "title": "EV9 GT",
+    "type": "고성능 대형 전기 SUV · GT 4WD"
   }
 };
 
@@ -5769,6 +6015,8 @@ window.CAR_DISPLAY_ORDER = [
   "ev3",
   "ev3gt",
   "ev6",
+  "ev9",
+  "ev9gt",
   "sportage"
 ];
 
@@ -5787,32 +6035,4 @@ window.CAR_PENDING = [
     "image": "images/kia/k5.png",
     "icon": "⚡"
   },
-  {
-    "brand": "KIA",
-    "displayName": "EV9 에어",
-    "type": "대형 전기 SUV",
-    "image": "images/kia/ev9-air.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "EV9 어스",
-    "type": "대형 전기 SUV",
-    "image": "images/kia/ev9-earth.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "EV9 GT-LINE",
-    "type": "대형 전기 SUV",
-    "image": "images/kia/ev9-gtline.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "EV9 GT",
-    "type": "고성능 대형 전기 SUV",
-    "image": "images/kia/ev9-gt.png",
-    "icon": "⚡"
-  }
 ];
