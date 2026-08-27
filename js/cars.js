@@ -738,6 +738,125 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The new Niro
+     Kia 공식 가격 페이지 2026-08-01 기준
+     - 1.6 하이브리드
+     ========================================================= */
+  niro: {
+    brand: "KIA",
+    name: "The new Niro",
+    displayName: "니로 HEV",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "하이브리드 SUV · 1.6 HEV",
+    image: "niro.png",
+
+    engineHelp:
+      "기아 공식 가격표 기준 스마트스트림 G1.6 하이브리드 엔진, 6단 DCT, 32kW 구동 모터 구성입니다. 현재 국내 공식 니로 판매 페이지의 HEV만 반영합니다.",
+
+    trimHelp:
+      "트렌디 · 프레스티지 · 시그니처의 세제혜택 후 공식 판매가격과 선택품목을 반영합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      {
+        id: "hybrid16",
+        name: "1.6 하이브리드",
+        price: 0,
+        sub: "스마트스트림 G1.6 하이브리드 · 6단 DCT · 32kW 구동 모터"
+      }
+    ],
+
+    drivesByEngine: {
+      hybrid16: [
+        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      hybrid16: [
+        { id: "trendy", name: "트렌디", price: 29270000, sub: "세제혜택 후" },
+        { id: "prestige", name: "프레스티지", price: 32420000, sub: "세제혜택 후" },
+        { id: "signature", name: "시그니처", price: 35150000, sub: "세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id: "basic", name: "기본 외장색", price: 0, color: "#59605d" },
+      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f5f5f1" }
+    ],
+
+    optionsByEngine: {
+      hybrid16: {
+        trendy: [
+          { id: "convenience", name: "컨비니언스", price: 650000 },
+          { id: "wheel18", name: "18인치 휠", price: 490000 },
+          { id: "drivewise1", name: "드라이브 와이즈 Ⅰ", price: 420000 },
+          { id: "cluster", name: "12.3인치 클러스터 팩", price: 1150000 },
+          {
+            id: "builtincam",
+            name: "빌트인 캠 2 플러스",
+            price: 450000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 팩 적용 시 선택 가능"
+          }
+        ],
+
+        prestige: [
+          { id: "style", name: "스타일", price: 970000 },
+          { id: "wheel18", name: "18인치 휠", price: 490000 },
+          { id: "premium", name: "프리미엄", price: 1240000 },
+          { id: "drivewise1", name: "드라이브 와이즈 Ⅰ", price: 420000 },
+          { id: "cluster", name: "12.3인치 클러스터 팩", price: 400000 },
+          {
+            id: "drivewise2",
+            name: "드라이브 와이즈 Ⅱ",
+            price: 990000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 팩 적용 시 선택 가능"
+          },
+          {
+            id: "hud",
+            name: "HUD",
+            price: 590000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 팩 적용 시 선택 가능"
+          },
+          {
+            id: "builtincam",
+            name: "빌트인 캠 2 플러스",
+            price: 450000,
+            requires: "cluster",
+            note: "12.3인치 클러스터 팩 적용 시 선택 가능"
+          },
+          { id: "comfort", name: "컴포트", price: 750000 },
+          { id: "smartconnect", name: "스마트 커넥트", price: 850000 },
+          { id: "sunroof", name: "선루프 + LED 실내등", price: 450000 }
+        ],
+
+        signature: [
+          { id: "style", name: "스타일", price: 970000 },
+          { id: "wheel18", name: "18인치 휠", price: 490000 },
+          { id: "premium", name: "프리미엄", price: 1240000 },
+          { id: "drivewise1", name: "드라이브 와이즈 Ⅰ", price: 420000 },
+          { id: "drivewise2", name: "드라이브 와이즈 Ⅱ", price: 990000 },
+          { id: "hud", name: "HUD", price: 590000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "comfort", name: "컴포트", price: 550000 },
+          { id: "smartconnect", name: "스마트 커넥트", price: 850000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 590000 },
+          { id: "sunroof", name: "선루프 + LED 실내등", price: 450000 }
+        ]
+      }
+    }
+  },
+
   /* =========================================================
      The 2027 K5
      Kia 공식 자가용 가격 페이지 2026-08-01 기준
@@ -4975,6 +5094,10 @@ window.CAR_CATALOG_META = {
   "k5": {
     "title": "K5 / K5 Hybrid",
     "type": "중형 세단 · 2.0 가솔린 · Hybrid"
+  },
+  "niro": {
+    "title": "니로 HEV",
+    "type": "하이브리드 SUV · 1.6 HEV"
   }
 };
 
@@ -5020,6 +5143,7 @@ window.CAR_DISPLAY_ORDER = [
   "k8",
   "k9",
   "k5",
+  "niro",
   "sportage"
 ];
 
@@ -5036,20 +5160,6 @@ window.CAR_PENDING = [
     "displayName": "K5 / K5 HEV",
     "type": "중형 세단",
     "image": "images/kia/k5.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "K3",
-    "type": "준중형 세단",
-    "image": "images/kia/k3.png",
-    "icon": "🚙"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "니로 HEV",
-    "type": "하이브리드 SUV",
-    "image": "images/kia/niro-hev.png",
     "icon": "⚡"
   },
   {
