@@ -1181,6 +1181,248 @@ window.CAR_DATA = {
   },
 
   /* =========================================================
+     The 2026 EV4
+     기아 공식 가격표 2026-08-01 기준
+     - 스탠다드 2WD (58.3kWh)
+     - 롱레인지 2WD (81.4kWh)
+     - 롱레인지 듀얼 모터 4WD 선택 지원
+     - 세제혜택 후 공식 판매가격 기준
+     ========================================================= */
+  ev4: {
+    brand: "KIA",
+    name: "The 2026 EV4",
+    displayName: "EV4",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "전기 세단 · Standard · Long Range",
+    image: "ev4.png",
+
+    engineHelp:
+      "기아 공식 EV4 가격표 기준 스탠다드(58.3kWh)와 롱레인지(81.4kWh)를 선택합니다. 듀얼 모터 4WD는 롱레인지에서만 선택할 수 있습니다.",
+
+    trimHelp:
+      "에어 · 어스 · GT-Line의 세제혜택 후 공식 판매가격을 사용합니다. 롱레인지 에어/어스의 듀얼 모터 4WD는 19인치 휠 & 타이어 적용 시 선택할 수 있습니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "standard",
+        name: "스탠다드",
+        price: 0,
+        sub: "58.3kWh · 150kW · 2WD"
+      },
+      {
+        id: "longrange",
+        name: "롱레인지",
+        price: 0,
+        sub: "81.4kWh · 150kW · 2WD / 듀얼 모터 4WD 선택 가능"
+      }
+    ],
+
+    drivesByEngine: {
+      standard: [
+        { id: "2wd", name: "2WD", price: 0, sub: "스탠다드 공식 구성" }
+      ],
+      longrange: [
+        { id: "2wd", name: "2WD", price: 0, sub: "기본 구동 · 4WD는 선택품목에서 적용" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      standard: [
+        { id: "air", name: "에어", price: 40420000, sub: "세제혜택 후" },
+        { id: "earth", name: "어스", price: 45010000, sub: "세제혜택 후" },
+        { id: "gtline", name: "GT-Line", price: 46110000, sub: "세제혜택 후" }
+      ],
+      longrange: [
+        { id: "air", name: "에어", price: 44620000, sub: "세제혜택 후" },
+        { id: "earth", name: "어스", price: 49210000, sub: "세제혜택 후" },
+        { id: "gtline", name: "GT-Line", price: 50310000, sub: "세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id: "snow_white", name: "스노우 화이트 펄", price: 80000, color: "#F4F4F1" },
+      { id: "ivory_silver", name: "아이보리 실버", price: 0, color: "#C9C6BD" },
+      { id: "shale_gray", name: "셰일 그레이", price: 0, color: "#55585A" },
+      { id: "aurora_black", name: "오로라 블랙 펄", price: 0, color: "#151617" },
+      {
+        id: "morning_haze",
+        name: "모닝 헤이즈",
+        price: 0,
+        color: "#95A2A1",
+        excludesOptions: ["aftermarket"]
+      },
+      {
+        id: "magma_red",
+        name: "마그마 레드",
+        price: 0,
+        color: "#713335",
+        excludesOptions: ["aftermarket"]
+      },
+      {
+        id: "ivory_matte",
+        name: "아이보리 매트 실버",
+        price: 300000,
+        color: "#C7C4BC",
+        excludesOptions: ["aftermarket"]
+      },
+      {
+        id: "yacht_matte_blue",
+        name: "요트 매트 블루",
+        price: 300000,
+        color: "#31496A",
+        allowedTrims: ["gtline"]
+      }
+    ],
+
+    optionsByEngine: {
+      standard: {
+        air: [
+          { id: "style", name: "스타일", price: 740000 },
+          { id: "comfort", name: "컴포트", price: 890000 },
+          { id: "convenience", name: "컨비니언스", price: 890000 },
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          {
+            id: "sunroof",
+            name: "와이드 선루프",
+            price: 640000,
+            requires: "style",
+            note: "스타일 적용 시 선택 가능"
+          },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          {
+            id: "hud",
+            name: "헤드업 디스플레이",
+            price: 590000,
+            requires: "monitoring",
+            note: "모니터링 적용 시 선택 가능"
+          }
+        ],
+        earth: [
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 640000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ],
+        gtline: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 640000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ]
+      },
+
+      longrange: {
+        air: [
+          { id: "style", name: "스타일", price: 740000 },
+          { id: "comfort", name: "컴포트", price: 890000 },
+          { id: "convenience", name: "컨비니언스", price: 890000 },
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          {
+            id: "sunroof",
+            name: "와이드 선루프",
+            price: 640000,
+            requires: "style",
+            excludes: ["aftermarket"],
+            note: "스타일 적용 시 선택 가능 · 애프터마켓용 컬렉션과 동시 선택 불가"
+          },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          {
+            id: "hud",
+            name: "헤드업 디스플레이",
+            price: 590000,
+            requires: "monitoring",
+            note: "모니터링 적용 시 선택 가능"
+          },
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            requires: "wheel19",
+            excludes: ["aftermarket"],
+            note: "19인치 휠 & 타이어 적용 시 선택 가능"
+          },
+          {
+            id: "aftermarket",
+            name: "애프터마켓용 컬렉션",
+            price: 150000,
+            excludes: ["sunroof", "awd"],
+            excludesColors: ["morning_haze", "magma_red", "ivory_matte", "yacht_matte_blue"],
+            note: "와이드 선루프·듀얼 모터 4WD와 동시 선택 불가 · 지정 외/내장 컬러만 선택 가능"
+          }
+        ],
+        earth: [
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          {
+            id: "sunroof",
+            name: "와이드 선루프",
+            price: 640000,
+            excludes: ["aftermarket"],
+            note: "애프터마켓용 컬렉션과 동시 선택 불가"
+          },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 640000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 },
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            requires: "wheel19",
+            excludes: ["aftermarket"],
+            note: "19인치 휠 & 타이어 적용 시 선택 가능"
+          },
+          {
+            id: "aftermarket",
+            name: "애프터마켓용 컬렉션",
+            price: 150000,
+            excludes: ["sunroof", "awd"],
+            excludesColors: ["morning_haze", "magma_red", "ivory_matte", "yacht_matte_blue"],
+            note: "와이드 선루프·듀얼 모터 4WD와 동시 선택 불가 · 지정 외/내장 컬러만 선택 가능"
+          }
+        ],
+        gtline: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1280000 },
+          { id: "utility", name: "유틸리티", price: 400000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 640000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 },
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            note: "GT-Line은 19인치 휠 & 타이어가 기본 적용되어 바로 선택 가능"
+          }
+        ]
+      }
+    },
+
+    evEngineIds: ["standard", "longrange"],
+    evAcquisitionTaxReduction: 1400000
+  },
+
+  /* =========================================================
      The 2026 EV3
      Kia 공식 가격 페이지 2026-08-01 기준
      - 스탠다드 2WD (58.3kWh)
@@ -6029,6 +6271,7 @@ window.CAR_DISPLAY_ORDER = [
   "niro",
   "ray",
   "ev3",
+  "ev4",
   "ev3gt",
   "ev6",
   "ev9",
