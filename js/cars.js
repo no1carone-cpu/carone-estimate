@@ -356,25 +356,14 @@ window.CAR_DATA = {
     },
 
     colors: [
-      {
-        id: "basic",
-        name: "기본 외장색",
-        price: 0,
-        color: "#64676d"
-      },
-      {
-        id: "white",
-        name: "스노우 화이트 펄",
-        price: 80000,
-        color: "#f8f8f3"
-      },
-      {
-        id: "matte",
-        name: "쉐도우 매트 그레이",
-        price: 300000,
-        color: "#747474",
-        allowedTrims: ["xline"]
-      }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"heritage_blue", name:"헤리티지 블루", price:0, color:"#4B6676" },
+      { id:"wolf_gray", name:"울프 그레이", price:0, color:"#898D8F" },
+      { id:"gravity_gray", name:"그래비티 그레이", price:0, color:"#5D6163" },
+      { id:"vesta_blue", name:"베스타 블루", price:0, color:"#395C6B" },
+      { id:"fusion_black", name:"퓨전 블랙", price:0, color:"#151718" },
+      { id:"jungle_wood_green", name:"정글 우드 그린", price:0, color:"#46564C" },
+      { id:"shadow_matte_gray", name:"쉐도우 매트 그레이", price:300000, color:"#747776", allowedTrims:["xline"] }
     ],
 
     optionsByEngine: {
@@ -601,30 +590,11 @@ window.CAR_DATA = {
     },
 
     colors: [
-      {
-        id: "basic",
-        name: "기본 외장색",
-        price: 0,
-        color: "#555960"
-      },
-      {
-        id: "white",
-        name: "스노우 화이트 펄",
-        price: 80000,
-        color: "#f8f8f3"
-      },
-      {
-        id: "black",
-        name: "오로라 블랙 펄",
-        price: 0,
-        color: "#151515"
-      },
-      {
-        id: "silver",
-        name: "세라믹 실버",
-        price: 0,
-        color: "#a5a7a8"
-      }
+      { id:"panthera_metal", name:"판테라 메탈", price:0, color:"#4C5052" },
+      { id:"ceramic_silver", name:"세라믹 실버", price:0, color:"#A6A8A7", allowedTrims:["xline"] },
+      { id:"ivory_silver", name:"아이보리 실버", price:0, color:"#C9C7BF" },
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" }
     ],
 
     /*
@@ -806,9 +776,11 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id:"basic", name:"기본 외장색", price:0, color:"#55595A" },
+      { id:"panthera_matte", name:"판테라 매트 메탈", price:490000, color:"#454849", excludesOptions:["style_plus"] },
       { id:"snow_white", name:"스노우 화이트 펄", price:100000, color:"#F4F4EF" },
-      { id:"panthera_matte", name:"판테라 매트 메탈", price:490000, color:"#505253" }
+      { id:"pebble_gray", name:"페블 그레이", price:0, color:"#999A96" },
+      { id:"panthera_metal", name:"판테라 메탈", price:0, color:"#4C5052" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" }
     ],
 
     optionsByEngine: {
@@ -818,6 +790,7 @@ window.CAR_DATA = {
             id:"style_plus",
             name:"스타일 플러스",
             price:1980000,
+            excludesColors:["panthera_matte"],
             note:"무광 외장 칼라 동시 선택 불가"
           },
           {
@@ -889,10 +862,16 @@ window.CAR_DATA = {
       ]
     },
 
-    colors:[
-      {id:"basic",name:"기본 외장색",price:0,color:"#6C7072"},
-      {id:"snow_white",name:"스노우 화이트 펄",price:100000,color:"#F4F4EF"},
-      {id:"ivory_matte",name:"아이보리 매트 실버",price:490000,color:"#C8C4B9"}
+    colors: [
+      { id:"snow_white", name:"스노우 화이트 펄", price:100000, color:"#F4F4EF" },
+      { id:"pebble_gray", name:"페블 그레이", price:0, color:"#999A96" },
+      { id:"panthera_metal", name:"판테라 메탈", price:0, color:"#4C5052" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" },
+      { id:"iceberg_green", name:"아이스버그 그린", price:0, color:"#9DACA4" },
+      { id:"ocean_blue", name:"오션 블루", price:0, color:"#34596F" },
+      { id:"flare_red", name:"플레어 레드", price:0, color:"#922F33" },
+      { id:"ivory_matte", name:"아이보리 매트 실버", price:490000, color:"#C6C2B8", excludesOptions:["style"] },
+      { id:"ocean_matte_blue", name:"오션 매트 블루", price:490000, color:"#466478", excludesOptions:["style"] }
     ],
 
     optionsByEngine: {
@@ -906,13 +885,13 @@ window.CAR_DATA = {
         ],
         air:[
           {id:"seat6",name:"6인승",price:490000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
         ],
         earth:[
           {id:"seat6",name:"6인승",price:490000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
         ]
@@ -928,14 +907,14 @@ window.CAR_DATA = {
         ],
         air:[
           {id:"seat6",name:"6인승",price:490000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
           {id:"wheel20",name:"20인치 휠",price:590000}
         ],
         earth:[
           {id:"seat6",name:"6인승",price:490000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
           {id:"wheel20",name:"20인치 휠",price:590000}
@@ -944,32 +923,32 @@ window.CAR_DATA = {
 
       longrange_4wd:{
         light:[
-          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
-          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000,excludes:["seat6_relax"]},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000,excludes:["seat6_swivel"]},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"wheel21",name:"21인치 휠",price:1190000},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
         ],
         air:[
-          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
-          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
-          {id:"style",name:"스타일",price:1480000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000,excludes:["seat6_relax"]},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000,excludes:["seat6_swivel"]},
+          {id:"style",name:"스타일",price:1480000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"wheel21",name:"21인치 휠",price:1190000},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000}
         ],
         earth:[
-          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
-          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
-          {id:"style",name:"스타일",price:690000,note:"무광 외장 칼라 동시 선택 불가"},
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000,excludes:["seat6_relax"]},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000,excludes:["seat6_swivel"]},
+          {id:"style",name:"스타일",price:690000,excludesColors:["ivory_matte","ocean_matte_blue"],note:"무광 외장 칼라 동시 선택 불가"},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
           {id:"hightech",name:"하이테크",price:1980000}
         ],
         gtline:[
-          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000},
-          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000},
+          {id:"seat6_swivel",name:"6인승(스위블)",price:1140000,excludes:["seat6_relax"]},
+          {id:"seat6_relax",name:"6인승(릴렉션)",price:1980000,excludes:["seat6_swivel"]},
           {id:"builtincam2",name:"빌트인 캠 2",price:590000},
           {id:"dual_sunroof",name:"듀얼 선루프",price:1190000},
           {id:"hightech",name:"하이테크",price:1980000}
@@ -1027,10 +1006,17 @@ window.CAR_DATA = {
       ]
     },
 
-    colors:[
-      { id:"basic", name:"기본 외장색", price:0, color:"#5E6264" },
+    colors: [
       { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
-      { id:"matte", name:"문스케이프 매트 그레이 / 아이보리 매트 실버", price:300000, color:"#A8A8A2" }
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" },
+      { id:"runway_red", name:"런웨이 레드", price:0, color:"#8B3032" },
+      { id:"interstellar_gray", name:"인터스텔라 그레이", price:0, color:"#555A5C", allowedTrims:["light","air","earth"] },
+      { id:"glacier", name:"글래시어", price:0, color:"#C8D1D1", allowedTrims:["light","air","earth"] },
+      { id:"ivory_matte", name:"아이보리 매트 실버", price:300000, color:"#C6C2B8", allowedTrims:["light","air","earth"] },
+      { id:"moonscape_matte", name:"문스케이프 매트 그레이", price:300000, color:"#767A7A", allowedTrims:["light","air","earth"] },
+      { id:"yacht_blue", name:"요트 블루", price:0, color:"#2E536F", allowedTrims:["light","air","earth"] },
+      { id:"wolf_gray", name:"울프 그레이", price:0, color:"#898D8F", allowedTrims:["gtline"] },
+      { id:"yacht_matte_blue", name:"요트 매트 블루", price:300000, color:"#49667A", allowedTrims:["gtline"] }
     ],
 
     optionsByEngine: {
@@ -1169,9 +1155,13 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "basic", name: "기본 외장색", price: 0, color: "#55585A" },
-      { id: "snow_white", name: "스노우 화이트 펄", price: 80000, color: "#F5F5F0" },
-      { id: "ivory_silver_matte", name: "아이보리 실버 매트", price: 300000, color: "#C9C5BA" }
+      { id:"ivory_matte", name:"아이보리 매트 실버", price:300000, color:"#C6C2B8" },
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"ivory_silver", name:"아이보리 실버", price:0, color:"#C9C7BF" },
+      { id:"adventurine_green", name:"어벤처린 그린", price:0, color:"#66736A" },
+      { id:"frost_blue", name:"프로스트 블루", price:0, color:"#8FA6B5" },
+      { id:"shale_gray", name:"세일 그레이", price:0, color:"#62696D" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" }
     ],
 
     optionsByEngine: {
@@ -1490,8 +1480,8 @@ window.CAR_DATA = {
           {id:"wheel15",name:"15인치 전면가공 휠",price:500000},
           {id:"comfort1",name:"컴포트 Ⅰ",price:600000},
           {id:"drivewise",name:"드라이브 와이즈",price:300000},
-          {id:"display8",name:"8인치 디스플레이 오디오",price:500000,note:"8인치 내비게이션과 중복 선택 불가"},
-          {id:"nav8",name:"8인치 내비게이션",price:1450000,note:"8인치 디스플레이 오디오와 중복 선택 불가"}
+          {id:"display8",name:"8인치 디스플레이 오디오",price:500000,excludes:["nav8"],note:"8인치 내비게이션과 중복 선택 불가"},
+          {id:"nav8",name:"8인치 내비게이션",price:1450000,excludes:["display8"],note:"8인치 디스플레이 오디오와 중복 선택 불가"}
         ],
         prestige:[
           {id:"style",name:"스타일",price:500000},
@@ -1631,8 +1621,13 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "basic", name: "기본 외장색", price: 0, color: "#59605d" },
-      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f5f5f1" }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"ivory_silver", name:"아이보리 실버", price:0, color:"#C9C7BF" },
+      { id:"steel_gray", name:"스틸 그레이", price:0, color:"#707577" },
+      { id:"cityscape_green", name:"시티스케이프 그린", price:0, color:"#53655D" },
+      { id:"mineral_blue", name:"미네랄 블루", price:0, color:"#42647C" },
+      { id:"interstellar_gray", name:"인터스텔라 그레이", price:0, color:"#555A5C" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" }
     ],
 
     optionsByEngine: {
@@ -1750,8 +1745,13 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id:"basic", name:"기본 외장색", price:0, color:"#4b4d50" },
-      { id:"snowwhite", name:"스노우 화이트 펄", price:80000, color:"#f5f5f1" }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"interstellar_gray", name:"인터스텔라 그레이", price:0, color:"#555A5C" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" },
+      { id:"wolf_gray", name:"울프 그레이", price:0, color:"#8A8D8F" },
+      { id:"gravity_blue", name:"그래비티 블루", price:0, color:"#31475B" },
+      { id:"yacht_blue", name:"요트 블루", price:0, color:"#2E536F" },
+      { id:"glacier", name:"글래시어", price:0, color:"#C8D1D1" }
     ],
 
     optionsByEngine: {
@@ -1878,9 +1878,12 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id:"basic", name:"기본 외장색", price:0, color:"#55585b" },
-      { id:"snowwhite", name:"스노우 화이트 펄", price:80000, color:"#f5f5f0" },
-      { id:"moonscape", name:"문스케이프 매트 그레이", price:400000, color:"#777a78" }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"ivory_silver", name:"아이보리 실버", price:0, color:"#C9C7BF" },
+      { id:"moonscape_matte", name:"문스케이프 매트 그레이", price:400000, color:"#767A7A" },
+      { id:"sunset_beige", name:"선셋 베이지", price:0, color:"#B7A58C" },
+      { id:"interstellar_gray", name:"인터스텔라 그레이", price:0, color:"#555A5C" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" }
     ],
 
     optionsByEngine: {
@@ -2031,8 +2034,11 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "basic", name: "기본 외장색", price: 0, color: "#383a3d" },
-      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f5f5f1" }
+      { id:"panthera_metal", name:"판테라 메탈", price:0, color:"#4C5052" },
+      { id:"deep_chroma_blue", name:"딥 크로마 블루", price:0, color:"#253A50" },
+      { id:"pebble_gray", name:"페블 그레이", price:0, color:"#9A9B96" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" },
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" }
     ],
 
     optionsByEngine: {
@@ -2167,8 +2173,14 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "basic", name: "기본 외장색", price: 0, color: "#6b6c6b" },
-      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f4f4ef" }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"steel_gray", name:"스틸 그레이", price:0, color:"#6F7476" },
+      { id:"interstellar_gray", name:"인터스텔라 그레이", price:0, color:"#555A5C" },
+      { id:"cityscape_green", name:"시티스케이프 그린", price:0, color:"#53655D" },
+      { id:"runway_red", name:"런웨이 레드", price:0, color:"#8B3032" },
+      { id:"aurora_black", name:"오로라 블랙 펄", price:0, color:"#151617" },
+      { id:"tan_beige", name:"탠 베이지", price:0, color:"#B6A58D" },
+      { id:"denim_blue", name:"데님 블루", price:0, color:"#405866" }
     ],
 
     optionsByEngine: {
@@ -2250,7 +2262,7 @@ window.CAR_DATA = {
     drivesByEngine: {
       gas16: [
         { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
-        { id: "4wd", name: "전자식 4WD", price: 1980000, sub: "+1,980,000원" }
+        { id: "4wd", name: "전자식 4WD", price: 1980000, sub: "+1,980,000원", requiresOptionByTrim: { trendy: "style" }, note: "트렌디는 스타일 적용 시 선택 가능" }
       ],
       hybrid: [
         { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" }
@@ -2277,8 +2289,16 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "basic", name: "기본 외장색", price: 0, color: "#676a6d" },
-      { id: "white", name: "스노우 화이트 펄", price: 80000, color: "#f7f7f2" }
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"iceberg_green", name:"아이스버그 그린", price:0, color:"#A8B6AE" },
+      { id:"gravity_gray", name:"그래비티 그레이", price:0, color:"#5D6163" },
+      { id:"ivory_silver", name:"아이보리 실버", price:0, color:"#C9C7BF" },
+      { id:"frost_blue", name:"프로스트 블루", price:0, color:"#8FA6B5" },
+      { id:"fusion_black", name:"퓨전 블랙", price:0, color:"#151718" },
+      { id:"black_snow_white", name:"퓨전 블랙 + 스노우 화이트 펄", price:300000, color:"#F5F5F0" },
+      { id:"black_iceberg_green", name:"퓨전 블랙 + 아이스버그 그린", price:300000, color:"#A8B6AE" },
+      { id:"ivory_matte", name:"아이보리 매트 실버", price:300000, color:"#C6C2B8", allowedTrims:["xline"] },
+      { id:"magma_matte_red", name:"마그마 매트 레드", price:300000, color:"#8A3E3B", allowedTrims:["xline"] }
     ],
 
     optionsByEngine: {
@@ -2315,8 +2335,6 @@ window.CAR_DATA = {
           { id: "twotone", name: "투톤루프", price: 300000 }
         ],
         xline: [
-          { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, note: "X-Line 전용 외장색" },
-          { id: "red_matte", name: "마그마 매트 레드", price: 300000, note: "X-Line 전용 외장색" },
           { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링", price: 1040000 },
@@ -2363,8 +2381,6 @@ window.CAR_DATA = {
           { id: "twotone", name: "투톤루프", price: 300000 }
         ],
         xline: [
-          { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, note: "X-Line 전용 외장색" },
-          { id: "red_matte", name: "마그마 매트 레드", price: 300000, note: "X-Line 전용 외장색" },
           { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링", price: 1040000 },

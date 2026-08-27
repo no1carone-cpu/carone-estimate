@@ -214,10 +214,31 @@ function normalizeSelectedOptions() {
       );
     }
   });
+
+  const selectedColor = (CAR.colors || []).find(
+    color => color.id === state.color
+  );
+
+  if (selectedColor?.excludesOptions) {
+    selectedColor.excludesOptions.forEach(id => {
+      state.options.delete(id);
+    });
+  }
+
+  [...state.options].forEach(id => {
+    const option = raw.find(item => item.id === id);
+    if (option?.excludesColors?.includes(state.color)) {
+      state.options.delete(id);
+    }
+  });
+
 }
 
 function getAvailableColors() {
   return (CAR.colors || []).filter(color => {
+    if (color.allowedEngines && !color.allowedEngines.includes(state.engine)) {
+      return false;
+    }
     if (color.allowedSeats && !color.allowedSeats.includes(state.seat)) {
       return false;
     }
@@ -374,6 +395,24 @@ function renderSimpleChoices(containerId, items, stateKey) {
       if (changed && stateKey === "engine") {
         resetDependentSelections(state.seat);
         toast("파워트레인이 변경되어 트림과 옵션을 새 기준으로 변경했습니다.");
+      }
+
+      if (changed && stateKey === "drive") {
+        const requiredOption =
+          item.requiresOptionByTrim?.[state.trim] ||
+          item.requiresOption ||
+          null;
+
+        if (requiredOption) {
+          const required = getRawCurrentOptions().find(
+            option => option.id === requiredOption
+          );
+
+          if (required && !state.options.has(requiredOption)) {
+            state.options.add(requiredOption);
+            toast(`${required.name}을 함께 선택했습니다.`);
+          }
+        }
       }
 
       if (changed && stateKey === "seat") {
@@ -551,6 +590,21 @@ function renderColors() {
 
     button.addEventListener("click", () => {
       state.color = item.id;
+
+      if (Array.isArray(item.excludesOptions)) {
+        let removed = false;
+        item.excludesOptions.forEach(id => {
+          if (state.options.has(id)) {
+            state.options.delete(id);
+            removed = true;
+          }
+        });
+
+        if (removed) {
+          toast(`${item.name}과 함께 선택할 수 없는 옵션을 해제했습니다.`);
+        }
+      }
+
       renderAll();
     });
 
@@ -623,6 +677,17 @@ function renderOptions() {
           });
         }
 
+        if (Array.isArray(item.excludesColors) && item.excludesColors.includes(state.color)) {
+          const safeColor = getAvailableColors().find(
+            color => !item.excludesColors.includes(color.id)
+          );
+
+          if (safeColor) {
+            state.color = safeColor.id;
+            toast(`${item.name}과 함께 선택할 수 없는 외장색을 해제했습니다.`);
+          }
+        }
+
         // 패키지에 포함된 개별 옵션은 중복 계산하지 않습니다.
         if (Array.isArray(item.includes)) {
           item.includes.forEach(id =>
@@ -644,58 +709,51 @@ function renderOptions() {
 function calculateTax(total) {
   const vatIncluded = CAR.tax?.vatIncluded !== false;
 
-  // 차량 표시가격에 VAT가 포함된 경우 부가가치세를 제외한 금액을 과세표준으로 사용합니다.
+  // 제조사 표시가격에 VAT가 포함된 경우 기존 카원 방식대로 공급가액을 과세표준으로 사용합니다.
   const taxBase = vatIncluded
     ? Math.floor(total / 1.1)
     : total;
 
   /*
-    Ray 전용 분기
-    cars.js의 CAR.taxByEngine[state.engine].category 값을 읽습니다.
-
-    - light_passenger:
-      경형 비영업용 승용자동차 표준세율 4%
-      경형자동차 취득세 특례 최대 750,000원
-
-    - light_van:
-      경형 승합/화물자동차 표준세율 4%
-      현행 경형 승합/화물 취득세 감면 대상이면 전액 면제
-
-    - light_ev_passenger:
-      경형 승용차와 전기차 감면이 동시에 해당하므로
-      중복 감면 배제 원칙에 따라 더 큰 전기차 감면(최대 1,400,000원) 하나만 적용
-
-    - light_ev_van:
-      경형 승합/화물 전액 면제가 전기차 1,400,000원 감면보다 유리하므로 전액 면제
+    차량/파워트레인별 세금 메타데이터가 있으면 우선 사용합니다.
+    Ray처럼 한 CAR_DATA 안에 승용/밴/EV가 섞인 차종을 안전하게 처리하기 위한 구조입니다.
   */
   const engineTax = CAR.taxByEngine?.[state.engine] || null;
-  const category = engineTax?.category || "";
 
-  if (
-    category === "light_passenger" ||
-    category === "light_van" ||
-    category === "light_ev_passenger" ||
-    category === "light_ev_van"
-  ) {
-    const rate = 0.04;
-    const rawAcquisitionTax = Math.floor(taxBase * rate);
+  if (engineTax) {
+    const rate =
+      engineTax.rate ??
+      CAR.tax?.rate ??
+      0.07;
+
+    const rawAcquisitionTax =
+      Math.floor(taxBase * rate);
 
     let taxReduction = 0;
 
-    if (category === "light_passenger") {
-      taxReduction = Math.min(rawAcquisitionTax, 750000);
-    }
+    switch (engineTax.reductionType) {
+      case "light_passenger_750k":
+        // 경형 비영업용 승용차: 최대 75만원 감면
+        taxReduction =
+          Math.min(rawAcquisitionTax, 750000);
+        break;
 
-    if (category === "light_van") {
-      taxReduction = rawAcquisitionTax;
-    }
+      case "light_van_full":
+        // 경형 승합/화물차: 현행 경형자동차 특례로 전액 면제
+        taxReduction = rawAcquisitionTax;
+        break;
 
-    if (category === "light_ev_passenger") {
-      taxReduction = Math.min(rawAcquisitionTax, 1400000);
-    }
+      case "ev_1400k":
+        // 전기자동차: 최대 140만원 감면
+        // 경차 감면과 단순 합산하지 않습니다.
+        taxReduction =
+          Math.min(rawAcquisitionTax, 1400000);
+        break;
 
-    if (category === "light_ev_van") {
-      taxReduction = rawAcquisitionTax;
+      case "none":
+      default:
+        taxReduction = 0;
+        break;
     }
 
     const acquisitionTax =
@@ -711,8 +769,9 @@ function calculateTax(total) {
     };
   }
 
-  // 일반 차량은 기존 CAR.tax 로직을 그대로 사용합니다.
+  // 일반 차량은 기존 CAR.tax 로직을 유지합니다.
   const rate = CAR.tax?.rate ?? 0.07;
+
   const rawAcquisitionTax =
     Math.floor(taxBase * rate);
 
@@ -727,15 +786,17 @@ function calculateTax(total) {
   let taxReduction = 0;
 
   if (isEV) {
-    taxReduction = Math.min(
-      rawAcquisitionTax,
-      CAR.evAcquisitionTaxReduction || 0
-    );
+    taxReduction =
+      Math.min(
+        rawAcquisitionTax,
+        CAR.evAcquisitionTaxReduction || 0
+      );
   } else if (isEcoTaxVehicle) {
-    taxReduction = Math.min(
-      rawAcquisitionTax,
-      CAR.ecoAcquisitionTaxReduction || 0
-    );
+    taxReduction =
+      Math.min(
+        rawAcquisitionTax,
+        CAR.ecoAcquisitionTaxReduction || 0
+      );
   }
 
   const acquisitionTax =
