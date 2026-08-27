@@ -737,6 +737,134 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The 2027 K5
+     Kia 공식 자가용 가격 페이지 2026-08-01 기준
+     카원 구성: 2.0 가솔린 + 2.0 하이브리드
+     ========================================================= */
+  k5: {
+    brand: "KIA",
+    name: "The 2027 K5",
+    displayName: "K5 / K5 Hybrid",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "중형 세단 · 2.0 가솔린 · 2.0 하이브리드",
+    image: "k5.png",
+
+    engineHelp:
+      "기아 공식 자가용 가격표 기준 2.0 가솔린과 2.0 하이브리드를 하나의 견적에서 선택합니다. 하이브리드는 세제혜택 후 판매가격을 적용합니다.",
+
+    trimHelp:
+      "2.0 가솔린은 스마트 셀렉션부터 시그니처까지, 하이브리드는 프레스티지부터 시그니처까지 공식 판매가격과 선택품목을 반영합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"gas20", name:"2.0 가솔린", price:0, sub:"스마트스트림 G2.0 · 6단 자동변속기" },
+      { id:"hybrid20", name:"2.0 하이브리드", price:0, sub:"스마트스트림 G2.0 하이브리드 · 6AT · 38.6kW 구동모터" }
+    ],
+
+    drivesByEngine: {
+      gas20: [{ id:"2wd", name:"2WD", price:0, sub:"전륜구동" }],
+      hybrid20: [{ id:"2wd", name:"2WD", price:0, sub:"전륜구동" }]
+    },
+
+    seats: [{ id:"5", name:"5인승", price:0, sub:"기본" }],
+
+    trimsByEngine: {
+      gas20: [
+        { id:"smart", name:"스마트 셀렉션", price:27630000 },
+        { id:"prestige", name:"프레스티지", price:28920000 },
+        { id:"best", name:"베스트 셀렉션", price:30140000 },
+        { id:"noblesse", name:"노블레스", price:32440000 },
+        { id:"signature", name:"시그니처", price:35580000 }
+      ],
+      hybrid20: [
+        { id:"prestige", name:"프레스티지", price:33340000, sub:"세제혜택 후" },
+        { id:"best", name:"베스트 셀렉션", price:34430000, sub:"세제혜택 후" },
+        { id:"noblesse", name:"노블레스", price:36700000, sub:"세제혜택 후" },
+        { id:"signature", name:"시그니처", price:39640000, sub:"세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id:"basic", name:"기본 외장색", price:0, color:"#4b4d50" },
+      { id:"snowwhite", name:"스노우 화이트 펄", price:80000, color:"#f5f5f1" }
+    ],
+
+    optionsByEngine: {
+      gas20: {
+        smart: [
+          { id:"comfort", name:"컴포트", price:400000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"krell", name:"KRELL 프리미엄 사운드", price:590000 },
+          { id:"blackfit", name:"블랙 핏", price:490000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        prestige: [
+          { id:"cluster", name:"12.3인치 클러스터 팩", price:1300000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:1140000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        best: [
+          { id:"style", name:"스타일", price:890000 },
+          { id:"comfort", name:"컴포트", price:990000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:450000 },
+          { id:"cluster", name:"12.3인치 클러스터 팩", price:1040000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        noblesse: [
+          { id:"style", name:"스타일", price:400000 },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"monitoring", name:"모니터링", price:1150000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        signature: [
+          { id:"style", name:"스타일", price:890000 },
+          { id:"comfort", name:"컴포트", price:890000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:450000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"krell", name:"KRELL 프리미엄 사운드", price:590000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ]
+      },
+
+      hybrid20: {
+        prestige: [
+          { id:"style", name:"스타일", price:1090000 },
+          { id:"comfort", name:"컴포트", price:990000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:450000 },
+          { id:"cluster", name:"12.3인치 클러스터 팩", price:690000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        best: [
+          { id:"style", name:"스타일", price:1090000 },
+          { id:"comfort", name:"컴포트", price:990000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:450000 },
+          { id:"cluster", name:"12.3인치 클러스터 팩", price:690000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        noblesse: [
+          { id:"style", name:"스타일", price:700000 },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"monitoring", name:"모니터링", price:1150000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ],
+        signature: [
+          { id:"style", name:"스타일", price:890000 },
+          { id:"comfort", name:"컴포트", price:890000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:450000 },
+          { id:"hudcam", name:"HUD + 빌트인 캠 2", price:1090000 },
+          { id:"krell", name:"KRELL 프리미엄 사운드", price:590000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 }
+        ]
+      }
+    }
+  },
+
   /* =========================================================
      The 2027 K8
      Kia 공식 자가용 가격 페이지 2026-08-01 기준
@@ -4843,6 +4971,10 @@ window.CAR_CATALOG_META = {
   "k8": {
     "title": "K8 / K8 Hybrid",
     "type": "준대형 세단 · 2.5 가솔린 · Hybrid"
+  },
+  "k5": {
+    "title": "K5 / K5 Hybrid",
+    "type": "중형 세단 · 2.0 가솔린 · Hybrid"
   }
 };
 
@@ -4887,6 +5019,7 @@ window.CAR_DISPLAY_ORDER = [
   "tasman",
   "k8",
   "k9",
+  "k5",
   "sportage"
 ];
 
