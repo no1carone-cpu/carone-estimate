@@ -741,6 +741,87 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The Kia EV3 GT
+     Kia 공식 가격 페이지 2026-08-01 기준
+     ========================================================= */
+  ev3gt: {
+    brand: "KIA",
+    name: "The Kia EV3 GT",
+    displayName: "EV3 GT",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "고성능 전기 SUV · GT 4WD Long Range",
+    image: "ev3gt.png",
+
+    engineHelp:
+      "기아 공식 EV3 GT 가격표 기준 81.4kWh 롱레인지 배터리와 전륜 145kW + 후륜 70kW 듀얼 모터 4WD, 시스템 최고출력 215kW 구성입니다.",
+
+    trimHelp:
+      "EV3 GT는 GT 단일 트림으로 운영되며 세제혜택 후 공식 판매가격 53,750,000원을 적용합니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gt_longrange",
+        name: "GT 롱레인지",
+        price: 0,
+        sub: "81.4kWh · 215kW 듀얼 모터"
+      }
+    ],
+
+    drivesByEngine: {
+      gt_longrange: [
+        {
+          id: "4wd",
+          name: "4WD",
+          price: 0,
+          sub: "전륜 145kW + 후륜 70kW 듀얼 모터 · 기본"
+        }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      gt_longrange: [
+        {
+          id: "gt",
+          name: "GT",
+          price: 53750000,
+          sub: "세제혜택 후"
+        }
+      ]
+    },
+
+    colors: [
+      { id: "basic", name: "기본 외장색", price: 0, color: "#55585A" },
+      { id: "snow_white", name: "스노우 화이트 펄", price: 80000, color: "#F5F5F0" },
+      { id: "ivory_silver_matte", name: "아이보리 실버 매트", price: 300000, color: "#C9C5BA" }
+    ],
+
+    optionsByEngine: {
+      gt_longrange: {
+        gt: [
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["gt_longrange"],
+    evAcquisitionTaxReduction: 1400000
+  },
+
   /* =========================================================
      The 2026 EV3
      Kia 공식 가격 페이지 2026-08-01 기준
@@ -5500,6 +5581,10 @@ window.CAR_CATALOG_META = {
   "ev3": {
     "title": "EV3",
     "type": "전기 SUV · Standard · Long Range"
+  },
+  "ev3gt": {
+    "title": "EV3 GT",
+    "type": "고성능 전기 SUV · GT 4WD Long Range"
   }
 };
 
@@ -5548,6 +5633,7 @@ window.CAR_DISPLAY_ORDER = [
   "niro",
   "ray",
   "ev3",
+  "ev3gt",
   "sportage"
 ];
 
