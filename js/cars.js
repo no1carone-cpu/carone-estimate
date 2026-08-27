@@ -6278,20 +6278,3 @@ window.CAR_DISPLAY_ORDER = [
   "ev9gt",
   "sportage"
 ];
-
-window.CAR_PENDING = [
-  {
-    "brand": "KIA",
-    "displayName": "K8 / K8 HEV",
-    "type": "준대형 세단",
-    "image": "images/kia/k8.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "K5 / K5 HEV",
-    "type": "중형 세단",
-    "image": "images/kia/k5.png",
-    "icon": "⚡"
-  },
-];
