@@ -799,7 +799,8 @@ window.CAR_DATA = {
       gas_passenger:[
         {id:"trendy",name:"트렌디",price:15550000},
         {id:"prestige",name:"프레스티지",price:18150000},
-        {id:"signature",name:"시그니처",price:19550000}
+        {id:"signature",name:"시그니처",price:19550000},
+        {id:"xline",name:"X-Line",price:20600000,sub:"X-Line 전용 외장 디자인"}
       ],
       gas_van1:[
         {id:"trendy",name:"트렌디",price:14800000},
@@ -825,7 +826,12 @@ window.CAR_DATA = {
     },
 
     colors:[
-      {id:"basic",name:"기본 외장색",price:0,color:"#6d706d"}
+      { id:"clear_white", name:"클리어 화이트", price:0, color:"#F1F1EA" },
+      { id:"astro_gray", name:"아스트로 그레이", price:0, color:"#555A5D" },
+      { id:"aurora_black_pearl", name:"오로라 블랙 펄", price:0, color:"#17191B" },
+      { id:"adventurous_green", name:"어드벤쳐러스 그린", price:0, color:"#657064" },
+      { id:"milky_beige", name:"밀키 베이지", price:0, color:"#D8CBB8" },
+      { id:"smoke_blue", name:"스모크 블루", price:0, color:"#71828A" }
     ],
 
     optionsByEngine: {
@@ -846,6 +852,9 @@ window.CAR_DATA = {
           {id:"nav8",name:"8인치 내비게이션",price:500000}
         ],
         signature:[
+          {id:"nav8",name:"8인치 내비게이션",price:500000}
+        ],
+        xline:[
           {id:"nav8",name:"8인치 내비게이션",price:500000}
         ]
       },
@@ -941,7 +950,7 @@ window.CAR_DATA = {
       "기아 공식 가격표 기준 스마트스트림 G1.6 하이브리드 엔진, 6단 DCT, 32kW 구동 모터 구성입니다. 현재 국내 공식 니로 판매 페이지의 HEV만 반영합니다.",
 
     trimHelp:
-      "트렌디 · 프레스티지 · 시그니처의 세제혜택 후 공식 판매가격과 선택품목을 반영합니다.",
+      "트렌디 · 프레스티지 · 시그니처 · X-Line의 세제혜택 후 공식 판매가격과 선택품목을 반영합니다.",
 
     tax: { rate: 0.07, vatIncluded: true },
 

@@ -642,14 +642,77 @@ function renderOptions() {
 }
 
 function calculateTax(total) {
-  const rate = CAR.tax?.rate ?? 0.07;
   const vatIncluded = CAR.tax?.vatIncluded !== false;
 
-  // 차량 표시가격에 VAT가 포함된 일반적인 승용차 가격표를 가정합니다.
+  // 차량 표시가격에 VAT가 포함된 경우 부가가치세를 제외한 금액을 과세표준으로 사용합니다.
   const taxBase = vatIncluded
     ? Math.floor(total / 1.1)
     : total;
 
+  /*
+    Ray 전용 분기
+    cars.js의 CAR.taxByEngine[state.engine].category 값을 읽습니다.
+
+    - light_passenger:
+      경형 비영업용 승용자동차 표준세율 4%
+      경형자동차 취득세 특례 최대 750,000원
+
+    - light_van:
+      경형 승합/화물자동차 표준세율 4%
+      현행 경형 승합/화물 취득세 감면 대상이면 전액 면제
+
+    - light_ev_passenger:
+      경형 승용차와 전기차 감면이 동시에 해당하므로
+      중복 감면 배제 원칙에 따라 더 큰 전기차 감면(최대 1,400,000원) 하나만 적용
+
+    - light_ev_van:
+      경형 승합/화물 전액 면제가 전기차 1,400,000원 감면보다 유리하므로 전액 면제
+  */
+  const engineTax = CAR.taxByEngine?.[state.engine] || null;
+  const category = engineTax?.category || "";
+
+  if (
+    category === "light_passenger" ||
+    category === "light_van" ||
+    category === "light_ev_passenger" ||
+    category === "light_ev_van"
+  ) {
+    const rate = 0.04;
+    const rawAcquisitionTax = Math.floor(taxBase * rate);
+
+    let taxReduction = 0;
+
+    if (category === "light_passenger") {
+      taxReduction = Math.min(rawAcquisitionTax, 750000);
+    }
+
+    if (category === "light_van") {
+      taxReduction = rawAcquisitionTax;
+    }
+
+    if (category === "light_ev_passenger") {
+      taxReduction = Math.min(rawAcquisitionTax, 1400000);
+    }
+
+    if (category === "light_ev_van") {
+      taxReduction = rawAcquisitionTax;
+    }
+
+    const acquisitionTax =
+      Math.max(0, rawAcquisitionTax - taxReduction);
+
+    return {
+      rate,
+      taxBase,
+      rawAcquisitionTax,
+      taxReduction,
+      acquisitionTax,
+      grandTotal: total + acquisitionTax
+    };
+  }
+
+  // 일반 차량은 기존 CAR.tax 로직을 그대로 사용합니다.
+  const rate = CAR.tax?.rate ?? 0.07;
   const rawAcquisitionTax =
     Math.floor(taxBase * rate);
 
@@ -657,8 +720,23 @@ function calculateTax(total) {
     Array.isArray(CAR.evEngineIds) &&
     CAR.evEngineIds.includes(state.engine);
 
-  const taxReduction =
-    isEV ? (CAR.evAcquisitionTaxReduction || 0) : 0;
+  const isEcoTaxVehicle =
+    Array.isArray(CAR.ecoTaxEngineIds) &&
+    CAR.ecoTaxEngineIds.includes(state.engine);
+
+  let taxReduction = 0;
+
+  if (isEV) {
+    taxReduction = Math.min(
+      rawAcquisitionTax,
+      CAR.evAcquisitionTaxReduction || 0
+    );
+  } else if (isEcoTaxVehicle) {
+    taxReduction = Math.min(
+      rawAcquisitionTax,
+      CAR.ecoAcquisitionTaxReduction || 0
+    );
+  }
 
   const acquisitionTax =
     Math.max(0, rawAcquisitionTax - taxReduction);
