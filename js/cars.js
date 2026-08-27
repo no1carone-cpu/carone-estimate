@@ -735,6 +735,285 @@ window.CAR_DATA = {
   ,
 
 
+
+
+  /* =========================================================
+     The 2027 K8
+     Kia 공식 자가용 가격 페이지 2026-08-01 기준
+     카원 운영 범위: 2.5 가솔린 + 1.6 터보 하이브리드
+     ========================================================= */
+  k8: {
+    brand: "KIA",
+    name: "The 2027 K8",
+    displayName: "K8 / K8 Hybrid",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "준대형 세단 · 2.5 가솔린 · 1.6 터보 하이브리드",
+    image: "k8.png",
+
+    engineHelp:
+      "기아 공식 자가용 가격표 기준 2.5 가솔린과 1.6 터보 하이브리드를 제공합니다. 하이브리드는 세제혜택 후 판매가격을 기준으로 계산합니다.",
+
+    trimHelp:
+      "노블레스 라이트 · 베스트 셀렉션 · 노블레스 · 시그니처 · 시그니처 블랙의 공식 판매가격을 반영합니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"gas25", name:"2.5 가솔린", price:0, sub:"스마트스트림 G2.5 GDI · 8단 자동변속기" },
+      { id:"hybrid16", name:"1.6 터보 하이브리드", price:0, sub:"스마트스트림 터보 하이브리드 · 6AT · 47.7kW 구동 모터" }
+    ],
+
+    drivesByEngine: {
+      gas25: [{ id:"2wd", name:"2WD", price:0, sub:"전륜구동" }],
+      hybrid16: [{ id:"2wd", name:"2WD", price:0, sub:"전륜구동" }]
+    },
+
+    seats: [{ id:"5", name:"5인승", price:0, sub:"기본" }],
+
+    trimsByEngine: {
+      gas25: [
+        { id:"noblesse_light", name:"노블레스 라이트", price:37310000 },
+        { id:"best", name:"베스트 셀렉션", price:38850000 },
+        { id:"noblesse", name:"노블레스", price:41430000 },
+        { id:"signature", name:"시그니처", price:45020000 },
+        { id:"signature_black", name:"시그니처 블랙", price:46600000, sub:"전용 외장/내장 사양" }
+      ],
+      hybrid16: [
+        { id:"noblesse_light", name:"노블레스 라이트", price:42670000, sub:"세제혜택 후" },
+        { id:"best", name:"베스트 셀렉션", price:44200000, sub:"세제혜택 후" },
+        { id:"noblesse", name:"노블레스", price:46780000, sub:"세제혜택 후" },
+        { id:"signature", name:"시그니처", price:50380000, sub:"세제혜택 후" },
+        { id:"signature_black", name:"시그니처 블랙", price:51750000, sub:"세제혜택 후 · 전용 외장/내장 사양" }
+      ]
+    },
+
+    colors: [
+      { id:"basic", name:"기본 외장색", price:0, color:"#55585b" },
+      { id:"snowwhite", name:"스노우 화이트 펄", price:80000, color:"#f5f5f0" },
+      { id:"moonscape", name:"문스케이프 매트 그레이", price:400000, color:"#777a78" }
+    ],
+
+    optionsByEngine: {
+      gas25: {
+        noblesse_light: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"style", name:"스타일", price:1190000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:1090000 }
+        ],
+        best: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"hud", name:"헤드업 디스플레이", price:840000 },
+          { id:"style", name:"스타일", price:1780000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:640000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:540000 }
+        ],
+        noblesse: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"hud", name:"헤드업 디스플레이", price:840000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"style", name:"스타일", price:1980000 },
+          { id:"premium", name:"프리미엄", price:1090000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:540000 }
+        ],
+        signature: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"preview1", name:"프리뷰 전자제어 서스펜션 I", price:1090000 },
+          { id:"preview2", name:"프리뷰 전자제어 서스펜션 II", price:1290000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"premium", name:"프리미엄", price:1090000 }
+        ],
+        signature_black: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"premium", name:"프리미엄", price:690000 }
+        ]
+      },
+
+      hybrid16: {
+        noblesse_light: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"style", name:"스타일", price:1190000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:1090000 }
+        ],
+        best: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"hud", name:"헤드업 디스플레이", price:840000 },
+          { id:"style", name:"스타일", price:1780000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:640000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:540000 }
+        ],
+        noblesse: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"hud", name:"헤드업 디스플레이", price:840000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"style", name:"스타일", price:1980000 },
+          { id:"premium", name:"프리미엄", price:690000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:540000 }
+        ],
+        signature: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"preview1", name:"프리뷰 전자제어 서스펜션 I", price:1090000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"premium", name:"프리미엄", price:690000 }
+        ],
+        signature_black: [
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:1090000 },
+          { id:"premium", name:"프리미엄", price:1090000 }
+        ]
+      }
+    }
+  },
+
+  /* =========================================================
+     The 2026 K9
+     Kia 공식 가격 페이지 2026-08-01 기준
+     - 3.8 가솔린
+     - 3.3 가솔린 터보
+     ========================================================= */
+  k9: {
+    brand: "KIA",
+    name: "The 2026 K9",
+    displayName: "K9",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "대형 세단 · 3.8 가솔린 · 3.3 가솔린 터보",
+    image: "k9.png",
+
+    engineHelp:
+      "기아 공식 가격표 기준 3.8 가솔린과 3.3 가솔린 터보를 선택할 수 있습니다.",
+
+    trimHelp:
+      "플래티넘 · 베스트 셀렉션Ⅰ · 마스터즈 · 베스트 셀렉션Ⅱ 공식 판매가격을 반영합니다. 베스트 셀렉션Ⅰ/마스터즈/베스트 셀렉션Ⅱ는 공식 기본품목에 AWD가 포함되어 있습니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "gas38",
+        name: "3.8 가솔린",
+        price: 0,
+        sub: "V6 람다Ⅱ 개선 3.8 GDI · 8단 자동변속기"
+      },
+      {
+        id: "gas33t",
+        name: "3.3 가솔린 터보",
+        price: 0,
+        sub: "V6 람다Ⅱ 개선 3.3 T-GDI · 프리뷰 전자제어 서스펜션"
+      }
+    ],
+
+    /*
+      K9은 트림에 따라 AWD 포함 여부가 달라집니다.
+      공용 견적기의 구동 선택은 엔진 단위라 트림별 강제가 불가능하므로
+      구동 단계는 '트림 기본 구성'으로 두고,
+      플래티넘에서만 AWD를 공식 선택품목(+2,470,000원)으로 제공합니다.
+      베스트 셀렉션Ⅰ/마스터즈/베스트 셀렉션Ⅱ 가격에는 AWD가 이미 포함됩니다.
+    */
+    drivesByEngine: {
+      gas38: [
+        { id: "trim_default", name: "트림 기본 구성", price: 0, sub: "플래티넘 2WD 기본 · 상위 트림 AWD 포함" }
+      ],
+      gas33t: [
+        { id: "trim_default", name: "트림 기본 구성", price: 0, sub: "플래티넘 2WD 기본 · 상위 트림 AWD 포함" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      gas38: [
+        { id: "platinum", name: "플래티넘", price: 60340000 },
+        { id: "best1", name: "베스트 셀렉션Ⅰ", price: 68990000, sub: "AWD 포함" },
+        { id: "masters", name: "마스터즈", price: 75200000, sub: "AWD 포함" },
+        { id: "best2", name: "베스트 셀렉션Ⅱ", price: 82290000, sub: "AWD 포함" }
+      ],
+      gas33t: [
+        { id: "platinum", name: "플래티넘", price: 66880000 },
+        { id: "best1", name: "베스트 셀렉션Ⅰ", price: 74750000, sub: "AWD 포함" },
+        { id: "masters", name: "마스터즈", price: 79940000, sub: "AWD 포함" },
+        { id: "best2", name: "베스트 셀렉션Ⅱ", price: 87030000, sub: "AWD 포함" }
+      ]
+    },
+
+    colors: [
+      { id: "basic", name: "기본 외장색", price: 0, color: "#383a3d" },
+      { id: "snowwhite", name: "스노우 화이트 펄", price: 80000, color: "#f5f5f1" }
+    ],
+
+    optionsByEngine: {
+      gas38: {
+        platinum: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1780000 },
+          { id: "comfort", name: "컴포트 팩", price: 1190000 },
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 790000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 1190000 },
+          { id: "awd", name: "AWD", price: 2470000 }
+        ],
+        best1: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "premium", name: "프리미엄 팩", price: 3260000 },
+          { id: "lexicon", name: "Lexicon 프리미엄 사운드", price: 1380000 },
+          { id: "vip", name: "VIP 컬렉션", price: 2570000 },
+          { id: "preview", name: "프리뷰 전자제어 서스펜션", price: 990000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ],
+        masters: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "premium", name: "프리미엄 팩", price: 3260000 },
+          { id: "lexicon", name: "Lexicon 프리미엄 사운드", price: 1380000 },
+          { id: "vip", name: "VIP 컬렉션", price: 2570000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ],
+        best2: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ]
+      },
+
+      gas33t: {
+        platinum: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1780000 },
+          { id: "comfort", name: "컴포트 팩", price: 1190000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 1190000 },
+          { id: "awd", name: "AWD", price: 2470000 }
+        ],
+        best1: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "premium", name: "프리미엄 팩", price: 3260000 },
+          { id: "lexicon", name: "Lexicon 프리미엄 사운드", price: 1380000 },
+          { id: "vip", name: "VIP 컬렉션", price: 2570000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ],
+        masters: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "premium", name: "프리미엄 팩", price: 3260000 },
+          { id: "lexicon", name: "Lexicon 프리미엄 사운드", price: 1380000 },
+          { id: "vip", name: "VIP 컬렉션", price: 2570000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ],
+        best2: [
+          { id: "sunroof", name: "선루프", price: 790000 },
+          { id: "builtincam", name: "빌트인 캠", price: 740000 },
+          { id: "rear_monitor", name: "뒷좌석 듀얼 모니터", price: 2470000 }
+        ]
+      }
+    }
+  },
+
   /* =========================================================
      The 2027 Tasman
      Kia 공식 가격 페이지 2026-08-01 기준
@@ -4556,6 +4835,14 @@ window.CAR_CATALOG_META = {
   "tasman": {
     "title": "타스만",
     "type": "픽업 · 2.5 가솔린 터보"
+  },
+  "k9": {
+    "title": "K9",
+    "type": "대형 세단 · 3.8 가솔린 · 3.3 가솔린 터보"
+  },
+  "k8": {
+    "title": "K8 / K8 Hybrid",
+    "type": "준대형 세단 · 2.5 가솔린 · Hybrid"
   }
 };
 
@@ -4598,24 +4885,12 @@ window.CAR_DISPLAY_ORDER = [
   "sorento",
   "seltos",
   "tasman",
+  "k8",
+  "k9",
   "sportage"
 ];
 
 window.CAR_PENDING = [
-  {
-    "brand": "KIA",
-    "displayName": "K9 3.3",
-    "type": "대형 세단",
-    "image": "images/kia/k9-33.png",
-    "icon": "🚙"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "K9 3.8",
-    "type": "대형 세단",
-    "image": "images/kia/k9-38.png",
-    "icon": "🚙"
-  },
   {
     "brand": "KIA",
     "displayName": "K8 / K8 HEV",
