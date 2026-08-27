@@ -739,6 +739,191 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The 2027 Ray / Ray EV
+     Kia 공식 가격 페이지 2026-08-01 기준
+     가솔린 승용/1인승 밴/2인승 밴 + EV 승용/1인승 밴/2인승 밴 통합
+     ========================================================= */
+  ray: {
+    brand: "KIA",
+    name: "The 2027 Ray / Ray EV",
+    displayName: "레이 / 레이 EV",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "경형 RV · 1.0 가솔린 · EV",
+    image: "ray.png",
+
+    engineHelp:
+      "기아 공식 판매구조에 맞춰 가솔린 승용/1인승 밴/2인승 밴과 EV 4인승 승용/1인승 밴/2인승 밴을 한 차량에서 선택합니다.",
+
+    trimHelp:
+      "선택한 용도에 따라 기아 공식 트림만 표시됩니다.",
+
+    /*
+      레이는 경차/EV/밴에 따라 취득세 감면·차종 분류가 달라질 수 있어
+      단일 tax.rate로 정확하게 처리할 수 없습니다.
+      아래 taxByEngine은 후속 estimate.js의 엔진별 세금 계산용 메타데이터입니다.
+      차량 판매가격/옵션 가격 데이터와 세금 계산을 분리해 잘못된 세액을 방지합니다.
+    */
+    tax: { rate: 0, vatIncluded: true, manualByEngine: true },
+    taxByEngine: {
+      gas_passenger: { category:"light_passenger", note:"경형 승용 취득세 특례 별도 계산 필요" },
+      gas_van1: { category:"light_van", note:"경형 밴 취득세 특례 별도 계산 필요" },
+      gas_van2: { category:"light_van", note:"경형 밴 취득세 특례 별도 계산 필요" },
+      ev_passenger: { category:"light_ev_passenger", note:"전기 경형 승용 취득세 특례 별도 계산 필요" },
+      ev_van1: { category:"light_ev_van", note:"전기 경형 밴 취득세 특례 별도 계산 필요" },
+      ev_van2: { category:"light_ev_van", note:"전기 경형 밴 취득세 특례 별도 계산 필요" }
+    },
+
+    engines: [
+      { id:"gas_passenger", name:"1.0 가솔린 · 승용", price:0, sub:"4인승 승용" },
+      { id:"gas_van1", name:"1.0 가솔린 · 1인승 밴", price:0, sub:"1인승 밴" },
+      { id:"gas_van2", name:"1.0 가솔린 · 2인승 밴", price:0, sub:"2인승 밴" },
+      { id:"ev_passenger", name:"EV · 4인승 승용", price:0, sub:"35.2kWh LFP 배터리" },
+      { id:"ev_van1", name:"EV · 1인승 밴", price:0, sub:"35.2kWh LFP 배터리" },
+      { id:"ev_van2", name:"EV · 2인승 밴", price:0, sub:"35.2kWh LFP 배터리" }
+    ],
+
+    drivesByEngine: {
+      gas_passenger:[{id:"2wd",name:"2WD",price:0}],
+      gas_van1:[{id:"2wd",name:"2WD",price:0}],
+      gas_van2:[{id:"2wd",name:"2WD",price:0}],
+      ev_passenger:[{id:"2wd",name:"2WD",price:0}],
+      ev_van1:[{id:"2wd",name:"2WD",price:0}],
+      ev_van2:[{id:"2wd",name:"2WD",price:0}]
+    },
+
+    seats:[{id:"auto",name:"선택 모델 기준",price:0,sub:"승용/밴 선택에 따라 자동"}],
+
+    trimsByEngine: {
+      gas_passenger:[
+        {id:"trendy",name:"트렌디",price:15550000},
+        {id:"prestige",name:"프레스티지",price:18150000},
+        {id:"signature",name:"시그니처",price:19550000}
+      ],
+      gas_van1:[
+        {id:"trendy",name:"트렌디",price:14800000},
+        {id:"prestige",name:"프레스티지",price:15400000}
+      ],
+      gas_van2:[
+        {id:"trendy",name:"트렌디",price:14900000},
+        {id:"prestige",name:"프레스티지",price:15550000},
+        {id:"prestige_special",name:"프레스티지 스페셜",price:16100000}
+      ],
+      ev_passenger:[
+        {id:"light",name:"라이트",price:28520000},
+        {id:"air",name:"에어",price:30620000}
+      ],
+      ev_van1:[
+        {id:"light",name:"라이트",price:28070000},
+        {id:"air",name:"에어",price:28620000}
+      ],
+      ev_van2:[
+        {id:"light",name:"라이트",price:28170000},
+        {id:"air",name:"에어",price:28770000}
+      ]
+    },
+
+    colors:[
+      {id:"basic",name:"기본 외장색",price:0,color:"#6d706d"}
+    ],
+
+    optionsByEngine: {
+      gas_passenger:{
+        trendy:[
+          {id:"style",name:"스타일",price:500000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000},
+          {id:"comfort1",name:"컴포트 Ⅰ",price:600000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000},
+          {id:"display8",name:"8인치 디스플레이 오디오",price:500000,note:"8인치 내비게이션과 중복 선택 불가"},
+          {id:"nav8",name:"8인치 내비게이션",price:1450000,note:"8인치 디스플레이 오디오와 중복 선택 불가"}
+        ],
+        prestige:[
+          {id:"style",name:"스타일",price:500000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:400000},
+          {id:"comfort2",name:"컴포트 Ⅱ",price:300000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000},
+          {id:"nav8",name:"8인치 내비게이션",price:500000}
+        ],
+        signature:[
+          {id:"nav8",name:"8인치 내비게이션",price:500000}
+        ]
+      },
+
+      gas_van1:{
+        trendy:[
+          {id:"smartkey",name:"버튼시동 스마트키",price:300000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000,requires:"smartkey",note:"버튼시동 스마트키 적용 시 선택 가능"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000,requires:"smartkey",note:"버튼시동 스마트키 적용 시 선택 가능"},
+          {id:"nav8",name:"8인치 내비게이션",price:1600000,requires:"smartkey",note:"버튼시동 스마트키 적용 시 선택 가능"}
+        ],
+        prestige:[
+          {id:"smartkey",name:"버튼시동 스마트키",price:300000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000,requires:"smartkey"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000,requires:"smartkey"},
+          {id:"nav8",name:"8인치 내비게이션",price:1600000,requires:"smartkey"}
+        ]
+      },
+
+      gas_van2:{
+        trendy:[
+          {id:"smartkey",name:"버튼시동 스마트키",price:300000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000,requires:"smartkey"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000,requires:"smartkey"},
+          {id:"nav8",name:"8인치 내비게이션",price:1600000,requires:"smartkey"}
+        ],
+        prestige:[
+          {id:"smartkey",name:"버튼시동 스마트키",price:300000},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000,requires:"smartkey"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000,requires:"smartkey"},
+          {id:"nav8",name:"8인치 내비게이션",price:1500000,requires:"smartkey"},
+          {id:"comfort",name:"컴포트",price:400000}
+        ],
+        prestige_special:[
+          {id:"smartkey",name:"버튼시동 스마트키",price:300000},
+          {id:"style",name:"스타일",price:500000,requires:"smartkey"},
+          {id:"wheel15",name:"15인치 전면가공 휠",price:500000,requires:"smartkey"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000,requires:"smartkey"},
+          {id:"nav8",name:"8인치 내비게이션",price:950000,requires:"smartkey"},
+          {id:"comfort",name:"컴포트",price:400000}
+        ]
+      },
+
+      ev_passenger:{
+        light:[
+          {id:"style",name:"스타일",price:600000},
+          {id:"comfort1",name:"컴포트Ⅰ",price:600000},
+          {id:"comfort2",name:"컴포트Ⅱ",price:450000,requires:"comfort1",note:"컴포트Ⅰ 적용 시 선택 가능"},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000}
+        ],
+        air:[]
+      },
+
+      ev_van1:{
+        light:[
+          {id:"style",name:"스타일",price:600000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000}
+        ],
+        air:[
+          {id:"comfort1",name:"컴포트 Ⅰ",price:350000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000}
+        ]
+      },
+
+      ev_van2:{
+        light:[
+          {id:"style",name:"스타일",price:600000},
+          {id:"comfort2",name:"컴포트Ⅱ",price:250000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000}
+        ],
+        air:[
+          {id:"comfort1",name:"컴포트Ⅰ",price:400000},
+          {id:"drivewise",name:"드라이브 와이즈",price:300000}
+        ]
+      }
+    }
+  },
+
   /* =========================================================
      The new Niro
      Kia 공식 가격 페이지 2026-08-01 기준
@@ -5098,6 +5283,10 @@ window.CAR_CATALOG_META = {
   "niro": {
     "title": "니로 HEV",
     "type": "하이브리드 SUV · 1.6 HEV"
+  },
+  "ray": {
+    "title": "레이 / 레이 EV",
+    "type": "경형 RV · 가솔린 · EV"
   }
 };
 
@@ -5144,6 +5333,7 @@ window.CAR_DISPLAY_ORDER = [
   "k9",
   "k5",
   "niro",
+  "ray",
   "sportage"
 ];
 
@@ -5160,27 +5350,6 @@ window.CAR_PENDING = [
     "displayName": "K5 / K5 HEV",
     "type": "중형 세단",
     "image": "images/kia/k5.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "더 뉴 레이",
-    "type": "경형 RV",
-    "image": "images/kia/ray.png",
-    "icon": "🚐"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "레이 EV 라이트",
-    "type": "경형 전기 RV",
-    "image": "images/kia/ray-ev-light.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "레이 EV 에어",
-    "type": "경형 전기 RV",
-    "image": "images/kia/ray-ev-air.png",
     "icon": "⚡"
   },
   {
