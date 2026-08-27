@@ -742,6 +742,136 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The 2027 EV6
+     Kia 공식 가격 페이지 2026-08-03 기준
+     ========================================================= */
+  ev6: {
+    brand: "KIA",
+    name: "The 2027 EV6",
+    displayName: "EV6",
+    year: "2026년 8월 3일 공식 가격 기준",
+    type: "전기 크로스오버 · Standard · Long Range",
+    image: "ev6.png",
+
+    engineHelp:
+      "기아 공식 가격표 기준 스탠다드(63.0kWh)와 롱레인지(84.0kWh)를 선택합니다. 공식 선택품목의 듀얼 모터 4WD는 옵션에서 추가합니다.",
+
+    trimHelp:
+      "라이트 · 에어 · 어스 · GT-Line의 세제혜택 후 공식 판매가격을 사용합니다. GT-Line은 롱레인지에서만 운영됩니다.",
+
+    tax: { rate: 0.07, vatIncluded: true },
+
+    engines: [
+      { id:"standard", name:"스탠다드", price:0, sub:"63.0kWh · 2WD 기본" },
+      { id:"longrange", name:"롱레인지", price:0, sub:"84.0kWh · 2WD 기본" }
+    ],
+
+    drivesByEngine: {
+      standard:[{ id:"2wd", name:"2WD", price:0, sub:"4WD는 선택품목에서 적용" }],
+      longrange:[{ id:"2wd", name:"2WD", price:0, sub:"4WD는 선택품목에서 적용" }]
+    },
+
+    seats:[{ id:"5", name:"5인승", price:0, sub:"기본" }],
+
+    trimsByEngine: {
+      standard:[
+        { id:"light", name:"라이트", price:43600000, sub:"세제혜택 후" },
+        { id:"air", name:"에어", price:48600000, sub:"세제혜택 후" },
+        { id:"earth", name:"어스", price:52600000, sub:"세제혜택 후" }
+      ],
+      longrange:[
+        { id:"light", name:"라이트", price:47600000, sub:"세제혜택 후" },
+        { id:"air", name:"에어", price:52600000, sub:"세제혜택 후" },
+        { id:"earth", name:"어스", price:56600000, sub:"세제혜택 후" },
+        { id:"gtline", name:"GT-Line", price:57200000, sub:"세제혜택 후" }
+      ]
+    },
+
+    colors:[
+      { id:"basic", name:"기본 외장색", price:0, color:"#5E6264" },
+      { id:"snow_white", name:"스노우 화이트 펄", price:80000, color:"#F5F5F0" },
+      { id:"matte", name:"문스케이프 매트 그레이 / 아이보리 매트 실버", price:300000, color:"#A8A8A2" }
+    ],
+
+    optionsByEngine: {
+      standard:{
+        light:[
+          { id:"power_tailgate", name:"스마트 파워테일게이트", price:400000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:1100000 },
+          { id:"convenience1", name:"컨비니언스 I", price:500000 },
+          { id:"convenience2", name:"컨비니언스 II", price:900000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ],
+        air:[
+          { id:"drivewise", name:"드라이브 와이즈", price:650000 },
+          { id:"comfort", name:"컴포트", price:1040000 },
+          { id:"hightech", name:"하이테크", price:690000 },
+          { id:"premium", name:"프리미엄", price:1040000 },
+          { id:"monitoring", name:"모니터링", price:790000, requires:"premium", note:"프리미엄 적용 시 선택 가능" },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:650000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ],
+        earth:[
+          { id:"drivewise", name:"드라이브 와이즈", price:650000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:990000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:700000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ]
+      },
+
+      longrange:{
+        light:[
+          { id:"power_tailgate", name:"스마트 파워테일게이트", price:400000 },
+          { id:"drivewise", name:"드라이브 와이즈", price:1100000 },
+          { id:"convenience1", name:"컨비니언스 I", price:500000 },
+          { id:"convenience2", name:"컨비니언스 II", price:900000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ],
+        air:[
+          { id:"drivewise", name:"드라이브 와이즈", price:650000 },
+          { id:"comfort", name:"컴포트", price:1040000 },
+          { id:"hightech", name:"하이테크", price:690000 },
+          { id:"premium", name:"프리미엄", price:1040000 },
+          { id:"monitoring", name:"모니터링", price:790000, requires:"premium", note:"프리미엄 적용 시 선택 가능" },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:650000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ],
+        earth:[
+          { id:"drivewise", name:"드라이브 와이즈", price:650000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:990000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:700000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ],
+        gtline:[
+          { id:"drivewise", name:"드라이브 와이즈", price:650000 },
+          { id:"meridian", name:"메리디안 프리미엄 사운드", price:990000 },
+          { id:"sunroof", name:"와이드 선루프", price:640000 },
+          { id:"builtincam", name:"빌트인 캠 2", price:450000 },
+          { id:"awd", name:"듀얼 모터 4WD", price:2470000 },
+          { id:"smartconnect", name:"스마트 커넥트", price:700000 },
+          { id:"wheel20", name:"20인치 휠&타이어", price:400000 }
+        ]
+      }
+    },
+
+    evEngineIds:["standard","longrange"],
+    evAcquisitionTaxReduction:1400000
+  },
+
   /* =========================================================
      The Kia EV3 GT
      Kia 공식 가격 페이지 2026-08-01 기준
@@ -5585,6 +5715,10 @@ window.CAR_CATALOG_META = {
   "ev3gt": {
     "title": "EV3 GT",
     "type": "고성능 전기 SUV · GT 4WD Long Range"
+  },
+  "ev6": {
+    "title": "EV6",
+    "type": "전기 크로스오버 · Standard · Long Range"
   }
 };
 
@@ -5634,6 +5768,7 @@ window.CAR_DISPLAY_ORDER = [
   "ray",
   "ev3",
   "ev3gt",
+  "ev6",
   "sportage"
 ];
 
@@ -5650,13 +5785,6 @@ window.CAR_PENDING = [
     "displayName": "K5 / K5 HEV",
     "type": "중형 세단",
     "image": "images/kia/k5.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "니로 EV / EV6",
-    "type": "전기 SUV",
-    "image": "images/kia/niro-ev-ev6.png",
     "icon": "⚡"
   },
   {
