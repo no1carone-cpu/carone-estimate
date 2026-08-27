@@ -740,6 +740,171 @@ window.CAR_DATA = {
 
 
 
+
+  /* =========================================================
+     The 2026 EV3
+     Kia 공식 가격 페이지 2026-08-01 기준
+     - 스탠다드 2WD (58.3kWh)
+     - 롱레인지 2WD (81.4kWh)
+     - 롱레인지 듀얼 모터 4WD 선택 지원
+     - EV3 GT는 별도 공식 모델이므로 본 데이터에서 제외
+     ========================================================= */
+  ev3: {
+    brand: "KIA",
+    name: "The 2026 EV3",
+    displayName: "EV3",
+    year: "2026년 8월 1일 공식 가격 기준",
+    type: "전기 SUV · Standard · Long Range",
+    image: "ev3.png",
+
+    engineHelp:
+      "기아 공식 EV3 가격표 기준 스탠다드(58.3kWh)와 롱레인지(81.4kWh)를 선택합니다. 롱레인지에서는 공식 선택품목으로 듀얼 모터 4WD를 선택할 수 있습니다.",
+
+    trimHelp:
+      "에어 · 어스 · GT-Line의 세제혜택 후 공식 판매가격을 사용합니다. EV3 GT는 기아에서 별도 모델로 판매하므로 이 견적에는 포함하지 않습니다.",
+
+    tax: {
+      rate: 0.07,
+      vatIncluded: true
+    },
+
+    engines: [
+      {
+        id: "standard",
+        name: "스탠다드",
+        price: 0,
+        sub: "58.3kWh · 150kW · 2WD"
+      },
+      {
+        id: "longrange",
+        name: "롱레인지",
+        price: 0,
+        sub: "81.4kWh · 150kW · 2WD / 듀얼 모터 4WD 선택 가능"
+      }
+    ],
+
+    drivesByEngine: {
+      standard: [
+        { id: "2wd", name: "2WD", price: 0, sub: "스탠다드 공식 구성" }
+      ],
+      longrange: [
+        { id: "2wd", name: "2WD", price: 0, sub: "기본 구동 · 4WD는 선택품목에서 적용" }
+      ]
+    },
+
+    seats: [
+      { id: "5", name: "5인승", price: 0, sub: "기본" }
+    ],
+
+    trimsByEngine: {
+      standard: [
+        { id: "air", name: "에어", price: 39950000, sub: "세제혜택 후" },
+        { id: "earth", name: "어스", price: 43900000, sub: "세제혜택 후" },
+        { id: "gtline", name: "GT-Line", price: 44750000, sub: "세제혜택 후" }
+      ],
+      longrange: [
+        { id: "air", name: "에어", price: 44150000, sub: "세제혜택 후" },
+        { id: "earth", name: "어스", price: 48100000, sub: "세제혜택 후" },
+        { id: "gtline", name: "GT-Line", price: 48950000, sub: "세제혜택 후" }
+      ]
+    },
+
+    colors: [
+      { id: "adventurine_green", name: "어벤쳐린 그린", price: 0, color: "#66736A" },
+      { id: "snow_white", name: "스노우 화이트 펄", price: 80000, color: "#F5F5F0" },
+      { id: "ivory_matte", name: "아이보리 매트 실버", price: 300000, color: "#C9C5BA" }
+    ],
+
+    optionsByEngine: {
+      standard: {
+        air: [
+          { id: "style", name: "스타일", price: 940000 },
+          { id: "comfort1", name: "컴포트 I", price: 490000 },
+          { id: "comfort2", name: "컴포트 II", price: 890000, requires: "comfort1", note: "컴포트 I 적용 시 선택 가능" },
+          { id: "convenience", name: "컨비니언스", price: 1290000 },
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000, requires: "style", note: "스타일 적용 시 선택 가능" },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ],
+        earth: [
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 590000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ],
+        gtline: [
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 590000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ]
+      },
+
+      longrange: {
+        air: [
+          { id: "style", name: "스타일", price: 940000 },
+          { id: "comfort1", name: "컴포트 I", price: 490000 },
+          { id: "comfort2", name: "컴포트 II", price: 890000, requires: "comfort1", note: "컴포트 I 적용 시 선택 가능" },
+          { id: "convenience", name: "컨비니언스", price: 1290000 },
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            requires: "wheel19",
+            note: "19인치 휠 & 타이어 적용 시 선택 가능"
+          },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000, requires: "style", note: "스타일 적용 시 선택 가능" },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ],
+        earth: [
+          { id: "wheel19", name: "19인치 휠 & 타이어", price: 490000 },
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            requires: "wheel19",
+            note: "19인치 휠 & 타이어 적용 시 선택 가능"
+          },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 590000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ],
+        gtline: [
+          {
+            id: "awd",
+            name: "듀얼 모터 4WD",
+            price: 2270000,
+            note: "GT-Line은 19인치 휠이 기본 적용되어 별도 휠 선택 없이 선택 가능"
+          },
+          { id: "monitoring", name: "모니터링", price: 1040000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 1090000 },
+          { id: "sunroof", name: "와이드 선루프", price: 640000 },
+          { id: "harman", name: "하만카돈 프리미엄 사운드", price: 590000 },
+          { id: "builtincam", name: "빌트인 캠 2 플러스", price: 450000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 }
+        ]
+      }
+    },
+
+    evEngineIds: ["standard", "longrange"],
+    evAcquisitionTaxReduction: 1400000
+  },
+
   /* =========================================================
      The 2027 Ray / Ray EV
      Kia 공식 가격 페이지 2026-08-01 기준
@@ -765,14 +930,49 @@ window.CAR_DATA = {
       아래 taxByEngine은 후속 estimate.js의 엔진별 세금 계산용 메타데이터입니다.
       차량 판매가격/옵션 가격 데이터와 세금 계산을 분리해 잘못된 세액을 방지합니다.
     */
-    tax: { rate: 0, vatIncluded: true, manualByEngine: true },
+    /*
+      레이의 표준 취득세율은 경형자동차 4%입니다.
+      개별 감면은 estimate.js가 taxByEngine의 reductionType을 읽어 적용합니다.
+      CAR.tax.rate도 4%로 두어, 분기 인식에 실패하더라도 화면에 0%가 표시되지 않게 합니다.
+    */
+    tax: { rate: 0.04, vatIncluded: true, manualByEngine: true },
     taxByEngine: {
-      gas_passenger: { category:"light_passenger", note:"경형 승용 취득세 특례 별도 계산 필요" },
-      gas_van1: { category:"light_van", note:"경형 밴 취득세 특례 별도 계산 필요" },
-      gas_van2: { category:"light_van", note:"경형 밴 취득세 특례 별도 계산 필요" },
-      ev_passenger: { category:"light_ev_passenger", note:"전기 경형 승용 취득세 특례 별도 계산 필요" },
-      ev_van1: { category:"light_ev_van", note:"전기 경형 밴 취득세 특례 별도 계산 필요" },
-      ev_van2: { category:"light_ev_van", note:"전기 경형 밴 취득세 특례 별도 계산 필요" }
+      gas_passenger: {
+        category: "light_passenger",
+        rate: 0.04,
+        reductionType: "light_passenger_750k",
+        note: "경형 비영업용 승용: 4% 산출 후 최대 750,000원 감면"
+      },
+      gas_van1: {
+        category: "light_van",
+        rate: 0.04,
+        reductionType: "light_van_full",
+        note: "경형 승합/화물: 4% 산출 후 현행 특례에 따라 전액 면제"
+      },
+      gas_van2: {
+        category: "light_van",
+        rate: 0.04,
+        reductionType: "light_van_full",
+        note: "경형 승합/화물: 4% 산출 후 현행 특례에 따라 전액 면제"
+      },
+      ev_passenger: {
+        category: "light_ev_passenger",
+        rate: 0.04,
+        reductionType: "ev_1400k",
+        note: "경형 승용 EV: 4% 산출 후 전기차 감면 최대 1,400,000원 적용"
+      },
+      ev_van1: {
+        category: "light_ev_van",
+        rate: 0.04,
+        reductionType: "light_van_full",
+        note: "경형 EV 밴: 경형 승합/화물 특례 적용"
+      },
+      ev_van2: {
+        category: "light_ev_van",
+        rate: 0.04,
+        reductionType: "light_van_full",
+        note: "경형 EV 밴: 경형 승합/화물 특례 적용"
+      }
     },
 
     engines: [
@@ -950,7 +1150,7 @@ window.CAR_DATA = {
       "기아 공식 가격표 기준 스마트스트림 G1.6 하이브리드 엔진, 6단 DCT, 32kW 구동 모터 구성입니다. 현재 국내 공식 니로 판매 페이지의 HEV만 반영합니다.",
 
     trimHelp:
-      "트렌디 · 프레스티지 · 시그니처 · X-Line의 세제혜택 후 공식 판매가격과 선택품목을 반영합니다.",
+      "트렌디 · 프레스티지 · 시그니처의 세제혜택 후 공식 판매가격과 선택품목을 반영합니다.",
 
     tax: { rate: 0.07, vatIncluded: true },
 
@@ -5296,6 +5496,10 @@ window.CAR_CATALOG_META = {
   "ray": {
     "title": "레이 / 레이 EV",
     "type": "경형 RV · 가솔린 · EV"
+  },
+  "ev3": {
+    "title": "EV3",
+    "type": "전기 SUV · Standard · Long Range"
   }
 };
 
@@ -5343,6 +5547,7 @@ window.CAR_DISPLAY_ORDER = [
   "k5",
   "niro",
   "ray",
+  "ev3",
   "sportage"
 ];
 
@@ -5366,13 +5571,6 @@ window.CAR_PENDING = [
     "displayName": "니로 EV / EV6",
     "type": "전기 SUV",
     "image": "images/kia/niro-ev-ev6.png",
-    "icon": "⚡"
-  },
-  {
-    "brand": "KIA",
-    "displayName": "EV3 / EV4",
-    "type": "전기차",
-    "image": "images/kia/ev3-ev4.png",
     "icon": "⚡"
   },
   {
