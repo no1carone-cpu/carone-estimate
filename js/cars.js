@@ -1,8 +1,8 @@
 /*
-  [공식사이트 재검증 메모 · 2026-08-26]
-  - 쏘렌토: 기존 누락된 터보 하이브리드 2WD/전자식4WD 및 공식 가격 추가
-  - GV60: 현행 Standard 2WD / Standard AWD / Performance AWD 체계로 재작성
-  - 그 외 데이터는 이번 검증에서 확인된 명백한 불일치가 없어 기존값 유지
+  [공식사이트 재검증 메모 · 2026-09-02]
+  - 기아 2027년형 전환 및 2026-09-01 공식 가격표 반영
+  - 현대 2026-09 가격표 반영(팰리세이드 2027, 싼타페, 투싼, 쏘나타, 넥쏘 등)
+  - 제네시스 BTO 2026-09-01 기준 재확인
   - 제조사 가격표/BTO는 수시 갱신될 수 있으므로 계약 직전 공식 견적 재확인 권장
 */
 
@@ -19,21 +19,21 @@
 window.CAR_DATA = {
 
   /* =========================================================
-     2026 쏘렌토
-     기아 공식 가격표 2026-08 기준 재검증
-     - 2.5 가솔린 터보 / 2.2 디젤
+     2027 쏘렌토
+     기아 공식 가격표 2026-09-01 기준
+     - 2.5 가솔린 터보
      - 터보 하이브리드 2WD / 전자식 4WD
      ========================================================= */
   sorento: {
     brand: "KIA",
-    name: "The 2026 Sorento",
-    displayName: "2026 쏘렌토",
-    year: "2026년형 · 공식 가격표 2026-08 재검증",
+    name: "The 2027 Sorento",
+    displayName: "2027 쏘렌토",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "중형 SUV",
     image: "sorento.png",
 
     engineHelp:
-      "2.5 가솔린 터보, 2.2 디젤, 터보 하이브리드 2WD/전자식4WD를 선택할 수 있습니다. 하이브리드는 공식 세제혜택 여부가 구동방식에 따라 달라 최종 판매가격 자체를 엔진 항목별로 분리했습니다.",
+      "2.5 가솔린 터보와 터보 하이브리드 2WD/전자식4WD를 선택할 수 있습니다. 2027년형에서는 디젤이 공식 가격표에서 제외됐습니다. 하이브리드 2WD 블랙 에디션은 친환경차 고시 후 가격이 아직 안내되지 않았습니다.",
 
     trimHelp:
       "파워트레인에 따라 공식 트림가격과 선택품목이 자동으로 변경됩니다.",
@@ -51,31 +51,21 @@ window.CAR_DATA = {
         sub: "스마트스트림 G2.5 T-GDI"
       },
       {
-        id: "diesel",
-        name: "2.2 디젤",
-        price: 1730000,
-        sub: "가솔린 기준 +1,730,000원"
-      },
-      {
         id: "hybrid2wd",
         name: "터보 하이브리드 (2WD)",
         price: 0,
-        sub: "세제혜택 후 공식 판매가격"
+        sub: "세제혜택 후 판매가격 · 블랙 에디션은 고시 전 가격"
       },
       {
         id: "hybrid4wd",
         name: "터보 하이브리드 (전자식 4WD)",
         price: 0,
-        sub: "공식 4WD 판매가격 · 구동 추가금이 트림가격에 포함"
+        sub: "공식 4WD 판매가격 · 구동 추가금 포함"
       }
     ],
 
     drivesByEngine: {
       gas: [
-        { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
-        { id: "4wd", name: "전자식 4WD", price: 2320000, sub: "+2,320,000원" }
-      ],
-      diesel: [
         { id: "2wd", name: "2WD", price: 0, sub: "전륜구동" },
         { id: "4wd", name: "전자식 4WD", price: 2320000, sub: "+2,320,000원" }
       ],
@@ -95,31 +85,27 @@ window.CAR_DATA = {
 
     trimsByEngine: {
       gas: [
-        { id: "prestige", name: "프레스티지", price: 36310000 },
-        { id: "noblesse", name: "노블레스", price: 39460000 },
-        { id: "signature", name: "시그니처", price: 42270000 },
-        { id: "xline", name: "X-Line", price: 43210000 }
-      ],
-
-      diesel: [
-        { id: "prestige", name: "프레스티지", price: 36310000 },
-        { id: "noblesse", name: "노블레스", price: 39460000 },
-        { id: "signature", name: "시그니처", price: 42270000 },
-        { id: "xline", name: "X-Line", price: 43210000 }
+        { id: "prestige", name: "프레스티지", price: 36410000 },
+        { id: "noblesse", name: "노블레스", price: 39660000 },
+        { id: "signature", name: "시그니처", price: 42470000 },
+        { id: "xline", name: "X-Line", price: 43410000 },
+        { id: "black", name: "블랙 에디션", price: 44410000 }
       ],
 
       hybrid2wd: [
-        { id: "prestige", name: "프레스티지", price: 39530000, sub: "세제혜택 후" },
-        { id: "noblesse", name: "노블레스", price: 42790000, sub: "세제혜택 후" },
-        { id: "signature", name: "시그니처", price: 45310000, sub: "세제혜택 후" },
-        { id: "xline", name: "X-Line", price: 46250000, sub: "세제혜택 후" }
+        { id: "prestige", name: "프레스티지", price: 39630000, sub: "세제혜택 후" },
+        { id: "noblesse", name: "노블레스", price: 42990000, sub: "세제혜택 후" },
+        { id: "signature", name: "시그니처", price: 45760000, sub: "세제혜택 후" },
+        { id: "xline", name: "X-Line", price: 46700000, sub: "세제혜택 후" },
+        { id: "black", name: "블랙 에디션", price: 48950000, sub: "세제혜택 전 · 고시 후 변경 예정" }
       ],
 
       hybrid4wd: [
-        { id: "prestige", name: "프레스티지", price: 42850000, sub: "전자식4WD 공식가격" },
-        { id: "noblesse", name: "노블레스", price: 46100000, sub: "전자식4WD 공식가격" },
-        { id: "signature", name: "시그니처", price: 48630000, sub: "전자식4WD 공식가격" },
-        { id: "xline", name: "X-Line", price: 49570000, sub: "전자식4WD 공식가격" }
+        { id: "prestige", name: "프레스티지", price: 42950000, sub: "전자식4WD 공식가격" },
+        { id: "noblesse", name: "노블레스", price: 46310000, sub: "전자식4WD 공식가격" },
+        { id: "signature", name: "시그니처", price: 49080000, sub: "전자식4WD 공식가격" },
+        { id: "xline", name: "X-Line", price: 50020000, sub: "전자식4WD 공식가격" },
+        { id: "black", name: "블랙 에디션", price: 51270000, sub: "전자식4WD 공식가격" }
       ]
     },
 
@@ -143,15 +129,15 @@ window.CAR_DATA = {
           { id: "style", name: "스타일", price: 1140000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "smart", name: "스마트 커넥트", price: 600000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         signature: [
-          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
@@ -159,7 +145,14 @@ window.CAR_DATA = {
           { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        black: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ]
@@ -201,87 +194,97 @@ window.CAR_DATA = {
 
       hybrid2wd: {
         prestige: [
-          { id: "style", name: "스타일", price: 1140000 },
+          { id: "style", name: "스타일", price: 1240000 },
           { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         noblesse: [
-          { id: "style", name: "스타일", price: 1040000 },
+          { id: "style", name: "스타일", price: 1140000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "smart", name: "스마트 커넥트", price: 600000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         signature: [
-          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
-          { id: "wheel19", name: "19인치 휠", price: 300000 }
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         xline: [
           { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
-          { id: "wheel19", name: "19인치 휠", price: 300000 }
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        black: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ]
       },
 
       hybrid4wd: {
         prestige: [
-          { id: "style", name: "스타일", price: 1140000 },
+          { id: "style", name: "스타일", price: 1240000 },
           { id: "cluster", name: "12.3인치 클러스터", price: 590000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000, requires: "cluster", note: "12.3인치 클러스터 선택 시" },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         noblesse: [
-          { id: "style", name: "스타일", price: 1040000 },
+          { id: "style", name: "스타일", price: 1140000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 800000 },
+          { id: "smart", name: "스마트 커넥트", price: 600000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         signature: [
-          { id: "comfort", name: "컴포트", price: 1090000 },
+          { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
-          { id: "wheel19", name: "19인치 휠", price: 300000 }
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
         xline: [
           { id: "comfort", name: "컴포트", price: 600000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
-          { id: "smart", name: "스마트 커넥트", price: 700000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
-          { id: "sunroof", name: "파노라마 선루프", price: 1090000 },
-          { id: "wheel19", name: "19인치 휠", price: 300000 }
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+        black: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 1290000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 500000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 640000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ]
       }
     }
   },
 
   /* =========================================================
-     2026 스포티지
-     기아 공식 가격: 2026-08-01 기준
+     2027 스포티지
+     기아 공식 가격: 2026-09-01 기준
      ========================================================= */
   sportage: {
     brand: "KIA",
-    name: "The 2026 Sportage",
-    displayName: "2026 스포티지",
-    year: "2026년형",
+    name: "The 2027 Sportage",
+    displayName: "2027 스포티지",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "준중형 SUV",
     image: "sportage.png",
 
@@ -334,24 +337,26 @@ window.CAR_DATA = {
 
     trimsByEngine: {
       gas16: [
-        { id: "prestige", name: "프레스티지", price: 29030000, sub: "1.6 가솔린 터보" },
-        { id: "noblesse", name: "노블레스", price: 32420000, sub: "1.6 가솔린 터보" },
-        { id: "signature", name: "시그니처", price: 35070000, sub: "1.6 가솔린 터보" },
-        { id: "xline", name: "시그니처 X-Line", price: 35720000, sub: "X-Line 전용 외장" }
+        { id: "prestige", name: "프레스티지", price: 29440000, sub: "1.6 가솔린 터보" },
+        { id: "noblesse", name: "노블레스", price: 33220000, sub: "1.6 가솔린 터보" },
+        { id: "signature", name: "시그니처", price: 35570000, sub: "1.6 가솔린 터보" },
+        { id: "xline", name: "X-Line", price: 36220000, sub: "X-Line 전용 외장" },
+        { id: "black", name: "블랙 에디션", price: 35870000, sub: "블랙 에디션 전용 외장·내장" }
       ],
 
       lpg20: [
-        { id: "prestige", name: "프레스티지", price: 29680000, sub: "2.0 LPG" },
-        { id: "noblesse", name: "노블레스", price: 33070000, sub: "2.0 LPG" },
-        { id: "signature", name: "시그니처", price: 35720000, sub: "2.0 LPG" },
-        { id: "xline", name: "시그니처 X-Line", price: 36370000, sub: "X-Line 전용 외장" }
+        { id: "prestige", name: "프레스티지", price: 30090000, sub: "2.0 LPG" },
+        { id: "noblesse", name: "노블레스", price: 33870000, sub: "2.0 LPG" },
+        { id: "signature", name: "시그니처", price: 36220000, sub: "2.0 LPG" },
+        { id: "xline", name: "X-Line", price: 36870000, sub: "X-Line 전용 외장" }
       ],
 
       hybrid: [
-        { id: "prestige", name: "프레스티지", price: 33950000, sub: "세제혜택 후" },
-        { id: "noblesse", name: "노블레스", price: 37230000, sub: "세제혜택 후" },
-        { id: "signature", name: "시그니처", price: 39880000, sub: "세제혜택 후" },
-        { id: "xline", name: "시그니처 X-Line", price: 40530000, sub: "세제혜택 후 · X-Line" }
+        { id: "prestige", name: "프레스티지", price: 34360000, sub: "세제혜택 후" },
+        { id: "noblesse", name: "노블레스", price: 38030000, sub: "세제혜택 후" },
+        { id: "signature", name: "시그니처", price: 40380000, sub: "세제혜택 후" },
+        { id: "xline", name: "X-Line", price: 41030000, sub: "세제혜택 후 · X-Line" },
+        { id: "black", name: "블랙 에디션", price: 40680000, sub: "세제혜택 후 · 블랙 에디션" }
       ]
     },
 
@@ -371,26 +376,26 @@ window.CAR_DATA = {
       gas16: {
         prestige: [
           { id: "style", name: "스타일", price: 690000 },
-          { id: "nav", name: "12.3인치 내비게이션", price: 890000 },
-          { id: "builtincam", name: "빌트인 캠 2", price: 450000, requires: "nav", note: "12.3인치 내비게이션 적용 시" },
+          { id: "comfort1", name: "컴포트Ⅰ", price: 1040000 },
+          { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1190000 }
         ],
 
         noblesse: [
           { id: "style", name: "스타일", price: 890000 },
-          { id: "comfort", name: "컴포트", price: 490000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "comfort2", name: "컴포트Ⅱ", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
-          { id: "smart", name: "스마트 커넥트", price: 1190000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
 
         signature: [
           { id: "wheel19", name: "19인치 전면가공 휠", price: 250000 },
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -398,8 +403,16 @@ window.CAR_DATA = {
         ],
 
         xline: [
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
+          { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
+          { id: "monitoring", name: "모니터링", price: 1140000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+
+        black: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -410,26 +423,26 @@ window.CAR_DATA = {
       lpg20: {
         prestige: [
           { id: "style", name: "스타일", price: 690000 },
-          { id: "nav", name: "12.3인치 내비게이션", price: 890000 },
-          { id: "builtincam", name: "빌트인 캠 2", price: 450000, requires: "nav", note: "12.3인치 내비게이션 적용 시" },
+          { id: "comfort1", name: "컴포트Ⅰ", price: 1040000 },
+          { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1190000 }
         ],
 
         noblesse: [
           { id: "style", name: "스타일", price: 890000 },
-          { id: "comfort", name: "컴포트", price: 490000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "comfort2", name: "컴포트Ⅱ", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
-          { id: "smart", name: "스마트 커넥트", price: 1190000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
 
         signature: [
           { id: "wheel19", name: "19인치 전면가공 휠", price: 250000 },
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -437,8 +450,8 @@ window.CAR_DATA = {
         ],
 
         xline: [
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -449,26 +462,26 @@ window.CAR_DATA = {
       hybrid: {
         prestige: [
           { id: "style", name: "스타일", price: 690000 },
-          { id: "nav", name: "12.3인치 내비게이션", price: 890000 },
-          { id: "builtincam", name: "빌트인 캠 2", price: 450000, requires: "nav", note: "12.3인치 내비게이션 적용 시" },
+          { id: "comfort1", name: "컴포트Ⅰ", price: 1040000 },
+          { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1190000 }
         ],
 
         noblesse: [
           { id: "style", name: "스타일", price: 890000 },
-          { id: "comfort", name: "컴포트", price: 490000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "comfort2", name: "컴포트Ⅱ", price: 590000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
-          { id: "smart", name: "스마트 커넥트", price: 1190000 },
+          { id: "hud", name: "헤드업 디스플레이", price: 590000 },
           { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
         ],
 
         signature: [
           { id: "wheel19", name: "19인치 전면가공 휠", price: 250000 },
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -476,8 +489,16 @@ window.CAR_DATA = {
         ],
 
         xline: [
-          { id: "premium", name: "프리미엄", price: 590000 },
-          { id: "drivewise", name: "드라이브 와이즈", price: 1240000 },
+          { id: "premium", name: "프리미엄", price: 640000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
+          { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
+          { id: "monitoring", name: "모니터링", price: 1140000 },
+          { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
+          { id: "sunroof", name: "파노라마 선루프", price: 1090000 }
+        ],
+
+        black: [
+          { id: "drivewise", name: "드라이브 와이즈", price: 910000 },
           { id: "builtincam", name: "빌트인 캠 2", price: 450000 },
           { id: "monitoring", name: "모니터링", price: 1140000 },
           { id: "krell", name: "KRELL 프리미엄 사운드", price: 590000 },
@@ -489,14 +510,14 @@ window.CAR_DATA = {
   ,
 
   /* =========================================================
-     2026 카니발
-     기아 공식 가격: 2026-08-01 기준
+     2027 카니발
+     기아 공식 가격: 2026-09-01 기준
      ========================================================= */
   carnival: {
     brand: "KIA",
-    name: "The 2026 Carnival",
-    displayName: "2026 카니발",
-    year: "2026년형",
+    name: "The 2027 Carnival",
+    displayName: "2027 카니발",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "대형 RV",
     image: "carnival.png",
 
@@ -504,7 +525,7 @@ window.CAR_DATA = {
       "3.5 가솔린과 터보 하이브리드를 선택할 수 있습니다. 인승에 따라 하이브리드 가격 차이가 자동 반영됩니다.",
 
     trimHelp:
-      "7인승과 9인승은 선택 가능한 트림과 공식 판매가격이 다릅니다.",
+      "7인승과 9인승은 선택 가능한 트림과 공식 판매가격이 다릅니다. 2027년형 블랙 에디션을 포함합니다.",
 
     tax: {
       rate: 0.07,
@@ -558,33 +579,37 @@ window.CAR_DATA = {
     trimsByEngineAndSeat: {
       gas35: {
         "9": [
-          { id: "prestige", name: "프레스티지", price: 36360000, sub: "3.5 가솔린 · 9인승" },
-          { id: "noblesse", name: "노블레스", price: 40710000, sub: "3.5 가솔린 · 9인승" },
-          { id: "signature", name: "시그니처", price: 44260000, sub: "3.5 가솔린 · 9인승" },
-          { id: "xline", name: "X-Line", price: 45020000, sub: "3.5 가솔린 · 9인승" }
+          { id: "prestige", name: "프레스티지", price: 36860000, sub: "3.5 가솔린 · 9인승" },
+          { id: "noblesse", name: "노블레스", price: 41210000, sub: "3.5 가솔린 · 9인승" },
+          { id: "signature", name: "시그니처", price: 44560000, sub: "3.5 가솔린 · 9인승" },
+          { id: "xline", name: "X-Line", price: 45320000, sub: "3.5 가솔린 · 9인승" },
+          { id: "black", name: "블랙 에디션", price: 45920000, sub: "3.5 가솔린 · 9인승" }
         ],
 
         "7": [
-          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 42270000, sub: "3.5 가솔린 · 7인승" },
-          { id: "noblesse", name: "노블레스", price: 43260000, sub: "3.5 가솔린 · 7인승" },
-          { id: "signature", name: "시그니처", price: 47020000, sub: "3.5 가솔린 · 7인승" },
-          { id: "xline", name: "X-Line", price: 47550000, sub: "3.5 가솔린 · 7인승" }
+          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 42830000, sub: "3.5 가솔린 · 7인승" },
+          { id: "noblesse", name: "노블레스", price: 43820000, sub: "3.5 가솔린 · 7인승" },
+          { id: "signature", name: "시그니처", price: 47380000, sub: "3.5 가솔린 · 7인승" },
+          { id: "xline", name: "X-Line", price: 47910000, sub: "3.5 가솔린 · 7인승" },
+          { id: "black", name: "블랙 에디션", price: 48510000, sub: "3.5 가솔린 · 7인승" }
         ]
       },
 
       hybrid: {
         "9": [
-          { id: "prestige", name: "프레스티지", price: 40910000, sub: "터보 하이브리드 · 9인승" },
-          { id: "noblesse", name: "노블레스", price: 45260000, sub: "터보 하이브리드 · 9인승" },
-          { id: "signature", name: "시그니처", price: 48810000, sub: "터보 하이브리드 · 9인승" },
-          { id: "xline", name: "X-Line", price: 49570000, sub: "터보 하이브리드 · 9인승" }
+          { id: "prestige", name: "프레스티지", price: 41410000, sub: "터보 하이브리드 · 9인승" },
+          { id: "noblesse", name: "노블레스", price: 45760000, sub: "터보 하이브리드 · 9인승" },
+          { id: "signature", name: "시그니처", price: 49110000, sub: "터보 하이브리드 · 9인승" },
+          { id: "xline", name: "X-Line", price: 49870000, sub: "터보 하이브리드 · 9인승" },
+          { id: "black", name: "블랙 에디션", price: 50470000, sub: "터보 하이브리드 · 9인승" }
         ],
 
         "7": [
-          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 46770000, sub: "터보 하이브리드 · 7인승" },
-          { id: "noblesse", name: "노블레스", price: 47760000, sub: "터보 하이브리드 · 7인승" },
-          { id: "signature", name: "시그니처", price: 51520000, sub: "터보 하이브리드 · 7인승" },
-          { id: "xline", name: "X-Line", price: 52050000, sub: "터보 하이브리드 · 7인승" }
+          { id: "noblesse_outdoor", name: "노블레스 아웃도어", price: 47330000, sub: "터보 하이브리드 · 7인승" },
+          { id: "noblesse", name: "노블레스", price: 48320000, sub: "터보 하이브리드 · 7인승" },
+          { id: "signature", name: "시그니처", price: 51880000, sub: "터보 하이브리드 · 7인승" },
+          { id: "xline", name: "X-Line", price: 52410000, sub: "터보 하이브리드 · 7인승" },
+          { id: "black", name: "블랙 에디션", price: 53010000, sub: "터보 하이브리드 · 7인승" }
         ]
       }
     },
@@ -606,7 +631,7 @@ window.CAR_DATA = {
       "9": {
         prestige: [
           { id: "convenience", name: "컨비니언스", price: 1100000 },
-          { id: "style", name: "스타일", price: 1000000 },
+          { id: "style", name: "스타일", price: 700000 },
           { id: "cluster", name: "12.3인치 클러스터", price: 600000 },
           {
             id: "drivewise",
@@ -625,8 +650,8 @@ window.CAR_DATA = {
         ],
 
         noblesse: [
-          { id: "style", name: "스타일", price: 1000000 },
-          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "style", name: "스타일", price: 700000 },
+          { id: "comfort", name: "컴포트", price: 1460000 },
           { id: "smart", name: "스마트 커넥트", price: 750000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
           { id: "monitoring", name: "모니터링 팩", price: 1200000 },
@@ -636,7 +661,7 @@ window.CAR_DATA = {
 
         signature: [
           { id: "style", name: "스타일", price: 700000 },
-          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "comfort", name: "컴포트", price: 1460000 },
           { id: "smart", name: "스마트 커넥트", price: 750000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
           { id: "monitoring", name: "모니터링 팩", price: 1200000 },
@@ -646,7 +671,7 @@ window.CAR_DATA = {
         ],
 
         xline: [
-          { id: "comfort", name: "컴포트", price: 1400000 },
+          { id: "comfort", name: "컴포트", price: 1460000 },
           { id: "smart", name: "스마트 커넥트", price: 750000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
           { id: "monitoring", name: "모니터링 팩", price: 1200000 },
@@ -654,12 +679,22 @@ window.CAR_DATA = {
           { id: "bose", name: "BOSE 프리미엄 사운드", price: 900000 },
           { id: "sunroof", name: "듀얼 선루프", price: 800000 },
           { id: "xline_step", name: "X-Line 전용 사이드 스텝 / LED 테일게이트 램프", price: 570000 }
+        ],
+
+        black: [
+          { id: "comfort", name: "컴포트", price: 1460000 },
+          { id: "smart", name: "스마트 커넥트", price: 750000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 750000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1200000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1200000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 900000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 800000 }
         ]
       },
 
       "7": {
         noblesse: [
-          { id: "style", name: "스타일", price: 790000 },
+          { id: "style", name: "스타일", price: 470000 },
           { id: "comfort", name: "컴포트", price: 1190000 },
           { id: "smart", name: "스마트 커넥트", price: 790000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
@@ -669,8 +704,7 @@ window.CAR_DATA = {
         ],
 
         noblesse_outdoor: [
-          { id: "style", name: "스타일", price: 790000 },
-          { id: "comfort", name: "컴포트", price: 1190000 },
+          { id: "style", name: "스타일", price: 470000 },
           { id: "smart", name: "스마트 커넥트", price: 790000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링 팩", price: 1270000 },
@@ -679,16 +713,17 @@ window.CAR_DATA = {
         ],
 
         signature: [
-          { id: "style", name: "스타일", price: 790000 },
+          { id: "style", name: "스타일", price: 470000 },
+          { id: "comfort", name: "컴포트", price: 1190000 },
           { id: "smart", name: "스마트 커넥트", price: 790000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
           { id: "monitoring", name: "모니터링 팩", price: 1270000 },
           { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 950000 },
           { id: "sunroof", name: "듀얼 선루프", price: 840000 }
         ],
 
         xline: [
-          { id: "style", name: "스타일", price: 470000 },
           { id: "comfort", name: "컴포트", price: 1190000 },
           { id: "smart", name: "스마트 커넥트", price: 790000 },
           { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
@@ -697,6 +732,16 @@ window.CAR_DATA = {
           { id: "bose", name: "BOSE 프리미엄 사운드", price: 950000 },
           { id: "sunroof", name: "듀얼 선루프", price: 840000 },
           { id: "xline_step", name: "X-Line 전용 사이드 스텝 / LED 테일게이트 램프", price: 560000 }
+        ],
+
+        black: [
+          { id: "comfort", name: "컴포트", price: 1190000 },
+          { id: "smart", name: "스마트 커넥트", price: 790000 },
+          { id: "drivewise", name: "드라이브 와이즈", price: 790000 },
+          { id: "monitoring", name: "모니터링 팩", price: 1270000 },
+          { id: "hud", name: "HUD + 빌트인 캠 2", price: 1270000 },
+          { id: "bose", name: "BOSE 프리미엄 사운드", price: 950000 },
+          { id: "sunroof", name: "듀얼 선루프", price: 840000 }
         ]
       }
     }
@@ -723,7 +768,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2026 Kia EV9 GT",
     displayName: "EV9 GT",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "고성능 대형 전기 SUV · GT 4WD",
     image: "ev9gt.png",
 
@@ -815,7 +860,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2026 EV9",
     displayName: "EV9",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "대형 전기 SUV · Standard · Long Range",
     image: "ev9.png",
 
@@ -968,7 +1013,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2027 EV6",
     displayName: "EV6",
-    year: "2026년 8월 3일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "전기 크로스오버 · Standard · Long Range",
     image: "ev6.png",
 
@@ -1104,7 +1149,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The Kia EV3 GT",
     displayName: "EV3 GT",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "고성능 전기 SUV · GT 4WD Long Range",
     image: "ev3gt.png",
 
@@ -1192,7 +1237,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2026 EV4",
     displayName: "EV4",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "전기 세단 · Standard · Long Range",
     image: "ev4.png",
 
@@ -1434,7 +1479,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2026 EV3",
     displayName: "EV3",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "전기 SUV · Standard · Long Range",
     image: "ev3.png",
 
@@ -1595,7 +1640,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2027 Ray / Ray EV",
     displayName: "레이 / 레이 EV",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "경형 RV · 1.0 가솔린 · EV",
     image: "ray.png",
 
@@ -1685,7 +1730,8 @@ window.CAR_DATA = {
       ],
       gas_van1:[
         {id:"trendy",name:"트렌디",price:14800000},
-        {id:"prestige",name:"프레스티지",price:15400000}
+        {id:"prestige",name:"프레스티지",price:15400000},
+        {id:"prestige_special",name:"프레스티지 스페셜",price:15950000}
       ],
       gas_van2:[
         {id:"trendy",name:"트렌디",price:14900000},
@@ -1823,7 +1869,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The new Niro",
     displayName: "니로 HEV",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "하이브리드 SUV · 1.6 HEV",
     image: "niro.png",
 
@@ -1946,7 +1992,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2027 K5",
     displayName: "K5 / K5 Hybrid",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "중형 세단 · 2.0 가솔린 · 2.0 하이브리드",
     image: "k5.png",
 
@@ -2078,7 +2124,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2027 K8",
     displayName: "K8 / K8 Hybrid",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "준대형 세단 · 2.5 가솔린 · 1.6 터보 하이브리드",
     image: "k8.png",
 
@@ -2210,7 +2256,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2026 K9",
     displayName: "K9",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "대형 세단 · 3.8 가솔린 · 3.3 가솔린 터보",
     image: "k9.png",
 
@@ -2363,7 +2409,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The 2027 Tasman",
     displayName: "타스만",
-    year: "2026년 8월 1일 공식 가격 기준",
+    year: "2027년형 · 2026년 9월 1일 공식 가격 기준",
     type: "픽업 · 2.5 가솔린 터보",
     image: "tasman.png",
 
@@ -2484,7 +2530,7 @@ window.CAR_DATA = {
     brand: "KIA",
     name: "The all-new Seltos",
     displayName: "디 올 뉴 셀토스",
-    year: "2026년 8월 가격 기준",
+    year: "2026년 9월 1일 공식 가격 기준",
     type: "소형 SUV",
     image: "seltos.png",
 
@@ -2647,7 +2693,7 @@ window.CAR_DATA = {
     brand: "GENESIS",
     name: "G80",
     displayName: "제네시스 G80",
-    year: "2026년 8월 공식 BTO 기준",
+    year: "2026년 9월 1일 공식 BTO 기준",
     type: "럭셔리 대형 세단",
     image: "g80.png",
 
@@ -3513,13 +3559,13 @@ window.CAR_DATA = {
 
   /* =========================================================
      HYUNDAI SONATA The Edge / Hybrid
-     현대자동차 공식 가격표 및 내 차 만들기 기준: 2026-08
+     현대자동차 공식 가격표 및 내 차 만들기 기준: 2026-09-01
      ========================================================= */
   sonata: {
     brand: "HYUNDAI",
     name: "SONATA The Edge",
     displayName: "쏘나타 디 엣지",
-    year: "2026년 8월 현대자동차 공식 가격표 기준",
+    year: "2026년형 · 2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "중형 세단",
     image: "sonata.png",
 
@@ -3550,10 +3596,10 @@ window.CAR_DATA = {
 
     trimsByEngine: {
       gas20: [
-        { id: "premium", name: "Premium", price: 28660000, sub: "2026년 8월 공식 시작가격" },
-        { id: "s", name: "S", price: 29960000, sub: "공식 2026 가격체계" },
-        { id: "exclusive", name: "Exclusive", price: 33000000, sub: "공식 2026 가격체계" },
-        { id: "inspiration", name: "Inspiration", price: 35890000, sub: "공식 2026 가격체계" }
+        { id: "premium", name: "Premium", price: 28660000, sub: "2026년 9월 공식 시작가격" },
+        { id: "s", name: "S", price: 29980000, sub: "공식 2026 가격체계" },
+        { id: "exclusive", name: "Exclusive", price: 33060000, sub: "공식 2026 가격체계" },
+        { id: "inspiration", name: "Inspiration", price: 36000000, sub: "공식 2026 가격체계" }
       ],
 
       gas16t: [
@@ -3564,18 +3610,17 @@ window.CAR_DATA = {
       ],
 
       lpi20: [
-        { id: "premium", name: "Premium", price: 29750000 },
-        { id: "s", name: "S", price: 31070000 },
-        { id: "exclusive", name: "Exclusive", price: 34150000 },
-        { id: "inspiration", name: "Inspiration", price: 37080000 }
+        { id: "premium", name: "Premium", price: 29510000 },
+        { id: "exclusive", name: "Exclusive", price: 33560000 },
+        { id: "inspiration", name: "Inspiration", price: 36250000 }
       ],
 
       nline16t: [
-        { id: "nline", name: "N Line", price: 37770000, sub: "가솔린 1.6 터보 N Line" }
+        { id: "nline", name: "N Line", price: 37260000, sub: "가솔린 1.6 터보 N Line" }
       ],
 
       nline25t: [
-        { id: "nline", name: "N Line", price: 39770000, sub: "2.5 터보 퍼포먼스 반영" }
+        { id: "nline", name: "N Line", price: 39260000, sub: "2.5 터보 퍼포먼스(+2,000,000원) 반영" }
       ],
 
       hybrid20: [
@@ -3587,24 +3632,26 @@ window.CAR_DATA = {
     },
 
     colors: [
-      { id: "serenity_white", name: "세레니티 화이트 펄", price: 0, color: "#f1f0ec" },
+      { id: "serenity_white", name: "세레니티 화이트 펄", price: 80000, color: "#f1f0ec" },
       { id: "nocturne_gray", name: "녹턴 그레이 메탈릭", price: 0, color: "#55575a" },
       { id: "abyss_black", name: "어비스 블랙 펄", price: 0, color: "#111214" },
       { id: "aero_silver", name: "에어로 실버 메탈릭", price: 0, color: "#a8aaab" },
       { id: "transmission_blue", name: "트랜스미션 블루 펄", price: 0, color: "#596978" },
-      { id: "ultimate_red", name: "얼티메이트 레드 메탈릭", price: 0, color: "#7f2527" }
+      { id: "ultimate_red", name: "얼티메이트 레드 메탈릭", price: 0, color: "#7f2527" },
+      { id: "nocturne_gray_matte", name: "녹턴 그레이 매트", price: 200000, color: "#5d5f60" },
+      { id: "aero_silver_matte", name: "에어로 실버 매트", price: 200000, color: "#a5a7a6" }
     ],
 
     optionsByEngine: {
       gas20: {
         premium: [
-          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2", note:"내비게이션 선택 시" },
-          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
-          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2", note:"인포테인먼트 내비 Ⅱ 선택 시" },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi1", note:"내비게이션 선택 시" },
+          { id:"navi1", name:"인포테인먼트 내비 Ⅰ", price:1400000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi1", note:"인포테인먼트 내비 Ⅰ 선택 시" },
           { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
           { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
           { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
-          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"exterior1", name:"익스테리어 디자인 Ⅰ", price:640000 },
           { id:"hipass", name:"하이패스", price:200000 },
           { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
         ],
@@ -3632,13 +3679,13 @@ window.CAR_DATA = {
 
       gas16t: {
         premium: [
-          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2" },
-          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
-          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2" },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi1" },
+          { id:"navi1", name:"인포테인먼트 내비 Ⅰ", price:1400000 },
+          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi1" },
           { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
           { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
           { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
-          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"exterior1", name:"익스테리어 디자인 Ⅰ", price:640000 },
           { id:"hipass", name:"하이패스", price:200000 },
           { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
         ],
@@ -3666,13 +3713,13 @@ window.CAR_DATA = {
 
       lpi20: {
         premium: [
-          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi2" },
-          { id:"navi2", name:"인포테인먼트 내비 Ⅱ", price:1060000 },
-          { id:"parking1", name:"파킹 어시스트 I", price:1680000, requires:"navi2" },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"navi1" },
+          { id:"navi1", name:"인포테인먼트 내비 Ⅰ", price:1400000 },
+          { id:"parking2", name:"파킹 어시스트 Ⅱ", price:1380000, requires:"navi1" },
           { id:"smartsense1", name:"현대 스마트센스Ⅰ", price:450000 },
           { id:"comfort1", name:"컴포트Ⅰ (1열 편의)", price:640000 },
-          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
-          { id:"exterior3", name:"익스테리어 디자인 Ⅲ", price:400000 },
+          { id:"comfort3", name:"컴포트Ⅲ (2열 편의)", price:570000 },
+          { id:"exterior2", name:"익스테리어 디자인 Ⅱ", price:450000 },
           { id:"hipass", name:"하이패스", price:200000 },
           { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
         ],
@@ -3685,8 +3732,8 @@ window.CAR_DATA = {
         exclusive: [
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
           { id:"platinum1", name:"플래티넘Ⅰ", price:1300000 },
-          { id:"comfort2", name:"컴포트Ⅱ (2열 편의)", price:670000 },
-          { id:"exterior1", name:"익스테리어 디자인 I", price:640000 },
+          { id:"comfort3", name:"컴포트Ⅲ (2열 편의)", price:570000 },
+          { id:"exterior2", name:"익스테리어 디자인 Ⅱ", price:450000 },
           { id:"sunroof", name:"파노라마 선루프", price:1190000 },
           { id:"ledplus", name:"H Genuine Accessories · LED 라이팅 플러스 패키지", price:250000 }
         ],
@@ -3760,7 +3807,7 @@ window.CAR_DATA = {
     brand: "HYUNDAI",
     name: "The all-new PALISADE",
     displayName: "디 올 뉴 팰리세이드",
-    year: "현대자동차 공식 가격표 기준",
+    year: "2027년형 · 2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "대형 SUV",
     image: "palisade.png",
 
@@ -3807,40 +3854,74 @@ window.CAR_DATA = {
     trimsByEngineAndSeat: {
       gas25: {
         "7": [
-          { id:"exclusive", name:"익스클루시브", price:45100000, sub:"가솔린 2.5 터보 · 7인승" },
-          { id:"prestige", name:"프레스티지", price:50930000, sub:"20인치 휠 · 파노라믹 커브드 디스플레이" },
-          { id:"calligraphy", name:"캘리그래피", price:57870000, sub:"나파가죽 · HUD · BOSE" }
+          { id:"exclusive", name:"익스클루시브", price:46100000, sub:"가솔린 2.5 터보 · 7인승" },
+          { id:"hpick", name:"H-Pick", price:52030000, sub:"가솔린 2.5 터보 · 7인승" },
+          { id:"calligraphy", name:"캘리그래피", price:58070000, sub:"나파가죽 · HUD · BOSE" },
+          { id:"blackink", name:"블랙 잉크", price:59770000, sub:"블랙 잉크 전용 디자인" },
+          { id:"xrt", name:"XRT", price:53820000, sub:"XRT 전용 외장·내장" },
+          { id:"highroof", name:"하이루프", price:75300000, sub:"하이루프 전용 사양" }
         ],
         "9": [
-          { id:"exclusive", name:"익스클루시브", price:43830000, sub:"가솔린 2.5 터보 · 9인승" },
-          { id:"prestige", name:"프레스티지", price:49360000, sub:"20인치 휠 · 파노라믹 커브드 디스플레이" },
-          { id:"calligraphy", name:"캘리그래피", price:55860000, sub:"나파가죽 · HUD · BOSE" }
+          { id:"exclusive", name:"익스클루시브", price:44780000, sub:"가솔린 2.5 터보 · 9인승" },
+          { id:"hpick", name:"H-Pick", price:50400000, sub:"가솔린 2.5 터보 · 9인승" },
+          { id:"calligraphy", name:"캘리그래피", price:56060000, sub:"나파가죽 · HUD · BOSE" },
+          { id:"blackink", name:"블랙 잉크", price:57670000, sub:"블랙 잉크 전용 디자인" },
+          { id:"xrt", name:"XRT", price:52110000, sub:"XRT 전용 외장·내장" },
+          { id:"highroof", name:"하이루프", price:72440000, sub:"하이루프 전용 사양" }
         ]
       },
       hev25: {
         "7": [
-          { id:"exclusive", name:"익스클루시브", price:50400000, sub:"세제혜택 후 판매가격" },
-          { id:"prestige", name:"프레스티지", price:57220000, sub:"7인승 공식 판매가격" },
-          { id:"calligraphy", name:"캘리그래피", price:64160000, sub:"7인승 공식 판매가격" }
+          { id:"exclusive", name:"익스클루시브", price:51400000, sub:"세제혜택 후 판매가격" },
+          { id:"hpick", name:"H-Pick", price:58320000, sub:"7인승 공식 판매가격" },
+          { id:"calligraphy", name:"캘리그래피", price:64360000, sub:"7인승 공식 판매가격" },
+          { id:"blackink", name:"블랙 잉크", price:66060000, sub:"7인승 공식 판매가격" },
+          { id:"highroof", name:"하이루프", price:81590000, sub:"7인승 공식 판매가격" }
         ],
         "9": [
-          { id:"exclusive", name:"익스클루시브", price:49820000, sub:"9인승 공식 판매가격" },
-          { id:"prestige", name:"프레스티지", price:55360000, sub:"9인승 공식 판매가격" },
-          { id:"calligraphy", name:"캘리그래피", price:61860000, sub:"9인승 공식 판매가격" }
+          { id:"exclusive", name:"익스클루시브", price:50770000, sub:"9인승 공식 판매가격" },
+          { id:"hpick", name:"H-Pick", price:56400000, sub:"9인승 공식 판매가격" },
+          { id:"calligraphy", name:"캘리그래피", price:62060000, sub:"9인승 공식 판매가격" },
+          { id:"blackink", name:"블랙 잉크", price:63670000, sub:"9인승 공식 판매가격" },
+          { id:"highroof", name:"하이루프", price:78440000, sub:"9인승 공식 판매가격" }
         ]
       }
     },
 
     colors: [
       { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
-      { id:"shimmering_silver", name:"쉬머링 실버 메탈릭", price:0, color:"#a7a9aa" },
-      { id:"cast_iron_brown", name:"캐스트 아이언 브라운 펄", price:0, color:"#65574e" },
-      { id:"galaxy_maroon", name:"갤럭시 마룬 펄", price:0, color:"#654347" },
-      { id:"classy_blue", name:"클래지 블루 펄", price:0, color:"#34465c" },
-      { id:"ecotronic_gray", name:"에코트로닉 그레이 펄", price:0, color:"#66696a" },
+      { id:"shimmering_silver", name:"쉬머링 실버 메탈릭", price:0, color:"#a7a9aa", excludedTrims:["blackink","highroof"] },
+      { id:"cast_iron_brown", name:"캐스트 아이언 브라운 펄", price:0, color:"#65574e", excludedTrims:["blackink","highroof"] },
+      { id:"titan_charcoal", name:"타이탄 차콜 펄", price:0, color:"#4f5253", excludedTrims:["blackink","highroof"] },
+      { id:"classy_blue", name:"클래지 블루 펄", price:0, color:"#34465c", excludedTrims:["blackink","highroof"] },
+      { id:"ecotronic_gray", name:"에코트로닉 그레이 펄", price:0, color:"#66696a", excludedTrims:["blackink","highroof"] },
       { id:"robust_emerald", name:"로버스트 에메랄드 펄", price:0, color:"#243d39", allowedTrims:["calligraphy"] },
       { id:"creamy_white", name:"크리미 화이트 펄", price:100000, priceBySeat:{"7":100000,"9":90000}, color:"#f1f0e9" }
     ],
+
+    // 2027년형 신규 트림 공통 선택품목. 인승별 금액은 estimate.js에서 priceBySeat로 계산합니다.
+    options: {
+      blackink: [
+        { id:"sunroof", name:"듀얼 와이드 선루프", priceBySeat:{"7":900000,"9":850000} },
+        { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", priceBySeat:{"7":700000,"9":660000} },
+        { id:"bodycare", name:"2열 다이내믹 바디케어 시트", price:800000, allowedSeats:["7"] },
+        { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", priceBySeat:{"7":700000,"9":630000} }
+      ],
+      xrt: [
+        { id:"sunroof", name:"듀얼 와이드 선루프", priceBySeat:{"7":900000,"9":850000} },
+        { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", priceBySeat:{"7":700000,"9":660000} },
+        { id:"comfort_xrt", name:"컴포트 XRT", priceBySeat:{"7":1650000,"9":1330000} },
+        { id:"lifestyle", name:"H Genuine Accessories · 라이프 스타일", priceBySeat:{"7":700000,"9":630000} },
+        { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", priceBySeat:{"7":450000,"9":430000} },
+        { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", priceBySeat:{"7":550000,"9":520000} }
+      ],
+      highroof: [
+        { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", priceBySeat:{"7":700000,"9":660000} },
+        { id:"bodycare", name:"2열 다이내믹 바디케어 시트", price:800000, allowedSeats:["7"], excludes:["vip2"] },
+        { id:"vip2", name:"VIP 패키지Ⅱ", price:3930000, allowedSeats:["7"], excludes:["bodycare"] },
+        { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", priceBySeat:{"7":450000,"9":430000} }
+      ]
+    },
 
     optionsByEngineAndSeat: {
       gas25: {
@@ -3848,20 +3929,18 @@ window.CAR_DATA = {
           exclusive: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:900000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:700000 },
-            { id:"smartsense", name:"현대 스마트센스", price:1400000 },
+            { id:"parking", name:"파킹 어시스트", price:1190000 },
             { id:"comfort", name:"컴포트", price:1400000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:550000 },
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:250000, excludes:["mat2"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:170000, excludes:["mat1"] }
           ],
-          prestige: [
+          hpick: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:900000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:700000 },
             { id:"comfort_plus", name:"컴포트 플러스(7인승)", price:2200000 },
-            { id:"bodycare", name:"2열 다이내믹 바디케어 시트", price:800000, requires:"comfort_plus", note:"컴포트 플러스 선택 시" },
-            { id:"remote_parking", name:"원격 스마트 주차 보조", price:700000 },
-            { id:"platinum", name:"플래티넘", price:1800000 },
+            { id:"bose", name:"BOSE 프리미엄 사운드", price:700000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:550000 },
             { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:410000 },
@@ -3875,6 +3954,8 @@ window.CAR_DATA = {
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:700000 },
             { id:"bodycare", name:"2열 다이내믹 바디케어 시트", price:800000 },
             { id:"preview", name:"프리뷰 전자제어 서스펜션", price:1300000 },
+            { id:"vip1", name:"VIP 패키지Ⅰ", price:6700000 },
+            { id:"vip1", name:"VIP 패키지Ⅰ", price:6700000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:550000 },
             { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:410000 },
@@ -3888,19 +3969,18 @@ window.CAR_DATA = {
           exclusive: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:850000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:660000 },
-            { id:"smartsense", name:"현대 스마트센스", price:1330000 },
+            { id:"parking", name:"파킹 어시스트", price:1130000 },
             { id:"comfort", name:"컴포트", price:1330000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:430000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:520000 },
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:240000, excludes:["mat2"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:160000, excludes:["mat1"] }
           ],
-          prestige: [
+          hpick: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:850000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:660000 },
             { id:"comfort_plus", name:"컴포트 플러스(9인승)", price:1850000 },
-            { id:"remote_parking", name:"원격 스마트 주차 보조", price:660000 },
-            { id:"platinum", name:"플래티넘", price:1710000 },
+            { id:"bose", name:"BOSE 프리미엄 사운드", price:660000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:430000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:520000 },
             { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:390000 },
@@ -3929,20 +4009,18 @@ window.CAR_DATA = {
           exclusive: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:900000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:700000 },
-            { id:"smartsense", name:"현대 스마트센스", price:1400000 },
+            { id:"parking", name:"파킹 어시스트", price:1190000 },
             { id:"comfort", name:"컴포트", price:1400000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:550000 },
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:250000, excludes:["mat2"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:170000, excludes:["mat1"] }
           ],
-          prestige: [
+          hpick: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:900000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:700000 },
             { id:"comfort_plus", name:"컴포트 플러스(7인승)", price:2200000 },
-            { id:"bodycare", name:"2열 다이내믹 바디케어 시트", price:800000, requires:"comfort_plus", note:"컴포트 플러스 선택 시" },
-            { id:"remote_parking", name:"원격 스마트 주차 보조", price:700000 },
-            { id:"platinum", name:"플래티넘", price:1800000 },
+            { id:"bose", name:"BOSE 프리미엄 사운드", price:700000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:450000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:550000 },
             { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:410000 },
@@ -3976,12 +4054,11 @@ window.CAR_DATA = {
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:240000, excludes:["mat2"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:160000, excludes:["mat1"] }
           ],
-          prestige: [
+          hpick: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:850000 },
             { id:"builtincam", name:"빌트인 캠 2 Plus, 증강현실 내비게이션", price:660000 },
             { id:"comfort_plus", name:"컴포트 플러스(9인승)", price:1850000 },
-            { id:"remote_parking", name:"원격 스마트 주차 보조", price:660000 },
-            { id:"platinum", name:"플래티넘", price:1710000 },
+            { id:"bose", name:"BOSE 프리미엄 사운드", price:660000 },
             { id:"side_step", name:"H Genuine Accessories · 사이드 스텝", price:430000 },
             { id:"air_cleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:520000 },
             { id:"film1", name:"H Genuine Accessories · 차량 보호 필름 1", price:390000 },
@@ -4017,7 +4094,7 @@ window.CAR_DATA = {
     brand: "HYUNDAI",
     name: "SANTA FE",
     displayName: "싼타페",
-    year: "2026 현대자동차 공식 가격표 기준",
+    year: "2026년형 · 2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "중형 SUV",
     image: "santafe.png",
 
@@ -4043,26 +4120,26 @@ window.CAR_DATA = {
       ],
       hev16: [
         { id:"2wd", name:"2WD", price:0, sub:"하이브리드 2WD" },
-        { id:"awd", name:"AWD", price:3200000, sub:"공식 AWD 가격표의 트림별 차액을 기본값으로 반영" }
+        { id:"awd", name:"AWD", price:3230000, sub:"공식 AWD 가격표의 트림별 차액 +3,230,000원" }
       ]
     },
 
     trimsByEngine: {
       gas25: [
         { id:"exclusive", name:"익스클루시브", price:36570000 },
-        { id:"prestige", name:"프레스티지", price:38890000 },
+        { id:"prestige", name:"프레스티지", price:39440000 },
         { id:"hpick", name:"H-Pick", price:42090000 },
         { id:"blackexterior", name:"Black Exterior", price:42440000 },
         { id:"calligraphy", name:"캘리그래피", price:45470000 },
         { id:"blackink", name:"Black Ink", price:45470000 }
       ],
       hev16: [
-        { id:"exclusive", name:"익스클루시브", price:39640000, sub:"2WD · 세제혜택 후" },
-        { id:"prestige", name:"프레스티지", price:42470000, sub:"2WD · 세제혜택 후" },
-        { id:"hpick", name:"H-Pick", price:45080000, sub:"2WD · 세제혜택 후" },
-        { id:"blackexterior", name:"Black Exterior", price:45420000, sub:"2WD · 세제혜택 후" },
-        { id:"calligraphy", name:"캘리그래피", price:48070000, sub:"2WD · 세제혜택 후" },
-        { id:"blackink", name:"Black Ink", price:48070000, sub:"2WD · 세제혜택 후" }
+        { id:"exclusive", name:"익스클루시브", price:40220000, sub:"2WD · 세제혜택 후" },
+        { id:"prestige", name:"프레스티지", price:43090000, sub:"2WD · 세제혜택 후" },
+        { id:"hpick", name:"H-Pick", price:45730000, sub:"2WD · 세제혜택 후" },
+        { id:"blackexterior", name:"Black Exterior", price:46080000, sub:"2WD · 세제혜택 후" },
+        { id:"calligraphy", name:"캘리그래피", price:48770000, sub:"2WD · 세제혜택 후" },
+        { id:"blackink", name:"Black Ink", price:48770000, sub:"2WD · 세제혜택 후" }
       ]
     },
 
@@ -4287,7 +4364,7 @@ window.CAR_DATA = {
     brand: "HYUNDAI",
     name: "The all-new AVANTE",
     displayName: "디 올 뉴 아반떼",
-    year: "2026년 8월 5일 현대자동차 공식 가격표 기준",
+    year: "2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "준중형 세단",
     image: "avante.png",
 
@@ -4336,8 +4413,8 @@ window.CAR_DATA = {
 
     colors: [
       { id:"abyss_black", name:"어비스 블랙 펄", price:0, color:"#111214" },
-      { id:"raptor_gray_matte", name:"랩터 그레이 매트", price:200000, color:"#6d6d69" },
-      { id:"kodiak_blue_matte", name:"코디악 블루 매트", price:200000, color:"#3f4d55" },
+      { id:"raptor_gray_matte", name:"랩터 그레이 매트", price:300000, color:"#6d6d69" },
+      { id:"kodiak_blue_matte", name:"코디악 블루 매트", price:300000, color:"#3f4d55" },
       { id:"graphene_green", name:"그라펜 그린 펄", price:0, color:"#435149" },
       { id:"quantum_silver", name:"퀀텀 실버 펄", price:0, color:"#a6a8a8" },
       { id:"volcanic_red", name:"볼케닉 레드 펄", price:0, color:"#812c2d" },
@@ -4427,20 +4504,20 @@ window.CAR_DATA = {
 
   /* =========================================================
      HYUNDAI TUCSON / TUCSON Hybrid
-     현대자동차 공식 홈페이지 2026-08-01 가격표 기준
+     현대자동차 공식 홈페이지 2026-09-01 가격표 기준
      ========================================================= */
   tucson: {
     brand: "HYUNDAI",
     name: "TUCSON",
     displayName: "투싼",
-    year: "2026년 8월 1일 현대자동차 공식 가격표 기준",
+    year: "2026년형 · 2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "준중형 SUV",
     image: "tucson.png",
 
     engineHelp:
       "스마트스트림 가솔린 1.6 터보와 1.6 터보 하이브리드를 선택할 수 있습니다. N Line도 동일 화면에서 선택합니다.",
     trimHelp:
-      "현대자동차 공식 홈페이지의 Modern / Premium / H-Pick / Inspiration / N Line 판매구조를 반영합니다.",
+      "현대자동차 공식 홈페이지의 Modern / Premium / H-Pick / Inspiration / Black Exterior / N Line 판매구조를 반영합니다.",
 
     tax: { rate: 0.07, vatIncluded: true },
 
@@ -4466,18 +4543,20 @@ window.CAR_DATA = {
 
     trimsByEngine: {
       gas16t: [
-        { id:"modern", name:"Modern", price:28440000, sub:"현대닷컴 2026-08-01 공식가격" },
+        { id:"modern", name:"Modern", price:28440000, sub:"현대닷컴 2026-09-01 공식가격" },
         { id:"premium", name:"Premium", price:31120000, sub:"Modern 기본품목 포함" },
-        { id:"hpick", name:"H-Pick", price:32000000, sub:"고객 선호 안전·편의사양 구성" },
-        { id:"inspiration", name:"Inspiration", price:34540000, sub:"상위 편의·디자인 사양" },
-        { id:"nline", name:"N Line", price:35400000, sub:"N Line 전용 외장·내장 및 19인치 휠" }
+        { id:"hpick", name:"H-Pick", price:32010000, sub:"고객 선호 안전·편의사양 구성" },
+        { id:"inspiration", name:"Inspiration", price:34560000, sub:"상위 편의·디자인 사양" },
+        { id:"blackexterior", name:"Black Exterior", price:35010000, sub:"블랙 익스테리어 전용 디자인" },
+        { id:"nline", name:"N Line", price:35410000, sub:"N Line 전용 외장·내장 및 19인치 휠" }
       ],
       hev16t: [
         { id:"modern", name:"Modern", price:33180000, sub:"세제혜택 후 공식 시작가격" },
-        { id:"premium", name:"Premium", price:35660000, sub:"세제혜택 후" },
-        { id:"hpick", name:"H-Pick", price:36500000, sub:"세제혜택 후" },
-        { id:"inspiration", name:"Inspiration", price:39180000, sub:"세제혜택 후" },
-        { id:"nline", name:"N Line", price:39830000, sub:"N Line Hybrid · 세제혜택 후" }
+        { id:"premium", name:"Premium", price:35650000, sub:"세제혜택 후" },
+        { id:"hpick", name:"H-Pick", price:36490000, sub:"세제혜택 후" },
+        { id:"inspiration", name:"Inspiration", price:39170000, sub:"세제혜택 후" },
+        { id:"blackexterior", name:"Black Exterior", price:39620000, sub:"세제혜택 후" },
+        { id:"nline", name:"N Line", price:39820000, sub:"N Line Hybrid · 세제혜택 후" }
       ]
     },
 
@@ -4492,10 +4571,11 @@ window.CAR_DATA = {
     optionsByEngine: {
       gas16t: {
         modern: [
-          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
-          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
-          { id:"smartsense", name:"현대 스마트센스", price:790000 },
-          { id:"comfort1", name:"컴포트Ⅰ", price:590000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"nav" },
+          { id:"sunroof", name:"파노라마 선루프 + 루프랙", price:1160000 },
+          { id:"nav", name:"인포테인먼트 내비", price:890000 },
+          { id:"smartsense", name:"현대 스마트센스", price:400000 },
+          { id:"comfort1", name:"컴포트Ⅰ", price:690000 },
           { id:"exterior1", name:"익스테리어 디자인Ⅰ", price:690000 }
         ],
         premium: [
@@ -4503,20 +4583,28 @@ window.CAR_DATA = {
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
           { id:"parking1", name:"파킹어시스트Ⅰ(가솔린)", price:1230000 },
-          { id:"comfort2", name:"컴포트Ⅱ", price:590000 }
+          { id:"comfort2", name:"컴포트Ⅱ", price:740000 },
+          { id:"smartsense", name:"현대 스마트센스", price:400000, excludes:["comfort2"] },
+          { id:"platinum", name:"플래티넘", price:1090000 }
         ],
         hpick: [
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
-          { id:"parking1", name:"파킹어시스트Ⅰ(가솔린)", price:1230000 }
+          { id:"parking1", name:"파킹어시스트Ⅰ(가솔린)", price:1230000 },
+          { id:"platinum", name:"플래티넘", price:1090000 }
         ],
         inspiration: [
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
-          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
-          { id:"blackexterior", name:"블랙 익스테리어", price:690000 }
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 }
+        ],
+        blackexterior: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 }
         ],
         nline: [
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
@@ -4528,9 +4616,11 @@ window.CAR_DATA = {
 
       hev16t: {
         modern: [
-          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
-          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
-          { id:"smartsense", name:"현대 스마트센스", price:790000 },
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000, requires:"nav" },
+          { id:"sunroof", name:"파노라마 선루프 + 루프랙", price:1160000 },
+          { id:"nav", name:"인포테인먼트 내비(HEV)", price:590000 },
+          { id:"smartsense", name:"현대 스마트센스", price:400000 },
+          { id:"comfort1", name:"컴포트Ⅰ", price:690000 },
           { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
           { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 },
           { id:"sidestep", name:"H Genuine Accessories · 사이드 스텝", price:400000, excludes:["black_sidestep"] },
@@ -4540,7 +4630,10 @@ window.CAR_DATA = {
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
-          { id:"parking1", name:"파킹어시스트Ⅰ", price:1230000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ(HEV)", price:1530000 },
+          { id:"comfort2", name:"컴포트Ⅱ", price:740000 },
+          { id:"smartsense", name:"현대 스마트센스", price:400000, excludes:["comfort2"] },
+          { id:"platinum", name:"플래티넘", price:1090000 },
           { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
           { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
           { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 },
@@ -4551,7 +4644,8 @@ window.CAR_DATA = {
           { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"exterior2", name:"익스테리어 디자인Ⅱ", price:690000 },
-          { id:"parking1", name:"파킹어시스트Ⅰ", price:1230000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ(HEV)", price:1530000 },
+          { id:"platinum", name:"플래티넘", price:1090000 },
           { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
           { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
           { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
@@ -4561,7 +4655,15 @@ window.CAR_DATA = {
           { id:"sunroof", name:"파노라마 선루프", price:1090000 },
           { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
           { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
-          { id:"blackexterior", name:"블랙 익스테리어", price:690000 },
+          { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
+          { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
+          { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
+        ],
+        blackexterior: [
+          { id:"builtincam", name:"빌트인 캠 2, 증강현실 내비게이션", price:450000 },
+          { id:"sunroof", name:"파노라마 선루프", price:1090000 },
+          { id:"parking2", name:"파킹어시스트Ⅱ", price:690000 },
+          { id:"bose", name:"BOSE 프리미엄 사운드", price:590000 },
           { id:"aircleaner", name:"H Genuine Accessories · 빌트인 공기청정기", price:530000 },
           { id:"lifestyle", name:"H Genuine Accessories · 라이프스타일", price:490000 },
           { id:"luggage", name:"H Genuine Accessories · 러기지 패키지", price:120000 }
@@ -4978,7 +5080,7 @@ window.CAR_DATA = {
     brand: "HYUNDAI",
     name: "The new IONIQ 6",
     displayName: "더 뉴 아이오닉 6",
-    year: "2026년 8월 1일 현대자동차 공식 가격표 기준",
+    year: "2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "전기 세단",
     image: "ioniq6.png",
 
@@ -5257,7 +5359,7 @@ gv60: {
   brand: "GENESIS",
   name: "GV60",
   displayName: "GV60",
-  year: "현행 GV60 · Genesis 공식 BTO 2026-08 재검증",
+  year: "현행 GV60 · Genesis 공식 BTO 2026-09-01 재검증",
   type: "프리미엄 전기 SUV",
   image: "gv60.png",
 
@@ -5340,7 +5442,7 @@ electrified_gv70:{
   brand:"GENESIS",
   name:"Electrified GV70",
   displayName:"Electrified GV70",
-  year:"2026-08 Genesis 공식 BTO 기준",
+  year:"2026-09-01 Genesis 공식 BTO 기준",
   type:"프리미엄 전기 SUV",
   image:"electrified-gv70.png",
   engineHelp:"전기모터 + AWD가 기본입니다. 제네시스 공식 BTO의 세제혜택 후 예상 견적 금액을 기준으로 계산합니다.",
@@ -5390,7 +5492,7 @@ electrified_g80:{
   brand:"GENESIS",
   name:"Electrified G80",
   displayName:"Electrified G80",
-  year:"2027 · Genesis 공식 BTO 2026-08 기준",
+  year:"2027 · Genesis 공식 BTO 2026-09-01 기준",
   type:"프리미엄 전기 세단",
   image:"electrified-g80.png",
   engineHelp:"전기모터와 AWD가 기본입니다. 19인치 디쉬 타입 휠이 기본 적용됩니다.",
@@ -5420,7 +5522,7 @@ electrified_g80:{
   evAcquisitionTaxReduction:1400000
 },
 g70:{
- brand:"GENESIS",name:"G70",displayName:"G70",year:"2026-08 Genesis 공식 BTO 기준",type:"럭셔리 스포츠 세단",image:"g70.png",
+ brand:"GENESIS",name:"G70",displayName:"G70",year:"2026-09-01 Genesis 공식 BTO 기준",type:"럭셔리 스포츠 세단",image:"g70.png",
  engineHelp:"제네시스 공식 BTO 기준 가솔린 2.5 터보 / 가솔린 3.3 터보를 선택합니다.",
  trimHelp:"기본가격 45,000,000원(2.5T 2WD 기본모델)에서 엔진·구동·스포츠 패키지·선택품목을 더하는 BTO 구조입니다.",
  tax:{rate:0.07,vatIncluded:true},
@@ -5444,7 +5546,7 @@ g90:{
   brand:"GENESIS",
   name:"G90",
   displayName:"G90",
-  year:"2026-08 Genesis 공식 BTO 기준",
+  year:"2026-09-01 Genesis 공식 BTO 기준",
   type:"플래그십 럭셔리 세단",
   image:"g90.png",
   engineHelp:"가솔린 3.5 터보 또는 가솔린 3.5 터보 48V 일렉트릭 슈퍼차저를 선택합니다.",
@@ -5518,7 +5620,7 @@ g90:{
     brand: "GENESIS",
     name: "GV70",
     displayName: "GV70",
-    year: "2026년 8월 Genesis 공식 BTO 기준",
+    year: "2026년 9월 1일 Genesis 공식 BTO 기준",
     type: "럭셔리 중형 SUV",
     image: "gv70.png",
 
@@ -5823,7 +5925,7 @@ g90:{
     brand: "GENESIS",
     name: "GV80",
     displayName: "GV80",
-    year: "2027 GV80 · Genesis 공식 BTO 2026-08 기준",
+    year: "2027 GV80 · Genesis 공식 BTO 2026-09-01 기준",
     type: "럭셔리 대형 SUV",
     image: "gv80.png",
 
@@ -5927,7 +6029,7 @@ g90:{
     brand: "HYUNDAI",
     name: "NEXO",
     displayName: "디 올 뉴 넥쏘",
-    year: "2027 NEXO · 현대자동차 공식 가격표 기준",
+    year: "2027 NEXO · 2026년 9월 1일 현대자동차 공식 가격표 기준",
     type: "수소전기 SUV",
     image: "nexo.png",
 
@@ -5974,14 +6076,14 @@ g90:{
     trimsByEngine: {
       fcev: [
         {
-          id: "exclusive",
-          name: "익스클루시브",
+          id: "modern",
+          name: "모던",
           price: 76470000,
           sub: "세제혜택 후 · 세제혜택 전 80,447,000원"
         },
         {
-          id: "exclusive_special",
-          name: "익스클루시브 스페셜",
+          id: "exclusive",
+          name: "익스클루시브",
           price: 79370000,
           sub: "세제혜택 후 · 세제혜택 전 83,497,000원"
         },
@@ -6035,7 +6137,7 @@ g90:{
 
     optionsByEngine: {
       fcev: {
-        exclusive: [
+        modern: [
           {
             id: "builtincam",
             name: "빌트인 캠 2 Plus + 증강현실 내비게이션",
@@ -6053,7 +6155,7 @@ g90:{
           }
         ],
 
-        exclusive_special: [
+        exclusive: [
           {
             id: "builtincam",
             name: "빌트인 캠 2 Plus + 증강현실 내비게이션",

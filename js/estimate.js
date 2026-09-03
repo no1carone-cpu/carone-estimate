@@ -63,7 +63,10 @@ function getCurrentDrives() {
     CAR.drivesByEngine?.[state.engine] ||
     CAR.drives ||
     []
-  );
+  ).map(item => ({
+    ...item,
+    price: item.priceByTrim?.[state.trim] ?? item.priceBySeat?.[state.seat] ?? item.price
+  }));
 }
 
 function getCurrentSeats() {
@@ -92,6 +95,13 @@ function matchesExtraCondition(item) {
   if (
     item.allowedEngines &&
     !item.allowedEngines.includes(state.engine)
+  ) {
+    return false;
+  }
+
+  if (
+    item.allowedSeats &&
+    !item.allowedSeats.includes(state.seat)
   ) {
     return false;
   }
@@ -170,7 +180,10 @@ function getRawCurrentOptions() {
     CAR.optionsByEngine?.[state.engine]?.[state.trim] ||
     CAR.options?.[state.trim] ||
     []
-  ).filter(matchesExtraCondition);
+  ).filter(matchesExtraCondition).map(item => ({
+    ...item,
+    price: item.priceBySeat?.[state.seat] ?? item.price
+  }));
 }
 
 function getCurrentOptions() {
@@ -215,7 +228,7 @@ function normalizeSelectedOptions() {
     }
   });
 
-  const selectedColor = (CAR.colors || []).find(
+  const selectedColor = getAvailableColors().find(
     color => color.id === state.color
   );
 
@@ -245,8 +258,15 @@ function getAvailableColors() {
     if (color.allowedTrims && !color.allowedTrims.includes(state.trim)) {
       return false;
     }
+    if (color.excludedTrims && color.excludedTrims.includes(state.trim)) {
+      return false;
+    }
     return true;
-  });
+  }).map(color => ({
+    ...color,
+    // 같은 외장색도 승차 정원에 따라 공식 추가금이 다른 차종을 지원합니다.
+    price: color.priceBySeat?.[state.seat] ?? color.price
+  }));
 }
 
 function resetDependentSelections(preferredSeat = null) {
