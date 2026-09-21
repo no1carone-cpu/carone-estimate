@@ -80,6 +80,263 @@
       line-height: 1.65;
     }
 
+    /* ==============================
+       인기 차량 영역
+       ============================== */
+    .popular-section {
+      margin: 6px 0 24px;
+    }
+
+    .popular-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 3px 14px;
+    }
+
+    .popular-heading h2 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -0.045em;
+    }
+
+    .popular-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .popular-card {
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 7px 24px rgba(33,25,41,.045);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .popular-card:hover {
+      transform: translateY(-4px);
+      border-color: #c8b9db;
+      box-shadow: 0 14px 32px rgba(75,37,134,.11);
+    }
+
+    .popular-image-box {
+      position: relative;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 72%, rgba(75,37,134,.10), transparent 31%),
+        linear-gradient(155deg, #fbfbfc, #f0f1f4);
+      border-bottom: 1px solid #f0edf2;
+    }
+
+    .popular-image {
+      width: 94%;
+      height: 94%;
+      object-fit: contain;
+      display: none;
+      position: relative;
+      z-index: 2;
+      transition: transform .22s ease;
+    }
+
+    .popular-card:hover .popular-image {
+      transform: scale(1.035);
+    }
+
+    .popular-placeholder {
+      text-align: center;
+      color: #bbb6bf;
+      position: relative;
+      z-index: 2;
+      padding: 16px;
+    }
+
+    .popular-placeholder .icon {
+      display: block;
+      font-size: 54px;
+      margin-bottom: 3px;
+      filter: grayscale(.3);
+      opacity: .72;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 5;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--purple);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      box-shadow: 0 5px 14px rgba(75,37,134,.18);
+    }
+
+    .popular-card:nth-child(n+2) .popular-badge {
+      background: var(--mint-soft);
+      color: #087c79;
+      border: 1px solid rgba(8,124,121,.10);
+      box-shadow: none;
+    }
+
+    .popular-body {
+      padding: 16px 17px 17px;
+    }
+
+    .popular-brand {
+      color: var(--purple);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: .12em;
+      margin-bottom: 5px;
+    }
+
+    .popular-name {
+      margin: 0;
+      min-height: 28px;
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: -0.045em;
+      word-break: keep-all;
+    }
+
+    .popular-type {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      min-height: 15px;
+    }
+
+    .popular-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #f1eef3;
+      color: var(--purple);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .popular-arrow {
+      width: 29px;
+      height: 29px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: var(--purple);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 950;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .popular-card:hover .popular-arrow {
+      transform: translateX(2px);
+      background: var(--purple-2);
+    }
+
+    .catalog-toggle-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0 10px;
+    }
+
+    .catalog-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 220px;
+      padding: 14px 22px;
+      border: 1px solid var(--purple);
+      border-radius: 13px;
+      background: #fff;
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 7px 20px rgba(75,37,134,.06);
+      transition: .18s ease;
+    }
+
+    .catalog-toggle:hover {
+      background: var(--purple);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(75,37,134,.15);
+    }
+
+    .toggle-arrow {
+      display: inline-block;
+      font-size: 16px;
+      line-height: 1;
+      transition: transform .24s ease;
+    }
+
+    .catalog-toggle[aria-expanded="true"] .toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    .catalog-area {
+      display: none;
+      margin-top: 18px;
+      animation: catalogFade .28s ease;
+    }
+
+    .catalog-area.open {
+      display: block;
+    }
+
+    .catalog-intro {
+      padding: 19px 5px 12px;
+    }
+
+    .catalog-intro .kicker {
+      margin-bottom: 8px;
+    }
+
+    .catalog-intro h2 {
+      margin: 0;
+      font-size: clamp(25px, 3.4vw, 34px);
+      line-height: 1.18;
+      letter-spacing: -0.05em;
+    }
+
+    .catalog-intro p {
+      margin: 9px 0 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    @keyframes catalogFade {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .toolbar {
       position: sticky;
       top: 0;
@@ -374,6 +631,23 @@
         font-size: 13px;
       }
 
+      .popular-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .popular-image-box {
+        height: 150px;
+      }
+
+      .popular-heading {
+        align-items: flex-start;
+      }
+
+      .popular-heading p {
+        max-width: 170px;
+      }
+
       .toolbar {
         padding-top: 7px;
       }
@@ -409,6 +683,72 @@
 
       .intro h1 {
         font-size: 28px;
+      }
+
+      .popular-heading {
+        display: block;
+        margin-bottom: 11px;
+      }
+
+      .popular-heading h2 {
+        font-size: 19px;
+      }
+
+      .popular-heading p {
+        margin-top: 5px;
+        max-width: none;
+        text-align: left;
+        font-size: 10px;
+      }
+
+      .popular-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .popular-image-box {
+        height: 118px;
+      }
+
+      .popular-placeholder .icon {
+        font-size: 42px;
+      }
+
+      .popular-badge {
+        top: 8px;
+        left: 8px;
+        padding: 5px 7px;
+        font-size: 8px;
+      }
+
+      .popular-body {
+        padding: 11px;
+      }
+
+      .popular-name {
+        min-height: 40px;
+        font-size: 15px;
+      }
+
+      .popular-type {
+        font-size: 10px;
+      }
+
+      .popular-bottom {
+        margin-top: 10px;
+        padding-top: 9px;
+        font-size: 10px;
+      }
+
+      .popular-arrow {
+        width: 25px;
+        height: 25px;
+        border-radius: 8px;
+      }
+
+      .catalog-toggle {
+        width: 100%;
+        min-width: 0;
       }
 
       .toolbar {
@@ -480,35 +820,66 @@
 <main class="wrap">
 <section class="intro">
 <div class="kicker">CARONE SMART ESTIMATE</div>
-<h1>어떤 차량을<br/>알아보고 계신가요?</h1>
+<h1>지금 많이 찾는 차량</h1>
 <p>
+      카원에서 최근 많이 확인하는 인기 차량을 먼저 만나보세요.<br/>
+      원하는 차량을 누르면 트림과 옵션을 바로 구성할 수 있습니다.
+    </p>
+</section>
+
+<section class="popular-section" aria-labelledby="popularTitle">
+  <div class="popular-heading">
+    <h2 id="popularTitle">인기 차량</h2>
+    <p>빠르게 견적을 시작해보세요</p>
+  </div>
+  <div class="popular-grid" id="popularGrid">
+    <!-- js/cars.js의 CAR_DATA에서 인기 차량 4종을 자동 생성합니다. -->
+  </div>
+</section>
+
+<div class="catalog-toggle-wrap">
+  <button class="catalog-toggle" id="catalogToggle" type="button" aria-expanded="false" aria-controls="catalogArea">
+    <span class="toggle-label">나머지 차량 더보기</span>
+    <span class="toggle-arrow">⌄</span>
+  </button>
+</div>
+
+<section class="catalog-area" id="catalogArea" aria-hidden="true">
+  <div class="catalog-intro">
+    <div class="kicker">ALL CAR LIST</div>
+    <h2>어떤 차량을 알아보고 계신가요?</h2>
+    <p>
       원하는 현대·제네시스·기아 차량을 선택하면 트림과 옵션을 직접 구성하고
       카원 계약 혜택까지 한 번에 확인할 수 있습니다.
     </p>
-</section>
-<div class="toolbar">
-<div aria-label="브랜드 필터" class="tabs">
-<button class="tab active" data-filter="all">전체</button>
-<button class="tab" data-filter="hyundai">현대</button>
-<button class="tab" data-filter="kia">기아</button>
-</div>
-<div class="count">
-<span id="visibleCount">39</span>개 차량
+  </div>
+
+  <div class="toolbar">
+    <div aria-label="브랜드 필터" class="tabs">
+      <button class="tab active" data-filter="all">전체</button>
+      <button class="tab" data-filter="hyundai">현대</button>
+      <button class="tab" data-filter="kia">기아</button>
     </div>
-</div>
-<section class="section">
-<div class="section-heading">
-<h2 id="sectionTitle">현대 · 제네시스 · 기아 차량</h2>
-<span>차량을 선택해주세요</span>
-</div>
-<div class="car-grid" id="carGrid">
-<!-- js/cars.js의 CAR_DATA에서 자동 생성됩니다. -->
-</div>
-</section>
-<div class="footer-note">
+    <div class="count">
+      <span id="visibleCount">39</span>개 차량
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-heading">
+      <h2 id="sectionTitle">현대 · 제네시스 · 기아 차량</h2>
+      <span>차량을 선택해주세요</span>
+    </div>
+    <div class="car-grid" id="carGrid">
+      <!-- js/cars.js의 CAR_DATA에서 자동 생성됩니다. -->
+    </div>
+  </section>
+
+  <div class="footer-note">
     차량별 세부 가격과 선택품목은 각 견적 페이지에서 확인할 수 있습니다.
     준비중인 차종은 순차적으로 추가됩니다.
   </div>
+</section>
 </main>
 <div class="toast" id="toast"></div>
 
@@ -520,6 +891,17 @@
   const visibleCount = document.getElementById("visibleCount");
   const sectionTitle = document.getElementById("sectionTitle");
   const toastEl = document.getElementById("toast");
+
+  const popularGrid = document.getElementById("popularGrid");
+  const catalogToggle = document.getElementById("catalogToggle");
+  const catalogArea = document.getElementById("catalogArea");
+
+  const POPULAR_CARS = [
+    { key: "sorento", badge: "월 인기 견적 1위" },
+    { key: "carnival", badge: "패밀리카 인기" },
+    { key: "sportage", badge: "SUV 인기" },
+    { key: "grandeur", badge: "세단 인기" }
+  ];
 
   function showToast(message) {
     toastEl.textContent = message;
@@ -639,6 +1021,125 @@
 
     return article;
   }
+
+  function makePopularCard(item) {
+    const data = window.CAR_DATA || {};
+    const meta = window.CAR_CATALOG_META || {};
+    const car = data[item.key];
+
+    if (!car) return null;
+
+    const cardMeta = meta[item.key] || {};
+    const title =
+      cardMeta.title ||
+      car.catalogTitle ||
+      car.displayName ||
+      car.name ||
+      item.key;
+    const type =
+      cardMeta.type ||
+      car.catalogType ||
+      car.type ||
+      "";
+    const image =
+      cardMeta.image ||
+      car.image ||
+      "";
+    const brand = String(car.brand || "HYUNDAI").toUpperCase();
+    const url =
+      cardMeta.url ||
+      `estimate.html?car=${encodeURIComponent(item.key)}`;
+
+    const article = document.createElement("article");
+    article.className = "popular-card";
+    article.setAttribute("role", "link");
+    article.setAttribute("tabindex", "0");
+    article.setAttribute("aria-label", `${title} 견적 보기`);
+
+    article.innerHTML = `
+      <div class="popular-image-box">
+        <img class="popular-image" src="${image}" alt="${title}">
+        <div class="popular-placeholder">
+          <span class="icon">${getIcon(car)}</span>
+          <small>${title}</small>
+        </div>
+        <span class="popular-badge">${item.badge}</span>
+      </div>
+      <div class="popular-body">
+        <div class="popular-brand">${brand}</div>
+        <h3 class="popular-name">${title}</h3>
+        <div class="popular-type">${type}</div>
+        <div class="popular-bottom">
+          <span>견적 보기</span>
+          <span class="popular-arrow">›</span>
+        </div>
+      </div>
+    `;
+
+    const goToEstimate = () => {
+      window.location.href = url;
+    };
+
+    article.addEventListener("click", goToEstimate);
+    article.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        goToEstimate();
+      }
+    });
+
+    const img = article.querySelector(".popular-image");
+    const placeholder = article.querySelector(".popular-placeholder");
+
+    const showImage = () => {
+      img.style.display = "block";
+      placeholder.style.display = "none";
+    };
+
+    const showPlaceholder = () => {
+      img.style.display = "none";
+      placeholder.style.display = "block";
+    };
+
+    img.addEventListener("load", showImage);
+    img.addEventListener("error", showPlaceholder);
+
+    if (img.complete) {
+      if (img.naturalWidth > 0) showImage();
+      else showPlaceholder();
+    }
+
+    return article;
+  }
+
+  function renderPopularCars() {
+    popularGrid.innerHTML = "";
+
+    POPULAR_CARS.forEach(item => {
+      const card = makePopularCard(item);
+      if (card) popularGrid.appendChild(card);
+    });
+  }
+
+  function setCatalogOpen(open) {
+    catalogArea.classList.toggle("open", open);
+    catalogArea.setAttribute("aria-hidden", open ? "false" : "true");
+    catalogToggle.setAttribute("aria-expanded", open ? "true" : "false");
+
+    const label = catalogToggle.querySelector(".toggle-label");
+    label.textContent = open ? "차량 목록 접기" : "나머지 차량 더보기";
+
+    if (open) {
+      requestAnimationFrame(() => {
+        const y = catalogArea.getBoundingClientRect().top + window.pageYOffset - 8;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      });
+    }
+  }
+
+  catalogToggle.addEventListener("click", () => {
+    setCatalogOpen(!catalogArea.classList.contains("open"));
+  });
 
   function getOrderedKeys() {
     const data = window.CAR_DATA || {};
@@ -761,6 +1262,12 @@
   });
 
   if (!window.CAR_DATA) {
+    popularGrid.innerHTML = `
+      <div style="grid-column:1/-1;padding:30px;text-align:center;color:#918b97;">
+        차량 데이터를 불러오지 못했습니다.<br>
+        js/cars.js 경로를 확인해주세요.
+      </div>
+    `;
     carGrid.innerHTML = `
       <div style="grid-column:1/-1;padding:30px;text-align:center;color:#918b97;">
         차량 데이터를 불러오지 못했습니다.<br>
@@ -768,6 +1275,7 @@
       </div>
     `;
   } else {
+    renderPopularCars();
     renderCatalog();
   }
 </script>
