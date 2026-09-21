@@ -1279,5 +1279,34 @@
     renderCatalog();
   }
 </script>
+
+<script>
+/* Clickn iframe 자동 높이 동기화 */
+(function () {
+  function sendCaroneHeight() {
+    const height = Math.max(
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement ? document.documentElement.scrollHeight : 0
+    );
+
+    window.parent.postMessage({
+      type: "CARONE_ESTIMATE_HEIGHT",
+      height: height
+    }, "*");
+  }
+
+  window.addEventListener("load", sendCaroneHeight);
+  window.addEventListener("resize", sendCaroneHeight);
+
+  if (window.ResizeObserver && document.body) {
+    const observer = new ResizeObserver(sendCaroneHeight);
+    observer.observe(document.body);
+  }
+
+  setTimeout(sendCaroneHeight, 300);
+  setTimeout(sendCaroneHeight, 1000);
+})();
+</script>
+
 </body>
 </html>
