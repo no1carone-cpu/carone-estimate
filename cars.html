@@ -814,6 +814,29 @@
         border-radius: 8px;
       }
     }
+
+
+    /* 클릭앤 iframe 분리 삽입용 표시 모드 */
+    body.embed-popular .catalog-toggle-wrap,
+    body.embed-popular .catalog-area {
+      display: none !important;
+    }
+
+    body.embed-all .intro,
+    body.embed-all .popular-section,
+    body.embed-all .catalog-toggle-wrap {
+      display: none !important;
+    }
+
+    body.embed-all .catalog-area {
+      display: block !important;
+      animation: none !important;
+    }
+
+    body.embed-all .wrap {
+      padding-top: 8px;
+    }
+
   </style>
 </head>
 <body>
@@ -895,6 +918,15 @@
   const popularGrid = document.getElementById("popularGrid");
   const catalogToggle = document.getElementById("catalogToggle");
   const catalogArea = document.getElementById("catalogArea");
+
+  const pageParams = new URLSearchParams(window.location.search);
+  const embedMode = pageParams.get("embed");
+
+  if (embedMode === "popular") {
+    document.body.classList.add("embed-popular");
+  } else if (embedMode === "all") {
+    document.body.classList.add("embed-all");
+  }
 
   const POPULAR_CARS = [
     { key: "sorento", badge: "월 인기 견적 1위" },
@@ -1121,7 +1153,7 @@
     });
   }
 
-  function setCatalogOpen(open) {
+  function setCatalogOpen(open, shouldScroll = true) {
     catalogArea.classList.toggle("open", open);
     catalogArea.setAttribute("aria-hidden", open ? "false" : "true");
     catalogToggle.setAttribute("aria-expanded", open ? "true" : "false");
@@ -1129,7 +1161,7 @@
     const label = catalogToggle.querySelector(".toggle-label");
     label.textContent = open ? "차량 목록 접기" : "나머지 차량 더보기";
 
-    if (open) {
+    if (open && shouldScroll) {
       requestAnimationFrame(() => {
         const y = catalogArea.getBoundingClientRect().top + window.pageYOffset - 8;
         window.scrollTo({ top: y, behavior: "smooth" });
@@ -1277,36 +1309,11 @@
   } else {
     renderPopularCars();
     renderCatalog();
+
+    if (embedMode === "all") {
+      setCatalogOpen(true, false);
+    }
   }
 </script>
-
-<script>
-/* Clickn iframe 자동 높이 동기화 */
-(function () {
-  function sendCaroneHeight() {
-    const height = Math.max(
-      document.body ? document.body.scrollHeight : 0,
-      document.documentElement ? document.documentElement.scrollHeight : 0
-    );
-
-    window.parent.postMessage({
-      type: "CARONE_ESTIMATE_HEIGHT",
-      height: height
-    }, "*");
-  }
-
-  window.addEventListener("load", sendCaroneHeight);
-  window.addEventListener("resize", sendCaroneHeight);
-
-  if (window.ResizeObserver && document.body) {
-    const observer = new ResizeObserver(sendCaroneHeight);
-    observer.observe(document.body);
-  }
-
-  setTimeout(sendCaroneHeight, 300);
-  setTimeout(sendCaroneHeight, 1000);
-})();
-</script>
-
 </body>
 </html>
