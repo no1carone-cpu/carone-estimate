@@ -1,4 +1,28 @@
 /*
+  공식 홈페이지 가격 재대조 · 2026-10-08 (한국시간)
+  대상: 원본 현대 11개 / 기아 16개 / 제네시스 8개, 총 35개 차종.
+  가격 변경은 공식 자료에서 차이를 확인한 항목만 반영함.
+  - 쏘렌토 하이브리드 2WD 블랙 에디션: 48,950,000 → 47,950,000원.
+    세제혜택 전 가격을 세제혜택 후 가격으로 정정. 관련 고시 대기 문구도 수정.
+  - 팰리세이드 HEV 7인승 H-Pick/캘리그래피 라이프스타일(HEV):
+    1,160,000 → 1,100,000원 (각 트림의 옵션값).
+  - GV60: 엔진 선택 안내 문구를 기존 트림값과 일치시킴. 숫자 데이터는 유지.
+  확인 범위 및 한계:
+  현대/기아는 현재 공식 가격표와 가격 페이지, 제네시스는 공식 BTO/모델 페이지를
+  기준으로 기본 트림가격을 대조하고 확인 가능한 옵션가격을 점검함.
+  모든 옵션 조합의 최종 견적을 검증한 것은 아님.
+  GV60 스탠다드 AWD 및 Electrified GV70의 세제혜택 후 최종 판매가격은
+  공식 동적 견적에서 직접 재확인하지 못해 원본값 유지(재검증 필요).
+  세제혜택 적용 기준과 좌석/구동방식별 가격 기준은 원본 구조를 유지함.
+  이번 대조에서 차이를 확인하지 못한 항목은 유지. 아래 10월 6일 메모는 과거 기록임.
+
+  변경 근거:
+  https://www.kia.com/content/dam/kwp/kr/ko/vehicles/pdf/price/price_sorento.pdf
+  https://www.hyundai.com/contents/repn-car/catalog/palisade-hev-2027-price.pdf
+  https://www.genesis.com/kr/ko/models/luxury-suv-genesis/gv60/bto.html
+*/
+
+/*
   카원 공식 가격표 대조 및 수정 · 2026-10-06 (한국시간)
   - 기존 35개 차량 키 유지. 현대/기아 현재 2026-10-01 가격표 및 제네시스 현재 BTO 대조.
   - 셀토스/쏘나타 N Line의 안내된 가격은 원본에도 반영되어 있어 유지.
@@ -55,7 +79,7 @@ window.CAR_DATA = {
     image: "sorento.png",
 
     engineHelp:
-      "2.5 가솔린 터보와 터보 하이브리드 2WD/전자식4WD를 선택할 수 있습니다. 2027년형에서는 디젤이 공식 가격표에서 제외됐습니다. 하이브리드 2WD 블랙 에디션은 친환경차 고시 후 가격이 아직 안내되지 않았습니다.",
+      "2.5 가솔린 터보와 터보 하이브리드 2WD/전자식4WD를 선택할 수 있습니다. 2027년형에서는 디젤이 공식 가격표에서 제외됐습니다. 하이브리드 2WD 블랙 에디션의 친환경차 세제혜택 후 판매가격은 47,950,000원입니다.",
 
     trimHelp:
       "파워트레인에 따라 공식 트림가격과 선택품목이 자동으로 변경됩니다.",
@@ -76,7 +100,7 @@ window.CAR_DATA = {
         id: "hybrid2wd",
         name: "터보 하이브리드 (2WD)",
         price: 0,
-        sub: "세제혜택 후 판매가격 · 블랙 에디션은 고시 전 가격"
+        sub: "세제혜택 후 판매가격"
       },
       {
         id: "hybrid4wd",
@@ -119,7 +143,7 @@ window.CAR_DATA = {
         { id: "noblesse", name: "노블레스", price: 42990000, sub: "세제혜택 후" },
         { id: "signature", name: "시그니처", price: 45760000, sub: "세제혜택 후" },
         { id: "xline", name: "X-Line", price: 46700000, sub: "세제혜택 후" },
-        { id: "black", name: "블랙 에디션", price: 48950000, sub: "세제혜택 전 · 고시 후 변경 예정" }
+        { id: "black", name: "블랙 에디션", price: 47950000, sub: "세제혜택 후" }
       ],
 
       hybrid4wd: [
@@ -4502,7 +4526,7 @@ window.CAR_DATA = {
             { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:400000 },
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:250000, excludes:["mat2","lifestyle_hev"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:170000, excludes:["mat1"] },
-            { id:"lifestyle_hev", name:"H Genuine Accessories · 라이프스타일(HEV)", price:1160000, excludes:["mat1"] }
+            { id:"lifestyle_hev", name:"H Genuine Accessories · 라이프스타일(HEV)", price:1100000, excludes:["mat1"] }
           ],
           calligraphy: [
             { id:"sunroof", name:"듀얼 와이드 선루프", price:900000 },
@@ -4515,7 +4539,7 @@ window.CAR_DATA = {
             { id:"film2", name:"H Genuine Accessories · 차량 보호 필름 2", price:400000 },
             { id:"mat1", name:"H Genuine Accessories · 프로텍션 매트 패키지 1", price:250000, excludes:["mat2","lifestyle_hev"] },
             { id:"mat2", name:"H Genuine Accessories · 프로텍션 매트 패키지 2", price:170000, excludes:["mat1"] },
-            { id:"lifestyle_hev", name:"H Genuine Accessories · 라이프스타일(HEV)", price:1160000, excludes:["mat1"] }
+            { id:"lifestyle_hev", name:"H Genuine Accessories · 라이프스타일(HEV)", price:1100000, excludes:["mat1"] }
           ]
         },
         "9": {
@@ -7085,13 +7109,13 @@ gv60: {
         "id": "stdawd",
         "name": "Standard AWD",
         "price": 0,
-        "sub": "84kWh · 234kW · 세제혜택 후 68,510,000원"
+        "sub": "84kWh · 234kW · 세제혜택 후 68,520,000원"
       },
       {
         "id": "perfawd",
         "name": "Performance AWD",
         "price": 0,
-        "sub": "84kWh · 최대 360kW(부스트) · 공식 판매가격 72,880,000원"
+        "sub": "84kWh · 최대 360kW(부스트) · 세제혜택 미적용 76,680,000원"
       }
     ],
     "drivesByEngine": {
