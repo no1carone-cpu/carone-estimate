@@ -1,4 +1,20 @@
 /*
+  카원 셀토스 업데이트 · 2026-10-19 (한국시간)
+  기아 공식 2026-10-15 가격표의 The 2027 Seltos 반영.
+  가솔린 트렌디/프레스티지/시그니처/X-Line: 25,750,000 / 29,380,000 / 31,750,000 / 32,930,000원.
+  하이브리드 동일 순서(세제혜택 후): 29,730,000 / 33,130,000 / 35,500,000 / 36,660,000원.
+  트렌디 컨비니언스 990,000원. 가솔린 트렌디 내비게이션 790,000원.
+  컴포트: 프레스티지 990,000원 / 시그니처·X-Line 400,000원.
+  현행 선택품목에 없는 스마트 커넥트 제거. 트림 기본사양 안내 갱신.
+  기존 35개 차량 키 및 셀토스 외 34개 차량 데이터 유지.
+  이번 점검 범위는 셀토스이며, 다른 차종의 10월 19일 가격을 재대조한 것은 아님.
+  투톤 비용 1회 반영, 선루프 배제, 4WD/옵션 선행조건 구조 유지.
+  공식 근거: https://www.kia.com/kr/vehicles/seltos/price
+  https://www.kia.com/content/dam/kwp/kr/ko/vehicles/pdf/price/price_seltos.pdf
+  아래 점검 메모는 과거 기록이며 셀토스 정보는 본 메모가 우선함.
+*/
+
+/*
   카원 가격표 재대조 · 2026-10-12 (한국시간)
   첨부 cars (3).js의 기존 35개 차종 대상. 아래 과거 점검 메모보다 본 메모 우선.
   쏘나타 2027년형: 기본가격/트림/선택품목/색상 갱신.
@@ -2592,613 +2608,593 @@ window.CAR_DATA = {
      ========================================================= */
   seltos: {
     "brand": "KIA",
-    "name": "The all-new Seltos",
-    "displayName": "디 올 뉴 셀토스",
-    "year": "2026년 10월 1일 공식 가격 기준",
+    "name": "The 2027 Seltos",
+    "displayName": "2027 셀토스",
+    "year": "2027년형 · 2026년 10월 15일 공식 가격표 · 10월 19일 확인",
     "type": "소형 SUV",
     "image": "seltos.png",
-    "engineHelp": "1.6 가솔린 터보와 하이브리드를 선택할 수 있습니다. 파워트레인을 바꾸면 해당 공식 트림가격과 선택품목으로 자동 변경됩니다.",
-    "trimHelp": "하이브리드는 세제혜택 후 판매가격입니다. 투톤 색상은 시그니처/X-Line에서 선택하며 투톤루프 비용 300,000원을 색상 단계에서 한 번만 반영합니다. 파노라마 선루프와 동시 선택할 수 없습니다.",
+    "engineHelp": "2027 셀토스의 1.6 가솔린 터보와 하이브리드를 선택합니다. 파워트레인별 공식 트림가격과 선택품목을 반영합니다.",
+    "trimHelp": "하이브리드는 친환경차 세제혜택 후 판매가격입니다. 투톤 색상은 시그니처/X-Line에서 선택하며 투톤루프 비용 300,000원을 색상 단계에서 한 번만 반영합니다. 파노라마 선루프와 동시 선택할 수 없습니다. 트렌디의 컨비니언스에는 오토 플러시 도어핸들이 포함됩니다.",
     "tax": {
-      "rate": 0.07,
-      "vatIncluded": true
+        "rate": 0.07,
+        "vatIncluded": true
     },
     "engines": [
-      {
-        "id": "gas16",
-        "name": "1.6 가솔린 터보",
-        "price": 0,
-        "sub": "스마트스트림 G1.6 T-GDI · 8AT"
-      },
-      {
-        "id": "hybrid",
-        "name": "하이브리드",
-        "price": 0,
-        "sub": "스마트스트림 G1.6 하이브리드 · 6단 DCT"
-      }
+        {
+            "id": "gas16",
+            "name": "1.6 가솔린 터보",
+            "price": 0,
+            "sub": "스마트스트림 G1.6 T-GDI · 8AT"
+        },
+        {
+            "id": "hybrid",
+            "name": "하이브리드",
+            "price": 0,
+            "sub": "스마트스트림 G1.6 하이브리드 · 6단 DCT"
+        }
     ],
     "drivesByEngine": {
-      "gas16": [
-        {
-          "id": "2wd",
-          "name": "2WD",
-          "price": 0,
-          "sub": "전륜구동"
-        },
-        {
-          "id": "4wd",
-          "name": "전자식 4WD",
-          "price": 1980000,
-          "sub": "+1,980,000원",
-          "requiresOptionByTrim": {
-            "trendy": "style"
-          },
-          "note": "트렌디는 스타일 적용 시 선택 가능"
-        }
-      ],
-      "hybrid": [
-        {
-          "id": "2wd",
-          "name": "2WD",
-          "price": 0,
-          "sub": "전륜구동"
-        }
-      ]
+        "gas16": [
+            {
+                "id": "2wd",
+                "name": "2WD",
+                "price": 0,
+                "sub": "전륜구동"
+            },
+            {
+                "id": "4wd",
+                "name": "전자식 4WD",
+                "price": 1980000,
+                "sub": "+1,980,000원",
+                "requiresOptionByTrim": {
+                    "trendy": "style"
+                },
+                "note": "트렌디는 스타일 적용 시 선택 가능"
+            }
+        ],
+        "hybrid": [
+            {
+                "id": "2wd",
+                "name": "2WD",
+                "price": 0,
+                "sub": "전륜구동"
+            }
+        ]
     },
     "seats": [
-      {
-        "id": "5",
-        "name": "5인승",
-        "price": 0,
-        "sub": "기본"
-      }
+        {
+            "id": "5",
+            "name": "5인승",
+            "price": 0,
+            "sub": "기본"
+        }
     ],
     "trimsByEngine": {
-      "gas16": [
-        {
-          "id": "trendy",
-          "name": "트렌디",
-          "price": 25120000,
-          "sub": "1.6 가솔린 터보"
-        },
-        {
-          "id": "prestige",
-          "name": "프레스티지",
-          "price": 28800000,
-          "sub": "1.6 가솔린 터보"
-        },
-        {
-          "id": "signature",
-          "name": "시그니처",
-          "price": 31450000,
-          "sub": "1.6 가솔린 터보"
-        },
-        {
-          "id": "xline",
-          "name": "X-Line",
-          "price": 32630000,
-          "sub": "1.6 가솔린 터보"
-        }
-      ],
-      "hybrid": [
-        {
-          "id": "trendy",
-          "name": "트렌디",
-          "price": 29400000,
-          "sub": "세제혜택 후"
-        },
-        {
-          "id": "prestige",
-          "name": "프레스티지",
-          "price": 32550000,
-          "sub": "세제혜택 후"
-        },
-        {
-          "id": "signature",
-          "name": "시그니처",
-          "price": 35200000,
-          "sub": "세제혜택 후"
-        },
-        {
-          "id": "xline",
-          "name": "X-Line",
-          "price": 36360000,
-          "sub": "세제혜택 후"
-        }
-      ]
+        "gas16": [
+            {
+                "id": "trendy",
+                "name": "트렌디",
+                "price": 25750000,
+                "sub": "2027년형 · 1.6 가솔린 터보 · 파노라믹 와이드 디스플레이/풀오토 에어컨 기본"
+            },
+            {
+                "id": "prestige",
+                "name": "프레스티지",
+                "price": 29380000,
+                "sub": "2027년형 · 1.6 가솔린 터보 · 오토 플러시 도어핸들/2열 에어벤트 기본"
+            },
+            {
+                "id": "signature",
+                "name": "시그니처",
+                "price": 31750000,
+                "sub": "2027년형 · 1.6 가솔린 터보 · 디지털 키 2/100W USB 기본"
+            },
+            {
+                "id": "xline",
+                "name": "X-Line",
+                "price": 32930000,
+                "sub": "2027년형 · 1.6 가솔린 터보 · 디지털 키 2/100W USB 기본"
+            }
+        ],
+        "hybrid": [
+            {
+                "id": "trendy",
+                "name": "트렌디",
+                "price": 29730000,
+                "sub": "세제혜택 후 · 파노라믹 와이드 디스플레이/풀오토 에어컨 기본"
+            },
+            {
+                "id": "prestige",
+                "name": "프레스티지",
+                "price": 33130000,
+                "sub": "세제혜택 후 · 오토 플러시 도어핸들/2열 에어벤트 기본"
+            },
+            {
+                "id": "signature",
+                "name": "시그니처",
+                "price": 35500000,
+                "sub": "세제혜택 후 · 디지털 키 2/100W USB 기본"
+            },
+            {
+                "id": "xline",
+                "name": "X-Line",
+                "price": 36660000,
+                "sub": "세제혜택 후 · 디지털 키 2/100W USB 기본"
+            }
+        ]
     },
     "colors": [
-      {
-        "id": "snow_white",
-        "name": "스노우 화이트 펄",
-        "price": 80000,
-        "color": "#F5F5F0"
-      },
-      {
-        "id": "iceberg_green",
-        "name": "아이스버그 그린",
-        "price": 0,
-        "color": "#A8B6AE"
-      },
-      {
-        "id": "gravity_gray",
-        "name": "그래비티 그레이",
-        "price": 0,
-        "color": "#5D6163"
-      },
-      {
-        "id": "ivory_silver",
-        "name": "아이보리 실버",
-        "price": 0,
-        "color": "#C9C7BF"
-      },
-      {
-        "id": "frost_blue",
-        "name": "프로스트 블루",
-        "price": 0,
-        "color": "#8FA6B5"
-      },
-      {
-        "id": "fusion_black",
-        "name": "퓨전 블랙",
-        "price": 0,
-        "color": "#151718"
-      },
-      {
-        "id": "black_snow_white",
-        "name": "퓨전 블랙 + 스노우 화이트 펄",
-        "price": 300000,
-        "color": "#F5F5F0",
-        "allowedTrims": [
-          "signature",
-          "xline"
-        ],
-        "excludesOptions": [
-          "sunroof"
-        ]
-      },
-      {
-        "id": "black_iceberg_green",
-        "name": "퓨전 블랙 + 아이스버그 그린",
-        "price": 300000,
-        "color": "#A8B6AE",
-        "allowedTrims": [
-          "signature",
-          "xline"
-        ],
-        "excludesOptions": [
-          "sunroof"
-        ]
-      },
-      {
-        "id": "ivory_matte",
-        "name": "아이보리 매트 실버",
-        "price": 300000,
-        "color": "#C6C2B8",
-        "allowedTrims": [
-          "xline"
-        ]
-      },
-      {
-        "id": "magma_matte_red",
-        "name": "마그마 매트 레드",
-        "price": 300000,
-        "color": "#8A3E3B",
-        "allowedTrims": [
-          "xline"
-        ]
-      }
+        {
+            "id": "snow_white",
+            "name": "스노우 화이트 펄",
+            "price": 80000,
+            "color": "#F5F5F0"
+        },
+        {
+            "id": "iceberg_green",
+            "name": "아이스버그 그린",
+            "price": 0,
+            "color": "#A8B6AE"
+        },
+        {
+            "id": "gravity_gray",
+            "name": "그래비티 그레이",
+            "price": 0,
+            "color": "#5D6163"
+        },
+        {
+            "id": "ivory_silver",
+            "name": "아이보리 실버",
+            "price": 0,
+            "color": "#C9C7BF"
+        },
+        {
+            "id": "frost_blue",
+            "name": "프로스트 블루",
+            "price": 0,
+            "color": "#8FA6B5"
+        },
+        {
+            "id": "fusion_black",
+            "name": "퓨전 블랙",
+            "price": 0,
+            "color": "#151718"
+        },
+        {
+            "id": "black_snow_white",
+            "name": "퓨전 블랙 + 스노우 화이트 펄",
+            "price": 300000,
+            "color": "#F5F5F0",
+            "allowedTrims": [
+                "signature",
+                "xline"
+            ],
+            "excludesOptions": [
+                "sunroof"
+            ]
+        },
+        {
+            "id": "black_iceberg_green",
+            "name": "퓨전 블랙 + 아이스버그 그린",
+            "price": 300000,
+            "color": "#A8B6AE",
+            "allowedTrims": [
+                "signature",
+                "xline"
+            ],
+            "excludesOptions": [
+                "sunroof"
+            ]
+        },
+        {
+            "id": "ivory_matte",
+            "name": "아이보리 매트 실버",
+            "price": 300000,
+            "color": "#C6C2B8",
+            "allowedTrims": [
+                "xline"
+            ]
+        },
+        {
+            "id": "magma_matte_red",
+            "name": "마그마 매트 레드",
+            "price": 300000,
+            "color": "#8A3E3B",
+            "allowedTrims": [
+                "xline"
+            ]
+        }
     ],
     "optionsByEngine": {
-      "gas16": {
-        "trendy": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 1090000
-          },
-          {
-            "id": "convenience",
-            "name": "컨비니언스",
-            "price": 640000
-          },
-          {
-            "id": "nav",
-            "name": "12.3인치 내비게이션",
-            "price": 1090000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000,
-            "requires": "nav",
-            "note": "12.3인치 내비게이션 적용 시"
-          },
-          {
-            "id": "cluster",
-            "name": "12.3인치 클러스터",
-            "price": 400000,
-            "requires": "nav",
-            "note": "12.3인치 내비게이션 적용 시"
-          },
-          {
-            "id": "smart",
-            "name": "스마트 커넥트",
-            "price": 690000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 1190000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          }
-        ],
-        "prestige": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 890000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "cluster",
-            "name": "12.3인치 클러스터",
-            "price": 400000
-          },
-          {
-            "id": "smart",
-            "name": "스마트 커넥트",
-            "price": 690000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 1190000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 1040000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+        "gas16": {
+            "trendy": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 1090000
+                },
+                {
+                    "id": "convenience",
+                    "name": "컨비니언스",
+                    "price": 990000,
+                    "note": "오토 플러시 도어핸들, 프리미엄 바이오 인조가죽시트, 1열 통풍시트, 1열 시트백 포켓, 하이패스 자동결제 시스템"
+                },
+                {
+                    "id": "nav",
+                    "name": "12.3인치 내비게이션",
+                    "price": 790000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000,
+                    "note": "12.3인치 내비게이션 적용 시",
+                    "requires": "nav"
+                },
+                {
+                    "id": "cluster",
+                    "name": "12.3인치 클러스터",
+                    "price": 400000,
+                    "note": "12.3인치 내비게이션 적용 시",
+                    "requires": "nav"
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 1190000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ],
-        "signature": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 890000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 790000
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 450000
-          },
-          {
-            "id": "harman",
-            "name": "하만카돈 프리미엄 사운드",
-            "price": 890000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+            "prestige": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 890000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "cluster",
+                    "name": "12.3인치 클러스터",
+                    "price": 400000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 1190000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 990000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더, 동승석 파워시트/전동식 허리지지대, 스마트 파워테일게이트"
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ],
-        "xline": [
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 790000
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 450000
-          },
-          {
-            "id": "harman",
-            "name": "하만카돈 프리미엄 사운드",
-            "price": 890000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+            "signature": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 890000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 790000
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 400000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더"
+                },
+                {
+                    "id": "harman",
+                    "name": "하만카돈 프리미엄 사운드",
+                    "price": 890000
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ]
-      },
-      "hybrid": {
-        "trendy": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 1090000
-          },
-          {
-            "id": "convenience",
-            "name": "컨비니언스",
-            "price": 640000
-          },
-          {
-            "id": "nav",
-            "name": "12.3인치 내비게이션",
-            "price": 540000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000,
-            "requires": "nav",
-            "note": "12.3인치 내비게이션 적용 시"
-          },
-          {
-            "id": "cluster",
-            "name": "12.3인치 클러스터",
-            "price": 400000,
-            "requires": "nav",
-            "note": "12.3인치 내비게이션 적용 시"
-          },
-          {
-            "id": "smart",
-            "name": "스마트 커넥트",
-            "price": 690000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 1190000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          }
-        ],
-        "prestige": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 890000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "cluster",
-            "name": "12.3인치 클러스터",
-            "price": 400000
-          },
-          {
-            "id": "smart",
-            "name": "스마트 커넥트",
-            "price": 690000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 1190000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000,
-            "requires": "cluster",
-            "note": "12.3인치 클러스터 적용 시"
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 1040000
-          },
-          {
-            "id": "v2l",
-            "name": "실내 V2L",
-            "price": 690000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+            "xline": [
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 790000
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 400000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더"
+                },
+                {
+                    "id": "harman",
+                    "name": "하만카돈 프리미엄 사운드",
+                    "price": 890000
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
+            ]
+        },
+        "hybrid": {
+            "trendy": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 1090000
+                },
+                {
+                    "id": "convenience",
+                    "name": "컨비니언스",
+                    "price": 990000,
+                    "note": "오토 플러시 도어핸들, 프리미엄 바이오 인조가죽시트, 1열 통풍시트, 1열 시트백 포켓, 하이패스 자동결제 시스템"
+                },
+                {
+                    "id": "nav",
+                    "name": "12.3인치 내비게이션",
+                    "price": 540000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000,
+                    "note": "12.3인치 내비게이션 적용 시",
+                    "requires": "nav"
+                },
+                {
+                    "id": "cluster",
+                    "name": "12.3인치 클러스터",
+                    "price": 400000,
+                    "note": "12.3인치 내비게이션 적용 시",
+                    "requires": "nav"
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 1190000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ],
-        "signature": [
-          {
-            "id": "style",
-            "name": "스타일",
-            "price": 890000
-          },
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 790000
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 450000
-          },
-          {
-            "id": "harman",
-            "name": "하만카돈 프리미엄 사운드",
-            "price": 890000
-          },
-          {
-            "id": "v2l",
-            "name": "실내 V2L",
-            "price": 690000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+            "prestige": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 890000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "cluster",
+                    "name": "12.3인치 클러스터",
+                    "price": 400000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 1190000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000,
+                    "note": "12.3인치 클러스터 적용 시",
+                    "requires": "cluster"
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 990000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더, 동승석 파워시트/전동식 허리지지대, 스마트 파워테일게이트"
+                },
+                {
+                    "id": "v2l",
+                    "name": "실내 V2L",
+                    "price": 690000
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ],
-        "xline": [
-          {
-            "id": "builtincam",
-            "name": "빌트인 캠 2 플러스",
-            "price": 450000
-          },
-          {
-            "id": "drivewise",
-            "name": "드라이브 와이즈",
-            "price": 790000
-          },
-          {
-            "id": "monitoring",
-            "name": "모니터링",
-            "price": 1040000
-          },
-          {
-            "id": "hud",
-            "name": "헤드업 디스플레이",
-            "price": 590000
-          },
-          {
-            "id": "comfort",
-            "name": "컴포트",
-            "price": 450000
-          },
-          {
-            "id": "harman",
-            "name": "하만카돈 프리미엄 사운드",
-            "price": 890000
-          },
-          {
-            "id": "v2l",
-            "name": "실내 V2L",
-            "price": 690000
-          },
-          {
-            "id": "sunroof",
-            "name": "파노라마 선루프",
-            "price": 1090000,
-            "excludesColors": [
-              "black_snow_white",
-              "black_iceberg_green"
+            "signature": [
+                {
+                    "id": "style",
+                    "name": "스타일",
+                    "price": 890000
+                },
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 790000
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 400000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더"
+                },
+                {
+                    "id": "harman",
+                    "name": "하만카돈 프리미엄 사운드",
+                    "price": 890000
+                },
+                {
+                    "id": "v2l",
+                    "name": "실내 V2L",
+                    "price": 690000
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
             ],
-            "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
-          }
-        ]
-      }
+            "xline": [
+                {
+                    "id": "builtincam",
+                    "name": "빌트인 캠 2 플러스",
+                    "price": 450000
+                },
+                {
+                    "id": "drivewise",
+                    "name": "드라이브 와이즈",
+                    "price": 790000
+                },
+                {
+                    "id": "monitoring",
+                    "name": "모니터링",
+                    "price": 1040000
+                },
+                {
+                    "id": "hud",
+                    "name": "헤드업 디스플레이",
+                    "price": 590000
+                },
+                {
+                    "id": "comfort",
+                    "name": "컴포트",
+                    "price": 400000,
+                    "note": "1열 이중접합 차음 글라스, 앰비언트 라이트, 러기지 커버링 쉘프, 2열 열선시트, 2열 센터 암레스트 슬라이딩 컵홀더"
+                },
+                {
+                    "id": "harman",
+                    "name": "하만카돈 프리미엄 사운드",
+                    "price": 890000
+                },
+                {
+                    "id": "v2l",
+                    "name": "실내 V2L",
+                    "price": 690000
+                },
+                {
+                    "id": "sunroof",
+                    "name": "파노라마 선루프",
+                    "price": 1090000,
+                    "excludesColors": [
+                        "black_snow_white",
+                        "black_iceberg_green"
+                    ],
+                    "note": "투톤 외장 색상과 동시 선택 불가 · 투톤루프 비용은 색상에서 한 번만 반영"
+                }
+            ]
+        }
     }
-  }
+}
 
   ,
 
@@ -9302,7 +9298,7 @@ window.CAR_CATALOG_META = {
     "type": "준중형 SUV"
   },
   "seltos": {
-    "title": "디 올 뉴 셀토스 / Hybrid",
+    "title": "2027 셀토스 / Hybrid",
     "type": "소형 SUV · 1.6 터보 · Hybrid"
   },
   "tasman": {
