@@ -1,4 +1,30 @@
 /*
+  카원 공식 가격표 변경 반영 · 2026-11-06 (한국시간)
+  현대 2026-11-01 가격표 및 제네시스 현재 BTO/PDF 기준.
+  아반떼 HEV Modern/Premium/Inspiration: 세제혜택 후 29,420,000 / 32,610,000 / 35,990,000원.
+  쏘나타 HEV 블랙 N Line: 세제혜택 후 41,120,000원.
+  위 4건은 제조사 기본가격 인하가 아닌 세제혜택 후 가격 반영임.
+  아반떼 추천 구성 6종 추가: 기존 트림 + 포함 옵션의 조합. 독립 트림 신설 아님.
+  가솔린 25,590,000 / 29,870,000 / 33,070,000원,
+  HEV 세제혜택 후 30,830,000 / 34,770,000 / 37,540,000원.
+  baseTrimId/includedOptionIds로 원 트림·포함 옵션을 기록함.
+  추천 구성의 옵션 목록에서 포함 옵션을 제외하여 중복 과금 방지.
+  G70/G80 색상 선택에서 바트나 그레이 제거.
+  G70 소개 페이지 45,500,000원과 BTO/11월 PDF 45,000,000원 표기가 상충하여
+  기존 BTO/PDF 기본가격 45,000,000원 유지. 인상으로 확정하지 않음.
+  기존 35개 차량 키와 표시 순서, 나머지 31개 차량 데이터 유지.
+  11월 할인·무상 옵션 프로모션은 상시 판매가격에 합산하지 않음.
+  아래 과거 기록과 상충하는 항목은 본 메모 우선.
+  공식 근거:
+  https://www.hyundai.com/contents/repn-car/html/homepage/price/cn8-27-J-G2.0_price.content
+  https://www.hyundai.com/contents/repn-car/html/homepage/price/cn8-hev-27-J-G1.6_price.content
+  https://www.hyundai.com/contents/repn-car/catalog/sonata-hybrid-2027-price.pdf
+  https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g70/bto.html
+  https://www.genesis.com/kr/ko/models/luxury-sedan-genesis/g80/bto.html
+  https://www.genesis.com/kr/ko/support/download-center/genesis-models.html
+*/
+
+/*
   카원 카니발 7인승 하이루프 추가 · 2026-10-27 (한국시간)
   기아 공식 2026-10-22 가격표 기준. 기존 carnival 차량 키와 7/9인승 구조 유지.
   7인승 트림에 하이루프 노블레스 / 시그니처 / 블랙 에디션 추가.
@@ -3770,7 +3796,7 @@ window.CAR_DATA = {
     brand: "GENESIS",
     name: "G80",
     displayName: "제네시스 G80",
-    year: "2026년 9월 1일 공식 BTO 기준",
+    year: "2026년 11월 6일 공식 BTO 확인",
     type: "럭셔리 대형 세단",
     image: "g80.png",
 
@@ -3837,7 +3863,6 @@ window.CAR_DATA = {
 
     colors: [
       { id: "uyuni_white", name: "우유니 화이트", price: 0, color: "#f4f3ee" },
-      { id: "vatna_gray", name: "바트나 그레이", price: 0, color: "#74736f" },
       { id: "savile_silver", name: "세빌 실버", price: 0, color: "#a5a7a6" },
       { id: "makalu_gray", name: "마칼루 그레이", price: 0, color: "#4e5051" },
       { id: "vik_black", name: "비크 블랙", price: 0, color: "#111214" },
@@ -4642,11 +4667,11 @@ window.CAR_DATA = {
     "brand": "HYUNDAI",
     "name": "2027 SONATA The Edge",
     "displayName": "2027 쏘나타 디 엣지",
-    "year": "2027년형 · 2026년 10월 12일 공식 가격표 확인",
+    "year": "2027년형 · 2026년 11월 1일 공식 가격표 · 11월 6일 확인",
     "type": "중형 세단",
     "image": "sonata.png",
     "engineHelp": "가솔린 2.0, 가솔린 1.6 터보, LPi 2.0, N Line 2.5 터보, 하이브리드 2.0을 선택합니다. 블랙 N Line은 가솔린 2.0/1.6 터보 및 하이브리드의 트림에서 선택합니다.",
-    "trimHelp": "2027년형 공식 가격입니다. 하이브리드 일반 트림은 세제혜택 후, 블랙 N Line 하이브리드는 고시 완료 전 세제혜택 전 42,120,000원입니다. 블랙 N Line 외장은 어비스 블랙 펄/세레니티 화이트 펄만 선택 가능합니다. 익스클루시브에 카멜 내장, S에 동승석 전동시트가 적용됩니다.",
+    "trimHelp": "2027년형 공식 가격입니다. 하이브리드는 블랙 N Line을 포함해 세제혜택 후 가격입니다. 블랙 N Line 외장은 어비스 블랙 펄/세레니티 화이트 펄만 선택 가능합니다. 익스클루시브에 카멜 내장, S에 동승석 전동시트가 적용됩니다.",
     "tax": {
         "rate": 0.07,
         "vatIncluded": true
@@ -4680,7 +4705,7 @@ window.CAR_DATA = {
             "id": "hybrid20",
             "name": "Hybrid 2.0",
             "price": 0,
-            "sub": "일반 트림 세제혜택 후 · 블랙 N Line 세제혜택 전"
+            "sub": "블랙 N Line 포함 세제혜택 후"
         }
     ],
     "drives": [
@@ -4820,8 +4845,8 @@ window.CAR_DATA = {
             {
                 "id": "black-n-line",
                 "name": "블랙 N Line",
-                "price": 42120000,
-                "sub": "세제혜택 전 · 환경친화적 자동차 고시 완료 후 세제혜택 후 가격 안내 예정 · 외장 블랙/화이트 전용"
+                "price": 41120000,
+                "sub": "세제혜택 후 · 외장 블랙/화이트 전용"
             }
         ]
     },
@@ -6073,14 +6098,14 @@ window.CAR_DATA = {
     brand: "HYUNDAI",
     name: "The all-new AVANTE",
     displayName: "디 올 뉴 아반떼",
-    year: "2026년 10월 1일 현대자동차 공식 가격표 기준",
+    year: "2026년 11월 1일 공식 가격표 · 11월 6일 확인",
     type: "준중형 세단",
     image: "avante.png",
 
     engineHelp:
       "현행 8세대 디 올 뉴 아반떼는 가솔린 2.0과 1.6 하이브리드 두 파워트레인으로 운영됩니다.",
     trimHelp:
-      "현대자동차 공식 홈페이지의 Modern / Premium / Inspiration 가격과 선택품목을 반영합니다. 하이브리드는 환경친화적 자동차 고시 완료 전이므로 현재 공식 '세제혜택 적용 전' 가격을 사용합니다.",
+      "Modern / Premium / Inspiration 및 각 트림의 추천 구성을 선택할 수 있습니다. 하이브리드는 세제혜택 적용 후 가격입니다. 추천 구성은 기존 트림에 표시된 옵션을 포함한 조합이며, 포함 옵션은 추가 선택 목록에서 제외했습니다.",
 
     tax: { rate: 0.07, vatIncluded: true },
 
@@ -6109,14 +6134,20 @@ window.CAR_DATA = {
 
     trimsByEngine: {
       gas20: [
-        { id:"modern", name:"Modern", price:23980000, sub:"현대 공식 판매가격" },
-        { id:"premium", name:"Premium", price:27710000, sub:"현대 공식 판매가격" },
-        { id:"inspiration", name:"Inspiration", price:31520000, sub:"현대 공식 판매가격" }
+        {"id":"modern","name":"Modern","price":23980000,"sub":"현대 공식 판매가격"},
+        {"id":"modern-best-pick","name":"Modern · 추천 구성","price":25590000,"sub":"컨비니언스Ⅰ + 현대 스마트센스Ⅰ 포함","baseTrimId":"modern","includedOptionIds":["convenience1","smartsense1"]},
+        {"id":"premium","name":"Premium","price":27710000,"sub":"현대 공식 판매가격"},
+        {"id":"premium-best-pick","name":"Premium · 추천 구성","price":29870000,"sub":"플레오스 커넥트 14.6인치 + 9.9인치 슬림 디스플레이 + 현대 스마트센스Ⅱ + 플래티넘Ⅰ 포함","baseTrimId":"premium","includedOptionIds":["pleos146","smartsense2","platinum1"]},
+        {"id":"inspiration","name":"Inspiration","price":31520000,"sub":"현대 공식 판매가격"},
+        {"id":"inspiration-best-pick","name":"Inspiration · 추천 구성","price":33070000,"sub":"플래티넘Ⅱ + 빌트인 캠 2 Plus 포함","baseTrimId":"inspiration","includedOptionIds":["platinum2","builtincam"]}
       ],
       hev16: [
-        { id:"modern", name:"Modern", price:30420000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" },
-        { id:"premium", name:"Premium", price:33610000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" },
-        { id:"inspiration", name:"Inspiration", price:36990000, sub:"세제혜택 적용 전 · 고시 완료 후 변경 예정" }
+        {"id":"modern","name":"Modern","price":29420000,"sub":"세제혜택 적용 후"},
+        {"id":"modern-best-pick","name":"Modern · 추천 구성","price":30830000,"sub":"세제혜택 적용 후 · 컨비니언스Ⅱ + 현대 스마트센스Ⅰ 포함","baseTrimId":"modern","includedOptionIds":["convenience2","smartsense1"]},
+        {"id":"premium","name":"Premium","price":32610000,"sub":"세제혜택 적용 후"},
+        {"id":"premium-best-pick","name":"Premium · 추천 구성","price":34770000,"sub":"세제혜택 적용 후 · 플레오스 커넥트 14.6인치 + 9.9인치 슬림 디스플레이 + 현대 스마트센스Ⅱ + 플래티넘Ⅰ 포함","baseTrimId":"premium","includedOptionIds":["pleos146","smartsense2","platinum1"]},
+        {"id":"inspiration","name":"Inspiration","price":35990000,"sub":"세제혜택 적용 후"},
+        {"id":"inspiration-best-pick","name":"Inspiration · 추천 구성","price":37540000,"sub":"세제혜택 적용 후 · 플래티넘Ⅱ + 빌트인 캠 2 Plus 포함","baseTrimId":"inspiration","includedOptionIds":["platinum2","builtincam"]}
       ]
     },
 
@@ -6134,6 +6165,9 @@ window.CAR_DATA = {
 
     optionsByEngine: {
       gas20: {
+        "modern-best-pick": [{"id":"slim_display","name":"9.9인치 슬림 디스플레이","price":350000},{"id":"wheel17_1","name":"17인치 알로이 휠 & 타이어Ⅰ","price":320000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
+        "premium-best-pick": [{"id":"sunroof","name":"와이드 선루프","price":900000},{"id":"exterior","name":"익스테리어 디자인","price":1400000},{"id":"comfort","name":"컴포트","price":760000},{"id":"wheel17_2","name":"17인치 알로이 휠 & 타이어Ⅱ","price":300000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
+        "inspiration-best-pick": [{"id":"sunroof","name":"와이드 선루프","price":900000},{"id":"parking1","name":"파킹 어시스트Ⅰ","price":800000,"excludes":["parking2"]},{"id":"parking2","name":"파킹 어시스트Ⅱ","price":1300000,"excludes":["parking1"]},{"id":"wheel18","name":"18인치 알로이 휠 & 타이어","price":500000},{"id":"bno","name":"Audio by BANG & OLUFSEN 사운드","price":1100000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
         modern: [
           { id:"slim_display", name:"9.9인치 슬림 디스플레이", price:350000 },
           { id:"convenience1", name:"컨비니언스Ⅰ", price:650000 },
@@ -6172,6 +6206,9 @@ window.CAR_DATA = {
       },
 
       hev16: {
+        "modern-best-pick": [{"id":"slim_display","name":"9.9인치 슬림 디스플레이","price":350000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
+        "premium-best-pick": [{"id":"sunroof","name":"와이드 선루프","price":900000},{"id":"exterior","name":"익스테리어 디자인","price":1400000},{"id":"comfort","name":"컴포트","price":760000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
+        "inspiration-best-pick": [{"id":"sunroof","name":"와이드 선루프","price":900000},{"id":"parking1","name":"파킹 어시스트Ⅰ","price":800000,"excludes":["parking2"]},{"id":"parking2","name":"파킹 어시스트Ⅱ","price":1300000,"excludes":["parking1"]},{"id":"wheel18","name":"18인치 알로이 휠 & 타이어","price":500000},{"id":"bno","name":"Audio by BANG & OLUFSEN 사운드","price":1100000},{"id":"lighting","name":"H Genuine Accessories · 라이팅 플러스 패키지","price":150000},{"id":"film1","name":"H Genuine Accessories · 차량 보호 필름 1","price":300000},{"id":"film2","name":"H Genuine Accessories · 차량 보호 필름 2","price":420000}],
         modern: [
           { id:"slim_display", name:"9.9인치 슬림 디스플레이", price:350000 },
           { id:"convenience2", name:"컨비니언스Ⅱ", price:450000 },
@@ -8081,7 +8118,7 @@ electrified_g80:{
   evAcquisitionTaxReduction:1400000
 },
 g70:{
- brand:"GENESIS",name:"G70",displayName:"G70",year:"2026-10-06 Genesis 공식 BTO 기준",type:"럭셔리 스포츠 세단",image:"g70.png",
+ brand:"GENESIS",name:"G70",displayName:"G70",year:"2026년 11월 6일 공식 BTO·11월 가격표 확인",type:"럭셔리 스포츠 세단",image:"g70.png",
  engineHelp:"제네시스 공식 BTO 기준 가솔린 2.5 터보 / 가솔린 3.3 터보를 선택합니다.",
  trimHelp:"기본가격 45,000,000원(2.5T 2WD 기본모델)에서 엔진·구동·스포츠 패키지·선택품목을 더하는 BTO 구조입니다.",
  tax:{rate:0.07,vatIncluded:true},
@@ -8089,7 +8126,7 @@ g70:{
  drivesByEngine:{gas25:[{id:"2wd",name:"2WD (후륜)",price:0,sub:"기본"},{id:"awd",name:"AWD",price:2470000,sub:"+2,470,000원"}],gas33:[{id:"2wd",name:"2WD (후륜)",price:0,sub:"기본"},{id:"awd",name:"AWD",price:2470000,sub:"+2,470,000원"}]},
  seats:[{id:"5",name:"5인승",price:0,sub:"기본"}],
  trimsByEngine:{gas25:[{id:"base",name:"기본모델",price:45000000,sub:"18인치 휠 기본"},{id:"sport",name:"스포츠 패키지",price:48560000,sub:"+3,560,000원"}],gas33:[{id:"base",name:"기본모델",price:45000000,sub:"3.3T 추가금은 엔진 선택에서 반영"},{id:"sport",name:"스포츠 패키지",price:48560000,sub:"+3,560,000원"}]},
- colors:[{id:"vatna_gray",name:"바트나 그레이",price:0,color:"#6d7070"},{id:"uyuni_white",name:"우유니 화이트",price:0,color:"#f1f1ed"},{id:"vik_black",name:"비크 블랙",price:0,color:"#111214"}],
+ colors:[{id:"uyuni_white",name:"우유니 화이트",price:0,color:"#f1f1ed"},{id:"vik_black",name:"비크 블랙",price:0,color:"#111214"}],
  optionsByEngine:{
   gas25:{
    base:[{id:"popular",name:"파퓰러 패키지",price:4100000},{id:"sunroof",name:"와이드 선루프",price:790000},{id:"ecs",name:"전자제어 서스펜션",price:990000},{id:"convenience",name:"컨비니언스 패키지",price:1290000,excludes:["popular"]},{id:"hightech",name:"하이테크 패키지",price:1580000,excludes:["popular"]},{id:"lexicon",name:"렉시콘 사운드 패키지",price:1190000},{id:"drive",name:"드라이빙 어시스턴스 패키지",price:1680000,excludes:["popular"]},{id:"interior",name:"천연가죽/시그니쳐 디자인 셀렉션",price:2370000}],
