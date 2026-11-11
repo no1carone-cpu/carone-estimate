@@ -188,45 +188,87 @@ function getRawCurrentOptions() {
 
 function getCurrentOptions() {
   const raw = getRawCurrentOptions();
+  const includedIds = getIncludedOptionIds(raw, state.options);
+  return raw.filter(item => !includedIds.has(item.id));
+}
 
+function getIncludedOptionIds(raw, selected) {
   const includedIds = new Set();
-
   raw.forEach(item => {
     if (
-      state.options.has(item.id) &&
+      selected.has(item.id) &&
       Array.isArray(item.includes)
     ) {
-      item.includes.forEach(id =>
-        includedIds.add(id)
-      );
+      item.includes.forEach(id => includedIds.add(id));
     }
   });
+  return includedIds;
+}
 
-  return raw.filter(
-    item => !includedIds.has(item.id)
-  );
+function pruneOptionSelections(raw, selected) {
+  const byId = new Map(raw.map(item => [item.id, item]));
+  // 연쇄적으로 선행 옵션을 잃은 항목까지 제거합니다.
+  let removed;
+  do {
+    removed = false;
+    const included = getIncludedOptionIds(raw, selected);
+    for (const id of selected) {
+      const item = byId.get(id);
+      if (
+        !item ||
+        included.has(id) ||
+        (item.requires && !selected.has(item.requires) && !included.has(item.requires))
+      ) {
+        selected.delete(id);
+        removed = true;
+      }
+    }
+  } while (removed);
+}
+
+function selectOptionWithRequirements(optionId) {
+  const raw = getRawCurrentOptions();
+  const byId = new Map(raw.map(item => [item.id, item]));
+  const next = new Set(state.options);
+  const visiting = new Set();
+  const conflicts = (item, other) =>
+    item.excludes?.includes(other.id) || other.excludes?.includes(item.id);
+
+  function add(id) {
+    if (next.has(id) || getIncludedOptionIds(raw, next).has(id)) return true;
+    const item = byId.get(id);
+    if (!item || visiting.has(id)) return false;
+
+    visiting.add(id);
+    for (const selectedId of next) {
+      const other = byId.get(selectedId);
+      if (other && conflicts(item, other)) next.delete(selectedId);
+    }
+
+    if (item.requires && !add(item.requires)) return false;
+    for (const selectedId of next) {
+      const other = byId.get(selectedId);
+      if (other && conflicts(item, other)) return false;
+    }
+    visiting.delete(id);
+    next.add(id);
+    return true;
+  }
+
+  // 조합을 완성할 수 없으면 기존 선택을 그대로 둡니다.
+  if (!add(optionId)) return null;
+  pruneOptionSelections(raw, next);
+  if (!next.has(optionId)) return null;
+
+  const addedRequirements = [...next].filter(id =>
+    id !== optionId && !state.options.has(id)
+  ).map(id => byId.get(id).name);
+  state.options = next;
+  return addedRequirements;
 }
 
 function normalizeSelectedOptions() {
   const raw = getRawCurrentOptions();
-  const rawIds = new Set(raw.map(item => item.id));
-
-  [...state.options].forEach(id => {
-    if (!rawIds.has(id)) {
-      state.options.delete(id);
-    }
-  });
-
-  raw.forEach(item => {
-    if (
-      state.options.has(item.id) &&
-      Array.isArray(item.includes)
-    ) {
-      item.includes.forEach(id =>
-        state.options.delete(id)
-      );
-    }
-  });
 
   const selectedColor = getAvailableColors().find(
     color => color.id === state.color
@@ -244,7 +286,7 @@ function normalizeSelectedOptions() {
       state.options.delete(id);
     }
   });
-
+  pruneOptionSelections(raw, state.options);
 }
 
 function getAvailableColors() {
@@ -662,39 +704,14 @@ function renderOptions() {
     button.addEventListener("click", () => {
       if (state.options.has(item.id)) {
         state.options.delete(item.id);
-
-        // 이 옵션을 필수조건으로 요구하는 다른 옵션도 함께 해제합니다.
-        list
-          .filter(option =>
-            option.requires === item.id &&
-            state.options.has(option.id)
-          )
-          .forEach(option => {
-            state.options.delete(option.id);
-          });
-
       } else {
-        // 필수 옵션이 있는 경우 자동 선택합니다.
-        if (item.requires && !state.options.has(item.requires)) {
-          state.options.add(item.requires);
-
-          const required =
-            getRawCurrentOptions().find(
-              option => option.id === item.requires
-            );
-
-          toast(
-            `${required?.name || "필수 옵션"}을 함께 선택했습니다.`
-          );
+        const addedRequirements = selectOptionWithRequirements(item.id);
+        if (addedRequirements === null) {
+          toast("현재 구성에서는 선택할 수 없는 옵션입니다.");
+          return;
         }
-
-        // 함께 선택할 수 없는 옵션은 자동으로 해제합니다.
-        if (Array.isArray(item.excludes)) {
-          item.excludes.forEach(id => {
-            if (state.options.has(id)) {
-              state.options.delete(id);
-            }
-          });
+        if (addedRequirements.length) {
+          toast(`${addedRequirements.join(", ")}을 함께 선택했습니다.`);
         }
 
         if (Array.isArray(item.excludesColors) && item.excludesColors.includes(state.color)) {
@@ -707,18 +724,8 @@ function renderOptions() {
             toast(`${item.name}과 함께 선택할 수 없는 외장색을 해제했습니다.`);
           }
         }
-
-        // 패키지에 포함된 개별 옵션은 중복 계산하지 않습니다.
-        if (Array.isArray(item.includes)) {
-          item.includes.forEach(id =>
-            state.options.delete(id)
-          );
-        }
-
-        state.options.add(item.id);
       }
 
-      normalizeSelectedOptions();
       renderAll();
     });
 
