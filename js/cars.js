@@ -1,4 +1,19 @@
 /*
+  카원 GV90 신규 추가 · 2026-11-11 (한국시간)
+  제네시스 2026-11-10 공식 가격표의 일반 GV90만 반영. 네오룬 제외.
+  개별소비세 5% 및 친환경차 세제혜택 후: 7인승 139,500,000원 / 6인승 145,500,000원.
+  6인승 추가금은 기본가격에 포함되어 좌석 항목에는 별도 합산하지 않음.
+  외장 16종, 휠·내장 디자인·패키지·액세서리 반영. 24인치 휠은 6인승 전용.
+  파퓰러 컬렉션의 포함 품목은 개별 옵션과 중복 합산하지 않도록 조건을 설정함.
+  내장 세부 색상과 가니쉬 조합은 공식 견적에서 확인. 선택품목 포함 금액은 예상 견적.
+  실제 화면에서 인승별 옵션과 선행·배제 조건을 적용하려면 기존 estimate.js의
+  trimsBySeat, optionsBySeat, requires, excludes 지원이 필요함.
+  gv90.png는 기존 차량 이미지들과 같은 폴더에 배치.
+  공식 근거: https://www.genesis.com/kr/ko/support/download-center/genesis-models.html
+  https://www.genesis.com/kr/ko/shop/build/gv90
+*/
+
+/*
   카원 공식 가격표 변경 반영 · 2026-11-06 (한국시간)
   현대 2026-11-01 가격표 및 제네시스 현재 BTO/PDF 기준.
   아반떼 HEV Modern/Premium/Inspiration: 세제혜택 후 29,420,000 / 32,610,000 / 35,990,000원.
@@ -161,6 +176,504 @@
 */
 
 window.CAR_DATA = {
+  gv90: {
+    "brand": "GENESIS",
+    "name": "GV90",
+    "displayName": "제네시스 GV90",
+    "year": "2026년 11월 10일 출시 · 제네시스 공식 가격표 기준",
+    "type": "플래그십 전기 SUV",
+    "image": "gv90.png",
+    "engineHelp": "123.5kWh 배터리와 490kW 듀얼 모터 AWD가 기본입니다.",
+    "trimHelp": "7인승·6인승 기본가는 개별소비세 5% 및 친환경차 세제혜택 적용 기준입니다. 22인치 다이아몬드 컷팅 휠과 스탠다드 내장 디자인이 기본이며, 유상 변경은 선택품목에서 고릅니다. 선택품목을 더한 금액은 예상 견적이며 최종 가격과 세제혜택은 제네시스 견적에서 확인하세요.",
+    "tax": {
+      "rate": 0.07,
+      "vatIncluded": true
+    },
+    "engines": [
+      {
+        "id": "ev",
+        "name": "전기 듀얼 모터",
+        "price": 0,
+        "sub": "123.5kWh · 490kW"
+      }
+    ],
+    "drivesByEngine": {
+      "ev": [
+        {
+          "id": "awd",
+          "name": "AWD",
+          "price": 0,
+          "sub": "듀얼 모터 사륜구동 기본"
+        }
+      ]
+    },
+    "seats": [
+      {
+        "id": "7",
+        "name": "7인승",
+        "price": 0,
+        "sub": "스탠다드"
+      },
+      {
+        "id": "6",
+        "name": "6인승",
+        "price": 0,
+        "sub": "인디비쥬얼 라운지 시트"
+      }
+    ],
+    "trimsBySeat": {
+      "6": [
+        {
+          "id": "base",
+          "name": "인디비쥬얼 라운지 시트",
+          "price": 145500000,
+          "sub": "6인승 · 세제혜택 후"
+        }
+      ],
+      "7": [
+        {
+          "id": "base",
+          "name": "스탠다드",
+          "price": 139500000,
+          "sub": "7인승 · 세제혜택 후"
+        }
+      ]
+    },
+    "colors": [
+      {
+        "id": "uyh",
+        "code": "UYH",
+        "name": "우유니 화이트",
+        "price": 0,
+        "color": "#f6f6f6",
+        "note": "유광"
+      },
+      {
+        "id": "sss",
+        "code": "SSS",
+        "name": "세빌 실버",
+        "price": 0,
+        "color": "#91928c",
+        "note": "유광"
+      },
+      {
+        "id": "ncm",
+        "code": "NCM",
+        "name": "마칼루 그레이",
+        "price": 0,
+        "color": "#3d4147",
+        "note": "유광"
+      },
+      {
+        "id": "ph3",
+        "code": "PH3",
+        "name": "비크 블랙",
+        "price": 0,
+        "color": "#151112",
+        "note": "유광"
+      },
+      {
+        "id": "nrb",
+        "code": "NRB",
+        "name": "카프리 블루",
+        "price": 0,
+        "color": "#012140",
+        "note": "유광"
+      },
+      {
+        "id": "ht7",
+        "code": "HT7",
+        "name": "카디프 그린",
+        "price": 0,
+        "color": "#1e2d26",
+        "note": "유광"
+      },
+      {
+        "id": "lag",
+        "code": "LAG",
+        "name": "타우포 그레이",
+        "price": 1000000,
+        "color": "#373a40",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "vet",
+        "code": "VET",
+        "name": "바에나 그린",
+        "price": 1000000,
+        "color": "#2a4123",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "nae",
+        "code": "NAE",
+        "name": "세이셸 베이지",
+        "price": 1000000,
+        "color": "#bbb5a5",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "dal",
+        "code": "DAL",
+        "name": "자이푸르 로즈",
+        "price": 1000000,
+        "color": "#4c4a3e",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "bca",
+        "code": "BCA",
+        "name": "소노란 네이비",
+        "price": 1000000,
+        "color": "#1e2639",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "mab",
+        "code": "MAB",
+        "name": "벨라 버건디",
+        "price": 1000000,
+        "color": "#300e11",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "cba",
+        "code": "CBA",
+        "name": "코모 블루",
+        "price": 1000000,
+        "color": "#3d4d5c",
+        "note": "스페셜 유광"
+      },
+      {
+        "id": "ft7",
+        "code": "FT7",
+        "name": "마테호른 화이트 매트",
+        "price": 1000000,
+        "color": "#f7f8f8",
+        "note": "무광"
+      },
+      {
+        "id": "smz",
+        "code": "SMZ",
+        "name": "모나쉬 실버 매트",
+        "price": 1000000,
+        "color": "#afafad",
+        "note": "무광"
+      },
+      {
+        "id": "mpe",
+        "code": "MPE",
+        "name": "마칼루 그레이 매트",
+        "price": 1000000,
+        "color": "#373c42",
+        "note": "무광"
+      }
+    ],
+    "optionsBySeat": {
+      "6": {
+        "base": [
+          {
+            "id": "wheel22_forged",
+            "name": "22인치 다이아몬드 컷팅 단조 휠",
+            "price": 2000000,
+            "excludes": [
+              "wheel24"
+            ]
+          },
+          {
+            "id": "wheel24",
+            "name": "24인치 미디엄 스퍼터링 단조 휠",
+            "price": 5500000,
+            "excludes": [
+              "wheel22_forged"
+            ],
+            "note": "6인승 전용 · 미쉐린 타이어"
+          },
+          {
+            "id": "signature",
+            "name": "시그니처 디자인 셀렉션",
+            "price": 7400000,
+            "excludes": [
+              "cashmere",
+              "popular"
+            ],
+            "note": "파퓰러 컬렉션에 포함"
+          },
+          {
+            "id": "cashmere",
+            "name": "울 캐시미어 디자인 셀렉션",
+            "price": 8400000,
+            "excludes": [
+              "signature",
+              "popular"
+            ],
+            "note": "1·2열 통풍 시트 미적용"
+          },
+          {
+            "id": "popular",
+            "name": "파퓰러 컬렉션",
+            "price": 23000000,
+            "excludes": [
+              "front_comfort",
+              "easy_access",
+              "warming",
+              "signature",
+              "rear_comfort",
+              "cashmere",
+              "fixed_step"
+            ],
+            "note": "시그니처 디자인, 앞좌석 컴포트, 이지 액세스, 서라운드 워밍 포함 · 6인승 뒷좌석 컴포트 포함"
+          },
+          {
+            "id": "dual_elsd",
+            "name": "전륜·후륜 전자식 차동제한장치(Dual e-LSD)",
+            "price": 1950000
+          },
+          {
+            "id": "builtincam",
+            "name": "빌트인 캠 2 Plus",
+            "price": 1000000
+          },
+          {
+            "id": "warming",
+            "name": "서라운드 워밍 패키지",
+            "price": 1400000,
+            "excludes": [
+              "popular"
+            ]
+          },
+          {
+            "id": "front_comfort",
+            "name": "앞좌석 컴포트 패키지",
+            "price": 4500000,
+            "excludes": [
+              "popular"
+            ]
+          },
+          {
+            "id": "rear_comfort",
+            "name": "뒷좌석 컴포트 패키지",
+            "price": 5700000,
+            "requires": "front_comfort",
+            "excludes": [
+              "popular"
+            ],
+            "note": "앞좌석 컴포트 패키지 선행 선택"
+          },
+          {
+            "id": "privacy",
+            "name": "뒷좌석 프라이버시 패키지",
+            "price": 1200000
+          },
+          {
+            "id": "vision_roof",
+            "name": "비전 루프 패키지",
+            "price": 3000000
+          },
+          {
+            "id": "bang",
+            "name": "뱅앤올룹슨 사운드 패키지",
+            "price": 4900000,
+            "requires": "vision_roof",
+            "note": "비전 루프 패키지 선행 선택"
+          },
+          {
+            "id": "easy_access",
+            "name": "이지 액세스 패키지",
+            "price": 5300000,
+            "excludes": [
+              "popular",
+              "fixed_step"
+            ],
+            "note": "자동 도어 오픈 & 클로즈 · 전동식 사이드 스텝"
+          },
+          {
+            "id": "rear_entertainment",
+            "name": "스마트 후석 엔터테인먼트 패키지",
+            "price": 3500000
+          },
+          {
+            "id": "smart_card",
+            "name": "제네시스 액세서리 · 스마트 카드 키",
+            "price": 150000
+          },
+          {
+            "id": "film1",
+            "name": "제네시스 액세서리 · 차량 보호 필름 I",
+            "price": 500000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "film2",
+            "name": "제네시스 액세서리 · 차량 보호 필름 II",
+            "price": 800000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "fixed_step",
+            "name": "제네시스 액세서리 · 고정식 사이드 스텝",
+            "price": 650000,
+            "excludes": [
+              "popular",
+              "easy_access"
+            ],
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "protection_mat",
+            "name": "제네시스 액세서리 · 프로텍션 매트 패키지",
+            "price": 400000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "floating_caps",
+            "name": "제네시스 액세서리 · 블랙 플로팅 휠 캡",
+            "price": 90000,
+            "requires": "wheel24",
+            "note": "24인치 단조 휠 전용 · 영남/칠곡 출고센터 출고 조건"
+          }
+        ]
+      },
+      "7": {
+        "base": [
+          {
+            "id": "wheel22_forged",
+            "name": "22인치 다이아몬드 컷팅 단조 휠",
+            "price": 2000000
+          },
+          {
+            "id": "signature",
+            "name": "시그니처 디자인 셀렉션",
+            "price": 7400000,
+            "excludes": [
+              "cashmere",
+              "popular"
+            ],
+            "note": "파퓰러 컬렉션에 포함"
+          },
+          {
+            "id": "cashmere",
+            "name": "울 캐시미어 디자인 셀렉션",
+            "price": 8400000,
+            "excludes": [
+              "signature",
+              "popular"
+            ],
+            "note": "1·2열 통풍 시트 미적용"
+          },
+          {
+            "id": "popular",
+            "name": "파퓰러 컬렉션",
+            "price": 17500000,
+            "excludes": [
+              "front_comfort",
+              "easy_access",
+              "warming",
+              "signature",
+              "cashmere",
+              "fixed_step"
+            ],
+            "note": "시그니처 디자인, 앞좌석 컴포트, 이지 액세스, 서라운드 워밍 포함"
+          },
+          {
+            "id": "dual_elsd",
+            "name": "전륜·후륜 전자식 차동제한장치(Dual e-LSD)",
+            "price": 1950000
+          },
+          {
+            "id": "builtincam",
+            "name": "빌트인 캠 2 Plus",
+            "price": 1000000
+          },
+          {
+            "id": "warming",
+            "name": "서라운드 워밍 패키지",
+            "price": 1200000,
+            "excludes": [
+              "popular"
+            ]
+          },
+          {
+            "id": "front_comfort",
+            "name": "앞좌석 컴포트 패키지",
+            "price": 4500000,
+            "excludes": [
+              "popular"
+            ]
+          },
+          {
+            "id": "privacy",
+            "name": "뒷좌석 프라이버시 패키지",
+            "price": 1200000
+          },
+          {
+            "id": "vision_roof",
+            "name": "비전 루프 패키지",
+            "price": 3000000
+          },
+          {
+            "id": "bang",
+            "name": "뱅앤올룹슨 사운드 패키지",
+            "price": 4900000,
+            "requires": "vision_roof",
+            "note": "비전 루프 패키지 선행 선택"
+          },
+          {
+            "id": "easy_access",
+            "name": "이지 액세스 패키지",
+            "price": 5300000,
+            "excludes": [
+              "popular",
+              "fixed_step"
+            ],
+            "note": "자동 도어 오픈 & 클로즈 · 전동식 사이드 스텝"
+          },
+          {
+            "id": "rear_entertainment",
+            "name": "스마트 후석 엔터테인먼트 패키지",
+            "price": 3500000
+          },
+          {
+            "id": "smart_card",
+            "name": "제네시스 액세서리 · 스마트 카드 키",
+            "price": 150000
+          },
+          {
+            "id": "film1",
+            "name": "제네시스 액세서리 · 차량 보호 필름 I",
+            "price": 500000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "film2",
+            "name": "제네시스 액세서리 · 차량 보호 필름 II",
+            "price": 800000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "fixed_step",
+            "name": "제네시스 액세서리 · 고정식 사이드 스텝",
+            "price": 650000,
+            "excludes": [
+              "popular",
+              "easy_access"
+            ],
+            "note": "영남/칠곡 출고센터 출고 조건"
+          },
+          {
+            "id": "protection_mat",
+            "name": "제네시스 액세서리 · 프로텍션 매트 패키지",
+            "price": 400000,
+            "note": "영남/칠곡 출고센터 출고 조건"
+          }
+        ]
+      }
+    },
+    "evEngineIds": [
+      "ev"
+    ],
+    "evAcquisitionTaxReduction": 1400000
+  },
 
   /* =========================================================
      2027 쏘렌토
@@ -9411,6 +9924,7 @@ g90:{
    ========================================================= */
 
 window.CAR_CATALOG_META = {
+  "gv90": { "title": "제네시스 GV90", "type": "플래그십 전기 SUV · AWD · 7인승 / 6인승" },
   "gv80": { "title": "2027 GV80 / Hybrid", "type": "럭셔리 SUV · 2.5T · 3.5T AWD · Hybrid" },
   "g80": {
     "title": "디 올-뉴 G80",
@@ -9518,6 +10032,7 @@ window.CAR_SPECIAL_CARDS = {
 };
 
 window.CAR_DISPLAY_ORDER = [
+  "gv90",
   "g80",
   "g70",
   "g90",
